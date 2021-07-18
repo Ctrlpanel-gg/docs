@@ -9,7 +9,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/controlpanel.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'Controlpanel', // Usually your repo name.
   themeConfig: {
@@ -17,16 +17,25 @@ module.exports = {
       title: 'Controlpanel',
       logo: {
         alt: 'Controlpanel logo',
-        src: 'img/logo.svg',
+        src: 'img/controlpanel.png',
       },
       items: [
         {
           type: 'doc',
           docId: 'intro',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Documentation',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          href: 'https://github.com/ControlPanel-gg/dashboard',
+          label: 'API',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/ControlPanel-gg/dashboard',
+          label: 'Demo',
+          position: 'left',
+        },
         {
           href: 'https://github.com/ControlPanel-gg/dashboard',
           label: 'GitHub',
@@ -41,7 +50,7 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Documentation',
               to: '/docs/intro',
             },
           ],
@@ -51,7 +60,7 @@ module.exports = {
           items: [
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discord.gg/4Y6HjD2uyU',
             },
           ],
         },
@@ -59,12 +68,8 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/ControlPanel-gg/dashboard',
             },
           ],
         },
