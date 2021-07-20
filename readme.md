@@ -14,28 +14,8 @@ npm run start
 ```
 
 ## Deploy webserver
-You will need to install the node_modules for both the webserver and the docs and build the documentation files.
-
-### Install modules
 ```bash
-#webserver
 npm install
-
-#docs
-cd docs/
-npm install
-```
-
-### Build the docs files
-```bash
-#make sure you are in the 'docs' folder
-npm run build
-```
-
-### Start the webserver
-```bash
-#we cd back to the root directory
-cd ../
 npm start
 ```
 
