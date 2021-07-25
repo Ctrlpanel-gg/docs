@@ -4,32 +4,11 @@ sidebar_position: 1
 
 # Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+ControlPanel's Dashboard is a dashboard application designed to offer clients a management tool to manage their pterodactyl servers. This dashboard comes with a credit-based billing solution that credits users hourly for each server they have and suspends them if they run out of credits.
 
-## Getting Started
+This dashboard offers an easy to use and free billing solution for all starting and experienced hosting providers. This dashboard has many customization options and added discord 0auth verification to offer a solid link between your discord server and your dashboard.
 
-Get started by **creating a new site**.
+## Support
+Have a few questions? Feel free to [join](https://discord.gg/GY7PWejUaG) our support discord server.
 
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
-
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+We also announce every single release in our discord and we would love to hear your feedback!
