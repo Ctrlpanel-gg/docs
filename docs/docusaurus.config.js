@@ -31,11 +31,11 @@ module.exports = {
           label: 'API',
           position: 'left',
         },
-        {
-          href: 'https://github.com/ControlPanel-gg/dashboard',
-          label: 'Demo',
-          position: 'left',
-        },
+        // {
+        //   href: 'https://github.com/ControlPanel-gg/dashboard',
+        //   label: 'Demo',
+        //   position: 'left',
+        // },
         {
           href: 'https://github.com/ControlPanel-gg/dashboard',
           label: 'GitHub',
