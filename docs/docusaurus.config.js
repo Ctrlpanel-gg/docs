@@ -27,7 +27,7 @@ module.exports = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/ControlPanel-gg/dashboard',
+          href: 'https://documenter.getpostman.com/view/9044962/TzY69ub2#02b8da43-ab01-487d-b2f5-5f8699b509cd',
           label: 'API',
           position: 'left',
         },
