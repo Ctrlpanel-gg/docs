@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting started
+# Getting started 
 
 
 :::info
@@ -58,6 +58,7 @@ apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm
 ```
 ### Extra dependency used on this dashboard
 you need to install this, use the appropriate php version (php -v)
+Extra dependency used for handling currency's
 ```bash
 sudo apt-get install php8.0-intl
 ```
@@ -123,13 +124,36 @@ FLUSH PRIVILEGES;
 ```
 
 ### Environment Configuration
-Edit the .env to your needs
 
-Please **do not** forget to enter the database crediantials in here, or the next step won't work
-Please **do not** forget to enter your pterodactyl API key in here, or the next steps won't work
+Please make sure to fill out your env variables calmly. They are designed for your dashboard application. All pre-filled variables should be modified to suit your needs!
+<br/>For this step, you are required to enter these .env variables correctly! 
+
+Other variables will be explained later, but you are free to already edit them.
+
 
 ``` bash
 nano .env
+
+#Example .env vars
+APP_NAME=Controlpanel
+APP_URL=https://dash.controlpanel.gg #The URL your site is located at
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=dashboard
+DB_USERNAME=dashboarduser
+DB_PASSWORD=mysecretpassword
+
+#Without a pterodactyl API token, this panel won't work!
+#You can create one at your pterodactyl panel -> Application API
+PTERODACTYL_TOKEN=
+
+#nesseary URL's
+PTERODACTYL_URL=https://panel.bitsec.dev #The URL your pterodactyl panel is located at
+PHPMYADMIN_URL=https://mysql.bitsec.dev #The URL your phpmyadmin is located at !!optional!!
+DISCORD_INVITE_URL=https://discord.gg/vrUYdxG4wZ #An invite to your discord server
+
 ```
 
 We need to set up all of the base data for the Panel in the database you created earlier. **The command below
@@ -201,22 +225,3 @@ Finally, enable the service and set it to boot on machine start.
 ```bash
 sudo systemctl enable --now dashboard.service
 ```
-
-### Discord Auth
-Edit the .env file and look for discord related options :) make sure to fill out the desired options correctly.
-
-**Setting up auth**<br/>
-[How](http://faq.demostoreprestashop.com/faq.php?fid=133&pid=41) to get CLIENT_ID and CLIENT_SECRET <br />
-for the redirect uri you have to use YOUR_WEBSITE_URI + /auth/callback (example: https://bitsec.dev/auth/callback)
-
-**Adding the discord bot**<br/>
-if you would like to automatically force new users into your discord server after they have verified, you will need to set up a discord bot. This can be an already existing discord bot in your server.
-
-1. add your discord bot to your server and give him the appropriate permissions.
-2. add your discord bot token to the .env file.
-3. add your discord server(guild) ID to the .env file.
-
-That's it! The dashboard can now use your bot to make API calls to discord to place new users into your discord server. your bot will not come online as we only use it to make API calls when some 1 verifies, you can still use your bot as your normally would :)
-
-**Custom role reward**<br/>
-If you would like to give your users a custom role automatically when they verify their discord account, you have to copy the ID of an existing role from your discord server and place it in the .env as well.

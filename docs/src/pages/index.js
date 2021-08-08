@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="ControlPanel's Dashboard is a free and open-source management panel for pterodactyl with credit based billing and lots of customization.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
