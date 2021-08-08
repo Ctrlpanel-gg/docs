@@ -171,6 +171,7 @@ php artisan db:seed --class=ExampleItemsSeeder --force
 ```
 
 ### Add The First User
+You will be asked to provide your user's pterodactyl ID. You can find this at your pterodactyl panel under the users tab `/admin/users`. We use this ID to link your controlpanel account with your pterodactyl account.
 ``` bash
 php artisan make:user
 ```
