@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called dashboard.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
-### Example Nginx config
+### Example Nginx Config
 ```nginx 
 server {
         listen 80;
@@ -29,7 +29,7 @@ server {
 }
 ```
 
-### Enable configuration
+### Enable Configuration
 The final step is to enable your NGINX configuration and restart it.
 
 ```bash
