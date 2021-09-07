@@ -46,7 +46,7 @@ systemctl restart nginx
 
 ### Adding SSL
 
-There are many ways to add SSL to your site. A simple solution is to use Certbot from Let’s Encrypt. Cerbot will automatically install the certificates for you and keep your SSL certifications up to date!
+There are many ways to add SSL to your site. A simple solution is to use Certbot from Let’s Encrypt. Certbot will automatically install the certificates for you and keep your SSL certifications up to date!
 ```bash 
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
