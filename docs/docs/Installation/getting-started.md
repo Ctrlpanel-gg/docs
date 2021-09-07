@@ -7,7 +7,7 @@ sidebar_position: 1
 
 :::info
 
-It is recommended that you have some sort of Linux experience and MariaDB experience before installing this
+It is recommended that you have some sort of Linux and MariaDB experience before installing this.
 
 :::
 
@@ -33,7 +33,7 @@ import TOCInline from '@theme/TOCInline';
 * `composer` v2
 
 ### Example Dependency Installation
-_if you already have pterodactyl installed you can skip this step!_
+_If you already have Pterodactyl installed you can skip this step!_
 
 The commands below are simply an example of how you might install these dependencies. Please consult with your
 operating system's package manager to determine the correct packages to install.
@@ -57,14 +57,14 @@ apt-add-repository universe
 apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
 ```
 ### Extra dependency used on this dashboard
-you need to install this, use the appropriate php version (php -v)
+You need to install this, use the appropriate php version (php -v)
 Extra dependency used for handling currency's
 ```bash
 sudo apt-get install php8.0-intl
 ```
 
 ### Installing Composer
-_if you already have pterodactyl installed you can skip this step!_
+_If you already have Pterodactyl installed you can skip this step!_
 
 Composer is a dependency manager for PHP that allows us to ship everything you'll need code wise to operate the Panel. You'll
 need composer installed before continuing in this process.
@@ -128,7 +128,7 @@ FLUSH PRIVILEGES;
 Please make sure to fill out your env variables calmly. They are designed for your dashboard application. All pre-filled variables should be modified to suit your needs!
 <br/>For this step, you are required to enter these .env variables correctly! 
 
-Other variables will be explained later, but you are free to already edit them.
+Other variables will be explained later, but you are free to edit them already.
 
 
 ``` bash
@@ -165,13 +165,13 @@ php artisan migrate --seed --force
 ```
 
 ### Add some example products
-This step is optional, only run this once
+This step is optional, only run this once.
 ``` bash
 php artisan db:seed --class=ExampleItemsSeeder --force
 ```
 
 ### Add The First User
-You will be asked to provide your user's pterodactyl ID. You can find this at your pterodactyl panel under the users tab `/admin/users`. We use this ID to link your controlpanel account with your pterodactyl account.
+You will be asked to provide your user's Pterodactyl ID. You can find this at your Pterodactyl Panel under the users tab `/admin/users`. We use this ID to link your ControlPanel account with your Pterodactyl account.
 ``` bash
 php artisan make:user
 ```
@@ -192,7 +192,7 @@ chown -R apache:apache /var/www/dashboard/*
 ## Queue Listeners
 
 ### Crontab Configuration
-The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks. like billing users hourly and suspending unpaid servers. to open de crontab run: `crontab -e` and paste the following configuration into to crontab
+The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To open the crontab run: `crontab -e` and paste the following configuration into crontab.
 
 ```bash
 * * * * * php /var/www/dashboard/artisan schedule:run >> /dev/null 2>&1
