@@ -56,7 +56,7 @@ apt-add-repository universe
 # Install Dependencies
 apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
 ```
-### Extra dependency used on this dashboard
+### Extra Dependency Used on this Dashboard
 You need to install this, use the appropriate php version (php -v)
 Extra dependency used for handling currency's
 ```bash
@@ -164,7 +164,7 @@ command will set up the database tables and add all configuration options and de
 php artisan migrate --seed --force
 ```
 
-### Add some example products
+### Add Example Products
 This step is optional, only run this once.
 ``` bash
 php artisan db:seed --class=ExampleItemsSeeder --force
