@@ -74,7 +74,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel group. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
