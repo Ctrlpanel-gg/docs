@@ -7,19 +7,19 @@ sidebar_position: 5
 cd /var/www/dashboard
 sudo php artisan down
 ```
-### Pulling the new files
+### Pulling the New Files
 ```bash
 sudo git stash
 sudo git pull
 sudo chmod -R 755 /var/www/dashboard
 ```
 
-### Update dependencies
+### Update Dependencies
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
 
-### Updating the database
+### Updating the Database
 ```bash
 sudo php artisan migrate --seed --force
 ```
@@ -30,7 +30,7 @@ sudo php artisan view:clear
 sudo php artisan config:clear
 ```
 
-### Set permissions
+### Set Permissions
 ```bash
 # If using NGINX or Apache (not on CentOS):
 sudo chown -R www-data:www-data /var/www/dashboard/*

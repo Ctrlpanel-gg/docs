@@ -6,7 +6,7 @@ sidebar_position: 2
 
 You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called dashboard.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
-### Example Nginx config
+### Example Nginx Config
 ```nginx 
 server {
         listen 80;
@@ -29,7 +29,7 @@ server {
 }
 ```
 
-### Enable configuration
+### Enable Configuration
 The final step is to enable your NGINX configuration and restart it.
 
 ```bash
@@ -46,7 +46,7 @@ systemctl restart nginx
 
 ### Adding SSL
 
-There are many ways to add SSL to your site. A simple solution is to use certbot from let’s encrypt. cerbot will automatically install the certificates for you and keep your SSL certs up to date!
+There are many ways to add SSL to your site. A simple solution is to use Certbot from Let’s Encrypt. Certbot will automatically install the certificates for you and keep your SSL certifications up to date!
 ```bash 
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
