@@ -20,7 +20,6 @@ Ko-fi link: [https://ko-fi.com/avmg20](https://ko-fi.com/avmg20)
 _Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
 
 ## Donators
-_example_
 
-:heart: Gold Supporter: **AVMG#1234**<br/>
+:heart: Gold Supporter: **Wynn#1000**<br/>
 Website: [https://bitsec.dev](https://bitsec.dev)
