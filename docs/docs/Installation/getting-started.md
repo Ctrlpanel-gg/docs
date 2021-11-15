@@ -119,7 +119,7 @@ This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your passwo
 mysql -u root -p
 CREATE DATABASE dashboard;
 CREATE USER 'dashboarduser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
-GRANT ALL PRIVILEGES ON *.* TO 'dashboarduser'@'127.0.0.1' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON dashboard.* TO 'dashboarduser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 ```
 
