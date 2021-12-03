@@ -21,6 +21,16 @@ import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
 
+## Supported Systems
+| Operating System   | Version | Supported |
+| :---        |    :----:   | :----:  |
+| Ubuntu      | 18.04       |   ✅    |
+|             | 20.04       |   ✅    |
+| CentOS      | 7           |   never tried🤔    |
+|             | 8           |   never tried🤔   |
+|    Debian   |   9         |   ✅    |
+|             |   10        |   ✅    |
+
 ## Dependencies
 * PHP `7.4` or `8.0` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 * MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
