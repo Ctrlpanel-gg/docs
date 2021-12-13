@@ -13,14 +13,14 @@ After a long wait, the controlpanel has now been equipped with a translation sys
 
 ## How to help
 
-The Translation list can be found here:
+The Translation list can be found here: <br/>
 https://raw.githubusercontent.com/1day2die/dashboard/localization/resources/lang/de.json
 
-Its simple to understand. The syntax goes like this
+Its simple to understand. The syntax goes like this <br/>
 `'English-Phrase' : 'Your-Language-Translation',`
 
-You first need a JSON-File named after your language's Language-Code
-These can be taken from here
+You first need a JSON-File named after your language's Language-Code <br/>
+These can be taken from here <br/>
 https://www.loc.gov/standards/iso639-2/php/code_list.php
 
 Example:
@@ -28,7 +28,7 @@ Example:
 `Dutch = nl`
 `French = fr`
 
-Copy the Contents of the above linked "de.json" and use it as a template for your language and just translate!
+Copy the Contents of the above linked "de.json" and use it as a template for your language and just translate! <br/>
 Its very easy and everyone can help us translate our panel!
 
 
