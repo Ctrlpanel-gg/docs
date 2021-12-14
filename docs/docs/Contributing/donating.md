@@ -21,10 +21,10 @@ _Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
 
 ## Donators
 
-:heart: Gold Supporter: **Wynn#1000**<br/>
-:heart: Gold Supporter: **BolverBlitz#4881**<br/>
-:heart: Gold Supporter: **dragocz#0191**<br/>
-:heart: Gold Supporter: **Niktix#3749**<br/>
+:yellow_heart: Gold Supporter: **Wynn#1000**<br/>
+:yellow_heart: Gold Supporter: **BolverBlitz#4881**<br/>
+:yellow_heart: Gold Supporter: **dragocz#0191**<br/>
+:yellow_heart: Gold Supporter: **Niktix#3749**<br/>
 
 <br/>
 
