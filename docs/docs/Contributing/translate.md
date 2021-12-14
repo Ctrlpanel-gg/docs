@@ -14,7 +14,7 @@ After a long wait, the controlpanel has now been equipped with a translation sys
 ## How to help
 
 The Translation list can be found here: <br/>
-https://raw.githubusercontent.com/1day2die/dashboard/localization/resources/lang/en.json
+https://raw.githubusercontent.com/ControlPanel-gg/dashboard/development/resources/lang/en.json
 
 Its simple to understand. The syntax goes like this <br/>
 `'English-Phrase' : 'Your-Language-Translation',`<br/>
