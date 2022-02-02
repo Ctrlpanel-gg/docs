@@ -13,25 +13,15 @@ After a long wait, the controlpanel has now been equipped with a translation sys
 
 ## How to help
 
-The Translation list can be found here: <br/>
-https://raw.githubusercontent.com/ControlPanel-gg/dashboard/development/resources/lang/en.json
+The Translation list can be found here
+https://crowdin.com/project/controlpanelgg
 
-Its simple to understand. The syntax goes like this <br/>
-`'English-Phrase' : 'Your-Language-Translation',`<br/>
+On this Website you will see every language we need to translate and the current progress.
+Feel free to contribute or correct any language you know.
 
-You first need a JSON-File named after your language's Language-Code <br/>
-These can be taken from here <br/>
-https://www.loc.gov/standards/iso639-2/php/code_list.php
-
-Example:
-`German = de`
-`Dutch = nl`
-`French = fr`
-
-Copy the Contents of the above linked "en.json" and use it as a template for your language and just translate! <br/>
-Its very easy and everyone can help us translate our panel!<br/>
-
+If you have a suggestion for a language or want to bring in your skills on a certain language, feel free to contact us on discord!
 
 ## Translators
 
  :de: German: **1Day2Die**<br/>
+ :it: Italian: **Dotto#8067**<br/>
