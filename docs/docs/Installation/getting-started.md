@@ -87,30 +87,13 @@ git clone https://github.com/ControlPanel-gg/dashboard.git ./
 chmod -R 755 storage/* bootstrap/cache/
 ```
 
-## Installation
+## Basic Setup
 Now that all of the files have been downloaded we need to configure some core aspects of the Panel.
 
 **You will need a database setup and a database user with the correct permissions created for that database before**
 **continuing any further.**
 
 
-First, we will copy over our default environment settings file, install core dependencies, and then generate a
-new application encryption key.
-
-``` bash
-cp .env.example .env
-composer install --no-dev --optimize-autoloader
-
-# Only run the command below if you are installing this Panel for the first time
-php artisan key:generate --force
-
-
-# you should create a symbolic link from public/storage to storage/app/public
-php artisan storage:link
-```
-
-Back up your encryption key (APP_KEY in the `.env` file). It is used as an encryption key for all data that needs to be stored securely (e.g. api keys).
-Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- even if you have database backups.
 
 ### Database Setup
 To make a database and database user, you can follow this guide.
@@ -123,58 +106,6 @@ GRANT ALL PRIVILEGES ON dashboard.* TO 'dashboarduser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 ```
 
-### Environment Configuration
-
-Please make sure to fill out your env variables calmly. They are designed for your dashboard application. All pre-filled variables should be modified to suit your needs!
-<br/>For this step, you are required to enter these .env variables correctly! 
-
-Other variables will be explained later, but you are free to edit them already.
-
-
-``` bash
-nano .env
-
-#Example .env vars
-APP_NAME=Controlpanel
-APP_URL=https://dash.controlpanel.gg #The URL your site is located at
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=dashboard
-DB_USERNAME=dashboarduser
-DB_PASSWORD=mysecretpassword
-
-#Without a pterodactyl API token, this panel won't work!
-#You can create one at your pterodactyl panel -> Application API
-PTERODACTYL_TOKEN=
-
-#nesseary URL's
-PTERODACTYL_URL=https://panel.bitsec.dev #The URL your pterodactyl panel is located at
-PHPMYADMIN_URL=https://mysql.bitsec.dev #The URL your phpmyadmin is located at !!optional!!
-DISCORD_INVITE_URL=https://discord.gg/vrUYdxG4wZ #An invite to your discord server
-
-```
-
-We need to set up all of the base data for the Panel in the database you created earlier. **The command below
-may take some time to run depending on your machine. Please _DO NOT_ exit the process until it is completed!** This
-command will set up the database tables and add all configuration options and default items.
-
-``` bash
-php artisan migrate --seed --force
-```
-
-### Add Example Products
-This step is optional, only run this once.
-``` bash
-php artisan db:seed --class=ExampleItemsSeeder --force
-```
-
-### Add The First User
-You will be asked to provide your user's Pterodactyl ID. You can find this at your Pterodactyl Panel under the users tab `/admin/users`. We use this ID to link your ControlPanel account with your Pterodactyl account.
-``` bash
-php artisan make:user
-```
 ### Set Permissions
 The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
 use them correctly.
@@ -188,7 +119,78 @@ chown -R nginx:nginx /var/www/dashboard/*
 
 # If using Apache on CentOS
 chown -R apache:apache /var/www/dashboard/*
+
+****
 ```
+## Webserver Configuration
+
+You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called dashboard.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+
+### Example Nginx Config
+```nginx 
+server {
+        listen 80;
+        root /var/www/dashboard/public;
+        index index.php index.html index.htm index.nginx-debian.html;
+        server_name YOUR.DOMAIN.COM;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+```
+
+### Enable Configuration
+The final step is to enable your NGINX configuration and restart it.
+
+```bash
+# You do not need to symlink this file if you are using CentOS.
+sudo ln -s /etc/nginx/sites-available/dashboard.conf /etc/nginx/sites-enabled/dashboard.conf
+
+# Check for nginx errors
+sudo nginx -t
+
+# You need to restart nginx regardless of OS. only do this you haven't received any errors
+systemctl restart nginx
+```
+
+
+### Adding SSL
+
+There are many ways to add SSL to your site. A simple solution is to use Certbot from Let’s Encrypt. Certbot will automatically install the certificates for you and keep your SSL certifications up to date!
+```bash 
+sudo apt update
+#install certbot for nginx
+sudo apt install -y certbot
+sudo apt install -y python3-certbot-nginx
+#install certificates
+sudo certbot --nginx -d yourdomain.com
+```
+
+## Panel Installation
+First, we will have to install all composer packages.
+For this navigate into your `var/www/dashboard` again and run the following command
+
+``` bash
+composer install --no-dev --optimize-autoloader
+```
+
+Once this is done, you should be able to access the dashboard via your webbrowser.
+
+####Navigate to "www.yourdomain.com/install" to run the Web-Installer and follow the steps.
+
+Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.<br />
+Dont forget to complete the steps listed below here.
+
 ## Queue Listeners
 
 ### Crontab Configuration
