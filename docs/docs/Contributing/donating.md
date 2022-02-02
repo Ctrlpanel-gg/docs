@@ -21,13 +21,20 @@ _Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
 
 ## Donators
 
-:yellow_heart: Gold Supporter: **Wynn#1000**<br/>
-:yellow_heart: Gold Supporter: **BolverBlitz#4881**<br/>
-:yellow_heart: Gold Supporter: **dragocz#0191**<br/>
-:yellow_heart: Gold Supporter: **Niktix#3749**<br/>
 
-<br/>
+🤍 Platinum Supporter: **BolverBlitz#4881**<br/>
 
-:brown_heart: Bronze Supporter: **Grosenberger#5417**<br/>
-:brown_heart: Bronze Supporter: **Coconut#7171**<br/>
-:brown_heart: Bronze Supporter: **Bazim#0485**<br/>
+
+
+💛 Gold Supporter: **Wynn#1000**<br/>
+💛 Gold Supporter: **dragocz#0191**<br/>
+💛 Gold Supporter: **Niktix#3749**<br/>
+
+
+🤎 Bronze Supporter: **Grosenberger#5417**<br/>
+🤎 Bronze Supporter: **Coconut#7171**<br/>
+🤎 Bronze Supporter: **Bazim#0485**<br/>
+🤎 Bronze Supporter: **Jonas.#9915**<br/>
+🤎 Bronze Supporter: **Vysoký Vagón#3796**<br/>
+
+
