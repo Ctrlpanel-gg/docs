@@ -112,13 +112,13 @@ use them correctly.
 
 ``` bash
 # If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/dashboard/*
+chown -R www-data:www-data /var/www/dashboard/
 
 # If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/dashboard/*
+chown -R nginx:nginx /var/www/dashboard/
 
 # If using Apache on CentOS
-chown -R apache:apache /var/www/dashboard/*
+chown -R apache:apache /var/www/dashboard/
 
 ****
 ```
