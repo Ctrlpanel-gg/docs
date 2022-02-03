@@ -4,19 +4,19 @@ The official controlpanel docs. in the root directory, I’ve included a simple 
 ## Local development
 ### Install node_modules for docs
 ```bash
-cd docs/
-npm install
+cd docs/docs
+yarn install
 ```
 
 ### Run development server
 ```bash
-npm run start
+yarn start
 ```
 
 ## Deploy webserver
 ```bash
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 ## Docs made with Docusaurus
