@@ -5,6 +5,7 @@ name: Build and Push
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
 
 # Workflow steps
 jobs:
