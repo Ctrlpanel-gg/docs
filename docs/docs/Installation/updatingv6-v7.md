@@ -23,13 +23,13 @@ sudo composer install --no-dev --optimize-autoloader
 ### Set Permissions
 ```bash
 # If using NGINX or Apache (not on CentOS):
-sudo chown -R www-data:www-data /var/www/dashboard/*
+sudo chown -R www-data:www-data /var/www/dashboard/
 
 # If using NGINX on CentOS:
-sudo chown -R nginx:nginx /var/www/dashboard/*
+sudo chown -R nginx:nginx /var/www/dashboard/
 
 # If using Apache on CentOS
-sudo chown -R apache:apache /var/www/dashboard/*
+sudo chown -R apache:apache /var/www/dashboard/
 ````
 
 ### Restarting Queue Workers
@@ -45,7 +45,7 @@ sudo php artisan up
 ### Running the installer
 
 It is recommended, to run the installer after this big update.
-#### Navigate to "www.yourdomain.com/install" to run the Web-Installer and follow the steps.
+#### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
 
 All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
 

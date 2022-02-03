@@ -60,7 +60,7 @@ apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm
 You need to install this, use the appropriate php version (php -v)
 Extra dependency used for handling currency's
 ```bash
-sudo apt-get install php8.0-intl
+apt -y install php8.0-intl
 ```
 
 ### Installing Composer
@@ -112,13 +112,13 @@ use them correctly.
 
 ``` bash
 # If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/dashboard/*
+chown -R www-data:www-data /var/www/dashboard/
 
 # If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/dashboard/*
+chown -R nginx:nginx /var/www/dashboard/
 
 # If using Apache on CentOS
-chown -R apache:apache /var/www/dashboard/*
+chown -R apache:apache /var/www/dashboard/
 
 ****
 ```
