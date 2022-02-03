@@ -1,0 +1,30 @@
+# This workflow will build the current branch and push it to the remote repository.
+
+name: Build and Push
+
+on:
+  push:
+    branches: [ master ]
+
+# Workflow steps
+jobs:
+  build:
+  name: Build with yarn
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+      - uses: actions/checkout@v2
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+        run: | 
+          cd ./docs
+          yarn install
+      - name: Build
+        run: |
+          yarn build
+      - name: Push
+        run: |
+          git add ./docs/build
+          git commit -m "Workflow: Build and Push"
+          git push origin master
