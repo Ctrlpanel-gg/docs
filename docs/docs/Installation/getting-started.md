@@ -60,7 +60,7 @@ apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm
 You need to install this, use the appropriate php version (php -v)
 Extra dependency used for handling currency's
 ```bash
-sudo apt-get install php8.0-intl
+apt -y install php8.0-intl
 ```
 
 ### Installing Composer
