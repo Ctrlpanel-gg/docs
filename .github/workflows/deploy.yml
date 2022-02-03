@@ -9,7 +9,7 @@ on:
 # Workflow steps
 jobs:
   build:
-  name: Build with yarn
+    name: Build with yarn
     runs-on: ubuntu-latest
     strategy:
       matrix:
