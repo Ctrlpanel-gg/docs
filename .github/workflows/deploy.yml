@@ -11,6 +11,10 @@ jobs:
   build:
   name: Build with yarn
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+          - 16
     steps:
       - name: checkout
       - uses: actions/checkout@v2
