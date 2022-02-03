@@ -15,7 +15,7 @@ If you run into problems with the email setup, you can use the skip button and s
 
 All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
 
-Ensure you clear the config cache and restart the queue workers when making changes to the email details.<br/>
+Ensure you clear the config cache and restart the queue workers when making changes to the email details<br/>
 `php artisan config:clear` and `php artisan queue:restart`
 
 ## Misc Configuration
