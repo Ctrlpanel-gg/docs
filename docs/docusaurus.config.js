@@ -4,13 +4,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Controlpanel.gg',
-  tagline: 'Free management tool designed for pterodactyl',
+  tagline: 'ControlPanel\'s Dashboard is a free and open-source management panel for pterodactyl with credit based billing and lots of customization',
   url: 'https://controlpanel.gg',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/controlpanel.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'Controlpanelgg', // Usually your GitHub org/user name.
   projectName: 'Controlpanel', // Usually your repo name.
   themeConfig: {
     navbar: {
@@ -74,7 +74,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel group. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel.gg group. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
