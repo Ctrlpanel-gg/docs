@@ -37,6 +37,11 @@ module.exports = {
           position: 'left',
         },
         {
+          href: 'https://discord.gg/4Y6HjD2uyU',
+          label: 'Discord',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/ControlPanel-gg/dashboard',
           label: 'GitHub',
           position: 'right',
