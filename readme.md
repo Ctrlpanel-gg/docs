@@ -22,7 +22,7 @@ yarn start
 ## Docs made with Docusaurus
 For more info checkout [Docusaurus](https://docusaurus.io/ "Docusaurus")
 
-![image](https://user-images.githubusercontent.com/8725848/152334519-d9ef4b4d-2fec-43f0-af6b-ae1edd9ec757.png)
+![image](https://user-images.githubusercontent.com/8725848/152355466-f315d69a-eeed-4059-a6a8-b0daa3a0e7cc.png)
 
 
 
