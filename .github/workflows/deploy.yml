@@ -24,6 +24,7 @@ jobs:
           yarn install
       - name: Build
         run: |
+          cd ./docs
           yarn build
       - name: Push
         run: |
