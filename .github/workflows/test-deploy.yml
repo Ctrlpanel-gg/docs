@@ -16,7 +16,7 @@ jobs:
           node-version: 16.x
           cache: yarn
       - name: Test build
-        working-directory: website
+        working-directory: docs
         run: |
           yarn install
           yarn build
