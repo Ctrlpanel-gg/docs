@@ -1,28 +1,33 @@
-# Controlpanel Docs
-The official controlpanel docs. in the root directory, I’ve included a simple node.js web server for easy deployment. for local development, you can just hop into the 'docs' folder and run the local dev server.
+# Website
 
-## Local development
-### Install node_modules for docs
-```bash
-cd docs/docs
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+
+## Installation
+
+```console
 yarn install
 ```
 
-### Run development server
-```bash
+## Local Development
+
+```console
 yarn start
 ```
 
-## Deploy webserver
-```bash
-yarn install
-yarn start
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+## Build
+
+```console
+yarn build
 ```
 
-## Docs made with Docusaurus
-For more info checkout [Docusaurus](https://docusaurus.io/ "Docusaurus")
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-![image](https://user-images.githubusercontent.com/8725848/152355466-f315d69a-eeed-4059-a6a8-b0daa3a0e7cc.png)
+## Deployment
 
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
 
-
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

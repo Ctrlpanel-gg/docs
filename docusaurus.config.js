@@ -10,8 +10,9 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/controlpanel.ico',
-  organizationName: 'Controlpanelgg', // Usually your GitHub org/user name.
-  projectName: 'Controlpanel', // Usually your repo name.
+  organizationName: 'ControlPanel-gg', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
+  trailingSlash: false,
   themeConfig: {
     navbar: {
       title: 'Controlpanel',
