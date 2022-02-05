@@ -25,3 +25,11 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 
  :de: German: **1Day2Die**<br/>
  :it: Italian: **Dotto#8067**<br/>
+ 🇨🇳 Chinese: **Wynn#1314**<br/>
+ 🇪🇸 Spanish: **JouRambo#1734**<br/>
+ 🇫🇷 French: **Paulon#9413**<br/>
+ 🇫🇷 French: **Loulou#0088**<br/>
+ 🇮🇳 India: **Anas.#8899**<br/>
+ 🇮🇳 India: **ᗩ乃尺ᗩᗩ尺#7777**<br/>
+ 🇳🇱 Dutch: **Finniedj.exe#9075**<br/>
+ 🇵🇱 Dutch: **mibek1011#1318**<br/>
