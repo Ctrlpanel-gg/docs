@@ -46,15 +46,12 @@ After every update you should restart the queue worker to ensure that the new co
 sudo php artisan queue:restart
 ```
 
-### Disable Maintenance Mode
-
-```bash
-sudo php artisan up
-```
-
 ### Running the installer
 
 It is recommended, to run the installer after this big update.
+The YOUR_SECRET_KEY is the same secret key you used when you ran the down command.
+
+#### Navigate to "https://yourdomain.com/YOUR_SECRET_KEY" to apply the secret key.
 
 #### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
 
@@ -73,6 +70,12 @@ sudo php artisan migrate --seed --force
 ```bash
 sudo php artisan view:clear
 sudo php artisan config:clear
+```
+
+### Disable Maintenance Mode
+
+```bash
+sudo php artisan up
 ```
 
 ## Disclaimer
