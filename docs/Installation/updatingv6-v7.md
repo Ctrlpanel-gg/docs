@@ -4,10 +4,16 @@ sidebar_position: 6
 
 # Updating v0.6.2 to v0.7
 
+:::info
+
+Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+
+:::
+
 ### Enable Maintenance Mode
 
 ```bash
-cd /var/www/controlpanelgg
+cd /var/www/controlpanel
 sudo php artisan down
 ```
 
@@ -16,7 +22,7 @@ sudo php artisan down
 ```bash
 sudo git stash
 sudo git pull
-sudo chmod -R 755 /var/www/controlpanelgg
+sudo chmod -R 755 /var/www/controlpanel
 ```
 
 ### Update Dependencies
@@ -29,13 +35,13 @@ sudo composer install --no-dev --optimize-autoloader
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-sudo chown -R www-data:www-data /var/www/controlpanelgg/
+sudo chown -R www-data:www-data /var/www/controlpanel/
 
 # If using NGINX on CentOS:
-sudo chown -R nginx:nginx /var/www/controlpanelgg/
+sudo chown -R nginx:nginx /var/www/controlpanel/
 
 # If using Apache on CentOS
-sudo chown -R apache:apache /var/www/controlpanelgg/
+sudo chown -R apache:apache /var/www/controlpanel/
 ```
 
 ### Restarting Queue Workers
@@ -46,23 +52,7 @@ After every update you should restart the queue worker to ensure that the new co
 sudo php artisan queue:restart
 ```
 
-### Disable Maintenance Mode
-
-```bash
-sudo php artisan up
-```
-
-### Running the installer
-
-It is recommended, to run the installer after this big update.
-
-#### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
-
-All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
-
-#### Alternative
-
-You can also skip the installation via the installer by running these commands
+### Database Migration and Seeding
 
 ```bash
 sudo php artisan migrate --seed --force
@@ -73,6 +63,12 @@ sudo php artisan migrate --seed --force
 ```bash
 sudo php artisan view:clear
 sudo php artisan config:clear
+```
+
+### Disable Maintenance Mode
+
+```bash
+sudo php artisan up
 ```
 
 ## Disclaimer

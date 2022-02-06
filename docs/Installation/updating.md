@@ -4,10 +4,16 @@ sidebar_position: 5
 
 # Updating
 
+:::info
+
+Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+
+:::
+
 ### Enable Maintenance Mode
 
 ```bash
-cd /var/www/controlpanelgg
+cd /var/www/controlpanel
 sudo php artisan down
 ```
 
@@ -16,7 +22,7 @@ sudo php artisan down
 ```bash
 sudo git stash
 sudo git pull
-sudo chmod -R 755 /var/www/controlpanelgg
+sudo chmod -R 755 /var/www/controlpanel
 ```
 
 ### Update Dependencies
@@ -42,13 +48,13 @@ sudo php artisan config:clear
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-sudo chown -R www-data:www-data /var/www/controlpanelgg/*
+sudo chown -R www-data:www-data /var/www/controlpanel/*
 
 # If using NGINX on CentOS:
-sudo chown -R nginx:nginx /var/www/controlpanelgg/*
+sudo chown -R nginx:nginx /var/www/controlpanel/*
 
 # If using Apache on CentOS
-sudo chown -R apache:apache /var/www/controlpanelgg/*
+sudo chown -R apache:apache /var/www/controlpanel/*
 ```
 
 ### Restarting Queue Workers
