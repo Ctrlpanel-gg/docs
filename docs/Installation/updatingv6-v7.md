@@ -52,20 +52,7 @@ After every update you should restart the queue worker to ensure that the new co
 sudo php artisan queue:restart
 ```
 
-### Running the installer
-
-It is recommended, to run the installer after this big update.
-The YOUR_SECRET_KEY is the same secret key you used when you ran the down command.
-
-#### Navigate to "https://yourdomain.com/YOUR_SECRET_KEY" to apply the secret key.
-
-#### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
-
-All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
-
-#### Alternative
-
-You can also skip the installation via the installer by running these commands
+### Database Migration and Seeding
 
 ```bash
 sudo php artisan migrate --seed --force
