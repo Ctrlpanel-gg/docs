@@ -9,9 +9,8 @@ https://github.com/1day2die/cpgg_lang
 
 ### How to Install
 
-Download the needed language.json file and put it in your ``` var/www/dashboard/resources/lang ```
+Download the needed language.json file and put it in your `var/www/controlpanelgg/resources/lang`
 
 Now you need to enable the Language in your Dashboard Settings.
-Go to ``` YOUR_DASHBOARD.com/admin/settings#language ``` and adjust your Settings accordingly.
+Go to `YOUR_DASHBOARD.com/admin/settings#language` and adjust your Settings accordingly.
 The new Language should pop up in the selection Menu
-
