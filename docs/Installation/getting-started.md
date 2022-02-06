@@ -12,7 +12,7 @@ It is recommended that you have some sort of Linux and MariaDB experience before
 
 :::info
 
-Users, folders and filenames have been renamed from "dashboard" -> "controlpanelgg". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
 :::
 
@@ -90,8 +90,8 @@ The first step in this process is to create the folder where the panel will live
 newly created folder. Below is an example of how to perform this operation.
 
 ```bash
-mkdir -p /var/www/controlpanelgg
-cd /var/www/controlpanelgg
+mkdir -p /var/www/controlpanel
+cd /var/www/controlpanel
 ```
 
 ```bash
@@ -113,9 +113,9 @@ This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your passwo
 
 ```bash
 mysql -u root -p
-CREATE DATABASE controlpanelgg;
-CREATE USER 'controlpanelgguser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
-GRANT ALL PRIVILEGES ON controlpanelgg.* TO 'controlpanelgguser'@'127.0.0.1';
+CREATE DATABASE controlpanel;
+CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 ```
 
@@ -126,27 +126,27 @@ use them correctly.
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/controlpanelgg/
+chown -R www-data:www-data /var/www/controlpanel/
 
 # If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/controlpanelgg/
+chown -R nginx:nginx /var/www/controlpanel/
 
 # If using Apache on CentOS
-chown -R apache:apache /var/www/controlpanelgg/
+chown -R apache:apache /var/www/controlpanel/
 
 ****
 ```
 
 ## Webserver Configuration
 
-You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called controlpanelgg.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called controlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
 ### Example Nginx Config
 
 ```nginx
 server {
         listen 80;
-        root /var/www/controlpanelgg/public;
+        root /var/www/controlpanel/public;
         index index.php index.html index.htm index.nginx-debian.html;
         server_name YOUR.DOMAIN.COM;
 
@@ -171,7 +171,7 @@ The final step is to enable your NGINX configuration and restart it.
 
 ```bash
 # You do not need to symlink this file if you are using CentOS.
-sudo ln -s /etc/nginx/sites-available/controlpanelgg.conf /etc/nginx/sites-enabled/controlpanelgg.conf
+sudo ln -s /etc/nginx/sites-available/controlpanel.conf /etc/nginx/sites-enabled/controlpanel.conf
 
 # Check for nginx errors
 sudo nginx -t
@@ -196,7 +196,7 @@ sudo certbot --nginx -d yourdomain.com
 ## Panel Installation
 
 First, we will have to install all composer packages.
-For this navigate into your `/var/www/controlpanelgg` again and run the following command
+For this navigate into your `/var/www/controlpanel` again and run the following command
 
 ```bash
 composer install --no-dev --optimize-autoloader
@@ -216,21 +216,21 @@ Dont forget to complete the steps listed below here.
 The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To open the crontab run: `crontab -e` and paste the following configuration into crontab.
 
 ```bash
-* * * * * php /var/www/controlpanelgg/artisan schedule:run >> /dev/null 2>&1
+* * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Create Queue Worker
 
 Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
 
-Create a file called `controlpanelgg.service` in `/etc/systemd/system` with the contents below.
+Create a file called `controlpanel.service` in `/etc/systemd/system` with the contents below.
 
 ```bash
-# Controlpanelgg Queue Worker File
+# Controlpanel Queue Worker File
 # ----------------------------------
 
 [Unit]
-Description=Controlpanelgg Queue Worker
+Description=Controlpanel Queue Worker
 
 [Service]
 # On some systems the user and group might be different.
@@ -238,7 +238,7 @@ Description=Controlpanelgg Queue Worker
 User=www-data
 Group=www-data
 Restart=always
-ExecStart=/usr/bin/php /var/www/controlpanelgg/artisan queue:work --sleep=3 --tries=3
+ExecStart=/usr/bin/php /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
 
 [Install]
 WantedBy=multi-user.target
@@ -247,5 +247,5 @@ WantedBy=multi-user.target
 Finally, enable the service and set it to boot on machine start.
 
 ```bash
-sudo systemctl enable --now controlpanelgg.service
+sudo systemctl enable --now controlpanel.service
 ```

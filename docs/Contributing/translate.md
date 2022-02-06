@@ -3,13 +3,14 @@ sidebar_position: 3
 ---
 
 # Translating
+
 You can speak your mother tongue?<br/>
 You understand a certain language very well?<br/>
 Then we need exactly **you for our translator team!**<br/>
 
 After a long wait, the controlpanel has now been equipped with a translation system.<br/>
 
-*Now we need people who help us translate!*<br/>
+_Now we need people who help us translate!_<br/>
 
 ## How to help
 
@@ -23,15 +24,15 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 
 ## Translators
 
- :de: German: **1Day2Die#0849**<br/>
- :de: German: **BolverBlitz#4881**<br/>
- :it: Italian: **Dotto#8067**<br/>
- 🇨🇳 Chinese: **Wynn#1314**<br/>
- 🇪🇸 Spanish: **JouRambo#1734**<br/>
- 🇫🇷 French: **Paulon#9413**<br/>
- 🇫🇷 French: **Loulou#0088**<br/>
- 🇮🇳 India: **Anas.#8899**<br/>
- 🇮🇳 India: **ᗩ乃尺ᗩᗩ尺#7777**<br/>
- 🇳🇱 Dutch: **Finniedj.exe#9075**<br/>
- 🇵🇱 Polish: **mibek1011#1318**<br/>
- 🇷🇺 Russian: **Namaker#2531**<br/>
+:de: German: **1Day2Die#0849**<br/>
+:de: German: **BolverBlitz#4881**<br/>
+:it: Italian: **Dotto#8067**<br/>
+🇨🇳 Chinese: **Wynn#1314**<br/>
+🇪🇸 Spanish: **JouRambo#1734**<br/>
+🇫🇷 French: **Paulon#9413**<br/>
+🇫🇷 French: **Loulou#0088**<br/>
+🇮🇳 India: **Anas.#8899**<br/>
+🇮🇳 India: **ᗩ 乃尺 ᗩᗩ 尺#7777**<br/>
+🇳🇱 Dutch: **Finniedj.exe#9075**<br/>
+🇵🇱 Polish: **mibek1011#1318**<br/>
+🇷🇺 Russian: **Namaker#2531**<br/>
