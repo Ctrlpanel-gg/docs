@@ -6,7 +6,7 @@ sidebar_position: 6
 ### Enable Maintenance Mode
 ```bash
 cd /var/www/dashboard
-sudo php artisan down
+sudo php artisan down --secret="YOUR_SECRET_KEY"
 ```
 ### Pulling the New Files
 ```bash
@@ -38,13 +38,12 @@ After every update you should restart the queue worker to ensure that the new co
 sudo php artisan queue:restart
 ```
 
-### Disable Maintenance Mode
-```bash
-sudo php artisan up
-```
 ### Running the installer
 
 It is recommended, to run the installer after this big update.
+The YOUR_SECRET_KEY is the same secret key you used when you ran the down command.
+
+#### Navigate to "https://yourdomain.com/YOUR_SECRET_KEY" to apply the secret key.
 #### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
 
 All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
@@ -61,6 +60,11 @@ sudo php artisan migrate --seed --force
 ```bash
 sudo php artisan view:clear
 sudo php artisan config:clear
+```
+
+### Disable Maintenance Mode
+```bash
+sudo php artisan up
 ```
 
 
