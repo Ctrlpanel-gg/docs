@@ -4,6 +4,12 @@ sidebar_position: 2
 
 # Database backups
 
+:::info
+
+Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+
+:::
+
 All important data is stored in the database. This includes all servers, users, and other information.  
 Its important to keep backups of your database to ensure that you can restore your panel if something goes wrong.
 

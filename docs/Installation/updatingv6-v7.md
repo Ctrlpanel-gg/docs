@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Updating v0.6.2 to v0.7
 
+:::info
+
+Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+
+:::
+
 ### Enable Maintenance Mode
 
 ```bash
