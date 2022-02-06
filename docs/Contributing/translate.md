@@ -23,7 +23,8 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 
 ## Translators
 
- :de: German: **1Day2Die**<br/>
+ :de: German: **1Day2Die#0849**<br/>
+ :de: German: **BolverBlitz#4881**<br/>
  :it: Italian: **Dotto#8067**<br/>
  🇨🇳 Chinese: **Wynn#1314**<br/>
  🇪🇸 Spanish: **JouRambo#1734**<br/>
@@ -32,4 +33,5 @@ If you have a suggestion for a language or want to bring in your skills on a cer
  🇮🇳 India: **Anas.#8899**<br/>
  🇮🇳 India: **ᗩ乃尺ᗩᗩ尺#7777**<br/>
  🇳🇱 Dutch: **Finniedj.exe#9075**<br/>
- 🇵🇱 Dutch: **mibek1011#1318**<br/>
+ 🇵🇱 Polish: **mibek1011#1318**<br/>
+ 🇷🇺 Russian: **Namaker#2531**<br/>
