@@ -48,13 +48,13 @@ sudo php artisan config:clear
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-sudo chown -R www-data:www-data /var/www/controlpanel/*
+sudo chown -R www-data:www-data /var/www/controlpanel/
 
 # If using NGINX on CentOS:
-sudo chown -R nginx:nginx /var/www/controlpanel/*
+sudo chown -R nginx:nginx /var/www/controlpanel/
 
 # If using Apache on CentOS
-sudo chown -R apache:apache /var/www/controlpanel/*
+sudo chown -R apache:apache /var/www/controlpanel/
 ```
 
 ### Restarting Queue Workers
