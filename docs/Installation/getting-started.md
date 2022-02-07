@@ -204,7 +204,7 @@ composer install --no-dev --optimize-autoloader
 
 Once this is done, you should be able to access the dashboard via your webbrowser.
 
-####Navigate to "www.yourdomain.com/install" to run the Web-Installer and follow the steps.
+#### Navigate to "www.yourdomain.com/install" to run the Web-Installer and follow the steps.
 
 Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.<br />
 Dont forget to complete the steps listed below here.
