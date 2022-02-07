@@ -26,9 +26,14 @@ mysqldump -u root -p controlpanel > /var/www/controlpanel/backup.sql
 
 To restore a backup, you need a fresh database. If you already have a database, you can use the following command to drop it.
 
+:::warning
+
+Warning, this will delete all controlpanel related data! Make sure your database is backed up before continuing.
 ```bash
 mysql -u root -p controlpanel -e "DROP DATABASE controlpanel"
 ```
+
+:::
 
 Then you can restore the backup. You can also restore the backup on any other new server.
 
