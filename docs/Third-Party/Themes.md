@@ -28,7 +28,7 @@ Download: [For panel 0.6.2](/download/Themes/paulscar-first/app.zip)
 
 
 ### 2IceCube Black-Edition
-Download: [For panel 0.6.2](/download/Themes/2IceCube-Black-Editiont/2IceCube_Black-Edition.zip)
+Download: [For panel 0.6.2](/download/Themes/2IceCube-Black-Edition/2IceCube_Black-Edition.zip)
 
 <img src={useBaseUrl('/img/thirdparty/2IceCube-Black-Edition.png')} />
 
@@ -45,7 +45,7 @@ Download: [For panel 0.6.2](/download/Themes/Noname/Controlpaneltheme.zip)
 
 ### Noname Dark
 Infos and install instructions in the readme  
-Download: [For panel 0.6.2](/download/Themes/NonameDark/Controlpaneltheme.zip)
+Download: [For panel 0.6.2](/download/Themes/NonameDark/controlpaneltheme.zip)
 
 <img src={useBaseUrl('/img/thirdparty/NonameDark.png')} />
 
