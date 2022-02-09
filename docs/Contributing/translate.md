@@ -32,7 +32,7 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 🇫🇷 French: **Paulon#9413**<br/>
 🇫🇷 French: **Loulou#0088**<br/>
 🇮🇳 India: **Anas.#8899**<br/>
-🇮🇳 India: **ᗩ 乃尺 ᗩᗩ 尺#7777**<br/>
+🇮🇳 India: **AbraaR♡#7777**<br/>
 🇳🇱 Dutch: **Finniedj.exe#9075**<br/>
 🇵🇱 Polish: **mibek1011#1318**<br/>
 🇷🇺 Russian: **Namaker#2531**<br/>
