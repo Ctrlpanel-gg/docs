@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -8,8 +8,8 @@ import TOCInline from '@theme/TOCInline';
 
 :::info
 
-Third party stuff is not supported by the controlpanel team.  
-You´ll need some basic linux knowledge or [Google](https://google.com) to install/use it.
+Third-party content is not supported by the Controlpanel team.  
+You'll need some basic linux knowledge or [Google](https://google.com) to install/use it.
 
 :::
 
