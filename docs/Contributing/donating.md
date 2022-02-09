@@ -23,7 +23,7 @@ _Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
 
 
 🤍 Platinum Supporter: **BolverBlitz#4881**<br/>
-
+🤍 Platinum Supporter: **ccrs#4120**<br/>
 
 
 💛 Gold Supporter: **Wynn#1000**<br/>
