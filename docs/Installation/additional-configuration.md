@@ -14,18 +14,6 @@ import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
 
-## Running the installer
-
-It is recommended, to run the installer after this big update.
-
-#### Navigate to "https://yourdomain.com/install" to run the Web-Installer and follow the steps.
-
-If you run into problems with the email setup, you can use the skip button and set it up later.
-
-All settings previously specified in your `.env`file, are now editable through the Panel itself on the "Settings"-Tab
-
-Ensure you clear the config cache and restart the queue workers when making changes to the email details.<br/>
-`php artisan config:clear` and `php artisan queue:restart`
 
 ## Misc Configuration
 
