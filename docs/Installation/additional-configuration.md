@@ -14,7 +14,6 @@ import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
 
-
 ## Misc Configuration
 
 ### Discord Auth
@@ -83,6 +82,7 @@ You will need to add a Webhook for Stripe in order to accept payments that are n
 Click on Webhooks and add an endpoint.
 Enter the Endpoint route: `https://<your.controlpanel.gg>/payment/StripeWebhooks`.
 Choose the "payment_intent.succeded" event to be sent to your WebhookRoute.
+After the webhook creation you need to add the endpoint secret (Signing secret) to your controlpanel settings. It can be found at the webhooks overview.
 
 At the Controlpanel settings you need to provide a comma seperated list of payment methods you want to support via Stripe.
 Check which payment method is available for your currency: `https://stripe.com/docs/payments/payment-methods/integration-options`.
