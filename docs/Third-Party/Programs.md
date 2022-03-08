@@ -68,3 +68,9 @@ This script will install Controlpanel on your server.
 - Panel: automatic configuration of UFW (firewall for Ubuntu/Debian).  
   
 Download: [For panel 0.7.2](https://github.com/Ferks-FK/ControlPanel-Installer)  
+
+### unrexIstIq's Controlpanel-Themes Installer
+With this Script you can install all now registered Themes.
+- Only works with the newest Version.
+
+Download: [Here](https://github.com/dxrknxs/Controlpanel-Themes)
