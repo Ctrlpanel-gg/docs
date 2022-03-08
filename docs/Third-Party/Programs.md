@@ -16,7 +16,7 @@ You´ll need some basic linux knowledge or [Google](https://google.com) to insta
 <TOCInline toc={toc} />
 
 ## Versions Disclaimer
-The version number next to download is the panel version this theme was made for, any newer version might work but is not guaranteed.
+The version number next to download is the panel version this program was made for, any newer version might work but is not guaranteed.
 
 ## Software
 
