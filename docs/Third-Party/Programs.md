@@ -63,8 +63,9 @@ Usage: [Clone the repo and follow this](https://github.com/EBG-PW/ControlPanel.g
 
 ### Ferks ControlPanel-Installer
 This script will install Controlpanel on your server.  
-- Automatic installation of the ControlPanel (dependencies, database, cronjob, nginx).  
-- Panel: automatic configuration of Let's Encrypt.  
-- Panel: automatic configuration of UFW (firewall for Ubuntu/Debian).  
+- Automatic installation of the ControlPanel (dependencies, database, cronjob, nginx).
+- automatic configuration of UFW (firewall for Ubuntu/Debian).
+- (Optional) automatic configuration of Let's Encrypt.
+- (Optional) Automatic panel upgrade to a newer version.
   
-Download: [For panel 0.7.2](https://github.com/Ferks-FK/ControlPanel-Installer)  
+Download: [For panel 0.7.3 Or More Recent](https://github.com/Ferks-FK/ControlPanel-Installer)
