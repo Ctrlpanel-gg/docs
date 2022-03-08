@@ -69,7 +69,7 @@ This script will install Controlpanel on your server.
   
 Download: [For panel 0.7.2](https://github.com/Ferks-FK/ControlPanel-Installer)  
 
-### unrexIstIq's Controlpanel-Themes Installer
+### UnrexIstIq's Controlpanel-Themes Installer
 With this Script you can install all now registered Themes.
 - Only works with the newest Version.
 
