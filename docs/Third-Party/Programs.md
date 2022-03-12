@@ -16,18 +16,22 @@ You´ll need some basic linux knowledge or [Google](https://google.com) to insta
 <TOCInline toc={toc} />
 
 ## Versions Disclaimer
-The version number next to download is the panel version this program was made for, any newer version might work but is not guaranteed.
+The version number next to download is the panel version this program was made for, any newer version might work but is not guaranteed.  
 
 ## Software
 
 ### Grafana Dashboard
 This is a standalone software that will track stats with influx DB and Grafana.  
-Download: [For panel 0.7.2](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)  
+Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)  
 Instal: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
 
 <img src={useBaseUrl('/img/thirdparty/GrafanaStats.png')} />
 
 #### Made by BolverBlitz#4881
+
+### Allocations Manager
+This is a standalone software dedects if a node is over a certain limit of its allocated resources and will remove the products liked to the node from controlpanel.  
+Download: [For panel 0.7.3](https://github.com/BolverBlitz/ControlpanelAllocationManager)
 
 ## API Wrappers
 
@@ -54,7 +58,7 @@ Instal: `npm i control-panel-api-wrapper`
 This script will move all users from pterodactyl to controlpanel, to make the transition easyer.  
 If you use the DB backup, it needs permissions for /root/backup.sql (Run with sudo).  
 It will move all users that are not admin in pterodactyl.  
-Download: [For panel 0.7.2](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts/blob/main/scripts/tran_users.js)  
+Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts/blob/main/scripts/tran_users.js)  
 Usage: [Clone the repo and follow this](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#skript-transfer-users)
 
 #### Made by BolverBlitz#4881
