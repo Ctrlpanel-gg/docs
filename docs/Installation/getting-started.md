@@ -96,7 +96,6 @@ cd /var/www/controlpanel
 
 ```bash
 git clone https://github.com/ControlPanel-gg/dashboard.git ./
-chmod -R 755 storage/* bootstrap/cache/
 ```
 
 ## Basic Setup
@@ -117,24 +116,6 @@ CREATE DATABASE controlpanel;
 CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
 GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
-```
-
-### Set Permissions
-
-The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
-use them correctly.
-
-```bash
-# If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/controlpanel/
-
-# If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/controlpanel/
-
-# If using Apache on CentOS
-chown -R apache:apache /var/www/controlpanel/
-
-****
 ```
 
 ## Webserver Configuration
@@ -200,6 +181,27 @@ For this navigate into your `/var/www/controlpanel` again and run the following 
 
 ```bash
 composer install --no-dev --optimize-autoloader
+```
+
+### Set Permissions
+
+The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
+use them correctly.
+
+```bash
+# If using NGINX or Apache (not on CentOS):
+chown -R www-data:www-data /var/www/controlpanel/
+chmod -R 755 storage/* bootstrap/cache/
+
+# If using NGINX on CentOS:
+chown -R nginx:nginx /var/www/controlpanel/
+chmod -R 755 storage/* bootstrap/cache/
+
+# If using Apache on CentOS
+chown -R apache:apache /var/www/controlpanel/
+chmod -R 755 storage/* bootstrap/cache/
+
+****
 ```
 
 Once this is done, you should be able to access the dashboard via your webbrowser.
