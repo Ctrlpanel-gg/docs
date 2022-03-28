@@ -33,7 +33,7 @@ Install: [Guide](https://wiki.zyner.org/en/xyter/self-hosting)
 ### Grafana Dashboard
 This is a standalone software that will track stats with influx DB and Grafana.  
 Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)  
-Instal: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
+Install: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
 
 <img src={useBaseUrl('/img/thirdparty/GrafanaStats.png')} />
 
@@ -47,18 +47,18 @@ Download: [For panel 0.7.3](https://github.com/BolverBlitz/ControlpanelAllocatio
 
 ### Typescript
 Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel.gg)  
-Instal: `npm i controlpanel.gg`
+Install: `npm i controlpanel.gg`
 
 #### Made by ${j122j}#6974
 
 ### Javascript 
 Download: [For panel 0.5.0](https://www.npmjs.com/package/control-panel-api-wrapper)  
-Instal: `npm i controlpanel.gg`
+Install: `npm i controlpanel.gg`
 
 #### Made by DeathHound#8339
 
 Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel-api)  
-Instal: `npm i control-panel-api-wrapper`
+Install: `npm i control-panel-api-wrapper`
 
 #### Made by ICodeInAssembly#7117
 
