@@ -52,15 +52,15 @@ Install: `npm i controlpanel.gg`
 #### Made by ${j122j}#6974
 
 ### Javascript 
-Download: [For panel 0.5.0](https://www.npmjs.com/package/control-panel-api-wrapper)  
-Install: `npm i controlpanel.gg`
-
-#### Made by DeathHound#8339
-
 Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel-api)  
-Install: `npm i control-panel-api-wrapper`
+Install: `npm i controlpanel-api` || `yarn add controlpanel-api`
 
 #### Made by ICodeInAssembly#7117
+
+Download: [For panel 0.5.0](https://www.npmjs.com/package/control-panel-api-wrapper)  
+Install: `npm i control-panel-api-wrapper`
+
+#### Made by DeathHound#8339
 
 ## Scripts
 
