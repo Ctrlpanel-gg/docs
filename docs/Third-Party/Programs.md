@@ -18,12 +18,22 @@ You´ll need some basic linux knowledge or [Google](https://google.com) to insta
 ## Versions Disclaimer
 The version number next to download is the panel version this program was made for, any newer version might work but is not guaranteed.  
 
+## Discord bot
+
+### Xyter
+This is a [discord.js](https://discord.js.org/) bot that features controlpanel features and is made to be a multi-purpose bot for other stuff than controlpanel too.  
+
+Invite our bot: [Invite](https://bot.zyner.org/)  
+
+Download: [Latest](https://github.com/ZynerOrg/xyter/archive/refs/heads/main.zip)  
+Install: [Guide](https://wiki.zyner.org/en/xyter/self-hosting)  
+
 ## Software
 
 ### Grafana Dashboard
 This is a standalone software that will track stats with influx DB and Grafana.  
 Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)  
-Instal: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
+Install: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
 
 <img src={useBaseUrl('/img/thirdparty/GrafanaStats.png')} />
 
@@ -37,18 +47,18 @@ Download: [For panel 0.7.3](https://github.com/BolverBlitz/ControlpanelAllocatio
 
 ### Typescript
 Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel.gg)  
-Instal: `npm i controlpanel.gg`
+Install: `npm i controlpanel.gg`
 
 #### Made by ${j122j}#6974
 
 ### Javascript 
 Download: [For panel 0.5.0](https://www.npmjs.com/package/control-panel-api-wrapper)  
-Instal: `npm i controlpanel.gg`
+Install: `npm i controlpanel.gg`
 
 #### Made by DeathHound#8339
 
 Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel-api)  
-Instal: `npm i control-panel-api-wrapper`
+Install: `npm i control-panel-api-wrapper`
 
 #### Made by ICodeInAssembly#7117
 
