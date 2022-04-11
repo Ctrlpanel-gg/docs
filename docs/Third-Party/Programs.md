@@ -26,7 +26,7 @@ This is a [discord.js](https://discord.js.org/) bot that features controlpanel f
 Invite our bot: [Invite](https://bot.zyner.org/)  
 
 Download: [Latest](https://github.com/ZynerOrg/xyter/archive/refs/heads/main.zip)  
-Install: [Guide](https://wiki.zyner.org/en/xyter/self-hosting)  
+Documentation is [available here](https://xyter.zyner.org)!
 
 ## Software
 
