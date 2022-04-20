@@ -49,21 +49,26 @@ This is a standalone software detects if a node is over a certain limit of its a
 ## API Wrappers
 
 ### Typescript
-Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel.gg)  
-Install: `npm i controlpanel.gg`
+[![Author - j122j](https://img.shields.io/badge/Author-j122j-red?style=for-the-badge)](https://github.com/j122j)
+[![Repository - 0.5.0](https://img.shields.io/badge/Repository-0.5.0-brightgreen?style=for-the-badge)](https://github.com/j122j/controlpanel.gg)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/j122j/controlpanel.gg)
 
-#### Made by ${j122j}#6974
+An API wrapper for CPGG built using TypeScript
 
 ### Javascript 
-Download: [For panel 0.5.0](https://www.npmjs.com/package/controlpanel-api)  
-Install: `npm i controlpanel-api` || `yarn add controlpanel-api`
+[![Author - somerandomcloud](https://img.shields.io/badge/Author-somerandomcloud-red?style=for-the-badge)](https://github.com/somerandomcloud)
+[![Repository - 0.5.0](https://img.shields.io/badge/Repository-0.5.0-brightgreen?style=for-the-badge)](https://github.com/somerandomcloud/ControlPanel-Api)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/somerandomcloud/ControlPanel-Api)
 
-#### Made by ICodeInAssembly#7117
+An API wrapper for CPGG built using JavaScript
 
-Download: [For panel 0.5.0](https://www.npmjs.com/package/control-panel-api-wrapper)  
-Install: `npm i control-panel-api-wrapper`
+---
 
-#### Made by DeathHound#8339
+[![Author - DeathHound6](https://img.shields.io/badge/Author-DeathHound6-red?style=for-the-badge)](https://github.com/DeathHound6)
+[![Repository - 0.5.0](https://img.shields.io/badge/Repository-0.5.0-brightgreen?style=for-the-badge)](https://github.com/DeathHound6/control-panel-api-wrapper)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/DeathHound6/control-panel-api-wrapper)
+
+An API wrapper for CPGG built using JavaScript
 
 ## Scripts
 
