@@ -73,13 +73,13 @@ An API wrapper for CPGG built using JavaScript
 ## Scripts
 
 ### Transfer pterodactyl users to controlpanel
-This script will move all users from pterodactyl to controlpanel, to make the transition easyer.  
-If you use the DB backup, it needs permissions for /root/backup.sql (Run with sudo).  
-It will move all users that are not admin in pterodactyl.  
-Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts/blob/main/scripts/tran_users.js)  
-Usage: [Clone the repo and follow this](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#skript-transfer-users)
+[![Author - EBG-PW](https://img.shields.io/badge/Author-EBG--PW-red?style=for-the-badge)](https://github.com/EBG-PW)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
 
-#### Made by BolverBlitz#4881
+This script will move all users from Pterodactyl to CPGG, to make the transition easyer.  
+If you use the DB backup, it needs permissions for ``/root/backup.sql`` (Run with sudo).  
+It will move all users that are not admin in Pterodactyl.  
 
 ## Installers
 
