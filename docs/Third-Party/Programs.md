@@ -77,23 +77,27 @@ An API wrapper for CPGG built using JavaScript
 [![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
 [![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
 
-This script will move all users from Pterodactyl to CPGG, to make the transition easyer.  
-If you use the DB backup, it needs permissions for ``/root/backup.sql`` (Run with sudo).  
-It will move all users that are not admin in Pterodactyl.  
+This script will move all users from Pterodactyl to CPGG, to make the transition easier.  
+If you use the DB backup, it needs permissions for ``/root/backup.sql`` (run with sudo).  
+It will move all users that are not admin in Pterodactyl.
 
 ## Installers
 
 ### Ferks ControlPanel-Installer
-This script will install Controlpanel on your server.  
-- Automatic installation of the ControlPanel (dependencies, database, cronjob, nginx).  
+[![Author - Ferks-FK](https://img.shields.io/badge/Author-Ferks--FK-red?style=for-the-badge)](https://github.com/Ferks-FK)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/Ferks-FK/ControlPanel-Installer)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/Ferks-FK/ControlPanel-Installer)
+
+This script will install CPGG on your server.  
+- Automatic installation of the CPGG (dependencies, database, cronjob, nginx).  
 - automatic configuration of UFW (firewall for Ubuntu/Debian).  
 - (Optional) automatic configuration of Let's Encrypt.  
-- (Optional) Automatic panel upgrade to a newer version.  
+- (Optional) Automatic panel upgrade to a newer version.
   
-Download: [For panel 0.7.3](https://github.com/Ferks-FK/ControlPanel-Installer)  
-
 ### UnrexIstIq's Controlpanel-Themes Installer
-With this Script you can install all now registered Themes.  
-- Only works with the newest Version.  
+[![Author - dxrknxs](https://img.shields.io/badge/Author-dxrknxs-red?style=for-the-badge)](https://github.com/dxrknxs)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/dxrknxs/Controlpanel-Themes)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/dxrknxs/Controlpanel-Themes)
 
-Download: [For panel 0.7.3](https://github.com/dxrknxs/Controlpanel-Themes)
+With this Script, you can install all now registered Themes.  
+- Only works with the newest Version.
