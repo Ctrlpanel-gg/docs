@@ -39,14 +39,12 @@ This is a standalone software that will track statistics using [InfluxDB](https:
 
 <img src={useBaseUrl('/img/thirdparty/GrafanaStats.png')} />
 
-#### Made by BolverBlitz#4881
-
 ### Allocations Manager
-[![Dashboard - 0.7.3](https://img.shields.io/badge/Dashboard-0.7.3-brightgreen?style=for-the-badge)](https://github.com/ControlPanel-gg/dashboard/releases/tag/0.7.3)
+[![Author - BolverBlitz](https://img.shields.io/badge/Author-BolverBlitz-red?style=for-the-badge)](https://github.com/BolverBlitz)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/BolverBlitz/ControlpanelAllocationManager)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/BolverBlitz/ControlpanelAllocationManager)
 
-
-This is a standalone software dedects if a node is over a certain limit of its allocated resources and will remove the products liked to the node from controlpanel.  
-Download: [For panel 0.7.3](https://github.com/BolverBlitz/ControlpanelAllocationManager)
+This is a standalone software detects if a node is over a certain limit of its allocated resources and will remove the products liked to the node from CPGG.
 
 ## API Wrappers
 
