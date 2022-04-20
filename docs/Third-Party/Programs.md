@@ -21,25 +21,30 @@ The version number next to download is the panel version this program was made f
 ## Discord bot
 
 ### Xyter
-This is a [discord.js](https://discord.js.org/) bot that features controlpanel features and is made to be a multi-purpose bot for other stuff than controlpanel too.  
+[![Author - ZynerOrg](https://img.shields.io/badge/Author-ZynerOrg-red?style=for-the-badge)](https://github.com/ZynerOrg)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/ZynerOrg/xyter)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://xyter.zyner.org)
+[![Invite - Official bot](https://img.shields.io/badge/Invite-Official_bot-important?style=for-the-badge&logo=discord)](https://bot.zyner.org/)
 
-Invite our bot: [Invite](https://bot.zyner.org/)  
-
-Download: [Latest](https://github.com/ZynerOrg/xyter/archive/refs/heads/main.zip)  
-Documentation is [available here](https://xyter.zyner.org)!
+This is a [discord.js](https://discord.js.org/) bot that features vouchers from CPGG and is made to be a multi-purpose bot for other stuff too.
 
 ## Software
 
 ### Grafana Dashboard
-This is a standalone software that will track stats with influx DB and Grafana.  
-Download: [For panel 0.7.3](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)  
-Install: [Install Debian / Ubuntu](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts#setup-on-ubuntudebian)  
+[![Author - EBG-PW](https://img.shields.io/badge/Author-EBG--PW-red?style=for-the-badge)](https://github.com/EBG-PW)
+[![Repository - 0.7.3](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/EBG-PW/ControlPanel.gg-Stats-and-Scripts)
+
+This is a standalone software that will track statistics using [InfluxDB](https://www.influxdata.com/) and [Grafana](https://grafana.com/).
 
 <img src={useBaseUrl('/img/thirdparty/GrafanaStats.png')} />
 
 #### Made by BolverBlitz#4881
 
 ### Allocations Manager
+[![Dashboard - 0.7.3](https://img.shields.io/badge/Dashboard-0.7.3-brightgreen?style=for-the-badge)](https://github.com/ControlPanel-gg/dashboard/releases/tag/0.7.3)
+
+
 This is a standalone software dedects if a node is over a certain limit of its allocated resources and will remove the products liked to the node from controlpanel.  
 Download: [For panel 0.7.3](https://github.com/BolverBlitz/ControlpanelAllocationManager)
 
