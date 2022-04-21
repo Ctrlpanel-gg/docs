@@ -8,7 +8,7 @@ You can speak your mother tongue?<br/>
 You understand a certain language very well?<br/>
 Then we need exactly **you for our translator team!**<br/>
 
-After a long wait, the controlpanel has now been equipped with a translation system.<br/>
+After a long wait, the CPGG has now been equipped with a translation system.<br/>
 
 _Now we need people who help us translate!_<br/>
 
