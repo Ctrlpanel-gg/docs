@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Controlpanel.gg',
-  tagline: 'ControlPanel\'s Dashboard is a free and open-source management panel for pterodactyl with credit based billing and lots of customization',
+  tagline: 'ControlPanel\'s Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and lots of customization',
   url: 'https://controlpanel.gg',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -95,7 +95,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/ControlPanel-gg/docs/tree/main/docs/',
+            'https://github.com/ControlPanel-gg/docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
