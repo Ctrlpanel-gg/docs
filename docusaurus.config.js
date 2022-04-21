@@ -15,7 +15,7 @@ module.exports = {
   trailingSlash: false,
   themeConfig: {
     navbar: {
-      title: 'Controlpanel',
+      title: 'Controlpanel (CPGG)',
       logo: {
         alt: 'Controlpanel logo',
         src: 'img/controlpanel.png',
