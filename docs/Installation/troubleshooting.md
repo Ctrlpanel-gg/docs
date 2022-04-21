@@ -6,7 +6,7 @@ sidebar_position: 4
 
 :::info
 
-Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
 :::
 
@@ -14,7 +14,7 @@ Users, folders and filenames have been renamed from "dashboard" -> "controlpanel
 
 ### Text Output
 
-The following command will grab the last 100 lines of logs from the dashboard and it will output it into the console.
+The following command will grab the last 100 lines of logs from the dashboard, and it will output it into the console.
 
 ```
 tail -n 100 /var/www/controlpanel/storage/logs/laravel.log

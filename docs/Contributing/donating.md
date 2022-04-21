@@ -17,7 +17,7 @@ _All Donators with a supporter role will also have access to a Donators Only cha
 
 Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
 Ko-fi link: [https://ko-fi.com/avmg20](https://ko-fi.com/avmg20)
-_Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
+_Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**_
 
 ## Donators
 
@@ -36,5 +36,4 @@ _Please notify me when you've donated so I can respond quicker :) **AVMG#1234**_
 🤎 Bronze Supporter: **Bazim#0485**<br/>
 🤎 Bronze Supporter: **Jonas.#9915**<br/>
 🤎 Bronze Supporter: **Vysoký Vagón#3796**<br/>
-
 

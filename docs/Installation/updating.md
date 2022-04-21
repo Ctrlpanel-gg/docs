@@ -6,7 +6,7 @@ sidebar_position: 5
 
 :::info
 
-Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
 :::
 
@@ -59,7 +59,7 @@ sudo chown -R apache:apache /var/www/controlpanel/
 
 ### Restarting Queue Workers
 
-After every update you should restart the queue worker to ensure that the new code is loaded in and used.
+After every update, you should restart the queue worker to ensure that the new code is loaded in and used.
 
 ```bash
 sudo php artisan queue:restart
@@ -76,4 +76,4 @@ sudo php artisan up
 Warning, The dashboard is currently in pre-release and may contain some bugs 🐛 <br/>
 Use This dashboard at your own risk.
 
-If you notice any bugs or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/ControlPanel-gg/dashboard/issues/new/choose)<br /> for any major security risk contact _AVMG#1234_
+If you notice any bugs or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/ControlPanel-gg/dashboard/issues/new/choose)<br /> **for any major security risk, contact** _AVMG#1234_
