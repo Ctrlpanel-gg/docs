@@ -28,7 +28,7 @@ To restore a backup, you need a fresh database. If you already have a database, 
 
 :::warning
 
-Warning, this will delete all CPGG related data! Make sure your database is backed up before continuing.
+Warning, this will delete all Controlpanel related data! Make sure your database is backed up before continuing.
 ```bash
 mysql -u root -p controlpanel -e "DROP DATABASE controlpanel"
 ```
