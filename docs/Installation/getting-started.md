@@ -12,7 +12,7 @@ It is recommended that you have some sort of Linux and MariaDB experience before
 
 :::info
 
-Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
 :::
 
@@ -31,7 +31,7 @@ import TOCInline from '@theme/TOCInline';
 - PHP `7.4` or `8.0` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - Redis (`redis-server`)
-- A webserver (Apache, NGINX, Caddy, etc.)
+- A web server (Apache, NGINX, Caddy, etc.)
 - `curl`
 - `tar`
 - `unzip`
@@ -40,7 +40,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Example Dependency Installation
 
-_If you already have Pterodactyl installed you can skip this step!_
+_If you already have Pterodactyl installed, you can skip this step!_
 
 The commands below are simply an example of how you might install these dependencies. Please consult with your
 operating system's package manager to determine the correct packages to install.
@@ -66,7 +66,7 @@ apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm
 
 ### Extra Dependency Used on this Dashboard
 
-You need to install this, use the appropriate php version (php -v)
+You need to install this, use the appropriate PHP version (php -v)
 Extra dependency used for handling currency's
 
 ```bash
@@ -75,7 +75,7 @@ apt -y install php8.0-intl
 
 ### Installing Composer
 
-_If you already have Pterodactyl installed you can skip this step!_
+_If you already have Pterodactyl installed, you can skip this step!_
 
 Composer is a dependency manager for PHP that allows us to ship everything you'll need code wise to operate the Panel. You'll
 need composer installed before continuing in this process.
@@ -100,7 +100,7 @@ git clone https://github.com/ControlPanel-gg/dashboard.git ./
 
 ## Basic Setup
 
-Now that all of the files have been downloaded we need to configure some core aspects of the Panel.
+Now that all the files have been downloaded we need to configure some core aspects of the Panel.
 
 **You will need a database setup and a database user with the correct permissions created for that database before**
 **continuing any further.**
@@ -118,7 +118,7 @@ GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 ```
 
-## Webserver Configuration
+## Web server Configuration
 
 You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called controlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
@@ -163,7 +163,7 @@ systemctl restart nginx
 
 ### Adding SSL
 
-There are many ways to add SSL to your site. A simple solution is to use Certbot from Let’s Encrypt. Certbot will automatically install the certificates for you and keep your SSL certifications up to date!
+There are many ways to add SSL to your site. A simple solution is to use Cert bot from Let’s Encrypt. Cert bot will automatically install the certificates for you and keep your SSL certifications up to date!
 
 ```bash
 sudo apt update
@@ -177,7 +177,7 @@ sudo certbot --nginx -d yourdomain.com
 ## Panel Installation
 
 First, we will have to install all composer packages.
-For this navigate into your `/var/www/controlpanel` again and run the following command
+For this, navigate into your `/var/www/controlpanel` again and run the following command
 
 ```bash
 composer install --no-dev --optimize-autoloader
@@ -185,7 +185,7 @@ composer install --no-dev --optimize-autoloader
 
 ### Set Permissions
 
-The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
+The last step in the installation process is to set the correct permissions on the Panel files so that the web server can
 use them correctly.
 
 ```bash
@@ -204,7 +204,7 @@ chmod -R 755 storage/* bootstrap/cache/
 ****
 ```
 
-Once this is done, you should be able to access the dashboard via your webbrowser.
+Once this is done, you should be able to access the dashboard via your web browser.
 
 ### Running the installer
 
@@ -213,7 +213,7 @@ Once this is done, you should be able to access the dashboard via your webbrowse
 If you encounter problems with the email setup, you can use the skip button and set it up later.
 
 Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.<br />
-#### Dont forget to complete the steps listed below here.
+#### Don't forget to complete the steps listed below here.
 
 ## Queue Listeners
 
@@ -227,7 +227,7 @@ The first thing we need to do is create a new cron job that runs every minute to
 
 ### Create Queue Worker
 
-Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
+Next, you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
 
 Create a file called `controlpanel.service` in `/etc/systemd/system` with the contents below.
 
