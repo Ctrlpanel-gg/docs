@@ -5,7 +5,7 @@ sidebar_position: 1
 # Contributing
 When contributing to this repository, please go through the open issues to see if you can contribute to something. Suppose you want to contribute something that is not in the issues; you can make an issue and wait for a response from the dev team.
 
-Please note we have a code of conduct; please follow it in all your interactions with the project.
+Please note, we have a code of conduct; please follow it in all your interactions with the project.
 
 ## Pull request process
 
@@ -23,7 +23,7 @@ In the interest of fostering an open and welcoming environment, we as contributo
 We are following the PSR12 code standard for PHP.
 
 ### Our Standards
-Examples of behaviour that contributes to creating a positive environment include:
+Examples of behavior that contributes to creating a positive environment include:
 
 - Using welcoming and inclusive language
 - Being respectful of differing viewpoints and experiences
@@ -31,7 +31,7 @@ Examples of behaviour that contributes to creating a positive environment includ
 - Focusing on what is best for the community
 - Showing empathy towards other community members
 
-Examples of unacceptable behaviour by participants include:
+Examples of unacceptable behavior by participants include:
 
 - The use of sexualized language or imagery and unwelcome sexual attention or advances
 - Trolling, insulting/derogatory comments, and personal or political attacks
