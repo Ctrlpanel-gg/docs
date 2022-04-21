@@ -6,17 +6,17 @@ sidebar_position: 2
 
 :::info
 
-Users, folders and filenames have been renamed from "dashboard" -> "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
 :::
 
 All important data is stored in the database. This includes all servers, users, and other information.  
-Its important to keep backups of your database to ensure that you can restore your panel if something goes wrong.
+It's important to keep backups of your database to ensure that you can restore your panel if something goes wrong.
 
-### How to backup
+### How to back up
 
-You can use mysql dump to backup your database.  
-This commnad will create a backup file in the `/var/www/controlpanel/` folder.
+You can use MySQL dump to back up your database.  
+This command will create a backup file in the `/var/www/controlpanel/` folder.
 
 ```bash
 mysqldump -u root -p controlpanel > /var/www/controlpanel/backup.sql
@@ -28,7 +28,7 @@ To restore a backup, you need a fresh database. If you already have a database, 
 
 :::warning
 
-Warning, this will delete all controlpanel related data! Make sure your database is backed up before continuing.
+Warning, this will delete all CPGG related data! Make sure your database is backed up before continuing.
 ```bash
 mysql -u root -p controlpanel -e "DROP DATABASE controlpanel"
 ```
@@ -49,8 +49,8 @@ mysql -u root -p controlpanel < /var/www/controlpanel/backup.sql
 
 ### How to automatically backup
 
-You can automatically backup your database every day at midnight for example.
-First create a read only user for the database.
+You can automatically back up your database every day at midnight, for example.
+First, create a read only user for the database.
 
 ```bash
 mkdir -p /var/www/controlpanel/backups
@@ -69,4 +69,4 @@ Run `crontab -e` and add the following line:
 ```
 
 This will create a backup at /var/www/controlpanel/backups-$(date +\%F).sql every day at midnight.
-Every file will have the date when it was made in the filename, so you can also resolve issues that happend a few days ago.
+Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
