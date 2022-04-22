@@ -96,7 +96,7 @@ This script will install CPGG on your server.
   
 ### UnrexIstIq's Controlpanel-Themes Installer
 [![Author - dxrknxs](https://img.shields.io/badge/Author-dxrknxs-red?style=for-the-badge)](https://github.com/dxrknxs)
-[![Repository - 0.7.4](https://img.shields.io/badge/Repository-0.7.3-brightgreen?style=for-the-badge)](https://github.com/dxrknxs/Controlpanel-Themes)
+[![Repository - 0.7.4](https://img.shields.io/badge/Repository-0.7.4-brightgreen?style=for-the-badge)](https://github.com/dxrknxs/Controlpanel-Themes)
 [![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge)](https://github.com/dxrknxs/Controlpanel-Themes)
 
 With this Script, you can install all now registered Themes.  
