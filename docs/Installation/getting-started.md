@@ -90,8 +90,7 @@ The first step in this process is to create the folder where the panel will live
 newly created folder. Below is an example of how to perform this operation.
 
 ```bash
-mkdir -p /var/www/controlpanel
-cd /var/www/controlpanel
+mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
 ```
 
 ```bash
@@ -116,11 +115,19 @@ CREATE DATABASE controlpanel;
 CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
 GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
+EXIT
 ```
 
 ## Web server Configuration
 
 You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called controlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+
+## How to add this config
+
+```
+cd /etc/nginx/sites-available/
+nano controlpanel.conf
+```
 
 ### Example Nginx Config
 
