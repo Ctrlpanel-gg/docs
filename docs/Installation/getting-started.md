@@ -115,7 +115,7 @@ CREATE DATABASE controlpanel;
 CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
 GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
-EXIT
+EXIT;
 ```
 
 ## Web server Configuration
