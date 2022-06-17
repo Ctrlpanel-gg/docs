@@ -23,7 +23,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="https://market.controlpanel.gg/resources/">
-            Addon Hub ️🛒
+            Extention Hub ️🛒
           </Link>
         </div>
       </div>
