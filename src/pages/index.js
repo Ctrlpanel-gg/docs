@@ -20,6 +20,11 @@ function HomepageHeader() {
             to="/docs/intro">
             Documentation ️👀
           </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="https://market.controlpanel.gg/resources/">
+            Addon Hub ️🛒
+          </Link>
         </div>
       </div>
     </header>
