@@ -28,7 +28,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `7.4` or `8.0` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `7.4` or `8.0` (recommended, `8.1` will not work) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
@@ -40,7 +40,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Example Dependency Installation
 
-_If you already have Pterodactyl installed, you can skip this step!_
+_If you already have Pterodactyl installed, please check that you also install PHP 8.0 or 7.4!_
 
 The commands below are simply an example of how you might install these dependencies. Please consult with your
 operating system's package manager to determine the correct packages to install.
