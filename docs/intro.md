@@ -12,7 +12,7 @@ This dashboard offers an easy to use and free billing solution for all starting 
 You can find our guide for installation [here](https://controlpanel.gg/docs/Installation/getting-started).
 
 ## Third-parties
-You can add custom [themes](https://controlpanel.gg/docs/Third-Party/Themes) and use standalone [programs](https://controlpanel.gg/docs/Third-Party/Programs) developed by third-parties.
+You can add custom themes and programs from our [market](https://market.controlpanel.gg/) those are developed by third-parties.
 
 ## Support
 Have a few questions? Feel free to [join](https://discord.gg/GY7PWejUaG) our support Discord server.
