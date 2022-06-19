@@ -18,8 +18,27 @@
   }
 }
 
-.buttons {
+.contianer {
   display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 600px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons > div {
+  flex: 1 1 auto;
+  text-align: center;
+
+  margin: 5px;
 }
