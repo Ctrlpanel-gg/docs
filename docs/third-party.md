@@ -10,11 +10,11 @@ Third party stuff is not supported by the controlpanel team. Use at your own ris
 
 :::
 
-## Market
+## Extention Hub ️
 
 :::tip
 
-You can add custom themes and other third party software for controlpanel from our [market](https://market.controlpanel.gg/).
+You can add custom themes and other third party software for controlpanel from our [Extention Hub](https://market.controlpanel.gg/).
 
 :::
 
