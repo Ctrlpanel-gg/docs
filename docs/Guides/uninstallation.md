@@ -9,6 +9,7 @@ Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpane
 :::warning
 
 You will loose all data that you have stored in your ControlPanel.
+Note: This will only work if you followed our documentation, you might need to modify the commands to fit your installation.
 
 :::
 
