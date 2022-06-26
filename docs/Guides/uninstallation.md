@@ -26,8 +26,9 @@ sudo php artisan down
 
 sudo systemctl stop controlpanel
 ```
+## Remove
 
-### Remove service and cronjob
+### Service and cronjob
 
 You have to stop and remove the service and cronjob.
 
@@ -44,7 +45,7 @@ To open the crontab run: `crontab -e` and remove the following configuration fro
 * * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
 
-### Remove Webconfig and SSL certificates
+### Webconfig and SSL certificates
 
 You now have to remove the webconfig and restart it
 
@@ -61,7 +62,7 @@ sudo systemctl reload apache2
 sudo certbot delete --cert-name <Your Domain>
 ```
 
-### Remove the Database and User
+### Database and User
 
 You now have to remove the database and user.
 
@@ -71,7 +72,7 @@ sudo mysql -u root -p -e "DROP USER 'controlpaneluser'@'127.0.0.1;"
 sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
 ```
 
-### Remove Files 
+### Files 
 
 You now have to remove the files.
 
@@ -79,10 +80,15 @@ You now have to remove the files.
 sudo rm -rf /var/www/controlpanel
 ```
 
-### Remove Extra Dependency
+### Extra Dependency
 
 You need to uninstall this, use the appropriate PHP version (php -v)
 
 ```bash
 sudo apt remove php8.0-intl
 ```
+
+### Pterodactyl API Key
+
+Login to your pterodactyl panel and go to the admin page.  
+Then go to the API tab (`/admin/api`) and delete the key you made for controlpanel.
