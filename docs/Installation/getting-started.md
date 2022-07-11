@@ -131,6 +131,12 @@ nano controlpanel.conf
 
 ### Example Nginx Config
 
+:::warning
+
+Warning, Do not use a multilevel domain if you are about to put CPGG under Cloudflare's proxy. This is only if you use a free plan, if you don't that's fine as you will be able to use a multilevel domain under Cloudflare's proxy.
+
+:::
+
 ```nginx
 server {
         listen 80;
