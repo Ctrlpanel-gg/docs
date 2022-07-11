@@ -28,7 +28,7 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
-💛 Gold Supporter: **Niktix#3749**<br/>
+💛 Gold Supporter: **Niktix#3749** [TIX-Hosting](https://tix-hosting.net/)<br/>
 
 
 🤎 Bronze Supporter: **Grosenberger#5417**<br/>
