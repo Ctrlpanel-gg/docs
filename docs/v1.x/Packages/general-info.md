@@ -13,7 +13,8 @@ These Packages can add more functionality to your CPGG installation with ease an
 
 Some **Core Packages** the official CPGG Team offers and maintains are
 
-- [Vouchers](https://packagist.org/packages/controlpanel/vouchers).
+- [Vouchers](https://packagist.org/packages/controlpanel/vouchers)
+- [Ticketsystem](https://packagist.org/packages/1day2die/cpgg-ticketsystem)
 
 ## Installation
 
@@ -38,10 +39,12 @@ There is nothing more you need to do.
 The corresponding Package will download and connect to your installation.
 
 
->Attention:
-> 
->Some Packages may require you to run `php artisan migrate`. <br/>
+:::caution
+
+Some Packages may require you to run `php artisan migrate`. <br/>
 The creator of the Package should have more details to this if required or if more steps are needed
+
+:::
 
 ### Uninstall a Package
 To remove a package simply run `composer remove <package-name>`
