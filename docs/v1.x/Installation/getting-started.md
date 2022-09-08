@@ -165,10 +165,13 @@ sudo certbot --nginx -d yourdomain.com
 
 ## Panel Installation
 
-First, we will have to install all composer packages.
-For this, navigate into your `/var/www/controlpanel` again and run the following command
+First, we will have to install all composer packages and populate our Database.
+For this, navigate into your `/var/www/controlpanel` again and run the following commands
 
 ```bash
+php artisan key:generate
+php artisan migrate --seed --force
+php artisan storage:link
 composer install --no-dev --optimize-autoloader
 ```
 
