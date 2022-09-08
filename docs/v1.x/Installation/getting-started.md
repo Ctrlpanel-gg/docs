@@ -223,7 +223,7 @@ s:user:create
 ```
 
 The Console will ask for your Pterodactyl ID (which is usually 1). <br/>
-You can grab that ID from your Userlist on Pterodactyl</br>
+You can grab that ID from your Userlist on Pterodactyl<br/>
 Input your desired Password and the first user is ready to log-in!
 
 ## Queue Listeners
