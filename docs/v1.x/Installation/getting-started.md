@@ -3,6 +3,17 @@ sidebar_position: 1
 ---
 
 # Getting started
+:::warning
+**DO NOT USE - DO NOT USE - DO NOT USE - DO NOT USE - DO NOT USE**
+
+
+THESE DOCS ARE NOT FOR USE AS OF YET.
+
+PLEASE REFER TO THE v0.8 DOCS.
+
+VERSION 1.0 IS NOT RELEASED YET AND THESE DOCS ARE JUST A PLACEHOLDER
+
+:::
 
 :::info
 
