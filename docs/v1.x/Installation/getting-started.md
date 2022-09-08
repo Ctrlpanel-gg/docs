@@ -21,6 +21,13 @@ It is recommended that you have some sort of Linux and MariaDB experience before
 
 :::
 
+:::info
+
+If you already have Controlpanel Installed and want to Upgrade to v1.0 please refer to "Upgrading from v0.8"
+
+
+:::
+
 import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
