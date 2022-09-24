@@ -28,6 +28,7 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 :de: German: **BolverBlitz#4881**<br/>
 :it: Italian: **Dotto#8067**<br/>
 🇨🇳 Chinese: **Wynn#1314**<br/>
+🇨🇳 Chinese: **vlssu#9657**<br/>
 🇪🇸 Spanish: **JouRambo#1734**<br/>
 🇫🇷 French: **Paulon#9413**<br/>
 🇫🇷 French: **Loulou#0088**<br/>
