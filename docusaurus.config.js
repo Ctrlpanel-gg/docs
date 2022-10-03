@@ -33,9 +33,14 @@ module.exports = {
           position: "left"
         },
         {
+          href: "https://market.controlpanel.gg",
+          label: "Extention Hub",
+          position: "left"
+        },
+        {
           href: 'https://documenter.getpostman.com/view/9044962/TzY69ub2#02b8da43-ab01-487d-b2f5-5f8699b509cd',
           label: 'API',
-          position: 'left',
+          position: 'right',
         },
         {
           href: 'https://discord.gg/4Y6HjD2uyU',
