@@ -9,10 +9,10 @@ ControlPanel's Dashboard is a dashboard application designed to offer clients a 
 This dashboard offers an easy to use and free billing solution for all starting and experienced hosting providers. This dashboard has many customization options and added Discord OAuth verification to offer a solid link between your Discord server and your dashboard.
 
 ## Installation
-You can find our guide for installation [here](https://controlpanel.gg/docs/Installation/getting-started).
+You can find our guide for installation here for version [0.8](https://controlpanel.gg/docs/v0.8/Installation/getting-started) and [1.x](https://controlpanel.gg/docs/v1.x/Installation/getting-started).
 
 ## Third-parties
-You can add custom themes and programs from our [Extension Hub](https://market.controlpanel.gg/) those are developed by third-parties.
+You can find custom themes and programs from our [Extension Hub](https://market.controlpanel.gg/) those are developed by third-parties.
 
 ## Support
 Have a few questions? Feel free to [join](https://discord.gg/GY7PWejUaG) our support Discord server.
