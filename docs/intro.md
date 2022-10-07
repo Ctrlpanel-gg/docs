@@ -10,7 +10,7 @@ This dashboard offers an easy to use and free billing solution for all starting 
 
 ## Installation
 
-You can find our guide for installation [here](Installation/getting-started).
+You can find our guide for installation [here](https://controlpanel.gg/docs/v0.8/Installation/getting-started).
 
 ## Third-parties
 
