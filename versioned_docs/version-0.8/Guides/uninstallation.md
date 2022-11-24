@@ -69,7 +69,7 @@ You now have to remove the database and user.
 
 ```bash
 sudo mysql -u root -p -e "DROP DATABASE controlpanel;"
-sudo mysql -u root -p -e "DROP USER 'controlpaneluser'@'127.0.0.1;"
+sudo mysql -u root -p -e "DROP USER 'controlpaneluser'@'127.0.0.1';"
 sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
 ```
 
