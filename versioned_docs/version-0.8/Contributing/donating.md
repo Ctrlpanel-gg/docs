@@ -29,9 +29,12 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
 💛 Gold Supporter: **Niktix#3749** [TIX-Hosting](https://tix-hosting.net/)<br/>
+💛 Gold Supporter: **Sir Maddigan#0243**<br/>
 
+🤍 Silver  Supporter: **TheFrodoDE#1337**<br/>
 
 🤎 Bronze Supporter: **Grosenberger#5417**<br/>
+🤎 Bronze Supporter: **ojacz#5091**<br/>
 🤎 Bronze Supporter: **Coconut#7171**<br/>
 🤎 Bronze Supporter: **Bazim#0485**<br/>
 🤎 Bronze Supporter: **Jonas.#9915**<br/>
