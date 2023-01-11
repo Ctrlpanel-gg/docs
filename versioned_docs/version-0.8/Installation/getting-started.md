@@ -10,12 +10,6 @@ It is recommended that you have some sort of Linux and MariaDB experience before
 
 :::
 
-:::info
-
-Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
-
-:::
-
 :::warning
 
 Warning, The dashboard is currently in pre-release and may contain some bugs. Use This dashboard at your own risk.
@@ -28,7 +22,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `7.4` or `8.0` (recommended, `8.1` will not work) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
@@ -40,7 +34,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Example Dependency Installation
 
-_If you already have Pterodactyl installed, please check that you also install PHP 8.0 or 7.4!_
+_If you already have Pterodactyl installed, please check that you also install PHP 8.1!_
 
 The commands below are simply an example of how you might install these dependencies. Please consult with your
 operating system's package manager to determine the correct packages to install.
@@ -60,7 +54,7 @@ apt update
 apt-add-repository universe
 
 # Install Dependencies 
-apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
 ```
 
 ### Extra Dependency Used on this Dashboard
@@ -69,7 +63,7 @@ You need to install this, use the appropriate PHP version (php -v)
 Extra dependency used for handling currency's
 
 ```bash
-apt -y install php8.0-intl
+apt -y install php8.1-intl
 ```
 
 ### Installing Composer
@@ -143,7 +137,7 @@ server {
 
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
         }
 
         location ~ /\.ht {

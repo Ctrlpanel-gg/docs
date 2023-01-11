@@ -10,6 +10,20 @@ Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpane
 
 :::
 
+:::warning
+
+Make sure you upgrade your PHP version to 8.1 before updating to v0.9 or higher.
+```bash
+apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip}
+apt -y install php8.1-intl
+```
+And don´t forget to change the php version in your nginx/apache config files.
+```
+cd /etc/nginx/sites-available/
+nano controlpanel.conf
+```
+:::
+
 ### Enable Maintenance Mode
 
 ```bash
