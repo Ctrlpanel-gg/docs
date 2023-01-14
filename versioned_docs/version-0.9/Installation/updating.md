@@ -18,9 +18,15 @@ apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm
 apt -y install php8.1-intl
 ```
 And don´t forget to change the php version in your nginx/apache config files.
-```
+```bash
 cd /etc/nginx/sites-available/
 nano controlpanel.conf
+```
+Also check your queue worker config file.
+ExecStart=/usr/bin/php needs to point to your php 8.1 binary. You can check the version with /usr/bin/php -v 
+```bash
+cd /etc/systemd/system/
+nano controlpanel.service
 ```
 :::
 
@@ -40,6 +46,13 @@ sudo chmod -R 755 /var/www/controlpanel
 ```
 
 ### Update Dependencies
+
+:::caution
+Please delete your old vendor folder before running the composer command.
+```bash
+sudo rm -rf /var/www/controlpanel/vendor
+```
+:::
 
 ```bash
 sudo composer install --no-dev --optimize-autoloader
