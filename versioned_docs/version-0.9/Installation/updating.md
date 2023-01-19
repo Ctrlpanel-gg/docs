@@ -54,9 +54,12 @@ sudo rm -rf /var/www/controlpanel/vendor
 ```
 :::
 
+:::info
+Make sure composer actualy uses php 8.1 and not longer 8.0!
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
+:::
 
 ### Updating the Database
 
