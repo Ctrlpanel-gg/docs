@@ -47,6 +47,13 @@ exit
 mysql -u root -p controlpanel < /var/www/controlpanel/backup.sql
 ```
 
+If you have a backup from an older version of ControlPanel, you have to migrate the database to the latest version.
+
+```bash
+cd /var/www/controlpanel
+sudo php artisan migrate --seed --force
+```
+
 ### How to automatically backup
 
 You can automatically back up your database every day at midnight, for example.

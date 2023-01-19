@@ -86,7 +86,7 @@ sudo rm -rf /var/www/controlpanel
 You need to uninstall this, use the appropriate PHP version (php -v)
 
 ```bash
-sudo apt remove php8.0-intl
+sudo apt remove php8.1-intl
 ```
 
 ### Pterodactyl API Key
