@@ -8,6 +8,10 @@ sidebar_position: 3
 
 Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
 
+:::info
+
+The StripeWebhook URL has been changed in `v0.9` due to the new extension support. Read into Stripe section below, it contains the new URL.
+
 :::
 
 import TOCInline from '@theme/TOCInline';
@@ -28,6 +32,7 @@ for the redirect URI, you have to use YOUR_WEBSITE_URL + /auth/callback (example
 If you would like to automatically force new users to join your Discord server after they have verified, you will need to set up a Discord bot. This can be an already existing Discord bot in your server.
 
 Add your Discord...
+
 1. Bot to your server and give him the appropriate permissions.
 2. Bot token on the webpage.
 3. Guild ID on the webpage.
@@ -81,7 +86,7 @@ Go to the developer page and click on API-Keys. You only need the Secret key in 
 
 You will need to add a Webhook for Stripe in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
 Click on Webhooks and add an endpoint.
-Enter the Endpoint route: `https://<your.controlpanel.gg>/payment/StripeWebhooks`.
+Enter the Endpoint route: `https://<your.controlpanel.gg>/extensions/payment/StripeWebhooks`.
 Choose the "payment_intent.succeded" event to be sent to your WebhookRoute.
 After the webhook creation, you need to add the endpoint secret (Signing secret) to your Controlpanel settings. It can be found at the webhooks overview.
 
