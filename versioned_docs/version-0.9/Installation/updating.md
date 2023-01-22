@@ -4,12 +4,6 @@ sidebar_position: 5
 
 # Updating
 
-:::info
-
-Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
-
-:::
-
 :::warning
 
 Make sure you upgrade your PHP version to 8.1 before updating to v0.9 or higher.
