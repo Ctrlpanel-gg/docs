@@ -15,6 +15,7 @@ And don´t forget to change the php version in your nginx/apache config files.
 ```bash
 cd /etc/nginx/sites-available/
 nano controlpanel.conf
+systemctl restart nginx
 ```
 Also check your queue worker config file.
 ExecStart=/usr/bin/php needs to point to your php 8.1 binary. You can check the version with /usr/bin/php -v 
