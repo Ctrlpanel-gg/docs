@@ -3,7 +3,9 @@ name: Test deployment
 on:
   pull_request:
     branches: [main, development]
-    paths: [docs/**]
+    paths: 
+      - 'docs/**'
+      - 'versioned_docs/**'
   workflow_dispatch:
 
 jobs:

@@ -40,41 +40,24 @@ module.exports = {
           dropdownActiveClassDisabled: true,
         },
         {
-          label: "Utilities",
-          position: "right",
-          items: [
-            {
-              href: "https://documenter.getpostman.com/view/9044962/TzY69ub2#02b8da43-ab01-487d-b2f5-5f8699b509cd",
-              label: "API",
-              position: "right",
-            },
-            {
-              href: "https://demo.controlpanel.gg",
-              label: "Demo",
-              position: "right",
-            },
-            {
-              href: "https://trello.controlpanel.gg/b/KGMuFqkqe5QabLt76/controlpanel",
-              label: "Development-Roadmap",
-              position: "right",
-            },
-          ],
+          href: "https://documenter.getpostman.com/view/9044962/TzY69ub2#02b8da43-ab01-487d-b2f5-5f8699b509cd",
+          label: "API",
+          position: "left",
         },
         {
-          label: "Social",
+          href: "https://demo.controlpanel.gg",
+          label: "Demo",
           position: "right",
-          items: [
-            {
-              href: "https://discord.gg/4Y6HjD2uyU",
-              label: "Discord",
-              position: "right",
-            },
-            {
-              href: "https://github.com/ControlPanel-gg/dashboard",
-              label: "GitHub",
-              position: "right",
-            },
-          ],
+        },
+        {
+          href: "https://discord.gg/4Y6HjD2uyU",
+          label: "Discord",
+          position: "right",
+        },
+        {
+          href: "https://github.com/ControlPanel-gg/dashboard",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
@@ -121,7 +104,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "0.8",
+          lastVersion: "0.9",
           // Please change this to your repo.
           editUrl: "https://github.com/ControlPanel-gg/docs/tree/main/",
         },
