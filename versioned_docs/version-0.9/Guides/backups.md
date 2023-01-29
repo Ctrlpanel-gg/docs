@@ -71,3 +71,14 @@ Run `crontab -e` and add the following line:
 
 This will create a backup at /var/www/controlpanel/backups-$(date +\%F).sql every day at midnight.
 Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
+
+# Appliaction key backup
+To backup the appliaction key you need to get it from the .env file
+you can get there with this command:
+```nano /var/www/controlpanel/.env```
+keep this key safe you will need later!
+
+# Apllication key restore
+After you have reinstalled the panel go back into the .env
+```nano /var/www/controlpanel/.env```
+You can then change the new key with the old key!
