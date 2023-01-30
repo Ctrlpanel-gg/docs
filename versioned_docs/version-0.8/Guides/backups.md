@@ -75,11 +75,11 @@ Run `crontab -e` and add the following line:
 This will create a backup at /var/www/controlpanel/backups-$(date +\%F).sql every day at midnight.
 Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
 
-## Appliaction key
+## Application key
 The application key is used to encrypt the data in the database, if its lost you will not be able to decrypt the data in the database.
 
 ### Backup the application key
-To backup the appliaction key you need to get it from the .env file
+To backup the application key you need to get it from the .env file
 you can get there with this command:
 ```nano /var/www/controlpanel/.env```
 keep this key safe you will need later!
