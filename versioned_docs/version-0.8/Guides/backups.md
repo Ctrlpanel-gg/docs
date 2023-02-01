@@ -13,6 +13,10 @@ Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpane
 All important data is stored in the database. This includes all servers, users, and other information.  
 It's important to keep backups of your database to ensure that you can restore your panel if something goes wrong.
 
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline toc={toc} />
+
 ### How to back up
 
 You can use MySQL dump to back up your database.  
@@ -70,3 +74,17 @@ Run `crontab -e` and add the following line:
 
 This will create a backup at /var/www/controlpanel/backups-$(date +\%F).sql every day at midnight.
 Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
+
+## Application key
+The application key is used to encrypt the data in the database, if its lost you will not be able to decrypt the data in the database.
+
+### Backup the application key
+To backup the application key you need to get it from the .env file
+you can get there with this command:
+```nano /var/www/controlpanel/.env```
+keep this key safe you will need later!
+
+### Restore the application key
+After you have reinstalled the panel go back into the .env
+```nano /var/www/controlpanel/.env```
+You can then change the new key with the old key!
