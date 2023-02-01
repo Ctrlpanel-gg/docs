@@ -26,7 +26,6 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 🤍 Platinum Supporter: **ccrs#4120**<br/>
 🤍 Platinum Supporter: **Timo#4042**<br/>
 
-
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
 💛 Gold Supporter: **Niktix#3749** [TIX-Hosting](https://tix-hosting.net/)<br/>
@@ -41,3 +40,6 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 🤎 Bronze Supporter: **Jonas.#9915**<br/>
 🤎 Bronze Supporter: **Vysoký Vagón#3796**<br/>
 🤎 Bronze Supporter: **I got 2 phones#8225**<br/>
+🤎 Bronze Supporter: **2IceCube#7992**<br/>
+🤎 Bronze Supporter: **ᴅᴏᴍɪɴɪᴋ#1005**<br/>
+🤎 Bronze Supporter: **DWAA#1660**<br/>
