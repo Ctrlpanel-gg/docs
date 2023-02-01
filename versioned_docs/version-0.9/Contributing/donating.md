@@ -42,3 +42,4 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 🤎 Bronze Supporter: **I got 2 phones#8225**<br/>
 🤎 Bronze Supporter: **2IceCube#7992**<br/>
 🤎 Bronze Supporter: **ᴅᴏᴍɪɴɪᴋ#1005**<br/>
+🤎 Bronze Supporter: **DWAA#1660**<br/>
