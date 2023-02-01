@@ -24,7 +24,7 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 
 🤍 Platinum Supporter: **BolverBlitz#4881**<br/>
 🤍 Platinum Supporter: **ccrs#4120**<br/>
-
+🤍 Platinum Supporter: **Timo#4042**<br/>
 
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
@@ -39,4 +39,5 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 🤎 Bronze Supporter: **Bazim#0485**<br/>
 🤎 Bronze Supporter: **Jonas.#9915**<br/>
 🤎 Bronze Supporter: **Vysoký Vagón#3796**<br/>
-
+🤎 Bronze Supporter: **I got 2 phones#8225**<br/>
+🤎 Bronze Supporter: **2IceCube#7992**<br/>
