@@ -16,7 +16,7 @@ I will try to mention any donation above €1- in our Discord server.
 _All Donators with a supporter role will also have access to a Donators Only channel_
 
 Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
-Ko-fi link: [https://ko-fi.com/avmg20](https://ko-fi.com/avmg20)
+Ko-fi link: [https://ko-fi.com/1day2die](https://ko-fi.com/1day2die)
 _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**_
 
 ## Donators
