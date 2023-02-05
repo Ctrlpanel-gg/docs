@@ -17,7 +17,7 @@ _All Donators with a supporter role will also have access to a Donators Only cha
 
 Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
 Ko-fi link: [https://ko-fi.com/1day2die](https://ko-fi.com/1day2die)
-_Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**_
+_Please notify me when you've donated, so I can respond quicker :) **1Day2Die#6718**_
 
 ## Donators
 
@@ -30,6 +30,7 @@ _Please notify me when you've donated, so I can respond quicker :) **AVMG#1234**
 💛 Gold Supporter: **dragocz#0191**<br/>
 💛 Gold Supporter: **Niktix#3749** [TIX-Hosting](https://tix-hosting.net/)<br/>
 💛 Gold Supporter: **Sir Maddigan#0243**<br/>
+💛 Gold Supporter: **DerHorschty#3855**<br/>
 
 🤍 Silver  Supporter: **TheFrodoDE#1337**<br/>
 
