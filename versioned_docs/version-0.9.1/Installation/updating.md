@@ -5,7 +5,7 @@ sidebar_position: 5
 # Updating
 
 :::caution
-This quide is for updates 0.9.0 -> 0.9.X
+This guide is for updates 0.9.0 -> 0.9.X
 If you update from 0.8.X or older, please follow our 0.9 update guide. (Version dropdown top right)
 :::
 
