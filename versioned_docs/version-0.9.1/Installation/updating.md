@@ -4,10 +4,9 @@ sidebar_position: 5
 
 # Updating
 
-:::info
-
-Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
-
+:::caution
+This guide is for updates 0.9.0 -> 0.9.X
+If you update from 0.8.X or older, please follow our 0.9 update guide. (Version dropdown top right)
 :::
 
 ### Enable Maintenance Mode
