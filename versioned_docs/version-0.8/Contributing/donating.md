@@ -25,11 +25,11 @@ _Please notify me when you've donated, so I can respond quicker :) **1Day2Die#67
 🤍 Platinum Supporter: **BolverBlitz#4881**<br/>
 🤍 Platinum Supporter: **ccrs#4120**<br/>
 🤍 Platinum Supporter: **Timo#4042**<br/>
+🤍 Gold Supporter: **Sir Maddigan#0243**<br/>
 
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
 💛 Gold Supporter: **Niktix#3749** [TIX-Hosting](https://tix-hosting.net/)<br/>
-💛 Gold Supporter: **Sir Maddigan#0243**<br/>
 💛 Gold Supporter: **DerHorschty#3855**<br/>
 
 🤍 Silver  Supporter: **TheFrodoDE#1337**<br/>
