@@ -9,7 +9,7 @@ Your donations go a long way in helping us develop this dashboard, but please do
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles
-**Platinum Supporter** €50,- + <br/>
+**Ruby Supporter** €50,- + <br/>
 **Gold Supporter** €25,- + <br/>
 **Silver Supporter** €15,- + <br/>
 **Bronze Supporter** €5,- + <br/>
@@ -22,10 +22,10 @@ _Please notify me when you've donated, so I can respond quicker :) **1Day2Die#67
 ## Donators
 
 
-🤍 Platinum Supporter: **BolverBlitz#4881**<br/>
-🤍 Platinum Supporter: **ccrs#4120**<br/>
-🤍 Platinum Supporter: **Timo#4042**<br/>
-🤍 Gold Supporter: **Sir Maddigan#0243**<br/>
+❤️ Ruby Supporter: **BolverBlitz#4881**<br/>
+❤️ Ruby Supporter: **ccrs#4120**<br/>
+❤️ Ruby Supporter: **Timo#4042**<br/>
+❤️ Ruby Supporter: **Sir Maddigan#0243**<br/>
 
 💛 Gold Supporter: **Wynn#1000**<br/>
 💛 Gold Supporter: **dragocz#0191**<br/>
