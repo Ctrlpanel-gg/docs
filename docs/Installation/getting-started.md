@@ -23,7 +23,7 @@ It is recommended that you have some sort of Linux and MariaDB experience before
 
 :::info
 
-If you already have Controlpanel Installed and want to Upgrade to v1.0 please refer to "Upgrading from v0.8"
+If you already have Ctrlpanel Installed and want to Upgrade to v1.0 please refer to "Upgrading from v0.8"
 
 
 :::
@@ -126,7 +126,7 @@ You should paste the contents of the file below, replacing `<domain>` with your 
 
 ```
 cd /etc/nginx/sites-available/
-nano controlpanel.conf
+nano ctrlpanel.conf
 ```
 ### Example Nginx Config
 
@@ -158,7 +158,7 @@ The final step is to enable your NGINX configuration and restart it.
 
 ```bash
 # You do not need to symlink this file if you are using CentOS.
-sudo ln -s /etc/nginx/sites-available/controlpanel.conf /etc/nginx/sites-enabled/controlpanel.conf
+sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ctrlpanel.conf
 
 # Check for nginx errors
 sudo nginx -t
@@ -261,14 +261,14 @@ The first thing we need to do is create a new cron job that runs every minute to
 
 Next, you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
 
-Create a file called `controlpanel.service` in `/etc/systemd/system` with the contents below.
+Create a file called `ctrlpanel.service` in `/etc/systemd/system` with the contents below.
 
 ```bash
-# Controlpanel Queue Worker File
+# Ctrlpanel Queue Worker File
 # ----------------------------------
 
 [Unit]
-Description=Controlpanel Queue Worker
+Description=ctrlpanel Queue Worker
 
 [Service]
 # On some systems the user and group might be different.
@@ -276,7 +276,7 @@ Description=Controlpanel Queue Worker
 User=www-data
 Group=www-data
 Restart=always
-ExecStart=/usr/bin/php /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
+ExecStart=/usr/bin/php /var/www/ctrlpanel/artisan queue:work --sleep=3 --tries=3
 
 [Install]
 WantedBy=multi-user.target
@@ -285,5 +285,5 @@ WantedBy=multi-user.target
 Finally, enable the service and set it to boot on machine start.
 
 ```bash
-sudo systemctl enable --now controlpanel.service
+sudo systemctl enable --now ctrlpanel.service
 ```

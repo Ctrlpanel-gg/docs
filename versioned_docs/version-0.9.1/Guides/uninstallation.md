@@ -8,7 +8,7 @@ Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpane
 
 :::warning
 
-You will loose all data that you have stored in your ControlPanel.
+You will loose all data that you have stored in your Ctrlpanel.
 Note: This will only work if you followed our documentation, you might need to modify the commands to fit your installation.
 
 :::
@@ -19,7 +19,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Stop everything
 
-You need to stop controlpanel and all of its services before you can uninstall it.
+You need to stop ctrlpanel and all of its services before you can uninstall it.
 
 ```bash
 cd /var/www/controlpanel
@@ -92,4 +92,4 @@ sudo apt remove php8.1-intl
 ### Pterodactyl API Key
 
 Login to your pterodactyl panel and go to the admin page.  
-Then go to the API tab (`/admin/api`) and delete the key you made for controlpanel.
+Then go to the API tab (`/admin/api`) and delete the key you made for ctrlpanel.

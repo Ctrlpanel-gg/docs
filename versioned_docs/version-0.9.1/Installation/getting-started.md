@@ -113,13 +113,13 @@ EXIT;
 
 ## Web server Configuration
 
-You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called controlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called ctrlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
 ## How to add this config
 
 ```
 cd /etc/nginx/sites-available/
-nano controlpanel.conf
+nano ctrlpanel.conf
 ```
 
 ### Example Nginx Config
@@ -152,7 +152,7 @@ The final step is to enable your NGINX configuration and restart it.
 
 ```bash
 # You do not need to symlink this file if you are using CentOS.
-sudo ln -s /etc/nginx/sites-available/controlpanel.conf /etc/nginx/sites-enabled/controlpanel.conf
+sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ctrlpanel.conf
 
 # Check for nginx errors
 sudo nginx -t
@@ -229,14 +229,14 @@ The first thing we need to do is create a new cron job that runs every minute to
 
 Next, you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
 
-Create a file called `controlpanel.service` in `/etc/systemd/system` with the contents below.
+Create a file called `ctrlpanel.service` in `/etc/systemd/system` with the contents below.
 
 ```bash
-# Controlpanel Queue Worker File
+# Ctrlpanel Queue Worker File
 # ----------------------------------
 
 [Unit]
-Description=Controlpanel Queue Worker
+Description=Ctrlpanel Queue Worker
 
 [Service]
 # On some systems the user and group might be different.
@@ -253,5 +253,5 @@ WantedBy=multi-user.target
 Finally, enable the service and set it to boot on machine start.
 
 ```bash
-sudo systemctl enable --now controlpanel.service
+sudo systemctl enable --now ctrlpanel.service
 ```

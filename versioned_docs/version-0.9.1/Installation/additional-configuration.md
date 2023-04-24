@@ -70,23 +70,23 @@ To use the PayPal payment gateway, you have to set up an application at the PayP
 
 Go to "My Apps & Credentials" and choose either "Live" for production use or "Sandbox" for testing use of PayPal.
 
-Create an App, give it any name you want, and copy the Client ID and the Secret into the Settings of Controlpanel.
+Create an App, give it any name you want, and copy the Client ID and the Secret into the Settings of ctrlpanel.
 
-The only "App feature option" that Controlpanel needs is "Accept Payments".
+The only "App feature option" that ctrlpanel needs is "Accept Payments".
 
 #### Stripe
 
 To use the Stripe payment gateway, you have to create a "company" at the Stripe dashboard and activate it `https://dashboard.stripe.com/account/onboarding/business-structure`.
 
-Go to the developer page and click on API-Keys. You only need the Secret key in order to use Stripe at your Controlpanel. Copy it to the Payment Settings.
+Go to the developer page and click on API-Keys. You only need the Secret key in order to use Stripe at your Ctrlpanel. Copy it to the Payment Settings.
 
 You will need to add a Webhook for Stripe in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
 Click on Webhooks and add an endpoint.
 Enter the Endpoint route: `https://<your.controlpanel.gg>/extensions/payment/StripeWebhooks`.
 Choose the "payment_intent.succeded" event to be sent to your WebhookRoute.
-After the webhook creation, you need to add the endpoint secret (Signing secret) to your Controlpanel settings. It can be found at the webhooks overview.
+After the webhook creation, you need to add the endpoint secret (Signing secret) to your Ctrlpanel settings. It can be found at the webhooks overview.
 
-At the Controlpanel settings, you need to provide a comma separated list of payment methods you want to support via Stripe.
+At the Ctrlpanel settings, you need to provide a comma separated list of payment methods you want to support via Stripe.
 Check which payment method is available for your currency: `https://stripe.com/docs/payments/payment-methods/integration-options`.
 
 You can change the mode between Test and Live, just like PayPal.
