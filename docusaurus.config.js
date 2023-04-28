@@ -55,7 +55,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "https://github.com/ControlPanel-gg/dashboard",
+          href: "https://github.com/Ctrlpanel-gg/panel",
           label: "GitHub",
           position: "right",
         },
@@ -87,7 +87,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/ControlPanel-gg/dashboard",
+              href: "https://github.com/Ctrlpanel-gg/panel",
             },
           ],
         },
