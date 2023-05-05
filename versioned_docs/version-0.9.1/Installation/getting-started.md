@@ -7,6 +7,7 @@ sidebar_position: 1
 :::info
 
 It is recommended that you have some sort of Linux and MariaDB experience before installing this.
+This guide requires you to already have a working pterodactyl installation.
 
 :::
 
