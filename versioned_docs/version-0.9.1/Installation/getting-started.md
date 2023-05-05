@@ -41,15 +41,15 @@ The commands below are simply an example of how you might install these dependen
 operating system's package manager to determine the correct packages to install.
 
 ```bash
+# Update repositories list
+apt update
+
 # Add "add-apt-repository" command
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
 
 # Add additional repositories for PHP, Redis, and MariaDB (for Debian 11 and Ubuntu 22.04)
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
-
-# Update repositories list
-apt update
 
 # Add universe repository if you are on Ubuntu 18.04
 apt-add-repository universe
