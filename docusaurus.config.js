@@ -104,7 +104,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "0.9.1",
+          lastVersion: "0.10",
           // Please change this to your repo.
           editUrl: "https://github.com/ControlPanel-gg/docs/tree/main/",
         },
