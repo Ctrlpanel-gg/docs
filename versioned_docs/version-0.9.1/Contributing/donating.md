@@ -9,10 +9,11 @@ Your donations go a long way in helping us develop this ctrlpanel, but please do
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles
-**Ruby Supporter** €50,- + <br/>
-**Gold Supporter** €25,- + <br/>
-**Silver Supporter** €15,- + <br/>
-**Bronze Supporter** €5,- + <br/>
+**Sapphire** >= 100 $/€<br/>
+**Ruby Supporter** >= 50 $/€<br/>
+**Gold Supporter** >= 25 $/€<br/>
+**Silver Supporter** >= 15 $/€<br/>
+**Bronze Supporter** >= 5 $/€ <br/>
 _All Donators with a supporter role will also have access to a Donators Only channel_
 
 Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
