@@ -18,7 +18,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Discord Auth
 
-Go to `https://<your.controlpanel.gg>/admin/settings#misc`
+Go to `https://<your.ctrlpanel.gg>/admin/settings#misc`
 
 **Setting up Auth**<br/>
 [How](http://faq.demostoreprestashop.com/faq.php?fid=133&pid=41) to get CLIENT_ID and CLIENT_SECRET <br />
@@ -41,7 +41,7 @@ If you would like to give your users a custom role automatically when they verif
 
 ### reCAPTCHA v2
 
-Go to `https://<your.controlpanel.gg>/admin/settings#misc`
+Go to `https://<your.ctrlpanel.gg>/admin/settings#misc`
 
 Controlpanel uses visible reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
 
@@ -54,7 +54,7 @@ To add your keys, you need to add them on the webpage.
 To send out notifications and mails, you will need to configure your mail variables correctly.
 You can use a free mail server; for example, from [Mailjet](https://www.mailjet.com/). You can also install your own mail server using, for example, [mailcow](https://mailcow.email/)
 
-Go to `https://<your.controlpanel.gg>/admin/settings#misc` and enter your mail credentials.
+Go to `https://<your.ctrlpanel.gg>/admin/settings#misc` and enter your mail credentials.
 
 Ensure you clear the config cache and restart the queue workers when making changes to the email details.<br/>
 `php artisan config:clear` and `php artisan queue:restart`
@@ -82,7 +82,7 @@ Go to the developer page and click on API-Keys. You only need the Secret key in 
 
 You will need to add a Webhook for Stripe in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
 Click on Webhooks and add an endpoint.
-Enter the Endpoint route: `https://<your.controlpanel.gg>/extensions/payment/StripeWebhooks`.
+Enter the Endpoint route: `https://<your.ctrlpanel.gg>/extensions/payment/StripeWebhooks`.
 Choose the "payment_intent.succeded" event to be sent to your WebhookRoute.
 After the webhook creation, you need to add the endpoint secret (Signing secret) to your Controlpanel settings. It can be found at the webhooks overview.
 
