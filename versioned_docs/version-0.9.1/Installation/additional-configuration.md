@@ -86,7 +86,4 @@ Enter the Endpoint route: `https://<your.controlpanel.gg>/extensions/payment/Str
 Choose the "payment_intent.succeded" event to be sent to your WebhookRoute.
 After the webhook creation, you need to add the endpoint secret (Signing secret) to your Ctrlpanel settings. It can be found at the webhooks overview.
 
-At the Ctrlpanel settings, you need to provide a comma separated list of payment methods you want to support via Stripe.
-Check which payment method is available for your currency: `https://stripe.com/docs/payments/payment-methods/integration-options`.
-
 You can change the mode between Test and Live, just like PayPal.
