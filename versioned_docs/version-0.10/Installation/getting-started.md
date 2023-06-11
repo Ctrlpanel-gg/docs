@@ -23,7 +23,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
@@ -55,7 +55,7 @@ curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 apt-add-repository universe
 
 # Install Dependencies 
-apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip,redis} mariadb-server nginx tar unzip git redis-server
 ```
 
 ### Extra Dependency Used on this Dashboard
