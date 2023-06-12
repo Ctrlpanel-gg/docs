@@ -23,7 +23,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
@@ -41,6 +41,9 @@ The commands below are simply an example of how you might install these dependen
 operating system's package manager to determine the correct packages to install.
 
 ```bash
+# Update repositories list
+apt update
+
 # Add "add-apt-repository" command
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
 
@@ -48,14 +51,11 @@ apt -y install software-properties-common curl apt-transport-https ca-certificat
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 
-# Update repositories list
-apt update
-
 # Add universe repository if you are on Ubuntu 18.04
 apt-add-repository universe
 
 # Install Dependencies 
-apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip,redis} mariadb-server nginx tar unzip git redis-server
 ```
 
 ### Extra Dependency Used on this Dashboard
