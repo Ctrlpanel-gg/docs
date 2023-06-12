@@ -32,8 +32,8 @@ In case you wanna help by adding some tests, playwright got a awsome documentaio
 ### UI  
 `npx playwright test --ui`  
 
-# Write your own tests
-## Simple rules
+## Write your own tests
+### Simple rules
 Because you need to be logged in for almost everything, we already took care of this.  
 Playwright tests are loaded by regex matches.    
 To create a test that runs on a user account, name it like so:  
@@ -43,6 +43,6 @@ To create a test that runs on a user account, name it like so:
 So for example: **server.user.test.js** (Testing servers, with a user account, and its a test)  
 We setup a _admin_ and _user_ test env this way.   
 
-## Make the test
+### Make the test
 Playwright comes with a codegen funktion `npx playwright codegen`.  
 With this its easy to get the selection of elements you want quickly and then write the test.  
