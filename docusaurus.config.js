@@ -92,7 +92,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel.gg group. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Ctrlpanel.gg group. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
