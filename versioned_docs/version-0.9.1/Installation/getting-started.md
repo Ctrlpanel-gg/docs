@@ -83,7 +83,7 @@ The first step in this process is to create the folder where the panel will live
 newly created folder. Below is an example of how to perform this operation.
 
 ```bash
-mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
+mkdir -p /var/www/ctrlpanel && cd /var/www/ctrlpanel
 ```
 
 ```bash
@@ -104,9 +104,9 @@ This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your passwo
 
 ```bash
 mysql -u root -p
-CREATE DATABASE controlpanel;
-CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
-GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
+CREATE DATABASE ctrlpanel;
+CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 EXIT;
 ```
@@ -127,7 +127,7 @@ nano ctrlpanel.conf
 ```nginx
 server {
         listen 80;
-        root /var/www/controlpanel/public;
+        root /var/www/ctrlpanel/public;
         index index.php index.html index.htm index.nginx-debian.html;
         server_name YOUR.DOMAIN.COM;
 
@@ -177,7 +177,7 @@ sudo certbot --nginx -d yourdomain.com
 ## Panel Installation
 
 First, we will have to install all composer packages.
-For this, navigate into your `/var/www/controlpanel` again and run the following command
+For this, navigate into your `/var/www/ctrlpanel` again and run the following command
 
 ```bash
 composer install --no-dev --optimize-autoloader
@@ -190,15 +190,15 @@ use them correctly.
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/controlpanel/
+chown -R www-data:www-data /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 # If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/controlpanel/
+chown -R nginx:nginx /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 # If using Apache on CentOS
-chown -R apache:apache /var/www/controlpanel/
+chown -R apache:apache /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 ****
@@ -222,7 +222,7 @@ Once the Web-Installer has been completed, you will be navigated to the login-pa
 The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To open the crontab run: `crontab -e` and paste the following configuration into crontab.
 
 ```bash
-* * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
+* * * * * php /var/www/ctrlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Create Queue Worker
