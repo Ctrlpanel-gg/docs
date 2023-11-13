@@ -40,3 +40,4 @@ If you have a suggestion for a language or want to bring in your skills on a cer
 🇷🇺 Russian: **Namaker#2531**<br/>
 🇸🇪 Swedish: **Vermium#9649**<br/>
 🇵🇹 Portuguese: **Ferks#7575**<br/>
+🇵🇹 Portuguese: **apulhpa**<br/>
