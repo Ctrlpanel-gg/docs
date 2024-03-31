@@ -57,6 +57,23 @@ apt-add-repository universe
 apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
 ```
 
+:::danger
+
+Due to the fact that the MariaDB 11.3.2 update has broken most PHP and NodeJS applications, you should make some configuration changes 
+to avoid the error "Server set charset (0) unknown to the client.".
+
+Edit the `/etc/mysql/mariadb.conf.d/50-server.cnf` file, and change `character-set-collations = utf8mb4=uca1400_ai_ci` to `character-set-collations = utf8mb4=general_ci`.
+
+After you change and save the configuration file, restart your MariaDB server.
+
+```bash
+systemctl restart mariadb
+```
+
+*If you already have the correct value, then everything is fine. Just ignore this alert.*
+
+:::
+
 ### Extra Dependency Used on this Dashboard
 
 You need to install this, use the appropriate PHP version (php -v)
