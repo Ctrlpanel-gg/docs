@@ -24,7 +24,6 @@ import TOCInline from '@theme/TOCInline';
 
 - PHP `8.1`, `8.2`, or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
-- Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
 - `curl`
 - `tar`
@@ -45,10 +44,6 @@ apt -y install software-properties-common curl apt-transport-https ca-certificat
 
 # Add additional repositories for PHP (Ubuntu 20.04 and Ubuntu 22.04)
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
-
-# Add Redis official APT repository
-curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
 # MariaDB repo setup script (Ubuntu 20.04)
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
