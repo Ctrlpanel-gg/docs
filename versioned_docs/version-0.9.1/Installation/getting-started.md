@@ -22,9 +22,8 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.1` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.1`, `8.2`, or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
-- Redis (`redis-server`)
 - A web server (Apache, NGINX, Caddy, etc.)
 - `curl`
 - `tar`
@@ -34,7 +33,7 @@ import TOCInline from '@theme/TOCInline';
 
 ### Example Dependency Installation
 
-_If you already have Pterodactyl installed, please check that you also install PHP 8.1!_
+_If you already have Pterodactyl installed, please check that you also install PHP 8.3!_
 
 The commands below are simply an example of how you might install these dependencies. Please consult with your
 operating system's package manager to determine the correct packages to install.
@@ -43,36 +42,18 @@ operating system's package manager to determine the correct packages to install.
 # Add "add-apt-repository" command
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
 
-# Add additional repositories for PHP, Redis, and MariaDB (for Debian 11 and Ubuntu 22.04)
+# Add additional repositories for PHP (Ubuntu 20.04 and Ubuntu 22.04)
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+
+# MariaDB repo setup script (Ubuntu 20.04)
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 
 # Update repositories list
 apt update
 
-# Add universe repository if you are on Ubuntu 18.04
-apt-add-repository universe
-
-# Install Dependencies 
-apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+# Install Dependencies
+apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
 ```
-
-:::danger
-
-Due to the fact that the MariaDB 11.3.2 update has broken most PHP and NodeJS applications, you should make some configuration changes 
-to avoid the error "Server set charset (0) unknown to the client.".
-
-Edit the `/etc/mysql/mariadb.conf.d/50-server.cnf` file, and change `character-set-collations = utf8mb4=uca1400_ai_ci` to `character-set-collations = utf8mb4=general_ci`.
-
-After you change and save the configuration file, restart your MariaDB server.
-
-```bash
-systemctl restart mariadb
-```
-
-*If you already have the correct value, then everything is fine. Just ignore this alert.*
-
-:::
 
 ### Extra Dependency Used on this Dashboard
 
@@ -80,7 +61,7 @@ You need to install this, use the appropriate PHP version (php -v)
 Extra dependency used for handling currency's
 
 ```bash
-apt -y install php8.1-intl
+apt -y install php8.3-intl
 ```
 
 ### Installing Composer
@@ -107,14 +88,12 @@ mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
 git clone https://github.com/Ctrlpanel-gg/panel.git ./
 ```
 
-## Basic Setup
+## Database Setup
 
-Now that all the files have been downloaded we need to configure some core aspects of the Panel.
-
-**You will need a database setup and a database user with the correct permissions created for that database before**
-**continuing any further.**
-
-### Database Setup
+:::info
+You will need a database setup and a database user with the correct permissions created for that database before
+continuing any further.
+:::
 
 To make a database and database user, you can follow this guide.
 This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your password. Also, 127.0.0.1 is for localhost. Please have basic knowledge of Linux before attempting this. Use at your own responsibility.
@@ -128,15 +107,23 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 
+## Installing Сomposer Packages
+
+First, we will have to install all composer packages.
+For this, run the following command
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
 ## Web server Configuration
 
 You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called ctrlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
-## How to add this config
+### How to add this config
 
 ```
-cd /etc/nginx/sites-available/
-nano ctrlpanel.conf
+nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
 ### Example Nginx Config
@@ -154,7 +141,7 @@ server {
 
         location ~ \.php$ {
                 include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
         }
 
         location ~ /\.ht {
@@ -191,15 +178,6 @@ sudo apt install -y python3-certbot-nginx
 sudo certbot --nginx -d yourdomain.com
 ```
 
-## Panel Installation
-
-First, we will have to install all composer packages.
-For this, navigate into your `/var/www/controlpanel` again and run the following command
-
-```bash
-composer install --no-dev --optimize-autoloader
-```
-
 ### Set Permissions
 
 The last step in the installation process is to set the correct permissions on the Panel files so that the web server can
@@ -222,15 +200,6 @@ chmod -R 755 storage/* bootstrap/cache/
 ```
 
 Once this is done, you should be able to access the dashboard via your web browser.
-
-### Running the installer
-
-#### Navigate to `https://yourdomain.com/install` to run the Web-Installer and follow the steps.
-
-If you encounter problems with the email setup, you can use the skip button and set it up later.
-
-Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.<br />
-#### Don't forget to complete the steps listed below here.
 
 ## Queue Listeners
 
@@ -262,6 +231,7 @@ User=www-data
 Group=www-data
 Restart=always
 ExecStart=/usr/bin/php /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
+StartLimitBurst=0
 
 [Install]
 WantedBy=multi-user.target
@@ -272,3 +242,11 @@ Finally, enable the service and set it to boot on machine start.
 ```bash
 sudo systemctl enable --now ctrlpanel.service
 ```
+
+## Running the installer
+
+#### Navigate to `https://yourdomain.com/install` to run the Web-Installer and follow the steps.
+
+If you encounter problems with the email setup, you can use the skip button and set it up later.
+
+Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.
