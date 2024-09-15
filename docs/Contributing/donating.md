@@ -22,6 +22,7 @@ _Please notify me when you've donated, so I can respond quicker :) **1Day2Die#67
 ## Donators
 
 
+❤️ Ruby Supporter: **p47thiccbolt#4836**<br/>
 ❤️ Ruby Supporter: **BolverBlitz#4881**<br/>
 ❤️ Ruby Supporter: **ccrs#4120**<br/>
 ❤️ Ruby Supporter: **Timo#4042**<br/>
