@@ -26,8 +26,6 @@ import TOCInline from '@theme/TOCInline';
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - A web server (Apache, NGINX, Caddy, etc.)
 - `curl`
-- `tar`
-- `unzip`
 - `git`
 - `composer` v2
 
@@ -52,7 +50,7 @@ curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 apt update
 
 # Install Dependencies
-apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git
 ```
 
 ### Extra Dependency Used on this Dashboard
@@ -244,6 +242,16 @@ sudo systemctl enable --now ctrlpanel.service
 ```
 
 ## Running the installer
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+:::info
+
+If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main installer page, then just ignore it. This is due to the specifics of checking version compatibility. PHP8.3 has been tested and works stably!
+
+<img src={useBaseUrl('/img/userguides/installer-error.png')} />
+
+:::
 
 #### Navigate to `https://yourdomain.com/install` to run the Web-Installer and follow the steps.
 
