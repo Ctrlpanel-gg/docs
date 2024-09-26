@@ -8,7 +8,7 @@ Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpane
 
 :::warning
 
-You will loose all data that you have stored in your Ctrlpanel.
+You will lose all data that you have stored in your Ctrlpanel.
 Note: This will only work if you followed our documentation, you might need to modify the commands to fit your installation.
 
 :::
@@ -25,7 +25,7 @@ You need to stop ctrlpanel and all of its services before you can uninstall it.
 cd /var/www/controlpanel
 sudo php artisan down
 
-sudo systemctl stop controlpanel
+sudo systemctl stop ctrlpanel
 ```
 ## Remove
 
@@ -34,9 +34,9 @@ sudo systemctl stop controlpanel
 You have to stop and remove the service and cronjob.
 
 ```bash
-sudo systemctl stop controlpanel
-sudo systemctl disable controlpanel
-sudo rm /etc/systemd/system/controlpanel.service
+sudo systemctl stop ctrlpanel
+sudo systemctl disable ctrlpanel
+sudo rm /etc/systemd/system/ctrlpanel.service
 sudo systemctl daemon-reload
 sudo systemctl reset-failed
 ```
@@ -52,12 +52,12 @@ You now have to remove the webconfig and restart it
 
 ```bash
 # NGINX
-sudo unlink /etc/nginx/sites-enabled/controlpanel.conf
-sudo rm /etc/nginx/sites-available/controlpanel.conf
+sudo unlink /etc/nginx/sites-enabled/ctrlpanel.conf
+sudo rm /etc/nginx/sites-available/ctrlpanel.conf
 sudo systemctl reload nginx
 # Apache2
-sudo a2dissite controlpanel.conf
-sudo rm /etc/apache2/sites-available/controlpanel.conf
+sudo a2dissite ctrlpanel.conf
+sudo rm /etc/apache2/sites-available/ctrlpanel.conf
 sudo systemctl reload apache2
 
 sudo certbot delete --cert-name <Your Domain>
@@ -68,8 +68,8 @@ sudo certbot delete --cert-name <Your Domain>
 You now have to remove the database and user.
 
 ```bash
-sudo mysql -u root -p -e "DROP DATABASE controlpanel;"
-sudo mysql -u root -p -e "DROP USER 'controlpaneluser'@'127.0.0.1';"
+sudo mysql -u root -p -e "DROP DATABASE ctrlpanel;"
+sudo mysql -u root -p -e "DROP USER 'ctrlpaneluser'@'127.0.0.1';"
 sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
 ```
 
@@ -78,7 +78,7 @@ sudo mysql -u root -p -e "FLUSH PRIVILEGES;"
 You now have to remove the files.
 
 ```bash
-sudo rm -rf /var/www/controlpanel
+sudo rm -rf /var/www/ctrlpanel
 ```
 
 ### Extra Dependency
