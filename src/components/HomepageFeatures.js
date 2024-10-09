@@ -13,7 +13,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Simple but Powerful interface',
+    title: 'Simple yet Powerful',
     Svg: require('../../static/img/2.svg').default,
     description: (
       <>
