@@ -8,16 +8,16 @@ const FeatureList = [
     Svg: require('../../static/img/1.svg').default,
     description: (
       <>
-        Everything you need to see in one View. Nice, sleek and clean
+        Everything you need for easy game server management. Simple, sleek, and clean designed, ready for you and your clients.
       </>
     ),
   },
   {
-    title: 'Simple but powerful Webinterface',
+    title: 'Simple but Powerful interface',
     Svg: require('../../static/img/2.svg').default,
     description: (
       <>
-For your clients to use. Using this Panel, its just a 2 minute Route from Paying to Playing
+Simple interface for your clients to use at ease. It takes only 2 minutes from paying to playing.
       </>
     ),
   },
