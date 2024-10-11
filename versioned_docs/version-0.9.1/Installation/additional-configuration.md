@@ -54,7 +54,7 @@ Go to the Admin Misc settings and change the `reCAPTCHA Site-Key` and `reCAPTCHA
 ### Manual Mail Configuration
 
 To send out notifications and mails, you will need to configure your mail variables correctly.
-You can use a free mail server; for example, from [Zoho](https://www.zoho.com/mail). You can also install your own mail server using, for example, [Mailcow](https://mailcow.email/)
+You can use a free mail server; for example, from [Mailjet](https://www.mailjet.com/). You can also install your own mail server using, for example, [Mailcow](https://mailcow.email/)
 
 Go to `https://<your.ctrlpanel.gg>/admin/settings#misc` and enter your mail credentials that you recieved from whichever provider.
 

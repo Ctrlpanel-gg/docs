@@ -11,7 +11,7 @@ Make sure you upgrade your PHP version to 8.3 before updating to v0.9 or higher.
 apt -y install php8.3 php8.3-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip}
 apt -y install php8.3-intl
 ```
-And don´t forget to change the php version in your nginx/apache config files.
+Do not forget to change the PHP version in the NGINX / Apache web configuration to 8.3 as well.
 ```bash
 cd /etc/nginx/sites-available/
 nano controlpanel.conf
@@ -77,12 +77,50 @@ sudo chown -R nginx:nginx /var/www/controlpanel/
 sudo chown -R apache:apache /var/www/controlpanel/
 ```
 
-### Restarting Queue Workers
+### Updating Queue Workers
+
+Run the following commands to edit the systemd file:
+
+```bash
+cd /etc/systemd/system
+nano ctrlpanel.service
+```
+
+Delete the content and paste in this:
+
+```bash
+# Ctrlpanel Queue Worker File
+# ----------------------------------
+
+[Unit]
+Description=Ctrlpanel Queue Worker
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
+StartLimitBurst=0
+
+[Install]
+WantedBy=multi-user.target
+```
+
+To put it into effect, run:
+
+```bash
+systemctl restart ctrlpanel.service
+```
+
+### Restart Queue Workers
 
 After every update, you should restart the queue worker to ensure that the new code is loaded in and used.
 
 ```bash
 sudo php artisan queue:restart
+sudo systemd
 ```
 
 ### Disable Maintenance Mode
