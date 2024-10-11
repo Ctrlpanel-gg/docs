@@ -9,10 +9,11 @@ Your donations go a long way in helping us develop this ctrlpanel, but please do
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles
-**Ruby Supporter** €50,- + <br/>
-**Gold Supporter** €25,- + <br/>
-**Silver Supporter** €15,- + <br/>
-**Bronze Supporter** €5,- + <br/>
+**Sapphire** >= 100 $/€<br/>
+**Ruby Supporter** >= 50 $/€<br/>
+**Gold Supporter** >= 25 $/€<br/>
+**Silver Supporter** >= 15 $/€<br/>
+**Bronze Supporter** >= 5 $/€ <br/>
 _All Donators with a supporter role will also have access to a Donators Only channel_
 
 Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
@@ -20,7 +21,6 @@ Ko-fi link: [https://ko-fi.com/1day2die](https://ko-fi.com/1day2die)
 _Please notify me when you've donated, so I can respond quicker :) **1Day2Die#6718**_
 
 ## Donators
-
 
 ❤️ Ruby Supporter: **p47thiccbolt#4836**<br/>
 ❤️ Ruby Supporter: **BolverBlitz#4881**<br/>

@@ -106,7 +106,7 @@ module.exports = {
         docs: {
           lastVersion: "0.9.1",
           // Please change this to your repo.
-          editUrl: "https://github.com/ControlPanel-gg/docs/tree/main/",
+          editUrl: "https://github.com/Ctrlpanel-gg/panel",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
