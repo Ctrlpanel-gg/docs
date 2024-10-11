@@ -9,12 +9,12 @@ Please only use Ctrlpanel installations that are not modifyed by plugins/modules
 :::
 
 This repository is using the Playwright framework to provide E2E to help developers of the project speed up development and provide a more stable and secure product.    
-If you want to support and help us by adding tests, Playwright has a awesome documentation which you can find [here](https://playwright.dev/docs/intro), but below are some provided examples of basic Playwright testing incase you want to skip the documentation.  
+If you want to support and help us by adding tests, Playwright has some awesome documentation which you can find [here](https://playwright.dev/docs/intro), but below are some provided examples of basic Playwright testing incase you want to skip the documentation.  
   
 ## Setup  
 ### Requirements  
-- A version of Ctrlpanel that's already set up.
-- A administrator & client account on your dashboard
+- A instance of Ctrlpanel that's already set up.
+- A administrator account & client account on your dashboard
 - Basic knowledge of JS ([NodeJS](https://nodejs.org)) **OR** TS ([Typescript](https://www.typescriptlang.org/))
 - NodeJS v18 or newer
 

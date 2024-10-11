@@ -26,7 +26,7 @@ Perfect for your clients. Your clients can buy a server within 2 minutes. That's
     Svg: require('../../static/img/3.svg').default,
     description: (
       <>
-         This is ready for anyone to use for their hosting company. It comes packed with many features including invoices, Discord interigation, multiple differnet payment options and full translation in multiple languages. Our community also makes lots of themes and addons that enhances your clients expierence using Ctrlpanel.
+         This is ready for anyone to use for their hosting company. It comes packed with many features including invoices, Discord integration, multiple different payment options and full translation in multiple languages. Our community also makes lots of themes and addons that will enhance your clients' experience with CtrlPanel.
       </>
     ),
   },

@@ -45,7 +45,7 @@ sudo rm -rf /var/www/controlpanel/vendor
 :::
 
 :::info
-Make sure composer actualy uses php 8.3 and not longer 7.4!
+Make sure composer actualy uses PHP8.3 and not 7.4!
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
