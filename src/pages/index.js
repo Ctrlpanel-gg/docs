@@ -12,7 +12,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <img src="../../img/controlpanel.png" height="125" width="125" />
-        <h1 className="hero__title">{siteConfig.title}</h1>
+        <h1 className="hero__title">CtrlPanel.gg</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.contianer}>
         <div className={styles.buttons}>
@@ -27,14 +27,14 @@ function HomepageHeader() {
             <Link
               className="button button--secondary button--lg"
               to="https://market.ctrlpanel.gg/resources/">
-              Extension Hub ️🛒
+              Theme / Extension Hub ️🛒
             </Link>
           </div>
           <div>
             <Link
                 className="button button--secondary button--lg"
                 to="https://github.com/orgs/Ctrlpanel-gg/projects/1">
-              Development-Roadmap ️⛗
+              Roadmap 🛣️
             </Link>
           </div>
         </div>
@@ -48,8 +48,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="ControlPanel's Dashboard is a free and open-source management panel for pterodactyl with credit based billing and lots of customization.">
+      title={`Home`}
+      description="ControlPanel's Dashboard is a free and open-source management panel for pterodactyl with credit based billing and customization.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

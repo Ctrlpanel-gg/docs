@@ -6,13 +6,13 @@ sidebar_position: 1
 
 :::info
 
-It is recommended that you have some sort of Linux and MariaDB experience before installing this.
+It is highly recommended that you have some basic Linux expierence and have used MySQL / MariaDB in the past. This will help you significantlly with your setup.
 
 :::
 
 :::warning
 
-Warning, The dashboard is currently in pre-release and may contain some bugs. Use This dashboard at your own risk.
+Ctrlpanel is still being developed to this day! We have not released our v1.0.0 just yet. You may encounter bugs. If you do, please report them [here](https://github.com/ctrlpanel-gg/panel/issues)
 
 :::
 
@@ -22,12 +22,12 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.1`, `8.2`, or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.3` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - A web server (Apache, NGINX, Caddy, etc.)
 - `curl`
 - `git`
-- `composer` v2
+- `composer`
 
 ### Example Dependency Installation
 
@@ -114,24 +114,34 @@ For this, run the following command
 COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 ```
 
-## Web server Configuration
+## Web Server Configuration
 
-You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called ctrlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+This is a basic NGINX configuration. Please replace any `<domain>` placeholders with your domain name being used. Since NGINX is being used, we will put our configuration (`ctrlpanel.conf`) in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
-### How to add this config
+### Setting up the Web Server
+
+First, lets open the file for the configuration.
+
+Ubuntu, Debian, etc.:
 
 ```
 nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
-### Example Nginx Config
+CentOS:
+
+```
+nano /etc/nginx/conf.d/ctrlpanel.conf
+```
+
+Now paste in the following configuration. Replace any `<domain>` placeholders with your Ctrlpanel setup domain.
 
 ```nginx
 server {
         listen 80;
         root /var/www/controlpanel/public;
         index index.php index.html index.htm index.nginx-debian.html;
-        server_name YOUR.DOMAIN.COM;
+        server_name <domain>;
 
         location / {
                 try_files $uri $uri/ /index.php?$query_string;
@@ -148,6 +158,8 @@ server {
 }
 ```
 
+SSL will be shown later in the documentation. Please do not join our Discord asking how to add SSL.
+
 ### Enable Configuration
 
 The final step is to enable your NGINX configuration and restart it.
@@ -159,7 +171,7 @@ sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ct
 # Check for nginx errors
 sudo nginx -t
 
-# You need to restart nginx regardless of OS. only do this you haven't received any errors
+# You need to restart nginx regardless of OS. Only do this you haven't received any errors
 systemctl restart nginx
 ```
 
@@ -169,11 +181,11 @@ There are many ways to add SSL to your site. A simple solution is to use Cert bo
 
 ```bash
 sudo apt update
-#install certbot for nginx
+# Install certbot for SSL
 sudo apt install -y certbot
 sudo apt install -y python3-certbot-nginx
-#install certificates
-sudo certbot --nginx -d yourdomain.com
+# Install certificates into the configuration
+sudo certbot --nginx -d <domain>
 ```
 
 ### Set Permissions
@@ -203,11 +215,14 @@ Once this is done, you should be able to access the dashboard via your web brows
 
 ### Crontab Configuration
 
-The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To open the crontab run: `crontab -e` and paste the following configuration into crontab.
+The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, run the following commands:
 
 ```bash
+crontab -e
 * * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
+
+Paste the second line into the crontable, then save.
 
 ### Create Queue Worker
 
@@ -253,8 +268,18 @@ If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main
 
 :::
 
-#### Navigate to `https://yourdomain.com/install` to run the Web-Installer and follow the steps.
+#### Navigate to the installer
 
-If you encounter problems with the email setup, you can use the skip button and set it up later.
+:::info
 
-Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.
+If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main installer page, then just ignore it. This is due to the specifics of checking version compatibility. PHP8.3 has been tested and works stably!
+
+<img src={useBaseUrl('/img/userguides/installer-error.png')} />
+
+:::
+
+To begin installation, go to `https://YOUR_DOMAIN_HERE/install` and follow the installer instructions.
+
+If you encounter problems with the email setup, you can skip it and set it up later.
+
+Once the installer has been completed, you will be redirected to the login page. Sign in with your Pterodactyl username/email and the password you set during the installer.

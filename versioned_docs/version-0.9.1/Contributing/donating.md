@@ -3,9 +3,9 @@ sidebar_position: 2
 ---
 
 # Donating
-Are you enjoying the ctrlpanel? Feeling generous? Well, help me and contributors purchase pizza to continue working on the ctrlpanel without empty stomachs!
+Are you enjoying the ctrlpanel? Feeling generous? Well, help me and contributors purchase pizza to continue working on Ctrlpanel without empty stomachs!
 
-Your donations go a long way in helping us develop this ctrlpanel, but please don't feel obligated to.<br/>
+Your donations go a long way in helping us develop Ctrlpanel, but please don't feel obligated to.<br/>
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles

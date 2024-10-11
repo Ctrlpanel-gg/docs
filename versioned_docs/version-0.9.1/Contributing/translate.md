@@ -10,7 +10,7 @@ Then we need exactly **you for our translator team!**<br/>
 
 After a long wait, the Ctrlpanel has now been equipped with a translation system.<br/>
 
-_Now we need people who help us translate!_<br/>
+**Now we need people who help us translate!**<br/>
 
 ## How to help
 

@@ -6,10 +6,10 @@ sidebar_position: 5
 
 :::warning
 
-Make sure you upgrade your PHP version to 8.1 before updating to v0.9 or higher.
+Make sure you upgrade your PHP version to 8.3 before updating to v0.9 or higher.
 ```bash
-apt -y install php8.1 php8.1-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip}
-apt -y install php8.1-intl
+apt -y install php8.3 php8.3-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip}
+apt -y install php8.3-intl
 ```
 And don´t forget to change the php version in your nginx/apache config files.
 ```bash
@@ -17,12 +17,7 @@ cd /etc/nginx/sites-available/
 nano controlpanel.conf
 systemctl restart nginx
 ```
-Also check your queue worker config file.
-ExecStart=/usr/bin/php needs to point to your php 8.1 binary. You can check the version with /usr/bin/php -v 
-```bash
-cd /etc/systemd/system/
-nano controlpanel.service
-```
+
 :::
 
 ### Enable Maintenance Mode
@@ -50,7 +45,7 @@ sudo rm -rf /var/www/controlpanel/vendor
 :::
 
 :::info
-Make sure composer actualy uses php 8.1 and not longer 8.0!
+Make sure composer actualy uses php 8.3 and not longer 8.0!
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
