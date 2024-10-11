@@ -99,7 +99,7 @@ sudo apt remove php8.3-intl
 
 :::warning
 
-Make sure nothing else that you're running requires the API key you set for Ctrlpanel. If they do, ignore this step.
+Make sure nothing else that you're running requires the API key you set for Ctrlpanel. If something is, ignore this step.
 
 :::
 
