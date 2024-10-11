@@ -33,7 +33,7 @@ function HomepageHeader() {
           <div>
             <Link
                 className="button button--secondary button--lg"
-                to="https://trello.controlpanel.gg/b/KGMuFqkqe5QabLt76/controlpanel">
+                to="https://github.com/orgs/Ctrlpanel-gg/projects/1">
               Development-Roadmap ️⛗
             </Link>
           </div>
