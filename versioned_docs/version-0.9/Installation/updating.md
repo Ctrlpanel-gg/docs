@@ -79,6 +79,18 @@ sudo chown -R apache:apache /var/www/controlpanel/
 
 ### Updating Queue Workers
 
+:::info
+Before continuing, run the following command to find where your PHP8.3 directory is:
+```bash
+which php8.3
+```
+If you use the default `/usr/bin/php` and your default is another PHP version your setup will not work. For example, if your PHP8.3 is found at `/usr/bin/php8.3` you would update the `ExecStart` line accordingly:
+```bash
+ExecStart=/usr/bin/php8.3 /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
+```
+This will ensure that you're using the correct version of PHP.
+:::
+
 Run the following commands to edit the systemd file:
 
 ```bash
