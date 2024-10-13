@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-ControlPanel's Dashboard is a dashboard application designed to offer clients a management tool to manage their [Pterodactyl](https://pterodactyl.io/) servers. This dashboard comes with a credit-based billing solution that credits users hourly for each server they have and suspends servers if they run out of credits.
+Ctrlpanel's Dashboard is a web application designed to offer clients a management tool to run their [Pterodactyl](https://pterodactyl.io/) servers. This dashboard comes with a credit-based billing solution that credits users hourly for each server they have and suspends servers if they run out of credits.
 
 This dashboard offers an easy to use and free billing solution for all starting and experienced hosting providers. This dashboard has many customization options and added Discord OAuth verification to offer a solid link between your Discord server and your dashboard.
 
@@ -12,7 +12,7 @@ This dashboard offers an easy to use and free billing solution for all starting 
 You can find our guide for installation [here](Installation/getting-started).
 
 ## Third-parties
-You can find custom themes and programs from our [Extension Hub](https://market.ctrlpanel.gg/) those are developed by third-parties.
+You can find custom themes and programs from our [Theme / Extension Hub](https://market.ctrlpanel.gg/) that are developed by third-parties.
 
 ## Support
 Have a few questions? Feel free to [join](https://discord.gg/GY7PWejUaG) our support Discord server.

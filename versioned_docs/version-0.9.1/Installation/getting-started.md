@@ -6,13 +6,13 @@ sidebar_position: 1
 
 :::info
 
-It is recommended that you have some sort of Linux and MariaDB experience before installing this.
+It is highly recommended that you have some basic Linux expierence and have used MySQL / MariaDB in the past. This will help you significantlly with your setup.
 
 :::
 
 :::warning
 
-Warning, The dashboard is currently in pre-release and may contain some bugs. Use This dashboard at your own risk.
+Ctrlpanel is still being developed to this day! We have not released our v1.0.0 just yet. You may encounter bugs. If you do, please report them [here](https://github.com/ctrlpanel-gg/panel/issues)
 
 :::
 
@@ -22,12 +22,12 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.1`, `8.2`, or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.3` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
-- A web server (Apache, NGINX, Caddy, etc.)
+- A web server (Apache, NGINX, etc.)
 - `curl`
 - `git`
-- `composer` v2
+- `composer`
 
 ### Example Dependency Installation
 
@@ -114,67 +114,339 @@ For this, run the following command
 COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 ```
 
-## Web server Configuration
+## Web Server Configuration
 
-You should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called ctrlpanel.conf and place it in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+This is a basic NGINX configuration. Please replace any `<domain>` placeholders with your domain name being used. Since NGINX is being used, we will put our configuration (`ctrlpanel.conf`) in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
 
-### How to add this config
+### Setting up the Web Server
 
-```
-nano /etc/nginx/sites-available/ctrlpanel.conf
-```
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-### Example Nginx Config
 
-```nginx
-server {
+<Tabs>
+  <TabItem value="nginx-ssl" label="Nginx With SSL" default>
+
+   Before we touch anything with NGINX, we first have to generate our SSL certificates. Make sure your domain you're using for your Ctrlpanel setup has a A record pointed at your IPv4 for your machine and is not proxied. Run the following commands to start the installation for SSL.
+
+   ```bash
+   sudo apt update
+   sudo apt install certbot
+   sudo apt install python3-certbot-nginx
+   ```
+   Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command below. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
+
+   ```bash
+   certbot certonly --nginx -d YOUR.DOMAIN.HERE
+   ```
+   It will save all certificates to `/etc/letsencrypt/live/YOUR.DOMAIN.HERE/`.
+
+   Now that SSL is ready to be used, let's setup NGINX. To do so, run the following command below to get rid of NGINX's default configuration and to avoid any other errors.
+
+   ```bash
+   rm /etc/nginx/sites-enabled/default
+   ```
+   Once done, we now have to open the NGINX configuration file. This depends on your OS.
+
+   Debian/Ubuntu Based OSes:
+   ```bash
+   nano /etc/nginx/sites-avaliable/ctrlpanel.conf
+   ```
+
+   RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+   ```bash
+   nano /etc/nginx/conf.d/ctrlpanel.conf
+   ```
+
+   There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
+
+   ```conf
+   server {
+       # Replace YOUR.DOMAIN.HERE with your domain.
+       listen 80;
+       server_name YOUR.DOMAIN.HERE;
+       return 301 https://$server_name$request_uri;
+   }
+   
+   server {
+       # Replace YOUR.DOMAIN.HERE with your domain.
+       listen 443 ssl http2;
+       server_name YOUR.DOMAIN.HERE;
+   
+       root /var/www/controlpanel/public;
+       index index.php;
+   
+       access_log /var/log/nginx/ctrlpanel.app-access.log;
+       error_log  /var/log/nginx/ctrlpanel.app-error.log error;
+   
+       # Allow large upload sizes
+       client_max_body_size 100m;
+       client_body_timeout 120s;
+   
+       sendfile off;
+   
+       # SSL Configuration - Replace any YOUR.DOMAIN.HERE with the domain you're     using for         your Ctrlpanel setup.
+       ssl_certificate /etc/letsencrypt/live/YOUR.DOMAIN.HERE/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/YOUR.DOMAIN.HERE/privkey.pem;
+       ssl_session_cache shared:SSL:10m;
+       ssl_protocols TLSv1.2 TLSv1.3;
+       ssl_ciphers           "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-     CM-SHA38     4:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20       POLY1305  :DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
+       ssl_prefer_server_ciphers on;
+   
+       # See https://hstspreload.org/ before uncommenting the line below.
+       # add_header Strict-Transport-Security "max-age=15768000; preload;";
+       add_header X-Content-Type-Options nosniff;
+       add_header X-XSS-Protection "1; mode=block";
+       add_header X-Robots-Tag none;
+       add_header Content-Security-Policy "frame-ancestors 'self'";
+       add_header X-Frame-Options DENY;
+       add_header Referrer-Policy same-origin;
+   
+       location / {
+           try_files $uri $uri/ /index.php?$query_string;
+       }
+   
+       location ~ \.php$ {
+           fastcgi_split_path_info ^(.+\.php)(/.+)$;
+           fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+           fastcgi_index index.php;
+           include fastcgi_params;
+           fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
+           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+           fastcgi_param HTTP_PROXY "";
+           fastcgi_intercept_errors off;
+           fastcgi_buffer_size 16k;
+           fastcgi_buffers 4 16k;
+           fastcgi_connect_timeout 300;
+           fastcgi_send_timeout 300;
+           fastcgi_read_timeout 300;
+           include /etc/nginx/fastcgi_params;
+       }
+   
+       location ~ /\.ht {
+           deny all;
+       }
+   }
+   ```
+
+   ### Enable Configuration
+
+   The last step is to enable the NGINX configuration. To do that, we have to restart it.
+
+   ```bash
+   # You do not need to symlink this file if you are using CentOS.
+   sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ctrlpanel.conf
+
+   # Check for nginx errors
+   sudo nginx -t
+
+   # You need to restart nginx regardless of OS. only do this you haven't received any errors
+   systemctl restart nginx
+   ```
+
+  </TabItem>
+  <TabItem value="nginx-nossl" label="Nginx Without SSL">
+
+   Before we setup the configuration, we must delete NGINX's example configuration. To do so, run the following command below.
+
+   ```bash
+   rm /etc/nginx/sites-enabled/default
+   ```
+   Once done, we now have to open the NGINX configuration file. This depends on your OS.
+
+   Debian/Ubuntu Based OSes:
+   ```bash
+   nano /etc/nginx/sites-avaliable/ctrlpanel.conf
+   ```
+
+   RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+   ```bash
+   nano /etc/nginx/conf.d/ctrlpanel.conf
+   ```
+
+   There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
+
+   ```conf
+   server {
+        # Replace YOUR.DOMAIN.HERE with your domain.
         listen 80;
+        server_name YOUR.DOMAIN.HERE;
+    
         root /var/www/controlpanel/public;
-        index index.php index.html index.htm index.nginx-debian.html;
-        server_name YOUR.DOMAIN.COM;
-
+        index index.html index.htm index.php;
+        charset utf-8;
+    
         location / {
-                try_files $uri $uri/ /index.php?$query_string;
+            try_files $uri $uri/ /index.php?$query_string;
         }
-
+    
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+    
+        access_log off;
+        error_log  /var/log/nginx/ctrlpanel.app-error.log error;
+    
+        # Allow larger upload sizes
+        client_max_body_size 100m;
+        client_body_timeout 120s;
+    
+        sendfile off;
+    
         location ~ \.php$ {
-                include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+            fastcgi_index index.php;
+            include fastcgi_params;
+            fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTP_PROXY "";
+            fastcgi_intercept_errors off;
+            fastcgi_buffer_size 16k;
+            fastcgi_buffers 4 16k;
+            fastcgi_connect_timeout 300;
+            fastcgi_send_timeout 300;
+            fastcgi_read_timeout 300;
         }
-
+    
         location ~ /\.ht {
-                deny all;
+            deny all;
         }
-}
-```
+    }
+   ```
 
-### Enable Configuration
+   ### Enable Configuration
 
-The final step is to enable your NGINX configuration and restart it.
+   The last step is to enable the NGINX configuration. To do that, we have to restart it.
 
-```bash
-# You do not need to symlink this file if you are using CentOS.
-sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ctrlpanel.conf
+   ```bash
+   # You do not need to symlink this file if you are using CentOS.
+   sudo ln -s /etc/nginx/sites-available/ctrlpanel.conf /etc/nginx/sites-enabled/ctrlpanel.conf
 
-# Check for nginx errors
-sudo nginx -t
+   # Check for nginx errors
+   sudo nginx -t
 
-# You need to restart nginx regardless of OS. only do this you haven't received any errors
-systemctl restart nginx
-```
+   # You need to restart nginx regardless of OS. only do this you haven't received any errors
+   systemctl restart nginx
+   ```
 
-### Adding SSL
+  </TabItem>
+  <TabItem value="apache-ssl" label="Apache With SSL">
 
-There are many ways to add SSL to your site. A simple solution is to use Cert bot from Let’s Encrypt. Cert bot will automatically install the certificates for you and keep your SSL certifications up to date!
+   Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
 
-```bash
-sudo apt update
-#install certbot for nginx
-sudo apt install -y certbot
-sudo apt install -y python3-certbot-nginx
-#install certificates
-sudo certbot --nginx -d yourdomain.com
-```
+   ```bash
+   a2dissite 000-default.conf
+   ```
+   Once done, we now have to open the NGINX configuration file. This depends on your OS.
+
+   Debian/Ubuntu Based OSes:
+   ```bash
+   nano /etc/apache2/sites-avaliable/ctrlpanel.conf
+   ```
+
+   RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+   ```bash
+   nano /etc/httpd/conf.d/ctrlpanel.conf
+   ```
+
+   There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
+
+   ```conf
+   <VirtualHost *:80>
+        # Replace YOUR.DOMAIN.HERE with your domain.
+        ServerName YOUR.DOMAIN.HERE
+    
+        RewriteEngine On
+        RewriteCond %{HTTPS} !=on
+        RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
+    </VirtualHost>
+    
+    <VirtualHost *:443>
+        # Replace YOUR.DOMAIN.HERE with your domain.
+        ServerName YOUR.DOMAIN.HERE
+        DocumentRoot "/var/www/controlpanel/public"
+    
+        AllowEncodedSlashes On
+    
+        php_value upload_max_filesize 100M
+        php_value post_max_size 100M
+    
+        <Directory "/var/www/controlpanel/public">
+            Require all granted
+            AllowOverride all
+        </Directory>
+    
+        SSLEngine on
+        SSLCertificateFile /etc/letsencrypt/live/YOUR.DOMAIN.HERE/fullchain.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/YOUR.DOMAIN.HERE/privkey.pem
+    </VirtualHost> 
+   ```
+
+   ### Enable Configuration
+
+   Now that we've successfully created the configuration file for our web server, the last step is to restart it. **NOTE** This step can be skipped if your OS is based off of RHEL, Rocky Linux, or AlmaLinux.
+
+   ```bash
+   # You do not need to run any of these commands on RHEL, Rocky Linux, or AlmaLinux
+   sudo ln -s /etc/apache2/sites-available/ctrlpanel.conf /etc/apache2/sites-enabled/ctrlpanel.conf
+   sudo a2enmod rewrite
+   sudo a2enmod ssl
+   sudo systemctl restart apache2
+   ```
+
+  </TabItem>
+  <TabItem value="apache-nossl" label="Apache Without SSL">
+
+   Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+
+   ```bash
+   a2dissite 000-default.conf
+   ```
+   Once done, we now have to open the NGINX configuration file. This depends on your OS.
+
+   Debian/Ubuntu Based OSes:
+   ```bash
+   nano /etc/apache2/sites-avaliable/ctrlpanel.conf
+   ```
+
+   RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+   ```bash
+   nano /etc/httpd/conf.d/ctrlpanel.conf
+   ```
+
+   There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
+
+    ```conf
+    <VirtualHost *:80>
+        # Replace YOUR.DOMAIN.HERE with your domain.
+        ServerName YOUR.DOMAIN.HERE
+        DocumentRoot "/var/www/controlpanel/public"
+        
+        AllowEncodedSlashes On
+        
+        php_value upload_max_filesize 100M
+        php_value post_max_size 100M
+        
+        <Directory "/var/www/controlpanel/public">
+            AllowOverride all
+            Require all granted
+        </Directory>
+    </VirtualHost>
+    ```
+
+   ### Enable Configuration
+
+   Now that we've successfully created the configuration file for our web server, the last step is to restart it. **NOTE** This step can be skipped if your OS is based off of RHEL, Rocky Linux, or AlmaLinux.
+
+   ```bash
+   # You do not need to run any of these commands on RHEL, Rocky Linux, or AlmaLinux
+   sudo ln -s /etc/apache2/sites-available/ctrlpanel.conf /etc/apache2/sites-enabled/ctrlpanel.conf
+   sudo a2enmod rewrite
+   sudo systemctl restart apache2
+   ```
+
+  </TabItem>
+</Tabs>
 
 ### Set Permissions
 
@@ -203,11 +475,14 @@ Once this is done, you should be able to access the dashboard via your web brows
 
 ### Crontab Configuration
 
-The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To open the crontab run: `crontab -e` and paste the following configuration into crontab.
+The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, run the following commands:
 
 ```bash
+crontab -e
 * * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
+
+Paste the second line into the crontable, then save.
 
 ### Create Queue Worker
 
@@ -241,8 +516,7 @@ Finally, enable the service and set it to boot on machine start.
 sudo systemctl enable --now ctrlpanel.service
 ```
 
-## Running the installer
-
+#### Navigate to the installer
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 :::info
@@ -253,8 +527,8 @@ If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main
 
 :::
 
-#### Navigate to `https://yourdomain.com/install` to run the Web-Installer and follow the steps.
+To begin installation, go to `https://YOUR_DOMAIN_HERE/install` and follow the installer instructions.
 
-If you encounter problems with the email setup, you can use the skip button and set it up later.
+If you encounter problems with the email setup, you can skip it and set it up later.
 
-Once the Web-Installer has been completed, you will be navigated to the login-page of your installation.
+Once the installer has been completed, you will be redirected to the login page. Sign in with your Pterodactyl username/email and the password you set during the installer.
