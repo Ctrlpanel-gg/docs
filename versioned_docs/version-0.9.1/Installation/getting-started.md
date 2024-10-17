@@ -150,7 +150,7 @@ import TabItem from '@theme/TabItem';
 
    Debian/Ubuntu Based OSes:
    ```bash
-   nano /etc/nginx/sites-avaliable/ctrlpanel.conf
+   nano /etc/nginx/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
@@ -229,7 +229,7 @@ import TabItem from '@theme/TabItem';
    }
    ```
 
-   ### Enable Configuration
+   **<font size="5">Enable Configuration</font>**
 
    The last step is to enable the NGINX configuration. To do that, we have to restart it.
 
@@ -256,7 +256,7 @@ import TabItem from '@theme/TabItem';
 
    Debian/Ubuntu Based OSes:
    ```bash
-   nano /etc/nginx/sites-avaliable/ctrlpanel.conf
+   nano /etc/nginx/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
@@ -314,7 +314,7 @@ import TabItem from '@theme/TabItem';
     }
    ```
 
-   ### Enable Configuration
+   **<font size="5">Enable Configuration</font>**
 
    The last step is to enable the NGINX configuration. To do that, we have to restart it.
 
@@ -341,7 +341,7 @@ import TabItem from '@theme/TabItem';
 
    Debian/Ubuntu Based OSes:
    ```bash
-   nano /etc/apache2/sites-avaliable/ctrlpanel.conf
+   nano /etc/apache2/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
@@ -382,7 +382,7 @@ import TabItem from '@theme/TabItem';
     </VirtualHost> 
    ```
 
-   ### Enable Configuration
+   **<font size="5">Enable Configuration</font>**
 
    Now that we've successfully created the configuration file for our web server, the last step is to restart it. **NOTE** This step can be skipped if your OS is based off of RHEL, Rocky Linux, or AlmaLinux.
 
@@ -406,7 +406,7 @@ import TabItem from '@theme/TabItem';
 
    Debian/Ubuntu Based OSes:
    ```bash
-   nano /etc/apache2/sites-avaliable/ctrlpanel.conf
+   nano /etc/apache2/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
@@ -434,7 +434,7 @@ import TabItem from '@theme/TabItem';
     </VirtualHost>
     ```
 
-   ### Enable Configuration
+   **<font size="5">Enable Configuration</font>**
 
    Now that we've successfully created the configuration file for our web server, the last step is to restart it. **NOTE** This step can be skipped if your OS is based off of RHEL, Rocky Linux, or AlmaLinux.
 
@@ -475,14 +475,16 @@ Once this is done, you should be able to access the dashboard via your web brows
 
 ### Crontab Configuration
 
-The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, run the following commands:
+The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, we first have to open it. To do so, run the following command:
 
 ```bash
 crontab -e
+```
+If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste in this:
+
+```bash
 * * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
-
-Paste the second line into the crontable, then save.
 
 ### Create Queue Worker
 
