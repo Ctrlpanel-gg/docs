@@ -5,7 +5,7 @@ sidebar_position: 5
 # Updating
 
 :::caution
-This guide is for updates 0.9.0 -> 0.9.X
+This guide is for updates 0.9.X -> 0.10.X
 If you update from 0.8.X or older, please follow our 0.9 update guide. (Version dropdown top right)
 :::
 
@@ -35,6 +35,13 @@ sudo composer install --no-dev --optimize-autoloader
 ```bash
 sudo php artisan migrate --seed --force
 ```
+
+:::caution
+Version 0.10.x introduces a new permissions system. You will need to seed the permissions table.
+```bash
+php artisan db:seed --class=PermissionsSeeder
+```
+:::
 
 ### Clear Compiled Template Cache
 
