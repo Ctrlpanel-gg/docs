@@ -12,12 +12,6 @@ You can check out the pterodactyl server creation page for more information abou
 
 <img src={useBaseUrl('/img/userguides/product-page.png')} />
 
-### Credits System
-Credits are charged hourly based on the monthly price you've configured (price / 30 / 24)
-This means that the price of your products won’t be charged right away when the user creates a server, but instead, the credits are reduced hourly—giving the user the option to cancel and create servers freely anytime.
-When the user runs out of credits, his server will automatically be suspended.
-
-
 ## Product Linking
 <img width="50%" height="50%" src={useBaseUrl('/img/userguides/product-linking-example.gif')} /><br/>
 Example of making a product for Minecraft servers.

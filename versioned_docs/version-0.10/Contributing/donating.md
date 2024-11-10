@@ -3,25 +3,25 @@ sidebar_position: 2
 ---
 
 # Donating
-Are you enjoying the ctrlpanel? Feeling generous? Well, help me and contributors purchase pizza to continue working on the ctrlpanel without empty stomachs!
+Love using ctrlpanel.gg? Support us to keep improving! 🌟 Enjoy perks like premium support & a unique Discord role! 💖 <br/>
+[Patreon](https://www.patreon.com/1day2die) | [Ko-fi](https://ko-fi.com/1day2die) | [GitHub Sponsors](https://github.com/sponsors/Ctrlpanel-gg)
 
-Your donations go a long way in helping us develop this ctrlpanel, but please don't feel obligated to.<br/>
+Your donations go a long way in helping us develop Ctrlpanel, but please don't feel obligated to.<br/>
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles
-**Ruby Supporter** €50,- + <br/>
-**Gold Supporter** €25,- + <br/>
-**Silver Supporter** €15,- + <br/>
-**Bronze Supporter** €5,- + <br/>
-_All Donators with a supporter role will also have access to a Donators Only channel_
+**Sapphire** >= 100 $/€<br/>
+**Ruby Supporter** >= 50 $/€<br/>
+**Gold Supporter** >= 25 $/€<br/>
+**Silver Supporter** >= 15 $/€<br/>
+**Bronze Supporter** >= 5 $/€ <br/>
+_All Donators with a supporter role will also have access to a Donators Only channel and premium support_
 
-Every person that donates above €25- will also get a special place in this document to advertise their site <br/>
-Ko-fi link: [https://ko-fi.com/1day2die](https://ko-fi.com/1day2die)
 _Please notify me when you've donated, so I can respond quicker :) **1Day2Die#6718**_
 
 ## Donators
 
-
+❤️ Ruby Supporter: **p47thiccbolt#4836**<br/>
 ❤️ Ruby Supporter: **BolverBlitz#4881**<br/>
 ❤️ Ruby Supporter: **ccrs#4120**<br/>
 ❤️ Ruby Supporter: **Timo#4042**<br/>

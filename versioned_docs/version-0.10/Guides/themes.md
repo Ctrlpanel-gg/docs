@@ -19,7 +19,7 @@ You should always follow the instructions of the theme you want to install.
  
 Most themes are installed by placing files in the `/themes` and `/public/themes` folders.  
 
-Then you can select the theme in your `settings > system > design`
+Then you can select the theme in your `settings > general > theme`
 <img src={useBaseUrl('/img/userguides/themes-page.png')} />
 
 ## Create a theme
