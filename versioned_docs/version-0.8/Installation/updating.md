@@ -4,9 +4,19 @@ sidebar_position: 5
 
 # Updating
 
-:::info
+:::warning
 
-Users, folders and filenames have been renamed from "dashboard" ⇒ "controlpanel". Be aware that the provided commands may not fit your installation. Please change the users, folder and filenames for the commands corresponding to your installation.
+Make sure you upgrade your PHP version to 8.3 before updating to v0.9 or higher.
+```bash
+apt -y install php8.3 php8.3-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip}
+apt -y install php8.3-intl
+```
+And don´t forget to change the php version in your nginx/apache config files.
+```bash
+cd /etc/nginx/sites-available/
+nano controlpanel.conf
+systemctl restart nginx
+```
 
 :::
 
@@ -27,9 +37,19 @@ sudo chmod -R 755 /var/www/controlpanel
 
 ### Update Dependencies
 
+:::caution
+Please delete your old vendor folder before running the composer command.
+```bash
+sudo rm -rf /var/www/controlpanel/vendor
+```
+:::
+
+:::info
+Make sure composer actualy uses PHP8.3 and not 7.4!
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
+:::
 
 ### Updating the Database
 

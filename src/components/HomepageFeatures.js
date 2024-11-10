@@ -5,29 +5,28 @@ import styles from './HomepageFeatures.module.css';
 const FeatureList = [
   {
     title: 'Easy to Use',
-    Svg: require('../../static/img/fullscreen.svg').default,
+    Svg: require('../../static/img/1.svg').default,
     description: (
       <>
-        Everything you need to see in one View. Nice, sleek and clean
+        Ctrlpanel is a software designed to be easy for you and your clients to easily manage your Pterodactyl servers.
       </>
     ),
   },
   {
-    title: 'Simple but powerful Webinterface',
-    Svg: require('../../static/img/servers.svg').default,
+    title: 'Simple but Powerful',
+    Svg: require('../../static/img/2.svg').default,
     description: (
       <>
-For your clients to use. Using this Panel, its just a 2 minute Route from Paying to Playing
+Perfect for your clients. Your clients can buy a server within 2 minutes. That's what we call efficiency. 
       </>
     ),
   },
   {
     title: 'Customizable and feature-packed',
-    Svg: require('../../static/img/custom.svg').default,
+    Svg: require('../../static/img/3.svg').default,
     description: (
       <>
-         With Invoices, Discord Integration, multiple payment-gateways and full translation to multiple languages you are ready to start your hosting company.
-          With the support of our great community, we offer a variety of themes for you to use
+         This is ready for anyone to use for their hosting company. It comes packed with many features including invoices, Discord integration, multiple different payment options and full translation in multiple languages. Our community also makes lots of themes and addons that will enhance your clients' experience with CtrlPanel.
       </>
     ),
   },

@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 module.exports = {
   title: "Ctrlpanel.gg",
   tagline:
-    "Ctrlpanel's Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and lots of customization",
+    "Ctrlpanel's Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and customization to fit your needs.",
   url: "https://ctrlpanel.gg",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -16,9 +16,9 @@ module.exports = {
   trailingSlash: false,
   themeConfig: {
     navbar: {
-      title: "Ctrlpanel (CPGG)",
+      title: "CtrlPanel",
       logo: {
-        alt: "Ctrlpanel logo",
+        alt: "CtrlPanel logo",
         src: "img/controlpanel.png",
       },
       items: [
@@ -31,7 +31,7 @@ module.exports = {
 
         {
           href: "https://market.ctrlpanel.gg",
-          label: "Extention Hub",
+          label: "Theme / Extension Hub",
           position: "left",
         },
         {
@@ -92,7 +92,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Controlpanel.gg group. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Ctrlpanel.gg. Built with Docusaurus. Ctrlpanel.gg is not affiliated with Discord.`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -106,7 +106,7 @@ module.exports = {
         docs: {
           lastVersion: "0.10",
           // Please change this to your repo.
-          editUrl: "https://github.com/ControlPanel-gg/docs/tree/main/",
+          editUrl: "https://github.com/Ctrlpanel-gg/panel",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
