@@ -26,17 +26,23 @@ sudo chmod -R 755 /var/www/controlpanel
 
 ### Update Dependencies
 
+:::caution Important Step for Updating from Version 0.9.X to 1.0
+```bash
+sudo rm -rf /var/www/controlpanel/vendor
+```
+:::
+
 ```bash
 sudo composer install --no-dev --optimize-autoloader
 ```
 
 ### Updating the Database
-
+Make sure you have a _working_ backup of your database. A Guide can be found [here](docs/Guides/backups)
 ```bash
 sudo php artisan migrate --seed --force
 ```
 
-:::caution
+:::caution Important Step for Updating from Version 0.9.X to 1.0
 Version 1.0 introduces a new permissions system. You will need to seed the permissions table.
 ```bash
 php artisan db:seed --class=PermissionsSeeder
@@ -78,8 +84,5 @@ sudo php artisan up
 ```
 
 ## Disclaimer
-
-Warning, The dashboard is currently in pre-release and may contain some bugs 🐛 <br/>
+If you notice any bugs 🐛 or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/ControlPanel-gg/dashboard/issues/new/choose).<br /> **For any major security risk, contact** _1day2die_ on Discord<br/>
 Use This dashboard at your own risk.
-
-If you notice any bugs or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/ControlPanel-gg/dashboard/issues/new/choose)<br /> **for any major security risk, contact** _1Day2Die#6718_
