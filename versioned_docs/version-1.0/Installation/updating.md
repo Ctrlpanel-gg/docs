@@ -5,7 +5,7 @@ sidebar_position: 5
 # Updating
 
 :::caution
-This guide is for updates 0.9.X -> 0.10.X
+This guide is for updates 0.9.X -> 1.0
 If you update from 0.8.X or older, please follow our 0.9 update guide which can be found [here](/docs/0.9/Installation/updating)
 :::
 
@@ -37,7 +37,7 @@ sudo php artisan migrate --seed --force
 ```
 
 :::caution
-Version 0.10.x introduces a new permissions system. You will need to seed the permissions table.
+Version 1.0 introduces a new permissions system. You will need to seed the permissions table.
 ```bash
 php artisan db:seed --class=PermissionsSeeder
 ```

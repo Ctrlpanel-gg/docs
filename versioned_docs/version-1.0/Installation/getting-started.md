@@ -11,12 +11,6 @@ This guide requires you to already have a working pterodactyl installation.
 
 :::
 
-:::warning
-
-Ctrlpanel is still being developed to this day! We have not released our v1.0.0 just yet. You may encounter bugs. If you do, please report them [here](https://github.com/ctrlpanel-gg/panel/issues)
-
-:::
-
 import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
