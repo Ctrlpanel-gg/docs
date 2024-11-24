@@ -4,12 +4,6 @@ sidebar_position: 3
 
 # Additional Configuration
 
-:::info
-
-The StripeWebhook URL has been changed in `v0.9` due to the new extension support. Read the Stripe section below, it contains the new URL.
-
-:::
-
 import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
@@ -24,27 +18,28 @@ for the redirect URI, you have to use YOUR_WEBSITE_URL + /auth/callback (example
 If you would like to automatically force new users to join your Discord server after they have verified, you will need to set up a Discord bot. This can be an already existing Discord bot in your server. If your bot isn't in the server yet, add it by using this: `https://discord.com/api/oauth2/authorize?client_id=<CLIENT_ID_HERE>&permissions=8&scope=bot`. Replace the `<CLIENT_ID_HERE>` with your bots client ID.
 
 ### Setup Discord OAuth2
-1. Head to `https://YOUR_DOMAIN_HERE/admin/settings#misc` (change `YOUR_DOMAIN_HERE` to your dashboard domain)
+1. Head to `https://YOUR_DOMAIN_HERE/admin/settings#Discord` (change `YOUR_DOMAIN_HERE` to your dashboard domain)
 2. On the Discord section put in the following:
-- Your bot's client ID
-- Your bot's client secret
-- Your bot's token
+- Your bot's Token
+- Your bot's Client ID
+- Your bot's Client Secret
 - Your Discord Guild ID (optional, but useful if you want the user to be added to your server)
-- Your Discord Invite (optional, but useful if you want the user to be added to your server)
-- Your Discord Role ID (optional, but useful if you want the verified user to recieve a role on your server after verifying)
-3. Then press the "Submit" button to save.
+- Your Discord Invite URL (optional, but useful if you want the user to be added to your server)
+- Your Discord Role ID (optional, but useful if you want the verified user to receive a role on your server after verifying)
+- Your Discord Role ID on Purchase (optional, but useful if you want the user to get a role on your server after purchase)
+3. Then press the "Save" button to save.
 
 That's it! The Dashboard can now use your bot to make API calls to Discord to place new users into your Discord server. Your bot will not come online as we only use it to make API calls when someone verifies, you can still use your bot as you normally would as it won't affect the bot itself.
 
 ### reCAPTCHA v2
 
-Go to `https://<your.ctrlpanel.gg>/admin/settings#misc`
+Go to `https://<your.ctrlpanel.gg>/admin/settings#General`
 
 Ctrlpanel uses visible reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
 
 You can generate your own keys in the [admin console](https://www.google.com/recaptcha/admin/create)
 
-Go to the Admin Misc settings and change the `reCAPTCHA Site-Key` and `reCAPTCHA Secret-Key`. Once you've updated it, press `Submit`. If it works correctly then below the reCAPTCHA settings under `Your reCAPTCHA`, you should be able to see the reCAPTCHA without the `This reCAPTCHA is for testing purposes only. Please report to the site adminif you are seeing this`.
+Go to the Admin Misc settings and change the `reCAPTCHA Site Key` and `reCAPTCHA Secret Key`. Once you've updated it, press `Save`.
 
 **FAQ for reCAPTCHA**<br/>
 
@@ -56,12 +51,12 @@ Go to the Admin Misc settings and change the `reCAPTCHA Site-Key` and `reCAPTCHA
 To send out notifications and mails, you will need to configure your mail variables correctly.
 You can use a free mail server; for example, from [Mailjet](https://www.mailjet.com/). You can also install your own mail server using, for example, [Mailcow](https://mailcow.email/)
 
-Go to `https://<your.ctrlpanel.gg>/admin/settings#misc` and enter your mail credentials that you recieved from whichever provider.
+Go to `https://<your.ctrlpanel.gg>/admin/settings#Mail` and enter your mail credentials that you recieved from whichever provider.
 
 Once set run these 2 commands to ensure that emails work:
 ```bash
-php /var/www/controlpanel/artisan config:clear
-php /var/www/controlpanel/artisan queue:restart
+php /var/www/ctrlpanel/artisan config:clear
+php /var/www/ctrlpanel/artisan queue:restart
 ```
 
 To test the mail configuration, you can go to the Users tab and click the notify button top right.
@@ -102,4 +97,4 @@ To see the list of avaliable payment options with Stripe, read their documentati
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
 
-Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/4Y6HjD2uyU).
+Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/ctrlpanel-gg-787829714483019826).
