@@ -516,15 +516,6 @@ sudo systemctl enable --now ctrlpanel.service
 ```
 
 #### Navigate to the installer
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
-:::info
-
-If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main installer page, then just ignore it. This is due to the specifics of checking version compatibility. PHP8.3 has been tested and works stably!
-
-<img src={useBaseUrl('/img/userguides/installer-error.png')} />
-
-:::
 
 To begin installation, go to `https://YOUR_DOMAIN_HERE.com` and follow the installer instructions.
 
