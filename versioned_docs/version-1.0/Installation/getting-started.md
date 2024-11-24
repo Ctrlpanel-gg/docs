@@ -141,6 +141,8 @@ import TabItem from '@theme/TabItem';
    ```bash
    rm /etc/nginx/sites-enabled/default
    ```
+   > **Note:** If you see the error that there is no such file, then most likely you have already deleted it when installing Pterodactyl
+
    Once done, we now have to open the NGINX configuration file. This depends on your OS.
 
    Debian/Ubuntu Based OSes:
