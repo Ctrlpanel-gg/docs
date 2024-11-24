@@ -54,7 +54,7 @@ You need to install this, use the appropriate PHP version (php -v)
 Extra dependency used for handling currency's
 
 ```bash
-apt -y install php8.3-intl
+apt -y install php8.3-{intl,redis}
 ```
 
 ### Installing Composer

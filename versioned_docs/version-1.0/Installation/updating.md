@@ -33,6 +33,7 @@ sudo rm -rf /var/www/controlpanel/vendor
 :::
 
 ```bash
+apt install php8.3-redis
 sudo composer install --no-dev --optimize-autoloader
 ```
 
