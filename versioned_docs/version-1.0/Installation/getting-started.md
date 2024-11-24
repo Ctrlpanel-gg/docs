@@ -11,12 +11,6 @@ This guide requires you to already have a working pterodactyl installation.
 
 :::
 
-:::warning
-
-Ctrlpanel is still being developed to this day! We have not released our v1.0.0 just yet. You may encounter bugs. If you do, please report them [here](https://github.com/ctrlpanel-gg/panel/issues)
-
-:::
-
 import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} />
@@ -530,7 +524,7 @@ If you see the error **"php version: 8.3.6 (minimum required 8.1)"** on the main
 
 :::
 
-To begin installation, go to `https://YOUR_DOMAIN_HERE/install` and follow the installer instructions.
+To begin installation, go to `https://YOUR_DOMAIN_HERE.com` and follow the installer instructions.
 
 If you encounter problems with the email setup, you can skip it and set it up later.
 

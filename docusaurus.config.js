@@ -104,7 +104,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "0.9.1",
+          lastVersion: "1.0",
           // Please change this to your repo.
           editUrl: "https://github.com/Ctrlpanel-gg/panel",
         },
