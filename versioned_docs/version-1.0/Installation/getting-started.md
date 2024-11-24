@@ -17,7 +17,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.3` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, and `fpm` if you are planning to use NGINX.
+- PHP `8.2` or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, `intl` and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - A web server (Apache, NGINX, etc.)
 - `curl`
@@ -74,7 +74,7 @@ The first step in this process is to create the folder where the panel will live
 newly created folder. Below is an example of how to perform this operation.
 
 ```bash
-mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
+mkdir -p /var/www/ctrlpanel && cd /var/www/ctrlpanel
 ```
 
 ```bash
@@ -93,9 +93,9 @@ This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your passwo
 
 ```bash
 mysql -u root -p
-CREATE DATABASE controlpanel;
-CREATE USER 'controlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
-GRANT ALL PRIVILEGES ON controlpanel.* TO 'controlpaneluser'@'127.0.0.1';
+CREATE DATABASE ctrlpanel;
+CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 EXIT;
 ```
@@ -168,7 +168,7 @@ import TabItem from '@theme/TabItem';
        listen 443 ssl http2;
        server_name YOUR.DOMAIN.HERE;
    
-       root /var/www/controlpanel/public;
+       root /var/www/ctrlpanel/public;
        index index.php;
    
        access_log /var/log/nginx/ctrlpanel.app-access.log;
@@ -180,12 +180,12 @@ import TabItem from '@theme/TabItem';
    
        sendfile off;
    
-       # SSL Configuration - Replace any YOUR.DOMAIN.HERE with the domain you're     using for         your Ctrlpanel setup.
+       # SSL Configuration - Replace any YOUR.DOMAIN.HERE with the domain you're using for your Ctrlpanel setup.
        ssl_certificate /etc/letsencrypt/live/YOUR.DOMAIN.HERE/fullchain.pem;
        ssl_certificate_key /etc/letsencrypt/live/YOUR.DOMAIN.HERE/privkey.pem;
        ssl_session_cache shared:SSL:10m;
        ssl_protocols TLSv1.2 TLSv1.3;
-       ssl_ciphers           "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-     CM-SHA38     4:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20       POLY1305  :DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
+       ssl_ciphers "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
        ssl_prefer_server_ciphers on;
    
        # See https://hstspreload.org/ before uncommenting the line below.
@@ -267,7 +267,7 @@ import TabItem from '@theme/TabItem';
         listen 80;
         server_name YOUR.DOMAIN.HERE;
     
-        root /var/www/controlpanel/public;
+        root /var/www/ctrlpanel/public;
         index index.html index.htm index.php;
         charset utf-8;
     
@@ -359,14 +359,14 @@ import TabItem from '@theme/TabItem';
     <VirtualHost *:443>
         # Replace YOUR.DOMAIN.HERE with your domain.
         ServerName YOUR.DOMAIN.HERE
-        DocumentRoot "/var/www/controlpanel/public"
+        DocumentRoot "/var/www/ctrlpanel/public"
     
         AllowEncodedSlashes On
     
         php_value upload_max_filesize 100M
         php_value post_max_size 100M
     
-        <Directory "/var/www/controlpanel/public">
+        <Directory "/var/www/ctrlpanel/public">
             Require all granted
             AllowOverride all
         </Directory>
@@ -415,14 +415,14 @@ import TabItem from '@theme/TabItem';
     <VirtualHost *:80>
         # Replace YOUR.DOMAIN.HERE with your domain.
         ServerName YOUR.DOMAIN.HERE
-        DocumentRoot "/var/www/controlpanel/public"
+        DocumentRoot "/var/www/ctrlpanel/public"
         
         AllowEncodedSlashes On
         
         php_value upload_max_filesize 100M
         php_value post_max_size 100M
         
-        <Directory "/var/www/controlpanel/public">
+        <Directory "/var/www/ctrlpanel/public">
             AllowOverride all
             Require all granted
         </Directory>
@@ -450,15 +450,15 @@ use them correctly.
 
 ```bash
 # If using NGINX or Apache (not on CentOS):
-chown -R www-data:www-data /var/www/controlpanel/
+chown -R www-data:www-data /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 # If using NGINX on CentOS:
-chown -R nginx:nginx /var/www/controlpanel/
+chown -R nginx:nginx /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 # If using Apache on CentOS
-chown -R apache:apache /var/www/controlpanel/
+chown -R apache:apache /var/www/ctrlpanel/
 chmod -R 755 storage/* bootstrap/cache/
 
 ****
@@ -478,7 +478,7 @@ crontab -e
 If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste in this:
 
 ```bash
-* * * * * php /var/www/controlpanel/artisan schedule:run >> /dev/null 2>&1
+* * * * * php /var/www/ctrlpanel/artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Create Queue Worker
@@ -500,7 +500,7 @@ Description=Ctrlpanel Queue Worker
 User=www-data
 Group=www-data
 Restart=always
-ExecStart=/usr/bin/php /var/www/controlpanel/artisan queue:work --sleep=3 --tries=3
+ExecStart=/usr/bin/php /var/www/ctrlpanel/artisan queue:work --sleep=3 --tries=3
 StartLimitBurst=0
 
 [Install]
