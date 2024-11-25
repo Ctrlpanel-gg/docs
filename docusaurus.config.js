@@ -50,7 +50,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "discord.gg/ctrlpanel-gg-787829714483019826",
+          href: "https://discord.gg/ctrlpanel-gg-787829714483019826",
           label: "Discord",
           position: "right",
         },
@@ -78,7 +78,7 @@ module.exports = {
           items: [
             {
               label: "Discord",
-              href: "discord.gg/ctrlpanel-gg-787829714483019826",
+              href: "https://discord.gg/ctrlpanel-gg-787829714483019826",
             },
           ],
         },
