@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 # Contributing
+
 When contributing to this repository, please go through the open issues to see if you can contribute to something. Suppose you want to contribute something that is not in the issues; you can make an issue and wait for a response from the dev team.
 
 Please note, we have a code of conduct; please follow it in all your interactions with the project.
@@ -16,6 +17,7 @@ Please note, we have a code of conduct; please follow it in all your interaction
 ## Code of Conduct
 
 ### Our Pledge
+
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ### Coding Style
@@ -23,6 +25,7 @@ In the interest of fostering an open and welcoming environment, we as contributo
 We are following the PSR12 code standard for PHP.
 
 ### Our Standards
+
 Examples of behavior that contributes to creating a positive environment include:
 
 - Using welcoming and inclusive language

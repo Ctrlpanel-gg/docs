@@ -3,6 +3,7 @@ sidebar_position: 2
 ---
 
 # Donating
+
 Love using ctrlpanel.gg? Support us to keep improving! 🌟 Enjoy perks like premium support & a unique Discord role! 💖 <br/>
 [Patreon](https://www.patreon.com/1day2die) | [Ko-fi](https://ko-fi.com/1day2die) | [GitHub Sponsors](https://github.com/sponsors/Ctrlpanel-gg)
 
@@ -10,6 +11,7 @@ Your donations go a long way in helping us develop Ctrlpanel, but please don't f
 I will try to mention any donation above €1- in our Discord server.
 
 ## Donator Roles
+
 **Sapphire** >= 100 $/€<br/>
 **Ruby Supporter** >= 50 $/€<br/>
 **Gold Supporter** >= 25 $/€<br/>
