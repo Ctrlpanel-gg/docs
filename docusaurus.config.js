@@ -11,7 +11,7 @@ module.exports = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/controlpanel.ico",
-  organizationName: "ControlPanel-gg", // Usually your GitHub org/user name.
+  organizationName: "CtrlPanel-gg", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
   trailingSlash: false,
   themeConfig: {
@@ -50,7 +50,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "https://discord.gg/4Y6HjD2uyU",
+          href: "discord.gg/ctrlpanel-gg-787829714483019826",
           label: "Discord",
           position: "right",
         },
@@ -78,7 +78,7 @@ module.exports = {
           items: [
             {
               label: "Discord",
-              href: "https://discord.gg/4Y6HjD2uyU",
+              href: "discord.gg/ctrlpanel-gg-787829714483019826",
             },
           ],
         },
@@ -106,7 +106,7 @@ module.exports = {
         docs: {
           lastVersion: "1.0",
           // Please change this to your repo.
-          editUrl: "https://github.com/Ctrlpanel-gg/panel",
+          editUrl: "https://github.com/Ctrlpanel-gg/docs/tree/main",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
