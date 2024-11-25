@@ -7,7 +7,7 @@ sidebar_position: 5
 :::caution
 This guide is for updates 1.0.0 -> 1.0.X
 
-If you want to upgrade from version 0.9.X to 1.0.1, use [this](/docs/1.0/Installation/updating) guide
+If you want to upgrade from version 0.9.X to 1.0.1, use 1.0 docs (dropdown menu on the top right)
 :::
 
 ## Enable Maintenance Mode
