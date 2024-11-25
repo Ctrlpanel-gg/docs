@@ -17,7 +17,7 @@ import TOCInline from '@theme/TOCInline';
 
 ## Dependencies
 
-- PHP `8.2` or `8.3` (recommended) with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, `intl` and `fpm` if you are planning to use NGINX.
+- PHP `8.2`, `8.3` (recommended) or `8.4` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, `intl` and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
 - A web server (Apache, NGINX, etc.)
 - `curl`
