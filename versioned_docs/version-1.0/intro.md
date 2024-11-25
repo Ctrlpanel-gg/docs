@@ -8,14 +8,16 @@ CtrlPanel's Dashboard is a management application designed to provide clients wi
 
 CtrlPanel offers a user-friendly and free billing solution tailored for both new and experienced hosting providers. With extensive customization options and Discord OAuth integration, it creates a seamless link between your Discord server and the dashboard for an enhanced user experience.
 
-
 ## Installation
+
 You can find our guide for installation [here](Installation/getting-started).
 
 ## Third-parties
+
 You can find custom themes and programs from our [Extension Hub](https://market.ctrlpanel.gg/) those are developed by third-parties.
 
 ## Support
+
 Have a few questions? Feel free to [join](https://discord.gg/ctrlpanel-gg-787829714483019826) our support Discord server.
 
 We also announce every single release in our Discord and we would love to hear your feedback!

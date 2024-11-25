@@ -118,7 +118,6 @@ This is a basic NGINX configuration. Please replace any `<domain>` placeholders 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
   <TabItem value="nginx-ssl" label="Nginx With SSL" default>
 
@@ -129,11 +128,13 @@ import TabItem from '@theme/TabItem';
    sudo apt install certbot
    sudo apt install python3-certbot-nginx
    ```
+
    Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command below. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
 
    ```bash
    certbot certonly --nginx -d YOUR.DOMAIN.HERE
    ```
+
    It will save all certificates to `/etc/letsencrypt/live/YOUR.DOMAIN.HERE/`.
 
    Now that SSL is ready to be used, let's setup NGINX. To do so, run the following command below to get rid of NGINX's default configuration and to avoid any other errors.
@@ -141,16 +142,19 @@ import TabItem from '@theme/TabItem';
    ```bash
    rm /etc/nginx/sites-enabled/default
    ```
+
    > **Note:** If you see the error that there is no such file, then most likely you have already deleted it when installing Pterodactyl
 
    Once done, we now have to open the NGINX configuration file. This depends on your OS.
 
    Debian/Ubuntu Based OSes:
+
    ```bash
    nano /etc/nginx/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+
    ```bash
    nano /etc/nginx/conf.d/ctrlpanel.conf
    ```
@@ -249,14 +253,17 @@ import TabItem from '@theme/TabItem';
    ```bash
    rm /etc/nginx/sites-enabled/default
    ```
+
    Once done, we now have to open the NGINX configuration file. This depends on your OS.
 
    Debian/Ubuntu Based OSes:
+
    ```bash
    nano /etc/nginx/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+
    ```bash
    nano /etc/nginx/conf.d/ctrlpanel.conf
    ```
@@ -334,14 +341,17 @@ import TabItem from '@theme/TabItem';
    ```bash
    a2dissite 000-default.conf
    ```
+
    Once done, we now have to open the NGINX configuration file. This depends on your OS.
 
    Debian/Ubuntu Based OSes:
+
    ```bash
    nano /etc/apache2/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+
    ```bash
    nano /etc/httpd/conf.d/ctrlpanel.conf
    ```
@@ -399,14 +409,17 @@ import TabItem from '@theme/TabItem';
    ```bash
    a2dissite 000-default.conf
    ```
+
    Once done, we now have to open the NGINX configuration file. This depends on your OS.
 
    Debian/Ubuntu Based OSes:
+
    ```bash
    nano /etc/apache2/sites-available/ctrlpanel.conf
    ```
 
    RHEL, CentOS, Rocky Linux, or AlmaLinux based OSes:
+
    ```bash
    nano /etc/httpd/conf.d/ctrlpanel.conf
    ```
@@ -477,6 +490,7 @@ The first thing we need to do is create a new cron job that runs every minute to
 ```bash
 crontab -e
 ```
+
 If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste in this:
 
 ```bash
