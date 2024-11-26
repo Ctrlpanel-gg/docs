@@ -183,6 +183,14 @@ mysql -u root -p ctrlpanel < /var/www/ctrlpanel/transfer.sql
 
 #### Update user privileges
 
+Enter MySQL shell
+
+```bash
+mysql -u root -p
+```
+
+And run the following SQL commands:
+
 ```sql
 GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
