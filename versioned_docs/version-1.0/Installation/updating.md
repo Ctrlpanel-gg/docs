@@ -167,8 +167,8 @@ mysql -u root -p
 > Please change the `USE_YOUR_OWN_PASSWORD` part to your password. Also, 127.0.0.1 is for localhost, сhange this if the database is on a separate server.
 
 ```sql
-CREATE DATABASE ctrlpanel;
 CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+CREATE DATABASE ctrlpanel;
 GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 EXIT;
