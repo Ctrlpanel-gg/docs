@@ -310,6 +310,14 @@ nginx -t
 systemctl restart nginx
 ```
 
+### Storage Linking
+
+Run this command to fix the symlink of storage, otherwise the display of logos and other images will not work for you
+
+```bash
+php artisan storage:link
+```
+
 ## Updating PHP version
 
 CtrlPanel 1.0.0 has been updated to Laravel 11, which requires a minimum version of PHP 8.2. We will help you upgrade your used version of php to 8.3. It will not take much time, provided that you are careful.
