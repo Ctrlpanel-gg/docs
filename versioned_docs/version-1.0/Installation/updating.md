@@ -404,7 +404,7 @@ sudo chmod -R 755 /var/www/ctrlpanel
 
 ## Update Dependencies
 
-:::caution Important Step for Updating from Version 0.9.X to 1.0
+:::caution Important Step for Updating from Version 0.9.X to 1.0.0
 
 ```bash
 sudo rm -rf /var/www/ctrlpanel/vendor
@@ -412,9 +412,16 @@ sudo rm -rf /var/www/ctrlpanel/vendor
 
 :::
 
+Reinstall composer packages
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+Make sure that you have the php-redis extension installed
+
 ```bash
 apt install php8.3-redis
-sudo composer install --no-dev --optimize-autoloader
 ```
 
 ## Updating the Database
