@@ -28,7 +28,7 @@ sudo chmod -R 755 /var/www/ctrlpanel
 ## Update Dependencies
 
 ```bash
-sudo composer install --no-dev --optimize-autoloader
+COMPOSER_ALLOW_SUPERUSER=1 sudo composer install --no-dev --optimize-autoloader
 ```
 
 ## Updating the Database
