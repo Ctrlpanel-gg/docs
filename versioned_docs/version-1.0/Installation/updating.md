@@ -167,8 +167,8 @@ mysql -u root -p
 > Please change the `USE_YOUR_OWN_PASSWORD` part to your password. Also, 127.0.0.1 is for localhost, сhange this if the database is on a separate server.
 
 ```sql
-CREATE DATABASE ctrlpanel;
 CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+CREATE DATABASE ctrlpanel;
 GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 EXIT;
@@ -182,6 +182,14 @@ mysql -u root -p ctrlpanel < /var/www/ctrlpanel/transfer.sql
 ```
 
 #### Update user privileges
+
+Enter MySQL shell
+
+```bash
+mysql -u root -p
+```
+
+And run the following SQL commands:
 
 ```sql
 GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
@@ -302,6 +310,14 @@ nginx -t
 systemctl restart nginx
 ```
 
+### Storage Linking
+
+Run this command to fix the symlink of storage, otherwise the display of logos and other images will not work for you
+
+```bash
+php artisan storage:link
+```
+
 ## Updating PHP version
 
 CtrlPanel 1.0.0 has been updated to Laravel 11, which requires a minimum version of PHP 8.2. We will help you upgrade your used version of php to 8.3. It will not take much time, provided that you are careful.
@@ -381,14 +397,15 @@ Congratulations! Everything is ready, you can continue updating **:3**
 ## Pulling the New Files
 
 ```bash
+sudo git fetch origin
 sudo git stash
-sudo git pull
+sudo git reset --hard origin/main
 sudo chmod -R 755 /var/www/ctrlpanel
 ```
 
 ## Update Dependencies
 
-:::caution Important Step for Updating from Version 0.9.X to 1.0
+:::caution Important Step for Updating from Version 0.9.X to 1.0.0
 
 ```bash
 sudo rm -rf /var/www/ctrlpanel/vendor
@@ -396,9 +413,16 @@ sudo rm -rf /var/www/ctrlpanel/vendor
 
 :::
 
+Reinstall composer packages
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+Make sure that you have the php-redis extension installed
+
 ```bash
 apt install php8.3-redis
-sudo composer install --no-dev --optimize-autoloader
 ```
 
 ## Updating the Database

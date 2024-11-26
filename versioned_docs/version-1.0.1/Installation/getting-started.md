@@ -91,10 +91,13 @@ continuing any further.
 To make a database and database user, you can follow this guide.
 This is for MariaDB. Please change the USE_YOUR_OWN_PASSWORD part to your password. Also, 127.0.0.1 is for localhost. Please have basic knowledge of Linux before attempting this. Use at your own responsibility.
 
-```bash
+```sql
+# Enter to MySQL shell
 mysql -u root -p
-CREATE DATABASE ctrlpanel;
+
+# Enter the following SQL commands
 CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+CREATE DATABASE ctrlpanel;
 GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
 FLUSH PRIVILEGES;
 EXIT;
