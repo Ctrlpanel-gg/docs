@@ -397,8 +397,9 @@ Congratulations! Everything is ready, you can continue updating **:3**
 ## Pulling the New Files
 
 ```bash
+sudo git fetch origin
 sudo git stash
-sudo git pull
+sudo git reset --hard origin/main
 sudo chmod -R 755 /var/www/ctrlpanel
 ```
 
