@@ -46,6 +46,11 @@ apt update
 
 # Install Dependencies
 apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git
+
+# Install Redis (Only Use If Installing On Separate System Where The Panel is Not Installed)
+apt -y install redis-server
+systemctl start redis-server
+systemctl status redis-server 
 ```
 
 ### Extra Dependency Used on this Dashboard
