@@ -33,11 +33,11 @@ If you would like to automatically force new users to join your Discord server a
 
 That's it! The Dashboard can now use your bot to make API calls to Discord to place new users into your Discord server. Your bot will not come online as we only use it to make API calls when someone verifies, you can still use your bot as you normally would as it won't affect the bot itself.
 
-### reCAPTCHA v2
+### reCAPTCHA
 
 Go to `https://<your.ctrlpanel.gg>/admin/settings#General`
 
-Ctrlpanel uses visible reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
+Ctrlpanel uses reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
 
 You can generate your own keys in the [admin console](https://www.google.com/recaptcha/admin/create)
 
@@ -91,7 +91,7 @@ To setup Stripe, go to the Developer page and click on API Keys. You only need t
 
 Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
 To do so, click on Webhooks and add an endpoint.
-The endpoint route would look something like this: `https://<your.ctrlpanel.gg>/extensions/payment/StripeWebhooks`. Change the `<your.ctrlpanel.gg>` to your Ctrlpanel setup link.
+The endpoint route would look something like this: `https://<your.ctrlpanel.gg>/payment/StripeWebhooks`. Change the `<your.ctrlpanel.gg>` to your Ctrlpanel setup link.
 Choose the `payment_intent.succeded` event to be sent to your WebhookRoute.
 After the webhook creation, you need to get the endpoint secret and copy paste it to your Ctrlpanel payment settings. The endpoint secret can be found in the Webhook Overview page.
 

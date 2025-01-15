@@ -26,7 +26,7 @@ function HomepageHeader() {
           <div>
             <Link
               className="button button--secondary button--lg"
-              to="https://market.ctrlpanel.gg/resources/">
+              to="https://market.ctrlpanel.gg/">
               Theme / Extension Hub ️🛒
             </Link>
           </div>
@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="ControlPanel's Dashboard is a free and open-source management panel for pterodactyl with credit based billing and customization.">
+      description="CtrlPanel's Dashboard is a free and open-source management panel for pterodactyl with credit based billing and customization.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

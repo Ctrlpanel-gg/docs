@@ -19,6 +19,7 @@ import TOCInline from '@theme/TOCInline';
 
 - PHP `8.2`, `8.3` (recommended) or `8.4` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `redis`, `intl` and `fpm` if you are planning to use NGINX.
 - MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
+- Redis (`redis-server`)
 - A web server (Apache, NGINX, etc.)
 - `curl`
 - `git`
@@ -38,6 +39,10 @@ apt -y install software-properties-common curl apt-transport-https ca-certificat
 # Add additional repositories for PHP (Ubuntu 20.04 and Ubuntu 22.04)
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
+# Add Redis official APT repository
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
 # MariaDB repo setup script (Ubuntu 20.04)
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 
@@ -45,7 +50,13 @@ curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 apt update
 
 # Install Dependencies
-apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git
+apt -y install php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git redis-server
+```
+
+If you are using redis for your system, you will want to make sure to enable that it will start on boot. You can do that by running the following command:
+
+```bash
+sudo systemctl enable --now redis-server
 ```
 
 ### Extra Dependency Used on this Dashboard
