@@ -3,9 +3,9 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "Ctrlpanel.gg",
+  title: "CtrlPanel.gg",
   tagline:
-    "Ctrlpanel's Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and customization to fit your needs.",
+    "CtrlPanel's Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and customization to fit your needs.",
   url: "https://ctrlpanel.gg",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -104,7 +104,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "1.0",
+          lastVersion: "1.0.1",
           // Please change this to your repo.
           editUrl: "https://github.com/Ctrlpanel-gg/docs/tree/main",
         },
