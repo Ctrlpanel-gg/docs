@@ -94,9 +94,9 @@ git clone https://github.com/Ctrlpanel-gg/panel.git ./
 
 ### Creating a Storage Symlink
 
-_Laravel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+_CtrlPanel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
 
-To create this symlink, run the following command in the root of your Laravel project:
+To create this symlink, run the following command in the root of your CtrlPanel:
 
 ```bash
 php artisan storage:link
