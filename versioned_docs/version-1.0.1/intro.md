@@ -18,6 +18,6 @@ You can find custom themes and programs from our [Extension Hub](https://market.
 
 ## Support
 
-Have a few questions? Feel free to [join](https://discord.gg/ctrlpanel-gg-787829714483019826) our support Discord server.
+Have a few questions? Feel free to [join](https://discord.gg/ctrlpanel) our support Discord server.
 
 We also announce every single release in our Discord and we would love to hear your feedback!
