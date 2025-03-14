@@ -33,6 +33,16 @@ If you would like to automatically force new users to join your Discord server a
 
 That's it! The Dashboard can now use your bot to make API calls to Discord to place new users into your Discord server. Your bot will not come online as we only use it to make API calls when someone verifies, you can still use your bot as you normally would as it won't affect the bot itself.
 
+### Creating a Storage Symlink
+
+_CtrlPanel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+
+To create this symlink, run the following command in the root of your CtrlPanel:
+
+```bash
+php artisan storage:link
+```
+
 ### reCAPTCHA
 
 Go to `https://<your.ctrlpanel.gg>/admin/settings#General`
@@ -100,4 +110,4 @@ To see the list of avaliable payment options with Stripe, read their documentati
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
 
-Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/ctrlpanel-gg-787829714483019826).
+Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/ctrlpanel).

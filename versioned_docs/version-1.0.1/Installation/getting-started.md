@@ -44,7 +44,7 @@ curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyr
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
 # MariaDB repo setup script (Ubuntu 20.04)
-curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
 
 # Update repositories list
 apt update
@@ -90,6 +90,16 @@ mkdir -p /var/www/ctrlpanel && cd /var/www/ctrlpanel
 
 ```bash
 git clone https://github.com/Ctrlpanel-gg/panel.git ./
+```
+
+### Creating a Storage Symlink
+
+_CtrlPanel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+
+To create this symlink, run the following command in the root of your CtrlPanel:
+
+```bash
+php artisan storage:link
 ```
 
 ## Database Setup
