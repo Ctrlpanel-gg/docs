@@ -193,6 +193,15 @@ php artisan storage:link
 composer install --no-dev --optimize-autoloader
 ```
 
+### Creating a Storage Symlink
+
+_Laravel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+
+To create this symlink, run the following command in the root of your Laravel project:
+
+```bash
+php artisan storage:link
+```
 
 ### Set Permissions
 
