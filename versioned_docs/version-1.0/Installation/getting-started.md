@@ -545,7 +545,7 @@ sudo systemctl enable --now ctrlpanel.service
 
 #### Navigate to the installer
 
-To begin installation, go to `https://YOUR_DOMAIN_HERE.com` and follow the installer instructions.
+To begin installation, go to `https://YOUR_DOMAIN_HERE.com/installer` and follow the installer instructions.
 
 If you encounter problems with the email setup, you can skip it and set it up later.
 
