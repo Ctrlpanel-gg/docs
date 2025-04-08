@@ -123,6 +123,16 @@ For this, run the following command
 COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 ```
 
+## Creating a Storage Symlink
+
+_CtrlPanel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+
+To create this symlink, run the following command in the root of your CtrlPanel:
+
+```bash
+php artisan storage:link
+```
+
 ## Web Server Configuration
 
 This is a basic NGINX configuration. Please replace any `<domain>` placeholders with your domain name being used. Since NGINX is being used, we will put our configuration (`ctrlpanel.conf`) in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
@@ -545,7 +555,7 @@ sudo systemctl enable --now ctrlpanel.service
 
 #### Navigate to the installer
 
-To begin installation, go to `https://YOUR_DOMAIN_HERE.com` and follow the installer instructions.
+To begin installation, go to `https://YOUR_DOMAIN_HERE.com/installer` and follow the installer instructions.
 
 If you encounter problems with the email setup, you can skip it and set it up later.
 
