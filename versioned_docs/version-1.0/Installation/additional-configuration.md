@@ -100,4 +100,4 @@ To see the list of avaliable payment options with Stripe, read their documentati
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
 
-Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/ctrlpanel).
+Did something go wrong for you? We hope not, however it's very possible. If you need support, feel free to create a support thread on our [Discord](https://discord.gg/ctrlpanel-gg-787829714483019826).
