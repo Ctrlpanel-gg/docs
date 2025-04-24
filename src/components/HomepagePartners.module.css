@@ -6,15 +6,17 @@
 
 .partnerList {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .partnerLink {
   display: block;
   width: 468px;
-  margin: 0 auto;
+  margin: 0;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   will-change: box-shadow, transform;
 }
