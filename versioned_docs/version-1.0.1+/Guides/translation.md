@@ -5,7 +5,7 @@ sidebar_position: 3
 # Adding translation Files
 
 All translation Files can be found in this repo
-<https://github.com/1day2die/cpgg_lang>
+[https://github.com/1day2die/cpgg_lang](https://github.com/1day2die/cpgg_lang)
 
 ## How to Install
 

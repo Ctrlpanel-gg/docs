@@ -13,7 +13,7 @@ import TOCInline from '@theme/TOCInline';
 ### Setup Auth
 
 [How](http://faq.demostoreprestashop.com/faq.php?fid=133&pid=41) to get CLIENT_ID and CLIENT_SECRET <br />
-for the redirect URI, you have to use YOUR_WEBSITE_URL + /auth/callback (example: <https://demo.ctrlpanel.gg/auth/callback>)
+for the redirect URI, you have to use YOUR_WEBSITE_URL + /auth/callback (example: `https://demo.ctrlpanel.gg/auth/callback`)
 
 **Adding the Discord Bot**<br/>
 If you would like to automatically force new users to join your Discord server after they have verified, you will need to set up a Discord bot. This can be an already existing Discord bot in your server. If your bot isn't in the server yet, add it by using this: `https://discord.com/api/oauth2/authorize?client_id=<CLIENT_ID_HERE>&permissions=8&scope=bot`. Replace the `<CLIENT_ID_HERE>` with your bots client ID.

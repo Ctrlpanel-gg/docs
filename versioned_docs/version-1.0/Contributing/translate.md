@@ -15,7 +15,7 @@ _Now we need people who help us translate!_<br/>
 ## How to help
 
 The Translation list can be found here
-<https://crowdin.com/project/controlpanelgg>
+[https://crowdin.com/project/controlpanelgg](https://crowdin.com/project/controlpanelgg)
 
 On this Website you will see every language we need to translate and the current progress.
 Feel free to contribute or correct any language you know.

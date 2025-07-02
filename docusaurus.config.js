@@ -1,5 +1,8 @@
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
+
+
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -95,8 +98,9 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Ctrlpanel.gg. Built with Docusaurus. Ctrlpanel.gg is not affiliated with Discord.`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      additionalLanguages: ['bash', 'nginx', 'sql', 'conf'],
     },
   },
   presets: [
