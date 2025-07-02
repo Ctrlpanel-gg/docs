@@ -2,8 +2,6 @@ const {themes} = require('prism-react-renderer');
 const lightTheme = themes.github;
 const darkTheme = themes.dracula;
 
-
-
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "CtrlPanel.gg",
@@ -100,7 +98,7 @@ module.exports = {
     prism: {
       theme: lightTheme,
       darkTheme: darkTheme,
-      additionalLanguages: ['bash', 'nginx', 'sql', 'conf'],
+      additionalLanguages: ['bash', 'nginx', 'sql'],
     },
   },
   presets: [
