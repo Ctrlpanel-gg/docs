@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::warning
 
-Not all languages are fully translated. If you want to assist with translating, please read [this](/docs/Contributing/translate)
+Not all languages are fully translated. If you want to assist with translating, please read [this](/docs/0.9.x/Contributing/translate)
 :::
 
 All translated files can be found [here](https://github.com/1day2die/cpgg_lang/tree/main/translated)

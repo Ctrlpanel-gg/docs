@@ -7,8 +7,8 @@ sidebar_position: 5
 :::caution
 This guide is for updates 0.9.X -> 1.0.X
 
-If you update from 0.8.X or older, please follow our 0.9 update guide which can be found [here](/docs/0.9/Installation/updating).<br/>
-If you want to upgrade from version 1.0.X, use [this](/docs/Installation/updating) guide
+If you update from 0.8.X or older, please follow our 0.9 update guide which can be found [here](/docs/0.9.x/Installation/updating).<br/>
+If you want to upgrade from version 1.0.X, use [this](/docs/1.0.x/Installation/updating) guide
 :::
 
 ## Enable Maintenance Mode
@@ -427,7 +427,7 @@ apt install php8.3-redis
 
 ## Updating the Database
 
-Make sure you have a _working_ backup of your database. A Guide can be found [here](/docs/Guides/backups)
+Make sure you have a _working_ backup of your database. A Guide can be found [here](/docs/1.0.0/Guides/backups)
 
 ```bash
 sudo php artisan migrate --seed --force
