@@ -29,7 +29,6 @@ module.exports = {
           position: "left",
           label: "Documentation",
         },
-
         {
           href: "https://market.ctrlpanel.gg",
           label: "Theme / Extension Hub",
@@ -70,7 +69,7 @@ module.exports = {
           items: [
             {
               label: "Documentation",
-              to: "/docs/intro",
+              to: "/docs",
             },
           ],
         },

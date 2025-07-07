@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
 # Introduction
@@ -10,7 +11,7 @@ CtrlPanel offers a user-friendly and free billing solution tailored for both new
 
 ## Installation
 
-You can find our guide for installation [here](Installation/getting-started).
+You can find our guide for installation [here](/docs/1.0.x/Installation/getting-started).
 
 ## Third-parties
 
