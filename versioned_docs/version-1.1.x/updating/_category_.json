@@ -1,0 +1,10 @@
+{
+  "position": 4,
+  "label": "Updating",
+ "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Updating",
+    "description": "Using an older version of the panel? Want to upgrade to the latest release to get the newest security patches and features? Great!"
+  }
+}

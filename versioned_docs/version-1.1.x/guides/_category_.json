@@ -1,0 +1,10 @@
+{
+  "position": 3,
+  "label": "Guides",
+ "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Guides",
+    "description": "We'll walk you through useful guides. How to migrate your panel, backup your database, and much more"
+  }
+}
