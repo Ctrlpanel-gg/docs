@@ -49,21 +49,13 @@ curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
 apt update -y
 
 # Install Dependencies
-apt install -y php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git redis-server
+apt install -y php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip,intl,redis} mariadb-server nginx git redis-server
 ```
 
 If you are using redis for your system, you will want to make sure to enable that it will start on boot. You can do that by running the following command:
 
 ```bash
 systemctl enable --now redis-server
-```
-
-### Extra Dependency Installation
-
-CtrlPanel uses a few additional dependencies compared to Pterodactyl, so you'll need to install them to ensure everything works properly.
-
-```bash
-apt -y install php8.3-{intl,redis}
 ```
 
 <ComposerInstall />
