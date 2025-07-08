@@ -1,3 +1,100 @@
 ---
 sidebar_position: 2
 ---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import ExistingDatabase from './_parts/backup/existing-db.mdx';
+import FreshDatabase from './_parts/backup/fresh-db.mdx';
+
+# Backup & Restore
+
+All important data is stored in the database. This includes all servers, users, and other information.  
+It's important to keep backups of your database to ensure that you can restore your panel if something goes wrong.
+
+## How to create database backup
+
+You can use MySQL dump to backup your database.  
+This command will create a backup file in the `/var/www/ctrlpanel/` folder.
+
+```bash
+# If you use MySQL server
+mysqldump -u root -p ctrlpanel > /var/www/ctrlpanel/backup.sql
+# If you use MariaDB server
+mariadb-dump -u root -p ctrlpanel > /var/www/ctrlpanel/backup.sql
+```
+
+## How to restore database backup
+
+<Tabs groupId="db-state" queryString>
+  <TabItem value="existing" label="To existing database" >
+    <ExistingDatabase />
+  </TabItem>
+  <TabItem value="fresh" label="To fresh database (after migration)">
+    <FreshDatabase />
+  </TabItem>
+</Tabs>
+
+## Automatically backup your database
+
+You can automatically back up your database every day at midnight, for example.
+First, create a read only user for the database.
+
+```bash
+# Create backup directory
+mkdir -p /var/www/ctrlpanel/backups
+
+# If you use MySQL server
+mysql -u root -p
+# If you use MariaDB server
+mariadb -u root -p
+```
+
+```sql
+CREATE USER 'ctrlpanelbackupuser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+GRANT LOCK TABLES, SELECT ON ctrlpanel.* TO 'ctrlpanelbackupuser'@'127.0.0.1';
+FLUSH PRIVILEGES;
+exit
+```
+
+Then create a cronjob to run the following command at midnight.
+Run `crontab -e` and add the following line:
+
+```bash
+# If you use MySQL server
+0 0 * * * mysqldump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /var/www/ctrlpanel/backups-$(date +\%F).sql
+
+# if you use MariaDB server
+0 0 * * * mariadb-dump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /var/www/ctrlpanel/backups-$(date +\%F).sql
+```
+
+This will create a backup at `/var/www/ctrlpanel/backups-<date>.sql` every day at midnight.
+Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
+
+## Application key
+
+:::danger
+Never lose your `.env` file, more specifically, your `APP_KEY`. Without it, you'll lose almost all data that Laravel encrypts in the database using this key.
+:::
+
+### Backup the application key
+
+The app key is stored in the `APP_KEY` variable inside your `.env` file. You can either save the entire `.env` file (easier and recommended) or just the value of the variable separately.
+
+Open your `.env`:
+```bash
+nano /var/www/ctrlpanel/.env
+```
+
+Store file content and/or `APP_KEY` in a safe place!
+
+### Restore the application key
+
+After you have reinstalled the panel go back into the `.env`:
+
+```bash
+nano /var/www/ctrlpanel/.env
+```
+
+Now, paste your old file content or just `APP_KEY` variable.

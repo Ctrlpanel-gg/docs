@@ -1,0 +1,42 @@
+To restore a backup, you need a fresh database. If you already have a database, you can use the following command to drop it.
+
+:::warning
+Warning, this will delete all CtrlPanel related data! Make sure your database is backed up before continuing.
+
+```bash
+# If you use MySQL server
+mysql -u root -p ctrlpanel -e "DROP DATABASE ctrlpanel"
+# If you use MariaDB server
+mariadb -u root -p ctrlpanel -e "DROP DATABASE ctrlpanel"
+```
+:::
+
+First you need to create the database and reassign user permissions to it:
+
+```bash
+# If you use MySQL server
+mysql -u root -p
+# if you use MariaDB server
+mariadb -u root -p
+
+CREATE DATABASE ctrlpanel;
+GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
+FLUSH PRIVILEGES;
+exit
+```
+
+Now you can restore the backup:
+
+```bash
+# If you use MySQL
+mysql -u root -p ctrlpanel < /var/www/ctrlpanel/backup.sql
+# If you use MariaDB
+mariadb -u root -p ctrlpanel < /var/www/ctrlpanel/backup.sql
+```
+
+If you have a backup from an older version of CtrlPanel, you have to migrate the database to the latest version.
+
+```bash
+cd /var/www/ctrlpanel
+sudo php artisan migrate --seed --force
+```
