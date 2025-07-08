@@ -30,6 +30,7 @@ sudo php artisan down
 ### Pulling the New Files
 
 ```bash
+sudo git checkout 0.8.3.2
 sudo git stash
 sudo git pull
 sudo chmod -R 755 /var/www/controlpanel

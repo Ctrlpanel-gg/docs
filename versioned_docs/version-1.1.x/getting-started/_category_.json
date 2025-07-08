@@ -1,7 +1,7 @@
 {
   "position": 2,
   "label": "Getting started",
- "collapsed": false,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "title": "Getting started",

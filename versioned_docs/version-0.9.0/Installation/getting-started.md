@@ -87,7 +87,7 @@ mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
 ```
 
 ```bash
-git clone https://github.com/ControlPanel-gg/dashboard.git ./
+git clone -b 0.9 https://github.com/ControlPanel-gg/dashboard.git ./
 ```
 
 ## Basic Setup

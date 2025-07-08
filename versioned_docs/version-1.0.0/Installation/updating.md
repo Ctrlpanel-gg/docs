@@ -398,6 +398,7 @@ Congratulations! Everything is ready, you can continue updating **:3**
 
 ```bash
 sudo git fetch origin
+sudo git checkout 1.0.0
 sudo git stash
 sudo git reset --hard origin/main
 sudo chmod -R 755 /var/www/ctrlpanel

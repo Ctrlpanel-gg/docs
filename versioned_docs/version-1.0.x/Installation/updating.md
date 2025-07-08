@@ -20,6 +20,7 @@ sudo php artisan down
 ## Pulling the New Files
 
 ```bash
+sudo git checkout 1.0.8
 sudo git stash
 sudo git pull
 sudo chmod -R 755 /var/www/ctrlpanel

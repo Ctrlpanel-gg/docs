@@ -84,7 +84,7 @@ mkdir -p /var/www/controlpanel && cd /var/www/controlpanel
 ```
 
 ```bash
-git clone https://github.com/Ctrlpanel-gg/panel.git ./
+git clone -b 0.9.8 https://github.com/Ctrlpanel-gg/panel.git ./
 ```
 
 ## Database Setup
