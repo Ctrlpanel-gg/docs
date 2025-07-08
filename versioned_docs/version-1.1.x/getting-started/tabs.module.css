@@ -1,0 +1,13 @@
+.debian {
+  color: #d70a53 !important;
+}
+.debian[aria-selected='true'] {
+  border-bottom-color: #d70a53 !important;
+}
+
+.ubuntu {
+  color: #E95420 !important;
+}
+.ubuntu[aria-selected='true'] {
+  border-bottom-color: #E95420 !important;
+}

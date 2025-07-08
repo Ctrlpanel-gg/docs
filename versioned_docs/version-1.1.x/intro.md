@@ -62,7 +62,7 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 |:----------------|:------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
 | **Pterodactyl** | :white_check_mark: |                                                                                                                                                |
 | **Jexactyl**    | :white_check_mark: |                                                                                                                                                |
-| **Pyrodactyl**  | :question:         | Not tested                                                                                                                                     |
+| **Pyrodactyl**  | :white_check_mark: |                                                                                                                                                |
 | **Pelican**     | :o:                | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
 <!-- Table end -->
 

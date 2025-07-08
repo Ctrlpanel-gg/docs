@@ -1,0 +1,31 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import DebianInstall from './_parts/install/os/debian.mdx';
+import UbuntuInstall from './_parts/install/os/ubuntu.mdx';
+
+# Installation
+
+:::danger
+
+Creating a hosting is a serious responsibility, including **legal liability** - it requires solid knowledge of **network infrastructure**, **Linux systems**, and related technologies.
+If you don't know what you're doing, **don't do it**.
+
+We also reserve the right to deny you support on our Discord server if you lack at least basic technical knowledge or understanding of what you're doing.
+
+:::
+
+Installing CtrlPanel is fairly straightforward and not much different from setting up Pterodactyl. Our documentation is written for Debian-based systems. Be sure to read the comments for each command carefully, they often contain important information!
+
+<Tabs groupId="os" queryString>
+  <TabItem value="debian" label="Debian" >
+    <DebianInstall />
+  </TabItem>
+  <TabItem value="ubuntu" label="Ubuntu">
+    <UbuntuInstall />
+  </TabItem>
+</Tabs>

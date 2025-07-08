@@ -1,0 +1,115 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import ComposerInstall from '../steps/composer-install.mdx';
+import DownloadFiles from '../steps/download-files.mdx';
+import DatabaseSetup from '../steps/database-setup.mdx';
+import ComposerPackages from '../steps/composer-packages.mdx';
+import StorageSymlink from '../steps/storage-symlink.mdx';
+
+import NginxSSL from '../steps/webserver/deb-nginx-ssl.mdx';
+import NginxNoSSL from '../steps/webserver/deb-nginx-no-ssl.mdx';
+import ApacheSSL from '../steps/webserver/deb-apache-ssl.mdx';
+import ApacheNoSSL from '../steps/webserver/deb-apache-no-ssl.mdx';
+
+import QueueListeners from '../steps/queue-listeners.mdx';
+import NavigateToWeb from '../steps/navigate-to-web.mdx';
+
+## Dependencies
+
+- PHP `8.2`, `8.3` (recommended) or `8.4` with the following extensions: `cli`, `gd`, `mysql`, `mbstring`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `openssl`, `PDO`, `tokenizer`, `redis`, `intl` and `fpm` if you are planning to use NGINX.
+- MySQL `5.7.22` or higher (MySQL `8` recommended) **or** MariaDB `10.2` or higher.
+- Redis (`redis-server`)
+- A web server (Apache, NGINX, etc.)
+- `curl`
+- `git`
+- `composer`
+
+### Dependency Installation
+
+_If you already have Pterodactyl installed, please check that you also install PHP 8.3!_
+
+The commands below are simply an example of how you might install these dependencies. Please consult with your operating system's package manager to determine the correct packages to install.
+
+```bash
+# Install basic dependencies to continue
+apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg lsb-release
+
+# Add additional repositories for PHP
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+
+# Add Redis official APT repository
+curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+# MariaDB repo setup script
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | bash
+
+# Update repositories list
+apt update -y
+
+# Install Dependencies
+apt install -y php8.3 php8.3-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server nginx git redis-server
+```
+
+If you are using redis for your system, you will want to make sure to enable that it will start on boot. You can do that by running the following command:
+
+```bash
+systemctl enable --now redis-server
+```
+
+### Extra Dependency Installation
+
+CtrlPanel uses a few additional dependencies compared to Pterodactyl, so you'll need to install them to ensure everything works properly.
+
+```bash
+apt -y install php8.3-{intl,redis}
+```
+
+<ComposerInstall />
+
+<DownloadFiles />
+
+<DatabaseSetup />
+
+<ComposerPackages />
+
+<StorageSymlink />
+
+## Web Server Configuration
+
+This is a basic NGINX configuration. Please replace any `<domain>` placeholders with your domain name being used. Since NGINX is being used, we will put our configuration (`ctrlpanel.conf`) in `/etc/nginx/sites-available/`, or — if on CentOS, `/etc/nginx/conf.d/.`
+
+### Setting up the Web Server
+
+<Tabs>
+  <TabItem value="nginx-ssl" label="Nginx With SSL" default>
+    <NginxSSL />
+  </TabItem>
+  <TabItem value="nginx-no-ssl" label="Nginx Without SSL">
+    <NginxNoSSL />
+  </TabItem>
+  <TabItem value="apache-ssl" label="Apache With SSL">
+    <ApacheSSL />
+  </TabItem>
+  <TabItem value="apache-nossl" label="Apache Without SSL">
+    <ApacheNoSSL />
+  </TabItem>
+</Tabs>
+
+### Set Permissions
+
+The last step in the installation process is to set the correct permissions on the Panel files so that the web server can
+use them correctly.
+
+```bash
+chown -R www-data:www-data /var/www/ctrlpanel/
+chmod -R 755 storage/* bootstrap/cache/
+```
+
+<QueueListeners />
+
+<NavigateToWeb />
+
+export const toc = []

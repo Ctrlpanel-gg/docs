@@ -1,0 +1,47 @@
+## Queue Listeners
+
+### Crontab Configuration
+
+The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, we first have to open it. To do so, run the following command:
+
+```bash
+crontab -e
+```
+
+If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste in this:
+
+```bash
+* * * * * php /var/www/ctrlpanel/artisan schedule:run >> /dev/null 2>&1
+```
+
+### Create Queue Worker
+
+Next, you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible for sending emails and handling many other background tasks for the Dashboard.
+
+Create a file called `ctrlpanel.service` in `/etc/systemd/system` with the contents below.
+
+```bash title="/etc/systemd/system/ctrlpanel.service"
+# Ctrlpanel Queue Worker File
+# ----------------------------------
+
+[Unit]
+Description=Ctrlpanel Queue Worker
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/ctrlpanel/artisan queue:work --sleep=3 --tries=3
+StartLimitBurst=0
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Finally, enable the service and set it to boot on machine start.
+
+```bash
+sudo systemctl enable --now ctrlpanel.service
+```
