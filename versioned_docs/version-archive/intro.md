@@ -11,7 +11,7 @@ This dashboard offers an easy to use and free billing solution for all starting 
 
 ## Installation
 
-You can find our guide for installation [here](/docs/archived/Installation/getting-started).
+You can find our guide for installation [here](/docs/archive/Installation/getting-started).
 
 ## Third-parties
 
