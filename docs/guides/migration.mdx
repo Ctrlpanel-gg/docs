@@ -1,0 +1,44 @@
+---
+sidebar_position: 1
+---
+
+# Migration
+
+Let's talk about migrating your panel between servers. It doesn't matter whether you're switching hosting providers or just moving from `localhost` to your own custom domain.
+
+:::info
+During migration, do not install a newer or older version of CtrlPanel on the new server. Always install the exact same version as your current one. Otherwise, you may run into compatibility issues.
+:::
+
+## Backup your database and .env file
+
+:::danger
+Never lose your `.env` file, more specifically, your `APP_KEY`. Without it, you'll lose almost all data that Laravel encrypts in the database using this key.
+:::
+
+We have a separate guide on how to back up your database and where to find the `.env` file. You can find it [here](/docs/guides/backup?db-state=fresh#how-to-create-database-backup).
+
+That's all we need - just SQL file of your database, and `.env` file with your `APP_KEY`.
+
+## Preparing new location
+
+Follow the [default installation guide](/docs/getting-started/install) and complete all steps up to the final one - "Navigate to the installer". Once you reach that point, come back here.
+
+## Database migration
+
+Now we need to import the data from your `.sql` file into the database on your new server. You can follow [this](/docs/guides/backup?db-state=fresh) guide to do it.
+
+After that, place your old `.env` file into the CtrlPanel root directory (`/var/www/ctrlpanel/`).  
+Update the database password or other values if needed, such as `APP_URL` or `APP_NAME`.
+
+## Lock installer
+
+Now create an empty `install.lock` file in the CtrlPanel root directory (`/var/www/ctrlpanel/`) to disable installer since we don't need it anymore.
+
+```bash
+touch /var/www/ctrlpanel/install.lock
+```
+
+## Finish
+
+Congratulations! You can now try opening your CtrlPanel page in the browser and check if your data was successfully migrated.

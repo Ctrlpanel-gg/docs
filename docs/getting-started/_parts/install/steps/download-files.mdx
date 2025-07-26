@@ -1,0 +1,28 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Download Files
+
+The first step in this process is to create the folder where the panel will live and then move ourselves into that
+newly created folder. Below is an example of how to perform this operation.
+
+```bash
+mkdir -p /var/www/ctrlpanel && cd /var/www/ctrlpanel
+```
+
+<Tabs groupId="version">
+  <TabItem value="latest" label="Latest version">
+    ```bash
+    git clone https://github.com/Ctrlpanel-gg/panel.git ./
+    ```
+
+  </TabItem>
+  <TabItem value="specific" label="Specific version">
+    If you want to install a specific version of CtrlPanel instead of the latest one, you'll need to specify the tag you want to clone from GitHub. Use the `-b <tag|branch_name>` argument for that. Replace `VERSION` with the version you want to install.
+
+    ```bash
+    git clone -b VERSION https://github.com/Ctrlpanel-gg/panel.git ./
+    ```
+
+  </TabItem>
+</Tabs>

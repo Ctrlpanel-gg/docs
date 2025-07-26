@@ -1,5 +1,6 @@
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -28,7 +29,6 @@ module.exports = {
           position: "left",
           label: "Documentation",
         },
-
         {
           href: "https://market.ctrlpanel.gg",
           label: "Theme / Extension Hub",
@@ -69,7 +69,7 @@ module.exports = {
           items: [
             {
               label: "Documentation",
-              to: "/docs/intro",
+              to: "/docs",
             },
           ],
         },
@@ -95,8 +95,9 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Ctrlpanel.gg. Built with Docusaurus. Ctrlpanel.gg is not affiliated with Discord.`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      additionalLanguages: ['bash', 'nginx', 'sql'],
     },
   },
   presets: [
@@ -104,7 +105,17 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "1.0.1",
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: '1.1.x (Latest)',
+              // path: 'development',
+            },
+            archived: {
+              label: 'Archived',
+              // path: 'development',
+            },
+          },
           // Please change this to your repo.
           editUrl: "https://github.com/Ctrlpanel-gg/docs/tree/main",
         },

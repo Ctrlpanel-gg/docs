@@ -1,26 +1,70 @@
 ---
 sidebar_position: 1
+slug: /
 ---
 
 # Introduction
 
-Ctrlpanel's Dashboard is a dashboard application designed to offer clients a management tool to manage their [Pterodactyl](https://pterodactyl.io/) servers. This dashboard comes with a credit-based billing solution that credits users hourly for each server they have and suspends servers if they run out of credits.
+Welcome to the CtrlPanel.gg documentation. Here you'll find guides for installation, updating, migration and other useful articles and pages.
 
-This dashboard offers an easy to use and free billing solution for all starting and experienced hosting providers. This dashboard has many customization options and added Discord OAuth verification to offer a solid link between your Discord server and your dashboard.
+## What is CtrlPanel?
 
-## Installation
+CtrlPanel is a user-friendly management app built to give clients a simple way to control their Pterodactyl servers. It includes a flexible billing system with support for hourly to annual plans - offering both scalability and ease of use.
 
-You can find our guide for installation [here](https://ctrlpanel.gg/docs/v0.8/Installation/getting-started).
+## Features
 
-## Third-parties
+- Server creation using **pre-configured** plans
+- Billing options ranging from **hourly** to **annual**
+- **Automatic suspension** of servers when clients don't have enough credits to renew
+- Per-user server limit (server slots)
+- **Email verification** and **Discord linking** with **auto-join** to your Discord server
+- One account per IP limit
+- **Referral** and **partner** systems
+- **Vouchers** for credit rewards and **coupons** for product discounts*
+- **Built-in** ticket system
+- Integrated support for popular payment gateways (**PayPal**, **Stripe**, **Mollie**, and **MercadoPago**)
+- **Docker** image and docker compose **(:bangbang: BETA :bangbang:)**
+- **Multi-language** support
+- **Open-source**
+- And much more
 
-You can find custom themes and programs from our [Extension Hub](https://market.ctrlpanel.gg/) those are developed by third-parties.
+*\* Coupons apply to store products such as server slots and credit purchases. They do **not** apply to server plans.*
 
-## Support
+## Want to try first?
 
-Have a few questions? Feel free to [join](https://discord.gg/GY7PWejUaG) our support Discord server.
+You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 
-We also announce every single release in our Discord and we would love to hear your feedback!
+## Compatibility
+
+<!-- Tool for creating tables: https://www.tablesgenerator.com/markdown_tables -->
+
+<!-- Table start -->
+| OS                      | Version    | Supported          | Notes             |
+|:------------------------|:----------:|:------------------:|:------------------|
+| **Debian**              | 10         | :o:                | EOL (End-of-life) |
+|                         | 11         | :white_check_mark: |                   |
+|                         | 12         | :white_check_mark: |                   |
+|                         | 13         | :question:         | Not tested        |
+| **Ubuntu**              | 18.04      | :o:                | EOL (End-of-life) |
+|                         | 20.04      | :white_check_mark: |                   |
+|                         | 22.04      | :white_check_mark: |                   |
+|                         | 24.04      | :white_check_mark: |                   |
+| **RHEL-based systems¹** | :question: | :question:         | Not tested        |
+| **Windows**             | :question: | :question:         | Not tested        |
+<!-- Table end -->
+
+*¹ RHEL, Rocky Linux, AlmaLinux, CentOS*
+
+---
+
+<!-- Table start -->
+|                 |      Supported     | Notes                                                                                                                                          |
+|:----------------|:------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+| **Pterodactyl** | :white_check_mark: |                                                                                                                                                |
+| **Jexactyl**    | :white_check_mark: |                                                                                                                                                |
+| **Pyrodactyl**  | :white_check_mark: |                                                                                                                                                |
+| **Pelican**     | :o:                | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
+<!-- Table end -->
 
 ## Looking for a Server?
 

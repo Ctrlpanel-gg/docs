@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+---
+
+# Rolling back to the release version
+
+Unfortunately, it highly depends on the situation.
+
+If you just installed the **development** version, have a database backup, and want to roll back do this:
+
+```bash
+git checkout main
+git pull
+```
+
+Next, follow the instructions for [restoring](/docs/guides/backup?db-state=existing#how-to-restore-database-backup) your database backup.
+
+---
+
+If a stable release is available and you're on development but behind, run:
+```bash
+git checkout main
+git pull
+```
+
+and follow the default upgrade guide
+
+## Still need help?
+
+Reach out to us on [our Discord](https://discord.gg/ctrlpanel-gg-787829714483019826) server in the support channel! We'll do our best to help you.
