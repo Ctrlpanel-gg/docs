@@ -111,8 +111,8 @@ module.exports = {
               label: '1.1.x (Latest)',
               // path: 'development',
             },
-            archived: {
-              label: 'Archived',
+            archive: {
+              label: 'Archive',
               // path: 'development',
             },
           },
