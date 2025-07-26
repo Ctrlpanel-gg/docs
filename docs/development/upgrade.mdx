@@ -1,0 +1,82 @@
+---
+sidebar_position: 2
+---
+
+# Update to development version
+
+:::danger
+Always backup your database and any code changes before updating! It's better to not need them, than to lose everything when you do. We've explained how to do that [here](/docs/guides/backup).
+
+Without a backup, you won't be able to roll back without losing all your data.
+:::
+
+## Enable Maintenance Mode
+
+```bash
+cd /var/www/ctrlpanel
+php artisan down
+```
+
+## Switching to development branch
+
+```bash
+git checkout development
+```
+
+## Pulling the New Files
+
+```bash
+git stash
+git pull
+chmod -R 755 /var/www/ctrlpanel
+```
+
+## Update Dependencies
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+## Updating the Database
+
+```bash
+php artisan migrate --seed --force
+```
+
+## Clear Compiled Template Cache
+
+```bash
+php artisan view:clear
+php artisan config:clear
+```
+
+## Set Permissions
+
+```bash
+# If using NGINX or Apache (not on CentOS):
+chown -R www-data:www-data /var/www/ctrlpanel/
+
+# If using NGINX on CentOS:
+chown -R nginx:nginx /var/www/ctrlpanel/
+
+# If using Apache on CentOS
+chown -R apache:apache /var/www/ctrlpanel/
+```
+
+## Restarting Queue Workers
+
+After every update, you should restart the queue worker to ensure that the new code is loaded in and used.
+
+```bash
+php artisan queue:restart
+```
+
+## Disable Maintenance Mode
+
+```bash
+php artisan up
+```
+
+## Disclaimer
+
+If you notice any bugs 🐛 or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/CtrlPanel-gg/panel/issues/new/choose).<br /> **For any major security risk, create** [GitHub vulnerability report](https://github.com/Ctrlpanel-gg/panel/security/advisories/new). Avoid discussing vulnerabilities in public chats, and also do not create reports on public trackers!
