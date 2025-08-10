@@ -403,9 +403,9 @@ Congratulations! Everything is ready, you can continue updating **:3**
 
 ```bash
 git fetch origin
+git stash --include-untracked
 git checkout 1.0.1
-git stash
-git reset --hard origin/main
+git reset --hard
 chmod -R 755 /var/www/ctrlpanel
 ```
 
