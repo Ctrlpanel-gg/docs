@@ -18,6 +18,15 @@ mkdir -p /var/www/ctrlpanel && cd /var/www/ctrlpanel
 
   </TabItem>
   <TabItem value="specific" label="Specific version">
+    :::info
+    In this case, you'll need to use `git checkout main` or `git checkout NEW_VERSION` to upgrade.
+
+    **Why?**  
+    When you clone a repository at a specific tag, Git places you in a "detached HEAD" state - meaning you're not on any branch.  
+    In this state, `git pull` won’t update anything because there's no branch to pull from.  
+    To upgrade, you first need to switch to the branch or tag you want to use (for example, `git checkout main` or `git checkout NEW_VERSION`).
+    :::
+
     If you want to install a specific version of CtrlPanel instead of the latest one, you'll need to specify the tag you want to clone from GitHub. Use the `-b <tag|branch_name>` argument for that. Replace `VERSION` with the version you want to install.
 
     ```bash
