@@ -355,7 +355,7 @@ After installing the required PHP version, let's make sure that it is installed 
 php -v
 ```
 
-If you see version 8.3, then everything is fine, and you can skip next step, if the PHP version is still 8.1 or lower, then update the default version for the `php` commamd using the following command:
+If you see version 8.3, then everything is fine, and you can skip next step, if the PHP version is still 8.1 or lower, then update the default version for the `php` command using the following command:
 
 ```bash
 update-alternatives --set php /usr/bin/php8.3
@@ -403,9 +403,9 @@ Congratulations! Everything is ready, you can continue updating **:3**
 
 ```bash
 git fetch origin
+git stash --include-untracked
 git checkout 1.0.1
-git stash
-git reset --hard origin/main
+git reset --hard
 chmod -R 755 /var/www/ctrlpanel
 ```
 
@@ -433,7 +433,7 @@ apt install php8.3-redis
 
 ## Updating the Database
 
-Make sure you have a _working_ backup of your database. A Guide can be found [here](/docs/1.0.0/Guides/backups)
+Make sure you have a _working_ backup of your database. A Guide can be found [here](/docs/guides/backup)
 
 ```bash
 php artisan migrate --seed --force
