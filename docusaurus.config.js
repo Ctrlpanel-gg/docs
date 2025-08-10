@@ -125,4 +125,33 @@ module.exports = {
       },
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs/intro',
+            to: '/docs',
+          },
+          {
+            from: '/docs/Installation/updating',
+            to: '/docs/category/updating',
+          },
+          {
+            from: '/docs/Contributing/donating',
+            to: '/docs/contributing/donating',
+          },
+          {
+            from: '/docs/Installation/getting-started',
+            to: '/docs/getting-started/install',
+          },
+          // {
+          //   to: '/docs/newDoc2',
+          //   from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
+          // },
+        ],
+      },
+    ],
+  ],
 };
