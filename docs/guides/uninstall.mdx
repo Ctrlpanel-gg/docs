@@ -8,14 +8,16 @@ import TabItem from "@theme/TabItem";
 # Uninstall
 
 :::warning
-You will loose all data that you have stored in your Ctrlpanel.
+You will lose all data that you have stored in your Ctrlpanel.
 
-**Note:** This will only work if you followed our documentation, you might need to modify the commands to fit your installation.
+**Before you start**
+- This will only work if you have carefully followed our documentation.
+- You might need to modify the commands to fit your installation.
 :::
 
 ## Stop everything
 
-You need to stop ctrlpanel and all of its services before you can uninstall it.
+Before deleting anything, you need to stop CtrlPanel and all of its services.
 
 ```bash
 cd /var/www/ctrlpanel
@@ -24,11 +26,11 @@ sudo php artisan down
 sudo systemctl stop ctrlpanel
 ```
 
-## Remove
+## Delete files
 
 ### Service and cronjob
 
-You have to stop and remove the service and cronjob.
+You have to stop and remove the services and cronjobs.
 
 ```bash
 sudo systemctl stop ctrlpanel
@@ -38,7 +40,7 @@ sudo systemctl daemon-reload
 sudo systemctl reset-failed
 ```
 
-To open the crontab run: `crontab -e` and remove the following configuration from crontab.
+To open crontab, please run `crontab -e` and remove the following configuration from crontab.
 
 ```bash
 * * * * * php /var/www/ctrlpanel/artisan schedule:run >> /dev/null 2>&1
@@ -46,7 +48,7 @@ To open the crontab run: `crontab -e` and remove the following configuration fro
 
 ### Webconfig and SSL certificates
 
-Now you need to remove the webconfig and restart it
+Once you've done this, you need to remove the webserver configuration and restart it.
 
 <Tabs groupId="webserver">
   <TabItem value="Nginx" label="Nginx" >
@@ -65,7 +67,7 @@ Now you need to remove the webconfig and restart it
   </TabItem>
 </Tabs>
 
-Don't forget about SSL certificates
+Don't forget to delete SSL certificates.
 
 ```bash
 sudo certbot delete --cert-name <Your Domain>
@@ -73,7 +75,7 @@ sudo certbot delete --cert-name <Your Domain>
 
 ### Database and User
 
-Now you need to remove the database and user:
+Now that you've deleted the webserver files, you need to remove the database and user:
 
 <Tabs groupId="db">
   <TabItem value="MySQL" label="MySQL" >
@@ -103,16 +105,16 @@ Now you need to remove the files.
 ```bash
 sudo rm -rf /var/www/ctrlpanel
 ```
+# Optional
 
-### Extra Dependency
-
-You need to uninstall this, use the appropriate PHP version (php -v)
+### Extra Dependency 
+CtrlPanel should now be uninstalled. If you want to fully clean your server, please run the following commands.
+You need to uninstall PHP. Make sure to check your PHP version before you do this.
 
 ```bash
 sudo apt remove php8.3-{intl,redis}
 ```
 
 ### Pterodactyl API Key
-
-Login to your pterodactyl panel and go to the admin page.  
-Then go to the API tab (`/admin/api`) and delete the key you made for ctrlpanel.
+Login to your Pterodactyl panel and go to the admin page.  
+Then go to the API tab (`/admin/api`) and delete the key you made for CtrlPanel.

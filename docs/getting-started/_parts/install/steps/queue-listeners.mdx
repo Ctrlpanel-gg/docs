@@ -2,13 +2,13 @@
 
 ### Crontab Configuration
 
-The first thing we need to do is create a new cron job that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, we first have to open it. To do so, run the following command:
+The first thing we need to do is create a new cronjob that runs every minute to process specific Dashboard tasks such as billing users hourly and suspending unpaid servers. To setup crontab, we first have to open it. To do so, run the following command:
 
 ```bash
 crontab -e
 ```
 
-If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste in this:
+If it prompts you for a file editor, choose number 1. Once It's opened, go to a line that doesn't have a `#` in front of it. Then paste the following line:
 
 ```bash
 * * * * * php /var/www/ctrlpanel/artisan schedule:run >> /dev/null 2>&1

@@ -70,4 +70,4 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 
 [![ZAP-Hosting Gameserver and Webhosting](https://zap-hosting.com/interface/download/images.php?type=affiliate&id=421578)](https://zap-hosting.com/a/29b1c37a4f87bde5463afe8a0f49d129b16ccf9e)
 
-Looking for a good server? Purchase one from our partner with promo code **[CtrlPanel](https://zap-hosting.com/CtrlPanel)** to receive a **20% discount**. Click [here](https://zap-hosting.com/CtrlPanel) to get started.
+Looking for a good server? Purchase one from our partner with promo code **[CtrlPanel](https://zap-hosting.com/CtrlPanel)** to receive a **20% discount**!
