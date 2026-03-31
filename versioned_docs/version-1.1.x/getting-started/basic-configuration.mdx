@@ -1,0 +1,119 @@
+---
+sidebar_position: 2
+toc_max_heading_level: 4
+---
+
+# Basic Configuration
+
+We'll cover the basics of configuring CtrlPanel. Where to get what, and how to configure it. We'll also include a minimal debug checklist for common issues.
+
+## Images and icons
+
+- **Favicon:** must be in 64x64 ico format  
+  Displayed in the browser's address bar as a small icon representing your site
+- **Icon:** 1:1 aspect ratio recommended  
+  Displayed in your site's SEO and embed previews, as well as in the top-right corner next to the name
+- **Login-page Logo**  
+  Displayed above the login form of your panel
+
+:::info
+Updating the images may take some time. To speed up this, clear your browser cache and Cloudflare cache if you're using it.
+:::
+
+## reCAPTCHA
+
+CtrlPanel lets you choose between three CAPTCHA options: reCAPTCHA v2, reCAPTCHA v3, and Cloudflare Turnstile. Be careful when selecting the version and entering the keys, otherwise, you may have to disable CAPTCHA manually to regain access.
+
+### reCAPTCHA v2 ("I'm not a robot" Checkbox)
+
+The classic CAPTCHA that asks users to check a box and solve image challenges.  
+To get reCAPTCHA v2 keys, go to the reCAPTCHA [admin creation page](https://www.google.com/recaptcha/admin/create), fill in the required details, and select `Challenge (v2)` with the `"I(')m not a robot" Checkbox` option.
+Once done, you'll see your `site key` and `secret key`. Copy both and enter them in your CtrlPanel settings.
+
+### reCAPTCHA v3
+
+An invisible CAPTCHA that evaluates users using a score based on their behavior on the page.  
+The process for obtaining the keys is the same as for reCAPTCHA v2, but you need to select the `Score based (v3)` option instead.
+
+### Cloudflare Turnstile
+
+Cloudflare's alternative to reCAPTCHA.  
+Follow the official instructions on the [Cloudflare website](https://developers.cloudflare.com/turnstile/get-started/#new-sites) to obtain your `site key` and `secret key`.
+
+## SMTP Configuration
+
+In order for your panel to send email verification messages to users, you'll need to configure an SMTP server.  
+To do that, start by choosing an SMTP provider - you can find plenty with a quick Google search. Once you set up your domain and/or mailbox, you'll need to fill in the following details:
+
+- **Mail Host:** Depends on your provider. Check their documentation.
+- **Mail Port:** Most commonly `465` for SSL, `587` for (START)TLS. Refer to your provider's docs.
+- **Mail Username:** Usually your email address, but some providers use a generated name.
+- **Mail Password:** The account password. Some providers require an application-specific key instead.
+- **Mail Encryption:** As mentioned above, this depends on your provider's mail server settings. Refer to their documentation.
+- **Mail From Address:** Almost always the email that will be used to send messages.
+- **Mail From Name:** The name that will appear to your clients in their email client.
+
+## Discord
+
+Allows you to configure Discord verification. After completing it, the user can be automatically added to your Discord server. The bot is also used to assign a verified role and a client role.
+
+1. Go to https://discord.com/developers/applications and create a new application. You need to obtain the `bot token`, `application ID`, and `application secret`.
+2. Then go to the **OAuth2** tab and add redirect URL like `https://your.ctrlpanel.url/auth/callback`.
+3. Don’t forget to invite the bot to your server in advance so it can assign roles and add users.  
+   To do that, open the following link in your browser: `https://discord.com/api/oauth2/authorize?client_id=<CLIENT_ID_HERE>&permissions=8&scope=bot`. Make sure to replace `<CLIENT_ID_HERE>` with your bot's ID you got earlier.
+
+## Payment Configuration
+
+:::danger
+Creating a hosting is a serious responsibility, including **legal liability** - it requires solid knowledge of **network infrastructure**, **Linux systems**, and related technologies.
+If you don't know what you're doing, **don't do it**.
+
+We also reserve the right to deny you support on our Discord server if you lack at least basic technical knowledge or understanding of what you're doing.
+:::
+
+To accept payments, you need to set up one of the available payment gateways or write an addon for required one yourself.
+
+### PayPal
+
+To accept live payments through PayPal, you need a business account. Personal accounts only support Sandbox payments.
+
+#### Live payments
+
+1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
+2. Select **Live** in the top right corner.
+3. Click **Create App** button.
+4. Copy your `Client ID` and `Secret key`.
+5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+
+#### Sandbox payments
+
+1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
+2. Select **Sandbox** in the top right corner.
+3. Click **Create App** button.
+4. Copy your `Client ID` and `Secret key`.
+5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+
+Now, go to your CtrlPanel root directory (`/var/www/ctrlpanel/`) and open your `.env` file. Find `APP_ENV` variable, and change it from `production` to `local`.  
+You can now make test payments using PayPal Sandbox account.
+
+### Stripe
+
+To use Stripe as your payment gateway, you first have to setup a "company" on Stripe's dashboard which you can find [here](https://dashboard.stripe.com/account/onboarding/business-structure)
+
+To setup Stripe, go to the Developer page and click on API Keys. You only need the Secret key in order to use Stripe as your payment gateway. Once you have the secret key go to your Ctrlpanel setup and paste the secret into the `Secret Key` section.
+
+Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
+To do so, click on Webhooks and add an endpoint.
+The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.
+Choose the `payment_intent.succeded` event to be sent to your WebhookRoute.
+After the webhook creation, you need to get the endpoint secret and copy paste it to your Ctrlpanel payment settings. The endpoint secret can be found in the Webhook Overview page.
+
+Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
+
+### Mollie
+
+_Unfortunately, we don't have information on how to configure this payment gateway. Know how and want to help? Let us know!_
+
+### MarcadoPago
+
+_Unfortunately, we don't have information on how to configure this payment gateway. Know how and want to help? Let us know!_
