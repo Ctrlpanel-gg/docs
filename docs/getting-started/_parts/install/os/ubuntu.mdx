@@ -1,20 +1,19 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-import ComposerInstall from '../steps/composer-install.mdx';
-import DownloadFiles from '../steps/download-files.mdx';
-import DatabaseSetup from '../steps/database-setup.mdx';
-import ComposerPackages from '../steps/composer-packages.mdx';
-import StorageSymlink from '../steps/storage-symlink.mdx';
+import ComposerInstall from "../steps/composer-install.mdx";
+import DownloadFiles from "../steps/download-files.mdx";
+import DatabaseSetup from "../steps/database-setup.mdx";
+import ComposerPackages from "../steps/composer-packages.mdx";
+import StorageSymlink from "../steps/storage-symlink.mdx";
 
-import NginxSSL from '../steps/webserver/deb-nginx-ssl.mdx';
-import NginxNoSSL from '../steps/webserver/deb-nginx-no-ssl.mdx';
-import ApacheSSL from '../steps/webserver/deb-apache-ssl.mdx';
-import ApacheNoSSL from '../steps/webserver/deb-apache-no-ssl.mdx';
+import NginxSSL from "../steps/webserver/deb-nginx-ssl.mdx";
+import NginxNoSSL from "../steps/webserver/deb-nginx-no-ssl.mdx";
+import ApacheSSL from "../steps/webserver/deb-apache-ssl.mdx";
+import ApacheNoSSL from "../steps/webserver/deb-apache-no-ssl.mdx";
 
-import QueueListeners from '../steps/queue-listeners.mdx';
-import NavigateToWeb from '../steps/navigate-to-web.mdx';
-import DeleteInstaller from '../steps/delete-installer.mdx';
+import QueueListeners from "../steps/queue-listeners.mdx";
+import NavigateToWeb from "../steps/navigate-to-web.mdx";
 
 ## Dependencies
 
@@ -34,16 +33,16 @@ The commands below are simply an example of how you might install these dependen
 
 ```bash
 # Add "add-apt-repository" command
-apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg
+apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg lsb-release
 
-# Add additional repositories for PHP (Ubuntu 20.04 and Ubuntu 22.04 only!!!)
+# Add additional repositories for PHP (Ubuntu 22.04 only)
 LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
-# Add Redis official APT repository
+# Add Redis official APT repository (Ubuntu 22.04 only)
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
-# MariaDB repo setup script (Ubuntu 20.04 only!!!)
+# MariaDB repo setup script (Ubuntu 22.04 only)
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
 
 # Update repositories list
@@ -104,6 +103,4 @@ chmod -R 755 storage/* bootstrap/cache/
 
 <NavigateToWeb />
 
-<DeleteInstaller />
-
-export const toc = []
+export const toc = [];

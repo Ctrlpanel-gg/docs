@@ -5,8 +5,8 @@ sidebar_position: 1
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-import DebianInstall from './_parts/install/os/debian.mdx';
-import UbuntuInstall from './_parts/install/os/ubuntu.mdx';
+import DebianInstall from "./_parts/install/os/debian.mdx";
+import UbuntuInstall from "./_parts/install/os/ubuntu.mdx";
 
 # Installation
 
@@ -19,8 +19,12 @@ We also reserve the right to deny you support on our Discord server if you lack 
 
 Installing CtrlPanel is fairly straightforward and not much different to setting up Pterodactyl. Our documentation is written for Debian-based systems. Be sure to read the comments for each command carefully, they often contain important information!
 
+:::note
+This guide supports Debian 12+ and Ubuntu 22.04+. Debian 11 and Ubuntu 20.04 are no longer supported in this documentation.
+:::
+
 <Tabs groupId="os" queryString>
-  <TabItem value="debian" label="Debian" >
+  <TabItem value="debian" label="Debian">
     <DebianInstall />
   </TabItem>
   <TabItem value="ubuntu" label="Ubuntu">
