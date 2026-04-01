@@ -1,19 +1,20 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-import ComposerInstall from "../steps/composer-install.mdx";
-import DownloadFiles from "../steps/download-files.mdx";
-import DatabaseSetup from "../steps/database-setup.mdx";
-import ComposerPackages from "../steps/composer-packages.mdx";
-import StorageSymlink from "../steps/storage-symlink.mdx";
+import ComposerInstall from '../steps/composer-install.mdx';
+import DownloadFiles from '../steps/download-files.mdx';
+import DatabaseSetup from '../steps/database-setup.mdx';
+import ComposerPackages from '../steps/composer-packages.mdx';
+import StorageSymlink from '../steps/storage-symlink.mdx';
 
-import NginxSSL from "../steps/webserver/deb-nginx-ssl.mdx";
-import NginxNoSSL from "../steps/webserver/deb-nginx-no-ssl.mdx";
-import ApacheSSL from "../steps/webserver/deb-apache-ssl.mdx";
-import ApacheNoSSL from "../steps/webserver/deb-apache-no-ssl.mdx";
+import NginxSSL from '../steps/webserver/deb-nginx-ssl.mdx';
+import NginxNoSSL from '../steps/webserver/deb-nginx-no-ssl.mdx';
+import ApacheSSL from '../steps/webserver/deb-apache-ssl.mdx';
+import ApacheNoSSL from '../steps/webserver/deb-apache-no-ssl.mdx';
 
-import QueueListeners from "../steps/queue-listeners.mdx";
-import NavigateToWeb from "../steps/navigate-to-web.mdx";
+import QueueListeners from '../steps/queue-listeners.mdx';
+import NavigateToWeb from '../steps/navigate-to-web.mdx';
+import DeleteInstaller from '../steps/delete-installer.mdx';
 
 ## Dependencies
 
@@ -35,15 +36,15 @@ The commands below are simply an example of how you might install these dependen
 # Install basic dependencies to continue
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg lsb-release
 
-# Add additional repositories for PHP (Debian 12 and 13 only)
+# Add additional repositories for PHP
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 
-# Add Redis official APT repository (Debian 12 and 13 only)
+# Add Redis official APT repository
 curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
-# MariaDB repo setup (Debian 12 and 13 only)
+# MariaDB repo setup script
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | bash
 
 # Update repositories list
@@ -104,4 +105,6 @@ chmod -R 755 storage/* bootstrap/cache/
 
 <NavigateToWeb />
 
-export const toc = [];
+<DeleteInstaller />
+
+export const toc = []
