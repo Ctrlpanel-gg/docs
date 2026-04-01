@@ -35,7 +35,7 @@ The commands below are simply an example of how you might install these dependen
 # Install basic dependencies to continue
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg lsb-release
 
-# Add additional repositories for PHP (required for Debian 12 and 13)
+# Add additional repositories for PHP
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 

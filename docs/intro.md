@@ -41,13 +41,12 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 <!-- Table start -->
 
 | OS                      |  Version   |     Supported      | Notes             |
-| :---------------------- | :--------: | :----------------: | :---------------- |
+| :---------------------- | :--------: | :----------------: | :---------------- | --- | --- | --- | ------------------ | --- |
 | **Debian**              |     10     |        :o:         | EOL (End-of-life) |
-|                         |     11     | :white_check_mark: |                   |
-|                         |     12     | :white_check_mark: |                   |
+|                         |     11     |        :o:         | EOL (End-of-life) |     |     | 12  | :white_check_mark: |     |
 |                         |     13     |     :question:     | Not tested        |
 | **Ubuntu**              |   18.04    |        :o:         | EOL (End-of-life) |
-|                         |   20.04    | :white_check_mark: |                   |
+|                         |   20.04    |        :o:         | EOL (End-of-life) |
 |                         |   22.04    | :white_check_mark: |                   |
 |                         |   24.04    | :white_check_mark: |                   |
 | **RHEL-based systems¹** | :question: |     :question:     | Not tested        |
@@ -74,4 +73,4 @@ _¹ RHEL, Rocky Linux, AlmaLinux, CentOS_
 
 [![ZAP-Hosting Gameserver and Webhosting](https://zap-hosting.com/interface/download/images.php?type=affiliate&id=421578)](https://zap-hosting.com/a/29b1c37a4f87bde5463afe8a0f49d129b16ccf9e)
 
-Looking for a good server? Purchase one from our partner with promo code **[CtrlPanel](https://zap-hosting.com/CtrlPanel)** to receive a **20% discount**. Click [here](https://zap-hosting.com/CtrlPanel) to get started.
+Looking for a good server? Purchase one from our partner with promo code **[CtrlPanel](https://zap-hosting.com/CtrlPanel)** to receive a **20% discount**!
