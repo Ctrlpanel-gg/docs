@@ -1,14 +1,13 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Updating from 1.1.x
 
 :::caution
-This guide is for updates 1.1.x -> 1.1.x
+This guide is for updates 1.1.x -> 1.2.x
 
-If you want to upgrade from version 1.0.x to 1.1.x, please follow [1.0.x](/docs/updating/from-1.0.x) update guide.  
-If you want to upgrade from version 0.9.x to 1.1.x, please follow [0.9.x to 1.0.1](/docs/updating/from-0.9.x) update guide first and then [from 1.0.x](https://hsvs0l68-3000.euw.devtunnels.ms/docs/updating/from-1.0.x) one.
+If you want to upgrade from version 1.2.x to 1.2.x, please follow [1.2.x](/docs/updating/from-1.2.x) update guide.
 :::
 
 :::danger
@@ -47,9 +46,16 @@ php artisan migrate --seed --force
 ## Clear Compiled Template Cache
 
 ```bash
+php artisan cache:clear
+php artisan route:clear
 php artisan view:clear
 php artisan config:clear
+php artisan settings:clear-cache
 ```
+
+## Rebuild Settings Cache via UI
+
+After clearing caches, open your application Settings, navigate to the User tab, and click Save. This refreshes the settings cache for normal credit calculation runtime behavior.
 
 ## Set Permissions
 

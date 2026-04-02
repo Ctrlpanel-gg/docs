@@ -20,7 +20,7 @@ CtrlPanel is a user-friendly management app built to give clients a simple way t
 - **Email verification** and **Discord linking** with **auto-join** to your Discord server
 - One account per IP limit
 - **Referral** and **partner** systems
-- **Vouchers** for credit rewards and **coupons** for product discounts*
+- **Vouchers** for credit rewards and **coupons** for product discounts\*
 - **Built-in** ticket system
 - Integrated support for popular payment gateways (**PayPal**, **Stripe**, **Mollie**, and **MercadoPago**)
 - **Docker** image and docker compose **(:bangbang: BETA :bangbang:)**
@@ -28,7 +28,7 @@ CtrlPanel is a user-friendly management app built to give clients a simple way t
 - **Open-source**
 - And much more
 
-*\* Coupons apply to store products such as server slots and credit purchases. They do **not** apply to server plans.*
+_\* Coupons apply to store products such as server slots and credit purchases. They do **not** apply to server plans._
 
 ## Want to try first?
 
@@ -39,31 +39,35 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 <!-- Tool for creating tables: https://www.tablesgenerator.com/markdown_tables -->
 
 <!-- Table start -->
-| OS                      | Version    | Supported          | Notes             |
-|:------------------------|:----------:|:------------------:|:------------------|
-| **Debian**              | 10         | :o:                | EOL (End-of-life) |
-|                         | 11         | :white_check_mark: |                   |
-|                         | 12         | :white_check_mark: |                   |
-|                         | 13         | :question:         | Not tested        |
-| **Ubuntu**              | 18.04      | :o:                | EOL (End-of-life) |
-|                         | 20.04      | :white_check_mark: |                   |
-|                         | 22.04      | :white_check_mark: |                   |
-|                         | 24.04      | :white_check_mark: |                   |
-| **RHEL-based systems¹** | :question: | :question:         | Not tested        |
-| **Windows**             | :question: | :question:         | Not tested        |
+
+| OS                      |  Version   |     Supported      | Notes             |
+| :---------------------- | :--------: | :----------------: | :---------------- |
+| **Debian**              |     10     |        :o:         | EOL (End-of-life) |
+|                         |     11     |        :o:         | EOL (End-of-life) |
+|                         |     12     | :white_check_mark: |                   |
+|                         |     13     |     :question:     | Not tested        |
+| **Ubuntu**              |   18.04    |        :o:         | EOL (End-of-life) |
+|                         |   20.04    |        :o:         | EOL (End-of-life) |
+|                         |   22.04    | :white_check_mark: |                   |
+|                         |   24.04    | :white_check_mark: |                   |
+| **RHEL-based systems¹** | :question: |     :question:     | Not tested        |
+| **Windows**             | :question: |     :question:     | Not tested        |
+
 <!-- Table end -->
 
-*¹ RHEL, Rocky Linux, AlmaLinux, CentOS*
+_¹ RHEL, Rocky Linux, AlmaLinux, CentOS_
 
 ---
 
 <!-- Table start -->
-|                 |      Supported     | Notes                                                                                                                                          |
-|:----------------|:------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------|
+
+|                 |     Supported      | Notes                                                                                                                                          |
+| :-------------- | :----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Pterodactyl** | :white_check_mark: |                                                                                                                                                |
 | **Jexactyl**    | :white_check_mark: |                                                                                                                                                |
 | **Pyrodactyl**  | :white_check_mark: |                                                                                                                                                |
-| **Pelican**     | :o:                | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
+| **Pelican**     |        :o:         | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
+
 <!-- Table end -->
 
 ## Looking for a Server?
