@@ -1,0 +1,24 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import DebianInstall from "./_parts/install/os/debian.mdx";
+import UbuntuInstall from "./_parts/install/os/ubuntu.mdx";
+
+# Installation
+
+:::info
+We have OS-specific installation instructions below. **Make sure to select your operating system** from the tabs before following the steps.
+:::
+
+<Tabs groupId="os" queryString>
+  <TabItem value="debian" label="Debian">
+    <DebianInstall />
+  </TabItem>
+  <TabItem value="ubuntu" label="Ubuntu">
+    <UbuntuInstall />
+  </TabItem>
+</Tabs>
