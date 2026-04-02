@@ -1,0 +1,10 @@
+{
+  "position": 4,
+  "label": "Development",
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Development",
+    "description": "Do you want to try out new features that haven't been released yet or help us find bugs? Or maybe even help fix some bug?"
+  }
+}

@@ -105,15 +105,22 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          lastVersion: "current",
+          includeCurrentVersion: false,
+          lastVersion: "1.1.x",
           versions: {
-            current: {
-              label: '1.1.x (Latest)',
-              // path: 'development',
+            'beta': {
+              label: '1.2.x (Public Beta)',
+              path: 'beta',
+              banner: 'none',
             },
-            archive: {
+            // '1.2.x': {
+            //   label: '1.2.x (Upcoming release)',
+            // },
+            '1.1.x': {
+              label: '1.1.x (Latest)',
+            },
+            'archive': {
               label: 'Archive',
-              // path: 'development',
             },
           },
           // Please change this to your repo.

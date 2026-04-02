@@ -1,0 +1,56 @@
+Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+
+```bash
+a2dissite 000-default.conf
+```
+
+Once done, we now have to open the NGINX configuration file. This depends on your OS.
+
+```bash
+nano /etc/apache2/sites-available/ctrlpanel.conf
+```
+
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
+
+```conf title="/etc/apache2/sites-available/ctrlpanel.conf"
+<VirtualHost *:80>
+    # Replace YOUR.DOMAIN.HERE with your domain.
+    ServerName YOUR.DOMAIN.HERE
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</VirtualHost>
+
+<VirtualHost *:443>
+    # Replace YOUR.DOMAIN.HERE with your domain.
+    ServerName YOUR.DOMAIN.HERE
+    DocumentRoot "/var/www/ctrlpanel/public"
+
+    AllowEncodedSlashes On
+
+    php_value upload_max_filesize 100M
+    php_value post_max_size 100M
+
+    <Directory "/var/www/ctrlpanel/public">
+        Require all granted
+        AllowOverride all
+    </Directory>
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/YOUR.DOMAIN.HERE/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/YOUR.DOMAIN.HERE/privkey.pem
+</VirtualHost>
+```
+
+**<font size="5">Enable Configuration</font>**
+
+Now that we've successfully created the configuration file for our web server, the last step is to restart it. **NOTE** This step can be skipped if your OS is based off of RHEL, Rocky Linux, or AlmaLinux.
+
+```bash
+# You do not need to run any of these commands on RHEL, Rocky Linux, or AlmaLinux
+ln -s /etc/apache2/sites-available/ctrlpanel.conf /etc/apache2/sites-enabled/ctrlpanel.conf
+a2enmod rewrite
+a2enmod ssl
+systemctl restart apache2
+```

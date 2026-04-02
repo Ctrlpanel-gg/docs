@@ -1,0 +1,23 @@
+## Database Setup
+
+:::info
+You will need a database setup and a database user with the correct permissions created for that database before
+continuing any further.
+:::
+
+To make a database and database user, you can follow this guide.
+This is for MySQL and MariaDB. Please change the `USE_YOUR_OWN_PASSWORD` part to your password. Also, 127.0.0.1 is for localhost.
+
+```sql
+# Enter to MySQL shell
+mysql -u root -p
+# or if you use MariaDB do
+mariadb -u root -p
+
+# Enter the following SQL commands
+CREATE USER 'ctrlpaneluser'@'127.0.0.1' IDENTIFIED BY 'USE_YOUR_OWN_PASSWORD';
+CREATE DATABASE ctrlpanel;
+GRANT ALL PRIVILEGES ON ctrlpanel.* TO 'ctrlpaneluser'@'127.0.0.1';
+FLUSH PRIVILEGES;
+EXIT;
+```

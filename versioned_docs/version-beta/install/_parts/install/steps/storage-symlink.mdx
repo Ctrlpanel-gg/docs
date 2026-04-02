@@ -1,0 +1,9 @@
+## Creating a Storage Symlink
+
+_CtrlPanel requires a symbolic link to be created between the `storage/app/public` directory and the `public/storage` directory to properly serve uploaded files._
+
+To create this symlink, run the following command:
+
+```bash
+php artisan storage:link
+```
