@@ -32,15 +32,16 @@ _If you already have Pterodactyl installed, please check that you also installed
 The commands below are simply an example of how you might install these dependencies. Please consult with your operating system's package manager to determine the correct packages to install.
 
 ```bash
-# Install basic dependencies to continue
+# Install basic dependencies to continue (Debian 12)
 apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg lsb-release
+# If you're using Debian 13
+apt -y install curl apt-transport-https ca-certificates gnupg lsb-release
 
 # Add additional repositories for PHP
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 
-
-# Run these commands if you're not on Debian 13
+# Add Redis official APT repository (Debian 12 only)
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
 # Add MariaDB repository (Debian 12 only)

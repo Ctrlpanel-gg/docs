@@ -7,7 +7,7 @@ sidebar_position: 1
 :::caution
 This guide is for updates 1.2.x -> 1.2.x
 
-If you want to upgrade from version 1.1.x to 1.2.x, please follow [1.1.x](/docs/updating/from-1.1.x) update guide first, then this guide as needed.
+If you want to upgrade from version 1.1.x to 1.2.x, please follow [1.1.x](/docs/updating/from-1.1.x) update guide.
 :::
 
 :::danger
@@ -46,10 +46,8 @@ php artisan migrate --seed --force
 ## Clear Compiled Template Cache
 
 ```bash
-php artisan route:clear
 php artisan view:clear
 php artisan config:clear
-php artisan event:clear
 ```
 
 ## Set Permissions

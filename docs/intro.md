@@ -38,28 +38,20 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 
 <!-- Tool for creating tables: https://www.tablesgenerator.com/markdown_tables -->
 
-<!-- Table start -->
-
 | OS                      |  Version   |     Supported      | Notes             |
 | :---------------------- | :--------: | :----------------: | :---------------- |
-| **Debian**              |     10     |        :o:         | EOL (End-of-life) |
-|                         |     11     |        :o:         | EOL (End-of-life) |
+| **Debian**              |     11     |        :o:         | EOL (End-of-life) |
 |                         |     12     | :white_check_mark: |                   |
-|                         |     13     |     :question:     | Not tested        |
-| **Ubuntu**              |   18.04    |        :o:         | EOL (End-of-life) |
-|                         |   20.04    |        :o:         | EOL (End-of-life) |
+|                         |     13     | :white_check_mark: |                   |
+| **Ubuntu**              |   20.04    |        :o:         | EOL (End-of-life) |
 |                         |   22.04    | :white_check_mark: |                   |
 |                         |   24.04    | :white_check_mark: |                   |
 | **RHEL-based systems¹** | :question: |     :question:     | Not tested        |
 | **Windows**             | :question: |     :question:     | Not tested        |
 
-<!-- Table end -->
-
 _¹ RHEL, Rocky Linux, AlmaLinux, CentOS_
 
 ---
-
-<!-- Table start -->
 
 |                 |     Supported      | Notes                                                                                                                                          |
 | :-------------- | :----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,8 +59,6 @@ _¹ RHEL, Rocky Linux, AlmaLinux, CentOS_
 | **Jexactyl**    | :white_check_mark: |                                                                                                                                                |
 | **Pyrodactyl**  | :white_check_mark: |                                                                                                                                                |
 | **Pelican**     |        :o:         | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
-
-<!-- Table end -->
 
 ## Looking for a Server?
 
