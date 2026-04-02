@@ -41,9 +41,10 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 <!-- Table start -->
 
 | OS                      |  Version   |     Supported      | Notes             |
-| :---------------------- | :--------: | :----------------: | :---------------- | --- | --- | --- | ------------------ | --- |
+| :---------------------- | :--------: | :----------------: | :---------------- |
 | **Debian**              |     10     |        :o:         | EOL (End-of-life) |
-|                         |     11     |        :o:         | EOL (End-of-life) |     |     | 12  | :white_check_mark: |     |
+|                         |     11     |        :o:         | EOL (End-of-life) |
+|                         |     12     | :white_check_mark: |                   |
 |                         |     13     |     :question:     | Not tested        |
 | **Ubuntu**              |   18.04    |        :o:         | EOL (End-of-life) |
 |                         |   20.04    |        :o:         | EOL (End-of-life) |
