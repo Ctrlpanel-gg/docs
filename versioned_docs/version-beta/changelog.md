@@ -14,11 +14,16 @@ Here you'll find a full list of bugs fixed and new features added in the new ver
 - Fixed a bug where the OOM Killer checkbox didn't save its value
 - Fixed admin overview page returning HTTP 500 when the `.git` directory is not found in the CtrlPanel directory
 - Fixed 500 error when using the "Login as user" feature
-- Fixed potential referral system abuse via account deletion - admins can now see deleted referrals and revoke credits if abuse is suspected
+- Fixed potential referral system abuse via account deletion - admins can now see deleted referrals
 - Fixed `php artisan route:cache` throwing an error due to duplicate route names
 - Fixed a bug where mass user notifications could fail if sending an email was unsuccessful (e.g. when the mail server returned that the email doesn't exist)
 - Fixed server creation flow - this could cause issues such as credits being deducted while server creation failed due to an error
 - Fixed a bug where the allocation limit worked globally instead of per-node, which prevented all new server creation when only one node reached its limit while others were still available
+- Fixed a bug where the Upgrade/Downgrade modal did not include the billing cycle of the product
+- Fixed an issue where database seeding during installation could fail due to a database column type mismatch
+- Fixed a bug where admins were unable to use "Log back in" after using "Login As User"
+- Fixed a bug where creating multiple coupons using a range function caused their value to be saved as 1000x less
+- Fixed a bug where manual email confirmation did not trigger events, which prevented users from receiving email confirmation and referral rewards
 
 ## New Features
 
@@ -36,5 +41,8 @@ Here you'll find a full list of bugs fixed and new features added in the new ver
 - Added optional reason for server/user moderation actions via API
 - Removed global minimum-credits setting - each product must now have its own minimum-credits value to prevent negative user balance on server creation
 - Improved CtrlPanel version display on the overview page - it now shows the latest commit hash
+- You can now reset the installer step without opening DevTools and clearing site data - just add the `?reset` parameter to the URL
+- Reordered settings items for better readability
+- Fully reworked payment gateways. Now admins should configure webhook tokens for each payment gateway.
 
 > This should be the full changelog. It was put together manually, so we really hope we haven't missed anything.
