@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.8.1">
 <title data-rh="true">Changelog | CtrlPanel.gg</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://ctrlpanel.gg/docs/beta/changelog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="beta"><meta data-rh="true" name="docusaurus_tag" content="docs-default-beta"><meta data-rh="true" name="docsearch:version" content="beta"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-beta"><meta data-rh="true" property="og:title" content="Changelog | CtrlPanel.gg"><meta data-rh="true" name="description" content="Here you&#x27;ll find a full list of bugs fixed and new features added in the new version of CtrlPanel. This list will help you understand which features are worth testing extra carefully."><meta data-rh="true" property="og:description" content="Here you&#x27;ll find a full list of bugs fixed and new features added in the new version of CtrlPanel. This list will help you understand which features are worth testing extra carefully."><link data-rh="true" rel="icon" href="/img/controlpanel.ico"><link data-rh="true" rel="canonical" href="https://ctrlpanel.gg/docs/beta/changelog"><link data-rh="true" rel="alternate" href="https://ctrlpanel.gg/docs/beta/changelog" hreflang="en"><link data-rh="true" rel="alternate" href="https://ctrlpanel.gg/docs/beta/changelog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Changelog","item":"https://ctrlpanel.gg/docs/beta/changelog"}]}</script><link rel="stylesheet" href="/assets/css/styles.46dc9651.css">
-<script src="/assets/js/runtime~main.c07d49a4.js" defer="defer"></script>
-<script src="/assets/js/main.7d89d110.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.28d7f73a.js" defer="defer"></script>
+<script src="/assets/js/main.51ea2d37.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -21,11 +21,16 @@
 <li>Fixed a bug where the OOM Killer checkbox didn&#x27;t save its value</li>
 <li>Fixed admin overview page returning HTTP 500 when the <code>.git</code> directory is not found in the CtrlPanel directory</li>
 <li>Fixed 500 error when using the &quot;Login as user&quot; feature</li>
-<li>Fixed potential referral system abuse via account deletion - admins can now see deleted referrals and revoke credits if abuse is suspected</li>
+<li>Fixed potential referral system abuse via account deletion - admins can now see deleted referrals</li>
 <li>Fixed <code>php artisan route:cache</code> throwing an error due to duplicate route names</li>
 <li>Fixed a bug where mass user notifications could fail if sending an email was unsuccessful (e.g. when the mail server returned that the email doesn&#x27;t exist)</li>
 <li>Fixed server creation flow - this could cause issues such as credits being deducted while server creation failed due to an error</li>
 <li>Fixed a bug where the allocation limit worked globally instead of per-node, which prevented all new server creation when only one node reached its limit while others were still available</li>
+<li>Fixed a bug where the Upgrade/Downgrade modal did not include the billing cycle of the product</li>
+<li>Fixed an issue where database seeding during installation could fail due to a database column type mismatch</li>
+<li>Fixed a bug where admins were unable to use &quot;Log back in&quot; after using &quot;Login As User&quot;</li>
+<li>Fixed a bug where creating multiple coupons using a range function caused their value to be saved as 1000x less</li>
+<li>Fixed a bug where manual email confirmation did not trigger events, which prevented users from receiving email confirmation and referral rewards</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-features">New Features<a href="#new-features" class="hash-link" aria-label="Direct link to New Features" title="Direct link to New Features">​</a></h2>
 <ul>
@@ -43,6 +48,9 @@
 <li>Added optional reason for server/user moderation actions via API</li>
 <li>Removed global minimum-credits setting - each product must now have its own minimum-credits value to prevent negative user balance on server creation</li>
 <li>Improved CtrlPanel version display on the overview page - it now shows the latest commit hash</li>
+<li>You can now reset the installer step without opening DevTools and clearing site data - just add the <code>?reset</code> parameter to the URL</li>
+<li>Reordered settings items for better readability</li>
+<li>Fully reworked payment gateways. Now admins should configure webhook tokens for each payment gateway.</li>
 </ul>
 <blockquote>
 <p>This should be the full changelog. It was put together manually, so we really hope we haven&#x27;t missed anything.</p>
