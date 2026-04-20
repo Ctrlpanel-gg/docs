@@ -10,7 +10,11 @@ module.exports = {
   url: "https://ctrlpanel.gg",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    }
+  },
   favicon: "img/controlpanel.ico",
   organizationName: "CtrlPanel-gg", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
