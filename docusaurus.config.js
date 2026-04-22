@@ -34,6 +34,11 @@ module.exports = {
           label: "Documentation",
         },
         {
+          to: 'blog',
+          label: 'Blog',
+          position: 'left'
+        },
+        {
           href: "https://market.ctrlpanel.gg",
           label: "Theme / Extension Hub",
           position: "left",
@@ -110,18 +115,15 @@ module.exports = {
       {
         docs: {
           includeCurrentVersion: false,
-          lastVersion: "1.1.x",
+          lastVersion: "1.2.x",
           versions: {
-            'beta': {
-              label: '1.2.x (Public Beta)',
-              path: 'beta',
-              banner: 'none',
-            },
-            // '1.2.x': {
-            //   label: '1.2.x (Upcoming release)',
+            // 'beta': {
+            //   label: '1.2.x (Public Beta)',
+            //   path: 'beta',
+            //   banner: 'none',
             // },
-            '1.1.x': {
-              label: '1.1.x (Latest)',
+            '1.2.x': {
+              label: '1.2.x (Latest)',
             },
             'archive': {
               label: 'Archive',
