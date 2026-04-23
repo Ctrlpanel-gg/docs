@@ -96,10 +96,23 @@ This is a basic NGINX configuration. Please replace any `<domain>` placeholders 
 The last step in the installation process is to set the correct permissions on the Panel files so that the web server can
 use them correctly.
 
-```bash
-chown -R www-data:www-data /var/www/ctrlpanel/
-chmod -R 755 storage/* bootstrap/cache/
-```
+<Tabs>
+  <TabItem value="permissions-default" label="Default Permissions" default>
+    ```bash
+    chown -R www-data:www-data /var/www/ctrlpanel/
+    chmod -R 755 storage/* bootstrap/cache/
+    ```
+  </TabItem>
+  <TabItem value="permissions-advanced" label="Advanced Permissions">
+    An advanced, more secure option. Use it if you know what you are doing.
+
+    ```bash
+    chown -R www-data:www-data /var/www/ctrlpanel/
+    find /var/www/ctrlpanel/ -type d -exec chmod 755 {} \;
+    find /var/www/ctrlpanel/ -type f -exec chmod 644 {} \;
+    ```
+  </TabItem>
+</Tabs>
 
 <QueueListeners />
 
