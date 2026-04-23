@@ -80,18 +80,40 @@ To accept live payments through PayPal, you need a business account. Personal ac
 #### Live payments
 
 1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
-2. Select **Live** in the top right corner.
+2. Select **Live** in the top left corner.
 3. Click **Create App** button.
 4. Copy your `Client ID` and `Secret key`.
-5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+5. Scroll down to "Webhooks" section.
+6. Click **Add Webhook** button.
+7. Set webhook URL to `https://your.ctrlpanel.url/payment/PayPalWebhook` and event types to **All Events**, or if you want fine-grained permissions:
+    - Checkout -> Checkout order approved
+    - Payments & Payouts -> Payment capture completed
+    - Payments & Payouts -> Payment capture pending
+    - Payments & Payouts -> Payment capture denied
+    - Payments & Payouts -> Payment capture declined
+    - Payments & Payouts -> Payment capture refunded
+    - Payments & Payouts -> Payment capture reversed
+8. Copy your `Webhook ID`
+9. Paste the copied data into the corresponding fields in the CtrlPanel settings.
 
 #### Sandbox payments
 
 1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
-2. Select **Sandbox** in the top right corner.
+2. Select **Sandboox** in the top left corner.
 3. Click **Create App** button.
 4. Copy your `Client ID` and `Secret key`.
-5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+5. Scroll down to "Webhooks" section.
+6. Click **Add Webhook** button.
+7. Set webhook URL to `https://your.ctrlpanel.url/payment/PayPalWebhook` and event types to **All Events**, or if you want fine-grained permissions:
+    - Checkout -> Checkout order approved
+    - Payments & Payouts -> Payment capture completed
+    - Payments & Payouts -> Payment capture pending
+    - Payments & Payouts -> Payment capture denied
+    - Payments & Payouts -> Payment capture declined
+    - Payments & Payouts -> Payment capture refunded
+    - Payments & Payouts -> Payment capture reversed
+8. Copy your `Webhook ID`
+9. Paste the copied data into the corresponding fields in the CtrlPanel settings.
 
 Now, go to your CtrlPanel root directory (`/var/www/ctrlpanel/`) and open your `.env` file. Find `APP_ENV` variable, and change it from `production` to `local`.  
 You can now make test payments using PayPal Sandbox account.
@@ -102,10 +124,10 @@ To use Stripe as your payment gateway, you first have to setup a "company" on St
 
 To setup Stripe, go to the Developer page and click on API Keys. You only need the Secret key in order to use Stripe as your payment gateway. Once you have the secret key go to your Ctrlpanel setup and paste the secret into the `Secret Key` section.
 
-Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
-To do so, click on Webhooks and add an endpoint.
-The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.
-Choose the `payment_intent.succeded` event to be sent to your WebhookRoute.
+Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).  
+To do so, click on Webhooks and add an endpoint.  
+The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.  
+Choose the `payment_intent.succeded`, `payment_intent.processing` and `payment_intent.payment_failed` events to be sent to your WebhookRoute.  
 After the webhook creation, you need to get the endpoint secret and copy paste it to your Ctrlpanel payment settings. The endpoint secret can be found in the Webhook Overview page.
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.

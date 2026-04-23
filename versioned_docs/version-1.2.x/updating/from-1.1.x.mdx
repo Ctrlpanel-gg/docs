@@ -25,6 +25,12 @@ php artisan down
 
 ## Pulling the New Files
 
+:::warning
+
+This release includes a refactor of payment gateways. Now you need to add a Webhook ID for PayPal and add new events to Stripe Webhook for correct payment processing. You can find gateway configuration guides [here](../getting-started/basic-configuration#payment-configuration)
+
+:::
+
 ```bash
 git stash
 git pull
