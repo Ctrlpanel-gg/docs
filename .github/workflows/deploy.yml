@@ -7,7 +7,11 @@ on:
       - 'docs/**'
       - 'versioned_docs/**'
       - 'src/**'
+      - 'blog/**'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
