@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ctrlpanel.gg/blog</id>
+    <title>CtrlPanel.gg Blog</title>
+    <updated>2026-04-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ctrlpanel.gg/blog"/>
+    <subtitle>CtrlPanel.gg Blog</subtitle>
+    <icon>https://ctrlpanel.gg/img/controlpanel.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[CtrlPanel 1.2.0 is here!]]></title>
+        <id>https://ctrlpanel.gg/blog/1.2.0-release</id>
+        <link href="https://ctrlpanel.gg/blog/1.2.0-release"/>
+        <updated>2026-04-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[After nearly 10 months of development, we are ready to present version 1.2.0 as a stable release.]]></summary>
+        <content type="html"><![CDATA[<p>After nearly 10 months of development, we are ready to present version 1.2.0 as a stable release.</p>
+<p>We want to be transparent with our community: version 1.1 was released prematurely, and we are not proud of that. It shipped with too many rough edges and took far longer to stabilize than it should have. We heard your frustration, and we took it seriously.</p>
+<p>With 1.2.0, we made a commitment to not repeat that mistake. This release went through a full beta testing phase before reaching stable, and we are confident it reflects the quality our users deserve.</p>
+<p>This update brings a large number of bug fixes, new features, and importantly, patches for several critical security vulnerabilities. We strongly urge every CtrlPanel user to upgrade as soon as possible. Do not wait for themes or addons to be updated first - running an outdated version puts both you and your clients at risk.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="license-change">License Change<a href="https://ctrlpanel.gg/blog/1.2.0-release#license-change" class="hash-link" aria-label="Direct link to License Change" title="Direct link to License Change" translate="no">​</a></h2>
+<p>Starting with this release, CtrlPanel moves from AGPL 3.0 to the <strong>Mozilla Public License 2.0 (MPL 2.0)</strong>.</p>
+<p>We'll be honest - we didn't fully think through the implications of AGPL 3.0 when we adopted it. As we looked closer, we realized it was placing an unreasonable burden on our community - particularly on users running the panel and developers building third-party addons. The license was doing more harm than good, and that was never our intention.</p>
+<p>MPL 2.0 is a more balanced license that still protects the project while giving the community the freedom it needs to grow.</p>
+<p>As for previous versions - we are not officially relicensing them, but we have no intention of taking any action against AGPL 3.0 non-compliance in older releases. That said, compliance with MPL 2.0 is required for this version and all future releases - no exceptions.</p>
+<p>A dedicated blog post covering all the details including what this means for addon and theme developers will be published tomorrow, April 25th.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="acknowledgements">Acknowledgements<a href="https://ctrlpanel.gg/blog/1.2.0-release#acknowledgements" class="hash-link" aria-label="Direct link to Acknowledgements" title="Direct link to Acknowledgements" translate="no">​</a></h2>
+<p>This release would not have been possible without the help of our contributors and beta testers.</p>
+<p>A special thank you to <strong>Simba</strong> and <strong>FerksFK</strong> for their contributions to the codebase, and to <strong>Maddigan</strong> for his invaluable work during beta testing - single-handedly tracking down the vast majority of bugs in this release.</p>
+<p>We also want to thank everyone who responsibly disclosed security vulnerabilities that are patched in this release. Your names will be added to the Hall of Fame in our SECURITY.md once the CVE details are publicly disclosed.</p>
+<p>Thank you to everyone else who contributed, reported issues, or helped test along the way. You are what keeps this project alive <!-- -->❤️<!-- -->.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-changed">What's Changed<a href="https://ctrlpanel.gg/blog/1.2.0-release#whats-changed" class="hash-link" aria-label="Direct link to What's Changed" title="Direct link to What's Changed" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="bug-fixes">Bug Fixes<a href="https://ctrlpanel.gg/blog/1.2.0-release#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes" translate="no">​</a></h3>
+<ul>
+<li class="">Fixed credits being displayed as 1000x their actual value in parts of the UI and API responses</li>
+<li class="">Fixed the OOM Killer checkbox not saving its value</li>
+<li class="">Fixed HTTP 500 on the admin overview page when the <code>.git</code> directory is missing</li>
+<li class="">Fixed "Log back in" being unavailable to admins after using "Login as User"</li>
+<li class="">Fixed potential referral system abuse through account deletion - deleted referrals are now visible to admins</li>
+<li class="">Fixed <code>php artisan route:cache</code> failing due to duplicate route names</li>
+<li class="">Fixed mass user notifications failing if one email address was rejected by the mail server</li>
+<li class="">Fixed server creation flow allowing credits to be deducted even when server creation failed</li>
+<li class="">Fixed allocation limit applying globally instead of per-node, which blocked server creation on all nodes when only one reached its limit</li>
+<li class="">Fixed multiple coupons created via range function having their value saved as 1000x less than intended</li>
+<li class="">Fixed manual email confirmation not triggering events, which prevented users from receiving their referral and email confirmation rewards</li>
+<li class="">Fixed coupon application unlocking the payment button without a selected payment gateway</li>
+<li class="">Fixed 100% off coupons not allowing users to claim a product for free without selecting a payment gateway</li>
+<li class="">Fixed admins being unable to delete coupons</li>
+<li class="">Fixed referral commission calculation returning incorrect amounts</li>
+<li class="">Fixed regular users being able to view coupon and voucher-related logs</li>
+<li class="">Fixed payment confirmation email formatting</li>
+<li class="">Fixed broken installation caused by a database column type mismatch</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features--improvements">New Features &amp; Improvements<a href="https://ctrlpanel.gg/blog/1.2.0-release#new-features--improvements" class="hash-link" aria-label="Direct link to New Features &amp; Improvements" title="Direct link to New Features &amp; Improvements" translate="no">​</a></h3>
+<ul>
+<li class="">Added support for coupons with unlimited uses</li>
+<li class="">Added "Minimum product price" setting for coupons</li>
+<li class="">Added option to automatically delete expired vouchers and those that have reached their usage limit</li>
+<li class="">Added ability for users to change or remove an applied coupon at checkout</li>
+<li class="">Coupons are now temporarily reserved during checkout and only marked as used after a successful payment</li>
+<li class="">Added ticket deletion confirmation prompt</li>
+<li class="">Added a notification 3 days before server suspension when the user has insufficient credits</li>
+<li class="">Added rate limiting for server creation to prevent abuse from repeated rapid requests</li>
+<li class="">Added optional reason field for server and user moderation actions via the API</li>
+<li class="">Added Ukrainian localization; extended Russian localization</li>
+<li class="">Added ability to change thousand and decimal separators - either globally or per user based on their locale</li>
+<li class="">Admins can now select all eggs in a nest by clicking the nest name in the product configuration list</li>
+<li class="">Products now accept <code>0</code> as a value for unlimited resources</li>
+<li class="">Products in the upgrade/downgrade list are now sorted by price</li>
+<li class="">Removed the global minimum-credits setting - each product now defines its own minimum-credits value</li>
+<li class="">Removed "Generate random codes" from the coupon edit page</li>
+<li class="">Reordered settings items for better readability</li>
+<li class="">Fully reworked payment gateways - admins must now configure webhook tokens per gateway</li>
+<li class="">Redesigned the version info card on the overview page</li>
+<li class="">Installer step can now be reset by adding <code>?reset</code> to the URL, without needing DevTools or clearing site data</li>
+<li class="">User creation command (<code>php artisan make:user</code>) now returns an error if the email or Pterodactyl ID is already in use</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fixed-vulnerabilities">Fixed Vulnerabilities<a href="https://ctrlpanel.gg/blog/1.2.0-release#fixed-vulnerabilities" class="hash-link" aria-label="Direct link to Fixed Vulnerabilities" title="Direct link to Fixed Vulnerabilities" translate="no">​</a></h3>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p><strong>Vulnerability details will be disclosed two weeks after the release date</strong></p></div></div>
+<ul>
+<li class="">CVE-2026-34234</li>
+<li class="">CVE-2026-34358</li>
+<li class="">CVE-2026-34246</li>
+<li class="">CVE-2026-34216</li>
+<li class="">CVE-2026-34241</li>
+<li class="">CVE-2026-34233</li>
+</ul>
+<hr>
+<p>This release also includes a number of internal bug fixes, performance improvements, and code refactors not listed above.<br>
+<strong>Full Changelog</strong>: <a href="https://github.com/Ctrlpanel-gg/panel/compare/1.1.1...1.2.0" target="_blank" rel="noopener noreferrer" class="">https://github.com/Ctrlpanel-gg/panel/compare/1.1.1...1.2.0</a></p>]]></content>
+        <author>
+            <name>1Day2Die</name>
+        </author>
+        <author>
+            <name>MrWeez</name>
+        </author>
+        <author>
+            <name>Simba</name>
+        </author>
+        <category label="Releases" term="Releases"/>
+    </entry>
+</feed>
