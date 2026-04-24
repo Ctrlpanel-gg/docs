@@ -1,0 +1,26 @@
+1day2die:
+  name: 1Day2Die
+  title: Project Manager
+  image_url: https://github.com/1Day2Die.png
+  page:
+    permalink: '/1day2die'
+  socials:
+    github: 1Day2Die
+
+mrweez:
+  name: MrWeez
+  title: Contribution Director & Maintainer
+  image_url: https://github.com/MrWeez.png
+  page: true
+  socials:
+    github: MrWeez
+    email: hello@mrweez.dev
+    website: https://mrweez.dev
+
+simba:
+  name: Simba
+  title: Maintainer
+  image_url: https://github.com/simbabimba-dev.png
+  page: true
+  socials:
+    github: simbabimba-dev

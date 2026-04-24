@@ -10,7 +10,11 @@ module.exports = {
   url: "https://ctrlpanel.gg",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    }
+  },
   favicon: "img/controlpanel.ico",
   organizationName: "CtrlPanel-gg", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
@@ -28,6 +32,11 @@ module.exports = {
           docId: "intro",
           position: "left",
           label: "Documentation",
+        },
+        {
+          to: 'blog',
+          label: 'Blog',
+          position: 'left'
         },
         {
           href: "https://market.ctrlpanel.gg",
@@ -106,18 +115,15 @@ module.exports = {
       {
         docs: {
           includeCurrentVersion: false,
-          lastVersion: "1.1.x",
+          lastVersion: "1.2.x",
           versions: {
-            'beta': {
-              label: '1.2.x (Public Beta)',
-              path: 'beta',
-              banner: 'none',
-            },
-            // '1.2.x': {
-            //   label: '1.2.x (Upcoming release)',
+            // 'beta': {
+            //   label: '1.2.x (Public Beta)',
+            //   path: 'beta',
+            //   banner: 'none',
             // },
-            '1.1.x': {
-              label: '1.1.x (Latest)',
+            '1.2.x': {
+              label: '1.2.x (Latest)',
             },
             'archive': {
               label: 'Archive',

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Updating from 1.1.x
 
-:::caution
+:::info
 This guide is for updates 1.1.x -> 1.2.x
 
 If you want to upgrade from version 1.2.x to 1.2.x, please follow [1.2.x](/docs/updating/from-1.2.x) update guide.
@@ -24,6 +24,14 @@ php artisan down
 ```
 
 ## Pulling the New Files
+
+:::warning
+
+This release includes a refactor of payment gateways. Now you need to add a Webhook ID for PayPal and add new events to Stripe Webhook for correct payment processing. You can find gateway configuration guides [here](../getting-started/basic-configuration#payment-configuration)
+
+Also, please double-check referral and partner rewards, email/discord confirmation rewards, initial credits, product prices, voucher and coupon values.
+
+:::
 
 ```bash
 git stash
