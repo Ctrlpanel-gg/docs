@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkctrlpanel=self.webpackChunkctrlpanel||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"CtrlPanel 1.2.0 is here!","permalink":"/blog/1.2.0-release","unlisted":false,"date":"2026-04-24T00:00:00.000Z"}]}')}}]);

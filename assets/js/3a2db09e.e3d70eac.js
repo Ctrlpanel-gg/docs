@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkctrlpanel=self.webpackChunkctrlpanel||[]).push([[8121],{8070:e=>{e.exports=JSON.parse('{"tags":[{"label":"Guides","permalink":"/blog/tags/guides","count":1},{"label":"Releases","permalink":"/blog/tags/releases","count":1}]}')}}]);

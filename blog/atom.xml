@@ -2,11 +2,84 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ctrlpanel.gg/blog</id>
     <title>CtrlPanel.gg Blog</title>
-    <updated>2026-04-24T00:00:00.000Z</updated>
+    <updated>2026-04-25T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ctrlpanel.gg/blog"/>
     <subtitle>CtrlPanel.gg Blog</subtitle>
     <icon>https://ctrlpanel.gg/img/controlpanel.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Understanding MPL 2.0 in the Context of CtrlPanel]]></title>
+        <id>https://ctrlpanel.gg/blog/understanding-mpl-2.0</id>
+        <link href="https://ctrlpanel.gg/blog/understanding-mpl-2.0"/>
+        <updated>2026-04-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[With the release of 1.2.0, CtrlPanel moves from AGPL 3.0 to the Mozilla Public License 2.0. This post covers what that means for everyone - users, addon and theme developers, and contributors.]]></summary>
+        <content type="html"><![CDATA[<p>With the release of 1.2.0, CtrlPanel moves from AGPL 3.0 to the Mozilla Public License 2.0. This post covers what that means for everyone - users, addon and theme developers, and contributors.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-were-making-this-change">Why We're Making This Change<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#why-were-making-this-change" class="hash-link" aria-label="Direct link to Why We're Making This Change" title="Direct link to Why We're Making This Change" translate="no">​</a></h2>
+<p>When we adopted AGPL 3.0 back in the 1.0 release, we did not fully think through its implications. In practice, AGPL 3.0 turned out to be far more restrictive than we intended - addon and theme developers couldn't legally sell their work, and users couldn't customize the panel for their own needs without publishing their changes. That was never the goal, and it was quietly killing the community we were trying to build.</p>
+<p>MPL 2.0 fixes this. It keeps the project open and protected, while giving everyone the freedom they actually need.</p>
+<p>As part of this transition, we are also introducing a Contributor License Agreement (CLA) for all future pull requests. Contributors will be asked to sign it when opening a PR. This is part of a broader effort to give CtrlPanel a proper legal foundation - something we should have had from the start.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Before reading further, we recommend taking a quick look at the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank" rel="noopener noreferrer" class="">Mozilla Public License 2.0</a> itself - it is short, readable, and will make everything in this post much easier to follow and understand.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="for-users">For Users<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#for-users" class="hash-link" aria-label="Direct link to For Users" title="Direct link to For Users" translate="no">​</a></h2>
+<p>If you just run CtrlPanel to sell game servers to your customers, not much changes for you.</p>
+<ul>
+<li class="">You can download, install, and run the panel freely</li>
+<li class="">You can modify any files - change the UI, add features, integrate with your own systems</li>
+<li class="">You can use the panel commercially</li>
+<li class="">Your customers accessing the panel through a browser is not considered distribution - you have no obligations in that case</li>
+<li class="">If you ever give or sell a copy of your modified panel to another person or company, you must provide the modified files - but since CtrlPanel is written in PHP, there is nothing extra to prepare. The source code is already what you are distributing.</li>
+</ul>
+<p>In short - run it, customize it, build a business on it. You're good.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="for-addon--theme-developers">For Addon &amp; Theme Developers<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#for-addon--theme-developers" class="hash-link" aria-label="Direct link to For Addon &amp; Theme Developers" title="Direct link to For Addon &amp; Theme Developers" translate="no">​</a></h2>
+<p>This is where the biggest change is, and where MPL 2.0 makes things much more practical.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="if-your-addon-does-not-modify-our-core-files">If your addon does not modify our core files<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#if-your-addon-does-not-modify-our-core-files" class="hash-link" aria-label="Direct link to If your addon does not modify our core files" title="Direct link to If your addon does not modify our core files" translate="no">​</a></h3>
+<p>This is the cleanest scenario. If your addon is a separate package or file that does not touch CtrlPanel's existing source files:</p>
+<ul>
+<li class="">You can license it however you want, including proprietary</li>
+<li class="">You can sell it on <a href="https://market.ctrlpanel.gg/" target="_blank" rel="noopener noreferrer" class="">market.ctrlpanel.gg</a> or anywhere else, fully closed source</li>
+<li class="">You have no MPL obligations whatsoever</li>
+</ul>
+<p>This is why we are actively thinking about a more modular extension system - so that addons never need to touch core files in the first place. More on that in the future.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="if-your-addon-modifies-our-core-files">If your addon modifies our core files<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#if-your-addon-modifies-our-core-files" class="hash-link" aria-label="Direct link to If your addon modifies our core files" title="Direct link to If your addon modifies our core files" translate="no">​</a></h3>
+<p>If your work involves editing CtrlPanel's existing source files, MPL 2.0 still allows you to sell it - but with one important condition: the modified core files must remain under MPL 2.0, and you must provide them to anyone you distribute to - which, again, is nothing extra since PHP is already source code.</p>
+<p>This does not mean a public release. You are only required to provide source code to the people you directly sell or distribute to - not to the general public. You are not required to publish anything on GitHub or anywhere publicly accessible.</p>
+<p>However, keep in mind that once a recipient has that source code, they are legally allowed to share it further. MPL does not restrict what recipients can do with source code they legitimately received. If keeping your modifications private long-term is important to you, the safest approach is to avoid modifying core files and build your addon as a separate package instead.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="modular-extension-system">Modular Extension System<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#modular-extension-system" class="hash-link" aria-label="Direct link to Modular Extension System" title="Direct link to Modular Extension System" translate="no">​</a></h3>
+<p>The safest way to keep your addon code fully closed is to never touch core files at all - and we want to make that possible for every type of addon.</p>
+<p>Currently, CtrlPanel has a modular system for payment gateways, and we are ready to expand it further. If you need an internal API or hook that does not exist yet, there are two ways to help make it happen:</p>
+<ul>
+<li class=""><strong>Open an issue</strong> on GitHub describing what you need - we will consider it for an upcoming release</li>
+<li class=""><strong>Open a PR</strong> that adds the implementation yourself - the fastest path to getting it in</li>
+</ul>
+<p>Either way, make sure to follow our contribution guidelines before getting started - see the relevant files in the <code>.github</code> directory of the repository.</p>
+<p>The more developers build addons the right way, the stronger and more sustainable the ecosystem becomes for everyone.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-note-for-theme-developers">A note for theme developers<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#a-note-for-theme-developers" class="hash-link" aria-label="Direct link to A note for theme developers" title="Direct link to A note for theme developers" translate="no">​</a></h3>
+<p>We ask that you preserve the original CtrlPanel copyright notice in the panel footer. You are welcome to add your own copyright alongside it - just don't remove ours. This is both a license requirement and a matter of respect for the project and its contributors.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="for-those-looking-to-fork">For Those Looking to Fork<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#for-those-looking-to-fork" class="hash-link" aria-label="Direct link to For Those Looking to Fork" title="Direct link to For Those Looking to Fork" translate="no">​</a></h2>
+<p>MPL 2.0 allows anyone to take CtrlPanel's code, modify it, and redistribute it - including commercially. If you do, here is what the license requires:</p>
+<ul>
+<li class="">Modified MPL-licensed files must remain under MPL 2.0</li>
+<li class="">You must keep existing copyright notices intact</li>
+<li class="">You cannot relicense the MPL-covered files as proprietary</li>
+</ul>
+<p>Building on open source is fine. Stripping it of its open source nature is not.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary">Summary<a href="https://ctrlpanel.gg/blog/understanding-mpl-2.0#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary" translate="no">​</a></h2>
+<table><thead><tr><th></th><th>AGPL 3.0</th><th>MPL 2.0</th></tr></thead><tbody><tr><td>Run the panel commercially</td><td>Yes</td><td>Yes</td></tr><tr><td>Customize without publishing changes</td><td>No</td><td>Yes*</td></tr><tr><td>Sell closed-source addons (separate files)</td><td>No</td><td>Yes</td></tr><tr><td>Sell addons that modify core files</td><td>No</td><td>Yes**</td></tr><tr><td>Fork and redistribute</td><td>Yes</td><td>Yes</td></tr></tbody></table>
+<p>*As long as you don't distribute the code to others.<br>
+<!-- -->**Modified core files must remain MPL 2.0 and source must be provided to recipients.</p>
+<hr>
+<p>If you have questions about what this means for your specific use case, feel free to join our <a href="https://discord.gg/ctrlpanel-gg-787829714483019826" target="_blank" rel="noopener noreferrer" class="">Discord</a>, we are happy to help. And if you want the full legal text, you can read the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank" rel="noopener noreferrer" class="">Mozilla Public License 2.0</a> directly.</p>]]></content>
+        <author>
+            <name>1Day2Die</name>
+        </author>
+        <author>
+            <name>MrWeez</name>
+        </author>
+        <category label="Guides" term="Guides"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CtrlPanel 1.2.0 is here!]]></title>
         <id>https://ctrlpanel.gg/blog/1.2.0-release</id>
