@@ -1,6 +1,7 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: "CtrlPanel.gg",
@@ -38,6 +39,11 @@ const config: Config = {
           position: 'left'
         },
         {
+          to: '/docs/api',
+          label: 'API',
+          position: 'left'
+        },
+        {
           href: "https://market.ctrlpanel.gg",
           label: "Theme / Extension Hub",
           position: "left",
@@ -46,11 +52,6 @@ const config: Config = {
           type: "docsVersionDropdown",
           position: "right",
           dropdownActiveClassDisabled: true,
-        },
-        {
-          href: "https://documenter.getpostman.com/view/9044962/TzY69ub2#02b8da43-ab01-487d-b2f5-5f8699b509cd",
-          label: "API",
-          position: "left",
         },
         {
           href: "https://demo.ctrlpanel.gg",
@@ -79,6 +80,10 @@ const config: Config = {
               label: "Documentation",
               to: "/docs",
             },
+            {
+              label: "API",
+              to: "/docs/api",
+            },
           ],
         },
         {
@@ -105,8 +110,114 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'nginx', 'sql'],
+      additionalLanguages: [
+        'bash',
+        'nginx',
+        'sql',
+        "ruby",
+        "csharp",
+        "php",
+        "java",
+        "powershell",
+        "json",
+        "dart",
+        "objectivec",
+        "r",
+      ],
     },
+    languageTabs: [
+      {
+        highlight: "python",
+        language: "python",
+        logoClass: "python",
+      },
+      {
+        highlight: "bash",
+        language: "curl",
+        logoClass: "curl",
+      },
+      {
+        highlight: "csharp",
+        language: "csharp",
+        logoClass: "csharp",
+      },
+      {
+        highlight: "go",
+        language: "go",
+        logoClass: "go",
+      },
+      {
+        highlight: "javascript",
+        language: "nodejs",
+        logoClass: "nodejs",
+      },
+      {
+        highlight: "ruby",
+        language: "ruby",
+        logoClass: "ruby",
+      },
+      {
+        highlight: "php",
+        language: "php",
+        logoClass: "php",
+      },
+      {
+        highlight: "java",
+        language: "java",
+        logoClass: "java",
+        variant: "unirest",
+      },
+      {
+        highlight: "powershell",
+        language: "powershell",
+        logoClass: "powershell",
+      },
+      {
+        highlight: "dart",
+        language: "dart",
+        logoClass: "dart",
+      },
+      {
+        highlight: "javascript",
+        language: "javascript",
+        logoClass: "javascript",
+      },
+      {
+        highlight: "c",
+        language: "c",
+        logoClass: "c",
+      },
+      {
+        highlight: "objective-c",
+        language: "objective-c",
+        logoClass: "objective-c",
+      },
+      {
+        highlight: "ocaml",
+        language: "ocaml",
+        logoClass: "ocaml",
+      },
+      {
+        highlight: "r",
+        language: "r",
+        logoClass: "r",
+      },
+      {
+        highlight: "swift",
+        language: "swift",
+        logoClass: "swift",
+      },
+      {
+        highlight: "kotlin",
+        language: "kotlin",
+        logoClass: "kotlin",
+      },
+      {
+        highlight: "rust",
+        language: "rust",
+        logoClass: "rust",
+      },
+    ],
   } satisfies Preset.ThemeConfig,
   presets: [
     [
@@ -128,7 +239,6 @@ const config: Config = {
               label: 'Archive',
             },
           },
-          // Please change this to your repo.
           editUrl: "https://github.com/Ctrlpanel-gg/docs/tree/main",
         },
         theme: {
@@ -138,6 +248,16 @@ const config: Config = {
     ],
   ],
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api-docs',
+        path: 'api-docs',
+        routeBasePath: 'docs/api',
+        sidebarPath: 'api-sidebars.ts',
+        docItemComponent: "@theme/ApiItem",
+      },
+    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -165,7 +285,26 @@ const config: Config = {
         ],
       },
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "openapi",
+        docsPluginId: "api-docs",
+        config: {
+          cpgg: {
+            specPath: "static/api/openapi.yaml",
+            outputDir: "api-docs",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+        }
+      },
+    ],
+    'docusaurus-plugin-sass',
   ],
+  themes: ["docusaurus-theme-openapi-docs"],
 };
 
 export default config;

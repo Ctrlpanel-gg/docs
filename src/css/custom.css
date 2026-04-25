@@ -27,3 +27,83 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+/* ============================================================
+ * Sidebar Method labels
+ * ============================================================ */
+
+.api-method > .menu__link,
+.schema > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before,
+.schema > .menu__link::before {
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.375rem;
+  line-height: 1.25;
+  width: 2.25rem;
+  height: auto;
+  border: none;
+  text-transform: uppercase;
+  margin-right: var(--ifm-spacing-horizontal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* Content labels with colors */
+.get > .menu__link::before {
+  content: "get";
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+.post > .menu__link::before {
+  content: "post";
+  background-color: #dcfce7;
+  color: #166534;
+}
+.delete > .menu__link::before {
+  content: "del";
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+.put > .menu__link::before {
+  content: "put";
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: #fef9c3;
+  color: #854d0e;
+}
+
+/* Dark mode overrides for better visibility */
+[data-theme='dark'] .get > .menu__link::before { background-color: rgba(41, 128, 185, 0.2); color: #3498db; }
+[data-theme='dark'] .post > .menu__link::before { background-color: rgba(39, 174, 96, 0.2); color: #2ecc71; }
+[data-theme='dark'] .delete > .menu__link::before { background-color: rgba(192, 57, 43, 0.2); color: #e74c3c; }
+[data-theme='dark'] .put > .menu__link::before { background-color: rgba(230, 126, 34, 0.2); color: #f39c12; }
+[data-theme='dark'] .patch > .menu__link::before { background-color: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+
+/* HEAD / EVENT / SCHEMA — neutral colors, no theme needed */
+.head > .menu__link::before {
+  content: "head";
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+.event > .menu__link::before {
+  content: "event";
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+.schema > .menu__link::before {
+  content: "schema";
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}

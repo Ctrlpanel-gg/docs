@@ -1,0 +1,3928 @@
+openapi: 3.0.3
+info:
+  title: 'CtrlPanel.gg API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: '{protocol}://{domain}'
+    description: 'Your Panel Installation'
+    variables:
+      protocol:
+        default: https
+        enum:
+          - http
+          - https
+      domain:
+        default: panel.example.com
+        description: 'The domain where your panel is installed'
+tags:
+  -
+    name: Notifications
+    description: ''
+  -
+    name: 'Product Management'
+    description: ''
+  -
+    name: 'Role Management'
+    description: ''
+  -
+    name: 'Server Management'
+    description: ''
+  -
+    name: 'User Management'
+    description: ''
+  -
+    name: 'Voucher Management'
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []
+paths:
+  '/api/notifications/{user_id}':
+    get:
+      summary: 'Show a list of notifications for a user.'
+      operationId: showAListOfNotificationsForAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      type: App\Notifications\ServerCreated
+                      details:
+                        title: 'Server Created'
+                        content: 'Your server has been created successfully.'
+                      read_at: null
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        type: App\Notifications\ServerCreated
+                        details:
+                          title: 'Server Created'
+                          content: 'Your server has been created successfully.'
+                        read_at: null
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        type:
+                          type: string
+                          example: App\Notifications\ServerCreated
+                        details:
+                          type: object
+                          properties:
+                            title:
+                              type: string
+                              example: 'Server Created'
+                            content:
+                              type: string
+                              example: 'Your server has been created successfully.'
+                        read_at:
+                          type: string
+                          example: null
+                          nullable: true
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - Notifications
+    delete:
+      summary: 'Delete all notifications from an user.'
+      operationId: deleteAllNotificationsFromAnUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'All notifications deleted successfully'
+                  meta:
+                    deleted_count: 10
+                properties:
+                  message:
+                    type: string
+                    example: 'All notifications deleted successfully'
+                  meta:
+                    type: object
+                    properties:
+                      deleted_count:
+                        type: integer
+                        example: 10
+      tags:
+        - Notifications
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/notifications/{user_id}/{notification_id}':
+    get:
+      summary: 'Show a specific notification of a user.'
+      operationId: showASpecificNotificationOfAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    type: App\Notifications\ServerCreated
+                    details:
+                      title: 'Server Created'
+                      content: 'Your server has been created successfully.'
+                    read_at: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      type:
+                        type: string
+                        example: App\Notifications\ServerCreated
+                      details:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                            example: 'Server Created'
+                          content:
+                            type: string
+                            example: 'Your server has been created successfully.'
+                      read_at:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - Notifications
+    delete:
+      summary: 'Delete a specific notification from an user.'
+      operationId: deleteASpecificNotificationFromAnUser
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Notifications
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 2491fec3-c7d7-47cd-9d82-cc76e851c124
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: notification_id
+        description: 'The ID of the notification.'
+        example: 2491fec3-c7d7-47cd-9d82-cc76e851c124
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: notification
+        description: 'The ID of the notification.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/notifications/send-to-users:
+    post:
+      summary: 'Send a notification to specific users.'
+      operationId: sendANotificationToSpecificUsers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Notification sent successfully.'
+                  meta:
+                    user_count: 5
+                    channels:
+                      - mail
+                      - database
+                properties:
+                  message:
+                    type: string
+                    example: 'Notification sent successfully.'
+                  meta:
+                    type: object
+                    properties:
+                      user_count:
+                        type: integer
+                        example: 5
+                      channels:
+                        type: array
+                        example:
+                          - mail
+                          - database
+                        items:
+                          type: string
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                via:
+                  type: string
+                  description: 'The notification channel (mail, database, both).'
+                  example: both
+                  enum:
+                    - mail
+                    - database
+                    - both
+                users:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example:
+                    - 16
+                  items:
+                    type: integer
+                title:
+                  type: string
+                  description: 'The title of the notification. Must be at least 1 character.'
+                  example: 'System Update'
+                content:
+                  type: string
+                  description: 'The content of the notification. Must be at least 1 character.'
+                  example: 'A new update is available.'
+              required:
+                - via
+                - title
+                - content
+  /api/notifications/send-to-all:
+    post:
+      summary: 'Send a notification to all users.'
+      operationId: sendANotificationToAllUsers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Notification sent successfully.'
+                  meta:
+                    user_count: 100
+                    channels:
+                      - mail
+                      - database
+                properties:
+                  message:
+                    type: string
+                    example: 'Notification sent successfully.'
+                  meta:
+                    type: object
+                    properties:
+                      user_count:
+                        type: integer
+                        example: 100
+                      channels:
+                        type: array
+                        example:
+                          - mail
+                          - database
+                        items:
+                          type: string
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                via:
+                  type: string
+                  description: 'The notification channel (mail, database, both).'
+                  example: both
+                  enum:
+                    - mail
+                    - database
+                    - both
+                title:
+                  type: string
+                  description: 'The title of the notification. Must be at least 1 character.'
+                  example: 'Global Message'
+                content:
+                  type: string
+                  description: 'The content of the notification. Must be at least 1 character.'
+                  example: 'Hello everyone!'
+              required:
+                - via
+                - title
+                - content
+  /api/products:
+    get:
+      summary: 'Show a list of products.'
+      operationId: showAListOfProducts
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.user</code>, <code>eggs.nest</code>, <code>nodes.location</code>'
+          example: servers.user
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.user</code>, <code>eggs.nest</code>, <code>nodes.location</code>'
+            example: servers.user
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[description]'
+          description: 'Filter results by description'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by description'
+            example: null
+        -
+          in: query
+          name: 'filter[price]'
+          description: 'Filter results by price'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by price'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Basic Server'
+                      description: 'Perfect for small communities'
+                      price: '5.00'
+                      memory: 2048
+                      cpu: 100
+                      swap: 0
+                      disk: 10240
+                      io: 500
+                      databases: 1
+                      backups: 1
+                      serverlimit: 1
+                      allocations: 1
+                      oom_killer: true
+                      default_billing_priority: 0
+                      disabled: false
+                      minimum_credits: '5.00'
+                      billing_period: monthly
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Basic Server'
+                        description: 'Perfect for small communities'
+                        price: '5.00'
+                        memory: 2048
+                        cpu: 100
+                        swap: 0
+                        disk: 10240
+                        io: 500
+                        databases: 1
+                        backups: 1
+                        serverlimit: 1
+                        allocations: 1
+                        oom_killer: true
+                        default_billing_priority: 0
+                        disabled: false
+                        minimum_credits: '5.00'
+                        billing_period: monthly
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Basic Server'
+                        description:
+                          type: string
+                          example: 'Perfect for small communities'
+                        price:
+                          type: string
+                          example: '5.00'
+                        memory:
+                          type: integer
+                          example: 2048
+                        cpu:
+                          type: integer
+                          example: 100
+                        swap:
+                          type: integer
+                          example: 0
+                        disk:
+                          type: integer
+                          example: 10240
+                        io:
+                          type: integer
+                          example: 500
+                        databases:
+                          type: integer
+                          example: 1
+                        backups:
+                          type: integer
+                          example: 1
+                        serverlimit:
+                          type: integer
+                          example: 1
+                        allocations:
+                          type: integer
+                          example: 1
+                        oom_killer:
+                          type: boolean
+                          example: true
+                        default_billing_priority:
+                          type: integer
+                          example: 0
+                        disabled:
+                          type: boolean
+                          example: false
+                        minimum_credits:
+                          type: string
+                          example: '5.00'
+                        billing_period:
+                          type: string
+                          example: monthly
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Product Management'
+    post:
+      summary: 'Store a new product in the system.'
+      operationId: storeANewProductInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Basic Server'
+                    description: 'Perfect for small communities'
+                    price: '5.00'
+                    memory: 2048
+                    cpu: 100
+                    swap: 0
+                    disk: 10240
+                    io: 500
+                    databases: 1
+                    backups: 1
+                    serverlimit: 1
+                    allocations: 1
+                    oom_killer: true
+                    default_billing_priority: 0
+                    disabled: false
+                    minimum_credits: '5.00'
+                    billing_period: monthly
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Basic Server'
+                      description:
+                        type: string
+                        example: 'Perfect for small communities'
+                      price:
+                        type: string
+                        example: '5.00'
+                      memory:
+                        type: integer
+                        example: 2048
+                      cpu:
+                        type: integer
+                        example: 100
+                      swap:
+                        type: integer
+                        example: 0
+                      disk:
+                        type: integer
+                        example: 10240
+                      io:
+                        type: integer
+                        example: 500
+                      databases:
+                        type: integer
+                        example: 1
+                      backups:
+                        type: integer
+                        example: 1
+                      serverlimit:
+                        type: integer
+                        example: 1
+                      allocations:
+                        type: integer
+                        example: 1
+                      oom_killer:
+                        type: boolean
+                        example: true
+                      default_billing_priority:
+                        type: integer
+                        example: 0
+                      disabled:
+                        type: boolean
+                        example: false
+                      minimum_credits:
+                        type: string
+                        example: '5.00'
+                      billing_period:
+                        type: string
+                        example: monthly
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Product Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 30 characters.'
+                  example: b
+                description:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: 'Et animi quos velit et fugiat.'
+                  nullable: true
+                price:
+                  type: number
+                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
+                  example: 42
+                minimum_credits:
+                  type: number
+                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
+                  example: 37
+                  nullable: true
+                memory:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 5.'
+                  example: 40
+                cpu:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 52
+                swap:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 8
+                disk:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 5.'
+                  example: 67
+                io:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 7
+                serverlimit:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 87
+                databases:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 39
+                backups:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 50
+                allocations:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 62
+                nodes:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the nodes table.'
+                  example:
+                    - 16
+                  items:
+                    type: integer
+                eggs:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the eggs table.'
+                  example:
+                    - 16
+                  items:
+                    type: integer
+                disabled:
+                  type: boolean
+                  description: ''
+                  example: true
+                oom_killer:
+                  type: boolean
+                  description: ''
+                  example: true
+                default_billing_priority:
+                  type: integer
+                  description: ''
+                  example: 3
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                billing_period:
+                  type: string
+                  description: ''
+                  example: weekly
+                  enum:
+                    - hourly
+                    - daily
+                    - weekly
+                    - monthly
+                    - quarterly
+                    - half-annually
+                    - annually
+              required:
+                - name
+                - price
+                - memory
+                - cpu
+                - swap
+                - disk
+                - io
+                - serverlimit
+                - databases
+                - backups
+                - allocations
+                - billing_period
+  '/api/products/{id}':
+    get:
+      summary: 'Show the specified product.'
+      operationId: showTheSpecifiedProduct
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.user</code>, <code>eggs.nest</code>, <code>nodes.location</code>'
+          example: servers.user
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.user</code>, <code>eggs.nest</code>, <code>nodes.location</code>'
+            example: servers.user
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[description]'
+          description: 'Filter results by description'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by description'
+            example: null
+        -
+          in: query
+          name: 'filter[price]'
+          description: 'Filter results by price'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by price'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Basic Server'
+                    description: 'Perfect for small communities'
+                    price: '5.00'
+                    memory: 2048
+                    cpu: 100
+                    swap: 0
+                    disk: 10240
+                    io: 500
+                    databases: 1
+                    backups: 1
+                    serverlimit: 1
+                    allocations: 1
+                    oom_killer: true
+                    default_billing_priority: 0
+                    disabled: false
+                    minimum_credits: '5.00'
+                    billing_period: monthly
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Basic Server'
+                      description:
+                        type: string
+                        example: 'Perfect for small communities'
+                      price:
+                        type: string
+                        example: '5.00'
+                      memory:
+                        type: integer
+                        example: 2048
+                      cpu:
+                        type: integer
+                        example: 100
+                      swap:
+                        type: integer
+                        example: 0
+                      disk:
+                        type: integer
+                        example: 10240
+                      io:
+                        type: integer
+                        example: 500
+                      databases:
+                        type: integer
+                        example: 1
+                      backups:
+                        type: integer
+                        example: 1
+                      serverlimit:
+                        type: integer
+                        example: 1
+                      allocations:
+                        type: integer
+                        example: 1
+                      oom_killer:
+                        type: boolean
+                        example: true
+                      default_billing_priority:
+                        type: integer
+                        example: 0
+                      disabled:
+                        type: boolean
+                        example: false
+                      minimum_credits:
+                        type: string
+                        example: '5.00'
+                      billing_period:
+                        type: string
+                        example: monthly
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Product Management'
+    put:
+      summary: 'Update the specified product in the system.'
+      operationId: updateTheSpecifiedProductInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Basic Server'
+                    description: 'Perfect for small communities'
+                    price: '5.00'
+                    memory: 2048
+                    cpu: 100
+                    swap: 0
+                    disk: 10240
+                    io: 500
+                    databases: 1
+                    backups: 1
+                    serverlimit: 1
+                    allocations: 1
+                    oom_killer: true
+                    default_billing_priority: 0
+                    disabled: false
+                    minimum_credits: '5.00'
+                    billing_period: monthly
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Basic Server'
+                      description:
+                        type: string
+                        example: 'Perfect for small communities'
+                      price:
+                        type: string
+                        example: '5.00'
+                      memory:
+                        type: integer
+                        example: 2048
+                      cpu:
+                        type: integer
+                        example: 100
+                      swap:
+                        type: integer
+                        example: 0
+                      disk:
+                        type: integer
+                        example: 10240
+                      io:
+                        type: integer
+                        example: 500
+                      databases:
+                        type: integer
+                        example: 1
+                      backups:
+                        type: integer
+                        example: 1
+                      serverlimit:
+                        type: integer
+                        example: 1
+                      allocations:
+                        type: integer
+                        example: 1
+                      oom_killer:
+                        type: boolean
+                        example: true
+                      default_billing_priority:
+                        type: integer
+                        example: 0
+                      disabled:
+                        type: boolean
+                        example: false
+                      minimum_credits:
+                        type: string
+                        example: '5.00'
+                      billing_period:
+                        type: string
+                        example: monthly
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Product Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 30 characters.'
+                  example: b
+                description:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: 'Et animi quos velit et fugiat.'
+                  nullable: true
+                price:
+                  type: number
+                  description: 'This field is required when <code>minimum_credits</code> is present. Must not be greater than 9223372036854775. Must be at least 0.'
+                  example: 42
+                minimum_credits:
+                  type: number
+                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
+                  example: 37
+                  nullable: true
+                memory:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 5.'
+                  example: 40
+                cpu:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 52
+                swap:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 8
+                disk:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 5.'
+                  example: 67
+                io:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 7
+                serverlimit:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 87
+                databases:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 39
+                backups:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 50
+                allocations:
+                  type: number
+                  description: 'Must not be greater than 1000000. Must be at least 0.'
+                  example: 62
+                nodes:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the nodes table.'
+                  example:
+                    - 16
+                  items:
+                    type: integer
+                eggs:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the eggs table.'
+                  example:
+                    - 16
+                  items:
+                    type: integer
+                disabled:
+                  type: boolean
+                  description: ''
+                  example: false
+                oom_killer:
+                  type: boolean
+                  description: ''
+                  example: true
+                default_billing_priority:
+                  type: integer
+                  description: ''
+                  example: 2
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                billing_period:
+                  type: string
+                  description: ''
+                  example: weekly
+                  enum:
+                    - hourly
+                    - daily
+                    - weekly
+                    - monthly
+                    - quarterly
+                    - half-annually
+                    - annually
+    delete:
+      summary: 'Remove the specified product from the system.'
+      operationId: removeTheSpecifiedProductFromTheSystem
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Product Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: product
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/roles:
+    get:
+      summary: 'Show a list of roles.'
+      operationId: showAListOfRoles
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>permissions</code>, <code>users</code>'
+          example: permissions
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>permissions</code>, <code>users</code>'
+            example: permissions
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Administrator
+                      color: '#FF0000'
+                      power: 100
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Administrator
+                        color: '#FF0000'
+                        power: 100
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Administrator
+                        color:
+                          type: string
+                          example: '#FF0000'
+                        power:
+                          type: integer
+                          example: 100
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Role Management'
+    post:
+      summary: 'Store a new role in the system.'
+      operationId: storeANewRoleInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Administrator
+                    color: '#FF0000'
+                    power: 100
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Administrator
+                      color:
+                        type: string
+                        example: '#FF0000'
+                      power:
+                        type: integer
+                        example: 100
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Role Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: b
+                color:
+                  type: string
+                  description: 'Must match the regex /^#([a-f0-9]{6}|[a-f0-9]{3})$/i.'
+                  example: '#e239b1$/i'
+                power:
+                  type: integer
+                  description: ''
+                  example: 16
+                permissions:
+                  type: array
+                  description: 'The <code>name</code> of an existing record in the permissions table.'
+                  example:
+                    - architecto
+                  items:
+                    type: string
+              required:
+                - name
+                - color
+                - power
+  '/api/roles/{id}':
+    get:
+      summary: 'Show the specified role.'
+      operationId: showTheSpecifiedRole
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>permissions</code>, <code>users</code>'
+          example: permissions
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>permissions</code>, <code>users</code>'
+            example: permissions
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Administrator
+                    color: '#FF0000'
+                    power: 100
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Administrator
+                      color:
+                        type: string
+                        example: '#FF0000'
+                      power:
+                        type: integer
+                        example: 100
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Role Management'
+    put:
+      summary: 'Update the specified role in the system.'
+      operationId: updateTheSpecifiedRoleInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Administrator
+                    color: '#FF0000'
+                    power: 100
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Administrator
+                      color:
+                        type: string
+                        example: '#FF0000'
+                      power:
+                        type: integer
+                        example: 100
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Role Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: b
+                color:
+                  type: string
+                  description: 'Must match the regex /^#([a-f0-9]{6}|[a-f0-9]{3})$/i.'
+                  example: '#e239b1$/i'
+                power:
+                  type: integer
+                  description: ''
+                  example: 16
+                permissions:
+                  type: array
+                  description: 'The <code>name</code> of an existing record in the permissions table.'
+                  example:
+                    - architecto
+                  items:
+                    type: string
+    delete:
+      summary: 'Remove the specified role from the system.'
+      operationId: removeTheSpecifiedRoleFromTheSystem
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Role Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the role.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: role
+        description: 'The ID of the role.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/servers:
+    get:
+      summary: 'Show a list of servers.'
+      operationId: showAListOfServers
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>product</code>, <code>user</code>'
+          example: product
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>product</code>, <code>user</code>'
+            example: product
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[suspended]'
+          description: 'Filter results by suspended'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by suspended'
+            example: null
+        -
+          in: query
+          name: 'filter[identifier]'
+          description: 'Filter results by identifier'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by identifier'
+            example: null
+        -
+          in: query
+          name: 'filter[pterodactyl_id]'
+          description: 'Filter results by pterodactyl_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by pterodactyl_id'
+            example: null
+        -
+          in: query
+          name: 'filter[user_id]'
+          description: 'Filter results by user_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by user_id'
+            example: null
+        -
+          in: query
+          name: 'filter[product_id]'
+          description: 'Filter results by product_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by product_id'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'My Server'
+                      description: 'My server description'
+                      suspended: false
+                      identifier: a1b2c3d4
+                      billing_priority: 0
+                      pterodactyl_id: 10
+                      user_id: 1
+                      product_id: 1
+                      canceled: null
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                      last_billed: '2023-01-01 00:00:00'
+                      status: running
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'My Server'
+                        description: 'My server description'
+                        suspended: false
+                        identifier: a1b2c3d4
+                        billing_priority: 0
+                        pterodactyl_id: 10
+                        user_id: 1
+                        product_id: 1
+                        canceled: null
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                        last_billed: '2023-01-01 00:00:00'
+                        status: running
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'My Server'
+                        description:
+                          type: string
+                          example: 'My server description'
+                        suspended:
+                          type: boolean
+                          example: false
+                        identifier:
+                          type: string
+                          example: a1b2c3d4
+                        billing_priority:
+                          type: integer
+                          example: 0
+                        pterodactyl_id:
+                          type: integer
+                          example: 10
+                        user_id:
+                          type: integer
+                          example: 1
+                        product_id:
+                          type: integer
+                          example: 1
+                        canceled:
+                          type: string
+                          example: null
+                          nullable: true
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        last_billed:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        status:
+                          type: string
+                          example: running
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Server Management'
+    post:
+      summary: 'Store a new server in the system.'
+      operationId: storeANewServerInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: false
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: false
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Et animi quos velit et fugiat.'
+                  nullable: true
+                user_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: 16
+                product_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the products table.'
+                  example: architecto
+                egg_id:
+                  type: integer
+                  description: 'The egg must belong to the specified product. Each egg has its own variable rules. The <code>id</code> of an existing record in the eggs table.'
+                  example: 16
+                location_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the locations table.'
+                  example: 16
+                egg_variables:
+                  type: object
+                  description: ''
+                  example: null
+                  properties: {  }
+                  nullable: true
+                billing_priority:
+                  type: integer
+                  description: ''
+                  example: 3
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                  nullable: true
+              required:
+                - name
+                - user_id
+                - product_id
+                - egg_id
+                - location_id
+  '/api/servers/{id}':
+    get:
+      summary: 'Show the specified server.'
+      operationId: showTheSpecifiedServer
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>product</code>, <code>user</code>'
+          example: product
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>product</code>, <code>user</code>'
+            example: product
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[suspended]'
+          description: 'Filter results by suspended'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by suspended'
+            example: null
+        -
+          in: query
+          name: 'filter[identifier]'
+          description: 'Filter results by identifier'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by identifier'
+            example: null
+        -
+          in: query
+          name: 'filter[pterodactyl_id]'
+          description: 'Filter results by pterodactyl_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by pterodactyl_id'
+            example: null
+        -
+          in: query
+          name: 'filter[user_id]'
+          description: 'Filter results by user_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by user_id'
+            example: null
+        -
+          in: query
+          name: 'filter[product_id]'
+          description: 'Filter results by product_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by product_id'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: false
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: false
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+    put:
+      summary: 'Update the specified server in the system.'
+      operationId: updateTheSpecifiedServerInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: false
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: false
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: b
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Et animi quos velit et fugiat.'
+                  nullable: true
+                user_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: 16
+                billing_priority:
+                  type: integer
+                  description: ''
+                  example: 3
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                  nullable: true
+              required:
+                - user_id
+    delete:
+      summary: 'Remove the specified server from the system.'
+      operationId: removeTheSpecifiedServerFromTheSystem
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the server.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: server
+        description: 'The ID of the server.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/servers/{server_id}/build':
+    patch:
+      summary: 'Update the server build.'
+      operationId: updateTheServerBuild
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: false
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: false
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: 16
+                product_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the products table.'
+                  example: architecto
+              required:
+                - user_id
+                - product_id
+    parameters:
+      -
+        in: path
+        name: server_id
+        description: 'The ID of the server.'
+        example: X8BK1rMUV4qF3lo-ROWIl
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: server
+        description: 'The ID of the server.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/servers/{server_id}/suspend':
+    patch:
+      summary: 'Suspend server.'
+      operationId: suspendServer
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: true
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: true
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: server_id
+        description: 'The ID of the server.'
+        example: X8BK1rMUV4qF3lo-ROWIl
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: server
+        description: 'The ID of the server.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/servers/{server_id}/unsuspend':
+    patch:
+      summary: 'Unsuspend server.'
+      operationId: unsuspendServer
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'My Server'
+                    description: 'My server description'
+                    suspended: false
+                    identifier: a1b2c3d4
+                    billing_priority: 0
+                    pterodactyl_id: 10
+                    user_id: 1
+                    product_id: 1
+                    canceled: null
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                    last_billed: '2023-01-01 00:00:00'
+                    status: running
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'My Server'
+                      description:
+                        type: string
+                        example: 'My server description'
+                      suspended:
+                        type: boolean
+                        example: false
+                      identifier:
+                        type: string
+                        example: a1b2c3d4
+                      billing_priority:
+                        type: integer
+                        example: 0
+                      pterodactyl_id:
+                        type: integer
+                        example: 10
+                      user_id:
+                        type: integer
+                        example: 1
+                      product_id:
+                        type: integer
+                        example: 1
+                      canceled:
+                        type: string
+                        example: null
+                        nullable: true
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_billed:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      status:
+                        type: string
+                        example: running
+      tags:
+        - 'Server Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: server_id
+        description: 'The ID of the server.'
+        example: X8BK1rMUV4qF3lo-ROWIl
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: server
+        description: 'The ID of the server.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users:
+    get:
+      summary: 'Show a list of users.'
+      operationId: showAListOfUsers
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.product</code>, <code>notifications</code>, <code>payments</code>, <code>vouchers.users</code>, <code>roles.permissions</code>, <code>discordUser</code>'
+          example: servers.product
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.product</code>, <code>notifications</code>, <code>payments</code>, <code>vouchers.users</code>, <code>roles.permissions</code>, <code>discordUser</code>'
+            example: servers.product
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[server_limit]'
+          description: 'Filter results by server_limit'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by server_limit'
+            example: null
+        -
+          in: query
+          name: 'filter[email]'
+          description: 'Filter results by email'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by email'
+            example: null
+        -
+          in: query
+          name: 'filter[pterodactyl_id]'
+          description: 'Filter results by pterodactyl_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by pterodactyl_id'
+            example: null
+        -
+          in: query
+          name: 'filter[suspended]'
+          description: 'Filter results by suspended'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by suspended'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'John Doe'
+                      email: john@example.com
+                      credits: '100.00'
+                      server_limit: 5
+                      pterodactyl_id: 1
+                      avatar: 'https://www.gravatar.com/avatar/...'
+                      ip: 127.0.0.1
+                      suspended: false
+                      referral_code: ABCDEF12
+                      email_verified_reward: false
+                      discord_verified_at: '2023-01-01 00:00:00'
+                      last_seen: '2023-01-01 00:00:00'
+                      email_verified_at: '2023-01-01 00:00:00'
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'John Doe'
+                        email: john@example.com
+                        credits: '100.00'
+                        server_limit: 5
+                        pterodactyl_id: 1
+                        avatar: 'https://www.gravatar.com/avatar/...'
+                        ip: 127.0.0.1
+                        suspended: false
+                        referral_code: ABCDEF12
+                        email_verified_reward: false
+                        discord_verified_at: '2023-01-01 00:00:00'
+                        last_seen: '2023-01-01 00:00:00'
+                        email_verified_at: '2023-01-01 00:00:00'
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'John Doe'
+                        email:
+                          type: string
+                          example: john@example.com
+                        credits:
+                          type: string
+                          example: '100.00'
+                        server_limit:
+                          type: integer
+                          example: 5
+                        pterodactyl_id:
+                          type: integer
+                          example: 1
+                        avatar:
+                          type: string
+                          example: 'https://www.gravatar.com/avatar/...'
+                        ip:
+                          type: string
+                          example: 127.0.0.1
+                        suspended:
+                          type: boolean
+                          example: false
+                        referral_code:
+                          type: string
+                          example: ABCDEF12
+                        email_verified_reward:
+                          type: boolean
+                          example: false
+                        discord_verified_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        last_seen:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        email_verified_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'User Management'
+    post:
+      summary: 'Create a new user in the system.'
+      operationId: createANewUserInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '100.00'
+                    server_limit: 5
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '100.00'
+                      server_limit:
+                        type: integer
+                        example: 5
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name.'
+                  example: john_doe
+                email:
+                  type: string
+                  description: 'The email.'
+                  example: john@example.com
+                password:
+                  type: string
+                  description: 'The password.'
+                  example: secret123
+                credits:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
+                  example: 22
+                server_limit:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 1000000.'
+                  example: 24
+                role_id:
+                  type: integer
+                  description: 'The role ID.'
+                  example: 1
+                referral_code:
+                  type: string
+                  description: 'The <code>referral_code</code> of an existing record in the users table.'
+                  example: architecto
+                  nullable: true
+              required:
+                - name
+                - email
+                - password
+                - role_id
+  '/api/users/{id}':
+    get:
+      summary: 'Show the specified user.'
+      operationId: showTheSpecifiedUser
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.product</code>, <code>notifications</code>, <code>payments</code>, <code>vouchers.users</code>, <code>roles.permissions</code>, <code>discordUser</code>'
+          example: servers.product
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>servers.product</code>, <code>notifications</code>, <code>payments</code>, <code>vouchers.users</code>, <code>roles.permissions</code>, <code>discordUser</code>'
+            example: servers.product
+        -
+          in: query
+          name: 'filter[name]'
+          description: 'Filter results by name'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by name'
+            example: null
+        -
+          in: query
+          name: 'filter[server_limit]'
+          description: 'Filter results by server_limit'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by server_limit'
+            example: null
+        -
+          in: query
+          name: 'filter[email]'
+          description: 'Filter results by email'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by email'
+            example: null
+        -
+          in: query
+          name: 'filter[pterodactyl_id]'
+          description: 'Filter results by pterodactyl_id'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by pterodactyl_id'
+            example: null
+        -
+          in: query
+          name: 'filter[suspended]'
+          description: 'Filter results by suspended'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by suspended'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '100.00'
+                    server_limit: 5
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '100.00'
+                      server_limit:
+                        type: integer
+                        example: 5
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+    put:
+      summary: 'Update the specified user in the system.'
+      operationId: updateTheSpecifiedUserInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '100.00'
+                    server_limit: 5
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '100.00'
+                      server_limit:
+                        type: integer
+                        example: 5
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 4 characters. Must not be greater than 30 characters.'
+                  example: b
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: zbailey@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters. Must not be greater than 191 characters.'
+                  example: '-0pBNvYgxw'
+                credits:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
+                  example: 22
+                server_limit:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 1000000.'
+                  example: 24
+                role_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the roles table.'
+                  example: 16
+              required:
+                - name
+                - email
+    delete:
+      summary: 'Remove the specified user from the system.'
+      operationId: removeTheSpecifiedUserFromTheSystem
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/users/{user_id}/increment':
+    patch:
+      summary: 'Increments the credits/server_limit of the user.'
+      operationId: incrementsTheCreditsserverLimitOfTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '110.00'
+                    server_limit: 6
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '110.00'
+                      server_limit:
+                        type: integer
+                        example: 6
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credits:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
+                  example: 1
+                server_limit:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 1000000.'
+                  example: 22
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/users/{user_id}/decrement':
+    patch:
+      summary: 'Decrements the credits/server_limit of the user.'
+      operationId: decrementsTheCreditsserverLimitOfTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '90.00'
+                    server_limit: 4
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '90.00'
+                      server_limit:
+                        type: integer
+                        example: 4
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credits:
+                  type: number
+                  description: 'Must be at least 1.'
+                  example: 16
+                server_limit:
+                  type: number
+                  description: 'Must be at least 1.'
+                  example: 22
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/users/{user_id}/suspend':
+    patch:
+      summary: 'Suspend the user and their servers.'
+      operationId: suspendTheUserAndTheirServers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '100.00'
+                    server_limit: 5
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: true
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '100.00'
+                      server_limit:
+                        type: integer
+                        example: 5
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: true
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/users/{user_id}/unsuspend':
+    patch:
+      summary: 'Unsuspend the user and their servers if they has suficient credits.'
+      operationId: unsuspendTheUserAndTheirServersIfTheyHasSuficientCredits
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    credits: '100.00'
+                    server_limit: 5
+                    pterodactyl_id: 1
+                    avatar: 'https://www.gravatar.com/avatar/...'
+                    ip: 127.0.0.1
+                    suspended: false
+                    referral_code: ABCDEF12
+                    email_verified_reward: false
+                    discord_verified_at: '2023-01-01 00:00:00'
+                    last_seen: '2023-01-01 00:00:00'
+                    email_verified_at: '2023-01-01 00:00:00'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      credits:
+                        type: string
+                        example: '100.00'
+                      server_limit:
+                        type: integer
+                        example: 5
+                      pterodactyl_id:
+                        type: integer
+                        example: 1
+                      avatar:
+                        type: string
+                        example: 'https://www.gravatar.com/avatar/...'
+                      ip:
+                        type: string
+                        example: 127.0.0.1
+                      suspended:
+                        type: boolean
+                        example: false
+                      referral_code:
+                        type: string
+                        example: ABCDEF12
+                      email_verified_reward:
+                        type: boolean
+                        example: false
+                      discord_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      last_seen:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      email_verified_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: 'Must not be greater than 320 characters.'
+                  example: b
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: user
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/vouchers:
+    get:
+      summary: 'Show a list of vouchers.'
+      operationId: showAListOfVouchers
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>users</code>'
+          example: users
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>users</code>'
+            example: users
+        -
+          in: query
+          name: 'filter[code]'
+          description: 'Filter results by code'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by code'
+            example: null
+        -
+          in: query
+          name: 'filter[memo]'
+          description: 'Filter results by memo'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by memo'
+            example: null
+        -
+          in: query
+          name: 'filter[credits]'
+          description: 'Filter results by credits'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by credits'
+            example: null
+        -
+          in: query
+          name: 'filter[uses]'
+          description: 'Filter results by uses'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by uses'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      code: SUMMER2023
+                      memo: 'Summer promotion'
+                      credits: '50.00'
+                      uses: 100
+                      expires_at: '2023-12-31 23:59:59'
+                      created_at: '2023-01-01 00:00:00'
+                      updated_at: '2023-01-01 00:00:00'
+                  meta:
+                    total: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        code: SUMMER2023
+                        memo: 'Summer promotion'
+                        credits: '50.00'
+                        uses: 100
+                        expires_at: '2023-12-31 23:59:59'
+                        created_at: '2023-01-01 00:00:00'
+                        updated_at: '2023-01-01 00:00:00'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        code:
+                          type: string
+                          example: SUMMER2023
+                        memo:
+                          type: string
+                          example: 'Summer promotion'
+                        credits:
+                          type: string
+                          example: '50.00'
+                        uses:
+                          type: integer
+                          example: 100
+                        expires_at:
+                          type: string
+                          example: '2023-12-31 23:59:59'
+                        created_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                        updated_at:
+                          type: string
+                          example: '2023-01-01 00:00:00'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Voucher Management'
+    post:
+      summary: 'Store a new voucher in the system.'
+      operationId: storeANewVoucherInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    code: SUMMER2023
+                    memo: 'Summer promotion'
+                    credits: '50.00'
+                    uses: 100
+                    expires_at: '2023-12-31 23:59:59'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      code:
+                        type: string
+                        example: SUMMER2023
+                      memo:
+                        type: string
+                        example: 'Summer promotion'
+                      credits:
+                        type: string
+                        example: '50.00'
+                      uses:
+                        type: integer
+                        example: 100
+                      expires_at:
+                        type: string
+                        example: '2023-12-31 23:59:59'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Voucher Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memo:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: b
+                  nullable: true
+                code:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores. Must not be greater than 36 characters. Must be at least 4 characters.'
+                  example: ngzm
+                uses:
+                  type: number
+                  description: 'Must not be greater than 2147483647. Must be at least 1.'
+                  example: 35
+                credits:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
+                  example: 8
+                expires_at:
+                  type: string
+                  description: 'Must be a date after <code>now</code>. Must be a date before <code>10 years</code>.'
+                  example: '2022-05-20'
+                  nullable: true
+              required:
+                - code
+                - uses
+                - credits
+  '/api/vouchers/{id}':
+    get:
+      summary: 'Show the specified voucher.'
+      operationId: showTheSpecifiedVoucher
+      description: ''
+      parameters:
+        -
+          in: query
+          name: include
+          description: 'Comma-separated list of related resources to include. <br>Available: <code>users</code>'
+          example: users
+          required: false
+          schema:
+            type: string
+            description: 'Comma-separated list of related resources to include. <br>Available: <code>users</code>'
+            example: users
+        -
+          in: query
+          name: 'filter[code]'
+          description: 'Filter results by code'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by code'
+            example: null
+        -
+          in: query
+          name: 'filter[memo]'
+          description: 'Filter results by memo'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by memo'
+            example: null
+        -
+          in: query
+          name: 'filter[credits]'
+          description: 'Filter results by credits'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by credits'
+            example: null
+        -
+          in: query
+          name: 'filter[uses]'
+          description: 'Filter results by uses'
+          example: null
+          required: false
+          schema:
+            type: string
+            description: 'Filter results by uses'
+            example: null
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    code: SUMMER2023
+                    memo: 'Summer promotion'
+                    credits: '50.00'
+                    uses: 100
+                    expires_at: '2023-12-31 23:59:59'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      code:
+                        type: string
+                        example: SUMMER2023
+                      memo:
+                        type: string
+                        example: 'Summer promotion'
+                      credits:
+                        type: string
+                        example: '50.00'
+                      uses:
+                        type: integer
+                        example: 100
+                      expires_at:
+                        type: string
+                        example: '2023-12-31 23:59:59'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Voucher Management'
+    put:
+      summary: 'Update the specified voucher in the system.'
+      operationId: updateTheSpecifiedVoucherInTheSystem
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    code: SUMMER2023
+                    memo: 'Summer promotion'
+                    credits: '50.00'
+                    uses: 100
+                    expires_at: '2023-12-31 23:59:59'
+                    created_at: '2023-01-01 00:00:00'
+                    updated_at: '2023-01-01 00:00:00'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      code:
+                        type: string
+                        example: SUMMER2023
+                      memo:
+                        type: string
+                        example: 'Summer promotion'
+                      credits:
+                        type: string
+                        example: '50.00'
+                      uses:
+                        type: integer
+                        example: 100
+                      expires_at:
+                        type: string
+                        example: '2023-12-31 23:59:59'
+                      created_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+                      updated_at:
+                        type: string
+                        example: '2023-01-01 00:00:00'
+      tags:
+        - 'Voucher Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memo:
+                  type: string
+                  description: 'Must not be greater than 191 characters.'
+                  example: b
+                  nullable: true
+                uses:
+                  type: number
+                  description: 'Must not be greater than 2147483647. Must be at least 1.'
+                  example: 22
+                code:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores. Must be at least 4 characters. Must not be greater than 36 characters.'
+                  example: g
+                credits:
+                  type: number
+                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
+                  example: 16
+                expires_at:
+                  type: string
+                  description: 'Must be a date after <code>now</code>. Must be a date before <code>10 years</code>.'
+                  example: '2022-05-20'
+                  nullable: true
+              required:
+                - uses
+                - code
+                - credits
+    delete:
+      summary: 'Remove the specified voucher from the system.'
+      operationId: removeTheSpecifiedVoucherFromTheSystem
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Voucher Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the voucher.'
+        example: architecto
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: voucher
+        description: 'The ID of the voucher.'
+        example: 1
+        required: true
+        schema:
+          type: integer
