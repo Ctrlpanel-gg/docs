@@ -1,9 +1,8 @@
-const {themes} = require('prism-react-renderer');
-const lightTheme = themes.github;
-const darkTheme = themes.dracula;
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+const config: Config = {
   title: "CtrlPanel.gg",
   tagline:
     "CtrlPanel's Dashboard is a free and open-source management panel for Pterodactyl with credit based billing and customization to fit your needs.",
@@ -104,11 +103,11 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Ctrlpanel.gg. Built with Docusaurus. Ctrlpanel.gg is not affiliated with Discord.`,
     },
     prism: {
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
       additionalLanguages: ['bash', 'nginx', 'sql'],
     },
-  },
+  } satisfies Preset.ThemeConfig,
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -133,9 +132,9 @@ module.exports = {
           editUrl: "https://github.com/Ctrlpanel-gg/docs/tree/main",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: './src/css/custom.css',
         },
-      },
+      } satisfies Preset.Options,
     ],
   ],
   plugins: [
@@ -168,3 +167,5 @@ module.exports = {
     ],
   ],
 };
+
+export default config;

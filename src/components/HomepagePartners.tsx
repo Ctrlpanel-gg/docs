@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './HomepagePartners.module.css';
 
-const partners = [
+type PartnerItem = {
+  href: string;
+  img: string;
+  alt: string;
+};
+
+const partners: PartnerItem[] = [
 	{
 		href: 'https://zap-hosting.com/a/29b1c37a4f87bde5463afe8a0f49d129b16ccf9e',
 		img: 'https://zap-hosting.com/interface/download/images.php?type=affiliate&id=421578',
@@ -9,7 +15,7 @@ const partners = [
 	},
 ];
 
-export default function HomepagePartners() {
+export default function HomepagePartners(): JSX.Element {
 	return (
 		<section className={styles.partners}>
 			<div className="container">
