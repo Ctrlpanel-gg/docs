@@ -1,7 +1,7 @@
 ---
 authors: [1day2die, mrweez]
 tags: [guides]
-draft: true
+draft: false
 slug: understanding-mpl-2.0
 ---
 
