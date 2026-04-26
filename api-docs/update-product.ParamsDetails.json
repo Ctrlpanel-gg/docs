@@ -1,1 +1,1 @@
-{"parameters":[{"in":"path","name":"id","description":"The ID of the product.","example":"architecto","required":true,"schema":{"type":"string"}}]}
+{"parameters":[{"in":"path","name":"id","description":"The ID of the product.","example":"F6QnQ-91Afeo0chihMss","required":true,"schema":{"type":"string"}}]}

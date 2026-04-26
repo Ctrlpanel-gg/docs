@@ -1119,7 +1119,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the product.'
-        example: architecto
+        example: F6QnQ-91Afeo0chihMss
         required: true
         schema:
           type: string
@@ -2234,7 +2234,7 @@ paths:
       tags:
         - 'Server Management'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2242,15 +2242,12 @@ paths:
               properties:
                 user_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the users table.'
-                  example: 16
+                  description: 'The ID of the user who owns the server.'
+                  example: 1
                 product_id:
                   type: string
-                  description: 'The <code>id</code> of an existing record in the products table.'
-                  example: architecto
-              required:
-                - user_id
-                - product_id
+                  description: 'The ID of the product.'
+                  example: F6QnQ-91Afeo0chihMss
     parameters:
       -
         in: path
@@ -2747,7 +2744,7 @@ paths:
                   example: 1
                 referral_code:
                   type: string
-                  description: 'The referral code used by the user.'
+                  description: 'Referral code of the user.'
                   example: ABCDEF12
                   nullable: true
               required:
@@ -3017,12 +3014,12 @@ paths:
                   example: 1
                 referral_code:
                   type: string
-                  description: 'Must be at least 2 characters. Must not be greater than 32 characters.'
-                  example: 'n'
+                  description: 'Referral code of the user.'
+                  example: ABCDEF12
                 pterodactyl_id:
-                  type: number
-                  description: ''
-                  example: 4326.41688
+                  type: integer
+                  description: 'Linked Pterodactyl ID of the user.'
+                  example: 13
               required:
                 - name
                 - email
