@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","example":{"message":"All notifications deleted successfully","meta":{"deleted_count":10}},"properties":{"message":{"type":"string","example":"All notifications deleted successfully"},"meta":{"type":"object","properties":{"deleted_count":{"type":"integer","example":10}}}}}}}}}}

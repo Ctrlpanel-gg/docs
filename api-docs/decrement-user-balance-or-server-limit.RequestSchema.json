@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":false,"content":{"application/json":{"schema":{"type":"object","properties":{"credits":{"type":"number","description":"Must be at least 1.","example":16},"server_limit":{"type":"number","description":"Must be at least 1.","example":22}}}}}}}

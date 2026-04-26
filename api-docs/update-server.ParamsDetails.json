@@ -1,0 +1,1 @@
+{"parameters":[{"in":"path","name":"id","description":"The ID of the server.","example":"X8BK1rMUV4qF3lo-ROWIl","required":true,"schema":{"type":"string"}}]}
