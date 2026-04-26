@@ -292,8 +292,10 @@ const config: Config = {
         docsPluginId: "api-docs",
         config: {
           cpgg: {
-            specPath: "static/api/openapi.yaml",
+            specPath: "static/openapi/openapi.yaml",
             outputDir: "api-docs",
+            downloadUrl: "/openapi/openapi.yaml",
+            showSchemas: true,
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",

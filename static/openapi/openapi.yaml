@@ -47,8 +47,8 @@ security:
 paths:
   '/api/notifications/{user_id}':
     get:
-      summary: 'Show a list of notifications for a user.'
-      operationId: showAListOfNotificationsForAUser
+      summary: 'List user notifications'
+      operationId: listUserNotifications
       description: ''
       parameters: []
       responses:
@@ -61,14 +61,14 @@ paths:
                 example:
                   data:
                     -
-                      id: 1
+                      id: 2491fec3-c7d7-47cd-9d82-cc76e851c124
                       type: App\Notifications\ServerCreated
                       details:
                         title: 'Server Created'
                         content: 'Your server has been created successfully.'
                       read_at: null
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
                   meta:
                     total: 1
                 properties:
@@ -76,20 +76,20 @@ paths:
                     type: array
                     example:
                       -
-                        id: 1
+                        id: 2491fec3-c7d7-47cd-9d82-cc76e851c124
                         type: App\Notifications\ServerCreated
                         details:
                           title: 'Server Created'
                           content: 'Your server has been created successfully.'
                         read_at: null
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
                     items:
                       type: object
                       properties:
                         id:
-                          type: integer
-                          example: 1
+                          type: string
+                          example: 2491fec3-c7d7-47cd-9d82-cc76e851c124
                         type:
                           type: string
                           example: App\Notifications\ServerCreated
@@ -108,10 +108,10 @@ paths:
                           nullable: true
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                   meta:
                     type: object
                     properties:
@@ -121,8 +121,8 @@ paths:
       tags:
         - Notifications
     delete:
-      summary: 'Delete all notifications from an user.'
-      operationId: deleteAllNotificationsFromAnUser
+      summary: 'Clear all user notifications'
+      operationId: clearAllUserNotifications
       description: ''
       parameters: []
       responses:
@@ -157,18 +157,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/notifications/{user_id}/{notification_id}':
     get:
-      summary: 'Show a specific notification of a user.'
-      operationId: showASpecificNotificationOfAUser
+      summary: 'Get notification details'
+      operationId: getNotificationDetails
       description: ''
       parameters: []
       responses:
@@ -180,21 +172,21 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: 2491fec3-c7d7-47cd-9d82-cc76e851c124
                     type: App\Notifications\ServerCreated
                     details:
                       title: 'Server Created'
                       content: 'Your server has been created successfully.'
                     read_at: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: 2491fec3-c7d7-47cd-9d82-cc76e851c124
                       type:
                         type: string
                         example: App\Notifications\ServerCreated
@@ -213,15 +205,15 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - Notifications
     delete:
-      summary: 'Delete a specific notification from an user.'
-      operationId: deleteASpecificNotificationFromAnUser
+      summary: 'Delete single notification'
+      operationId: deleteSingleNotification
       description: ''
       parameters: []
       responses:
@@ -240,10 +232,10 @@ paths:
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: 2491fec3-c7d7-47cd-9d82-cc76e851c124
+        example: 1
         required: true
         schema:
-          type: string
+          type: integer
       -
         in: path
         name: notification_id
@@ -252,26 +244,10 @@ paths:
         required: true
         schema:
           type: string
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
-      -
-        in: path
-        name: notification
-        description: 'The ID of the notification.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   /api/notifications/send-to-users:
     post:
-      summary: 'Send a notification to specific users.'
-      operationId: sendANotificationToSpecificUsers
+      summary: 'Send notification to users'
+      operationId: sendNotificationToUsers
       description: ''
       parameters: []
       responses:
@@ -343,8 +319,8 @@ paths:
                 - content
   /api/notifications/send-to-all:
     post:
-      summary: 'Send a notification to all users.'
-      operationId: sendANotificationToAllUsers
+      summary: 'Send notification to everyone'
+      operationId: sendNotificationToEveryone
       description: ''
       parameters: []
       responses:
@@ -409,8 +385,8 @@ paths:
                 - content
   /api/products:
     get:
-      summary: 'Show a list of products.'
-      operationId: showAListOfProducts
+      summary: 'List all products'
+      operationId: listAllProducts
       description: ''
       parameters:
         -
@@ -463,7 +439,7 @@ paths:
                 example:
                   data:
                     -
-                      id: 1
+                      id: F6QnQ-91Afeo0chihMss
                       name: 'Basic Server'
                       description: 'Perfect for small communities'
                       price: '5.00'
@@ -481,8 +457,8 @@ paths:
                       disabled: false
                       minimum_credits: '5.00'
                       billing_period: monthly
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
                   meta:
                     total: 1
                 properties:
@@ -490,7 +466,7 @@ paths:
                     type: array
                     example:
                       -
-                        id: 1
+                        id: F6QnQ-91Afeo0chihMss
                         name: 'Basic Server'
                         description: 'Perfect for small communities'
                         price: '5.00'
@@ -508,14 +484,14 @@ paths:
                         disabled: false
                         minimum_credits: '5.00'
                         billing_period: monthly
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
                     items:
                       type: object
                       properties:
                         id:
-                          type: integer
-                          example: 1
+                          type: string
+                          example: F6QnQ-91Afeo0chihMss
                         name:
                           type: string
                           example: 'Basic Server'
@@ -569,10 +545,10 @@ paths:
                           example: monthly
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                   meta:
                     type: object
                     properties:
@@ -582,8 +558,8 @@ paths:
       tags:
         - 'Product Management'
     post:
-      summary: 'Store a new product in the system.'
-      operationId: storeANewProductInTheSystem
+      summary: 'Create product'
+      operationId: createProduct
       description: ''
       parameters: []
       responses:
@@ -595,63 +571,63 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: 'Basic Server'
-                    description: 'Perfect for small communities'
-                    price: '5.00'
-                    memory: 2048
-                    cpu: 100
+                    id: vY8xK9pZ
+                    name: 'Medium Minecraft'
+                    description: 'Perfect for your SMP with friends'
+                    price: '10.00'
+                    memory: 4096
+                    cpu: 200
                     swap: 0
-                    disk: 10240
+                    disk: 20480
                     io: 500
-                    databases: 1
-                    backups: 1
+                    databases: 3
+                    backups: 2
                     serverlimit: 1
                     allocations: 1
                     oom_killer: true
                     default_billing_priority: 0
                     disabled: false
-                    minimum_credits: '5.00'
+                    minimum_credits: '10.00'
                     billing_period: monthly
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: vY8xK9pZ
                       name:
                         type: string
-                        example: 'Basic Server'
+                        example: 'Medium Minecraft'
                       description:
                         type: string
-                        example: 'Perfect for small communities'
+                        example: 'Perfect for your SMP with friends'
                       price:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       memory:
                         type: integer
-                        example: 2048
+                        example: 4096
                       cpu:
                         type: integer
-                        example: 100
+                        example: 200
                       swap:
                         type: integer
                         example: 0
                       disk:
                         type: integer
-                        example: 10240
+                        example: 20480
                       io:
                         type: integer
                         example: 500
                       databases:
                         type: integer
-                        example: 1
+                        example: 3
                       backups:
                         type: integer
-                        example: 1
+                        example: 2
                       serverlimit:
                         type: integer
                         example: 1
@@ -669,16 +645,16 @@ paths:
                         example: false
                       minimum_credits:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       billing_period:
                         type: string
                         example: monthly
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Product Management'
       requestBody:
@@ -690,102 +666,93 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 30 characters.'
-                  example: b
+                  description: 'Max 30 chars.'
+                  example: 'Medium Minecraft'
                 description:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: 'Et animi quos velit et fugiat.'
+                  description: 'Max 191 chars.'
+                  example: 'Perfect for your SMP with friends'
                   nullable: true
                 price:
                   type: number
-                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
-                  example: 42
+                  description: 'Min 0.'
+                  example: 10.0
                 minimum_credits:
                   type: number
-                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
-                  example: 37
+                  description: 'Min 0, must be GTE price.'
+                  example: 10.0
                   nullable: true
                 memory:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 5.'
-                  example: 40
+                  type: integer
+                  description: 'Memory in MB. Use 0 for unlimited.'
+                  example: 4096
                 cpu:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 52
+                  type: integer
+                  description: 'CPU limit in %. Use 0 for unlimited.'
+                  example: 200
                 swap:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 8
+                  type: integer
+                  description: 'Swap in MB. Use 0 to disable, -1 for unlimited.'
+                  example: 0
                 disk:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 5.'
-                  example: 67
+                  type: integer
+                  description: 'Disk in MB. Use 0 for unlimited.'
+                  example: 20480
                 io:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 7
+                  type: integer
+                  description: 'IO limit.'
+                  example: 500
                 serverlimit:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 87
+                  type: integer
+                  description: 'Max servers. Use 0 for unlimited.'
+                  example: 1
                 databases:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 39
+                  type: integer
+                  description: 'Max databases.'
+                  example: 3
                 backups:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 50
+                  type: integer
+                  description: 'Max backups.'
+                  example: 2
                 allocations:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 62
+                  type: integer
+                  description: 'Max allocations.'
+                  example: 1
                 nodes:
                   type: array
-                  description: 'The <code>id</code> of an existing record in the nodes table.'
+                  description: 'List of node IDs associated with the product.'
                   example:
-                    - 16
+                    - 1
+                    - 2
                   items:
                     type: integer
                 eggs:
                   type: array
-                  description: 'The <code>id</code> of an existing record in the eggs table.'
+                  description: 'List of egg IDs associated with the product.'
                   example:
-                    - 16
+                    - 1
+                    - 3
                   items:
                     type: integer
                 disabled:
                   type: boolean
-                  description: ''
-                  example: true
+                  description: 'Whether the product is disabled.'
+                  example: false
                 oom_killer:
                   type: boolean
-                  description: ''
+                  description: 'Whether the OOM killer is enabled.'
                   example: true
                 default_billing_priority:
                   type: integer
-                  description: ''
-                  example: 3
-                  enum:
-                    - 1
-                    - 2
-                    - 3
+                  description: 'The default billing priority.'
+                  example: 0
                 billing_period:
                   type: string
-                  description: ''
-                  example: weekly
-                  enum:
-                    - hourly
-                    - daily
-                    - weekly
-                    - monthly
-                    - quarterly
-                    - half-annually
-                    - annually
+                  description: 'hourly, daily, weekly, monthly, quarterly, half-annually, annually.'
+                  example: monthly
               required:
                 - name
+                - description
                 - price
                 - memory
                 - cpu
@@ -799,8 +766,8 @@ paths:
                 - billing_period
   '/api/products/{id}':
     get:
-      summary: 'Show the specified product.'
-      operationId: showTheSpecifiedProduct
+      summary: 'Get product details'
+      operationId: getProductDetails
       description: ''
       parameters:
         -
@@ -852,63 +819,63 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: 'Basic Server'
-                    description: 'Perfect for small communities'
-                    price: '5.00'
-                    memory: 2048
-                    cpu: 100
+                    id: vY8xK9pZ
+                    name: 'Medium Minecraft'
+                    description: 'Perfect for your SMP with friends'
+                    price: '10.00'
+                    memory: 4096
+                    cpu: 200
                     swap: 0
-                    disk: 10240
+                    disk: 20480
                     io: 500
-                    databases: 1
-                    backups: 1
+                    databases: 3
+                    backups: 2
                     serverlimit: 1
                     allocations: 1
                     oom_killer: true
                     default_billing_priority: 0
                     disabled: false
-                    minimum_credits: '5.00'
+                    minimum_credits: '10.00'
                     billing_period: monthly
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: vY8xK9pZ
                       name:
                         type: string
-                        example: 'Basic Server'
+                        example: 'Medium Minecraft'
                       description:
                         type: string
-                        example: 'Perfect for small communities'
+                        example: 'Perfect for your SMP with friends'
                       price:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       memory:
                         type: integer
-                        example: 2048
+                        example: 4096
                       cpu:
                         type: integer
-                        example: 100
+                        example: 200
                       swap:
                         type: integer
                         example: 0
                       disk:
                         type: integer
-                        example: 10240
+                        example: 20480
                       io:
                         type: integer
                         example: 500
                       databases:
                         type: integer
-                        example: 1
+                        example: 3
                       backups:
                         type: integer
-                        example: 1
+                        example: 2
                       serverlimit:
                         type: integer
                         example: 1
@@ -926,21 +893,21 @@ paths:
                         example: false
                       minimum_credits:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       billing_period:
                         type: string
                         example: monthly
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Product Management'
     put:
-      summary: 'Update the specified product in the system.'
-      operationId: updateTheSpecifiedProductInTheSystem
+      summary: 'Update product'
+      operationId: updateProduct
       description: ''
       parameters: []
       responses:
@@ -952,63 +919,63 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: 'Basic Server'
-                    description: 'Perfect for small communities'
-                    price: '5.00'
-                    memory: 2048
-                    cpu: 100
+                    id: vY8xK9pZ
+                    name: 'Medium Minecraft'
+                    description: 'Perfect for your SMP with friends'
+                    price: '10.00'
+                    memory: 4096
+                    cpu: 200
                     swap: 0
-                    disk: 10240
+                    disk: 20480
                     io: 500
-                    databases: 1
-                    backups: 1
+                    databases: 3
+                    backups: 2
                     serverlimit: 1
                     allocations: 1
                     oom_killer: true
                     default_billing_priority: 0
                     disabled: false
-                    minimum_credits: '5.00'
+                    minimum_credits: '10.00'
                     billing_period: monthly
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: vY8xK9pZ
                       name:
                         type: string
-                        example: 'Basic Server'
+                        example: 'Medium Minecraft'
                       description:
                         type: string
-                        example: 'Perfect for small communities'
+                        example: 'Perfect for your SMP with friends'
                       price:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       memory:
                         type: integer
-                        example: 2048
+                        example: 4096
                       cpu:
                         type: integer
-                        example: 100
+                        example: 200
                       swap:
                         type: integer
                         example: 0
                       disk:
                         type: integer
-                        example: 10240
+                        example: 20480
                       io:
                         type: integer
                         example: 500
                       databases:
                         type: integer
-                        example: 1
+                        example: 3
                       backups:
                         type: integer
-                        example: 1
+                        example: 2
                       serverlimit:
                         type: integer
                         example: 1
@@ -1026,16 +993,16 @@ paths:
                         example: false
                       minimum_credits:
                         type: string
-                        example: '5.00'
+                        example: '10.00'
                       billing_period:
                         type: string
                         example: monthly
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Product Management'
       requestBody:
@@ -1047,103 +1014,93 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 30 characters.'
-                  example: b
+                  description: 'The name of the product.'
+                  example: 'Medium Minecraft'
                 description:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: 'Et animi quos velit et fugiat.'
+                  description: 'The description of the product.'
+                  example: 'Perfect for your SMP with friends'
                   nullable: true
                 price:
                   type: number
-                  description: 'This field is required when <code>minimum_credits</code> is present. Must not be greater than 9223372036854775. Must be at least 0.'
-                  example: 42
+                  description: 'The price of the product.'
+                  example: 10.0
                 minimum_credits:
                   type: number
-                  description: 'Must not be greater than 9223372036854775. Must be at least 0.'
-                  example: 37
+                  description: 'The minimum credits required to purchase.'
+                  example: 10.0
                   nullable: true
                 memory:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 5.'
-                  example: 40
+                  type: integer
+                  description: 'The memory in MB.'
+                  example: 4096
                 cpu:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 52
+                  type: integer
+                  description: 'The CPU limit in %.'
+                  example: 200
                 swap:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 8
+                  type: integer
+                  description: 'The swap limit in MB.'
+                  example: 0
                 disk:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 5.'
-                  example: 67
+                  type: integer
+                  description: 'The disk limit in MB.'
+                  example: 20480
                 io:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 7
+                  type: integer
+                  description: 'The IO limit.'
+                  example: 500
                 serverlimit:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 87
+                  type: integer
+                  description: 'The server limit.'
+                  example: 1
                 databases:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 39
+                  type: integer
+                  description: 'The database limit.'
+                  example: 3
                 backups:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 50
+                  type: integer
+                  description: 'The backup limit.'
+                  example: 2
                 allocations:
-                  type: number
-                  description: 'Must not be greater than 1000000. Must be at least 0.'
-                  example: 62
+                  type: integer
+                  description: 'The allocation limit.'
+                  example: 1
                 nodes:
                   type: array
-                  description: 'The <code>id</code> of an existing record in the nodes table.'
+                  description: 'List of node IDs associated with the product.'
                   example:
-                    - 16
+                    - 1
+                    - 2
                   items:
                     type: integer
                 eggs:
                   type: array
-                  description: 'The <code>id</code> of an existing record in the eggs table.'
+                  description: 'List of egg IDs associated with the product.'
                   example:
-                    - 16
+                    - 1
+                    - 3
                   items:
                     type: integer
                 disabled:
                   type: boolean
-                  description: ''
+                  description: 'Whether the product is disabled.'
                   example: false
                 oom_killer:
                   type: boolean
-                  description: ''
+                  description: 'Whether the OOM killer is enabled.'
                   example: true
                 default_billing_priority:
                   type: integer
-                  description: ''
-                  example: 2
-                  enum:
-                    - 1
-                    - 2
-                    - 3
+                  description: 'The default billing priority.'
+                  example: 0
                 billing_period:
                   type: string
-                  description: ''
-                  example: weekly
-                  enum:
-                    - hourly
-                    - daily
-                    - weekly
-                    - monthly
-                    - quarterly
-                    - half-annually
-                    - annually
+                  description: 'The billing period.'
+                  example: monthly
     delete:
-      summary: 'Remove the specified product from the system.'
-      operationId: removeTheSpecifiedProductFromTheSystem
+      summary: 'Delete product'
+      operationId: deleteProduct
       description: ''
       parameters: []
       responses:
@@ -1166,18 +1123,10 @@ paths:
         required: true
         schema:
           type: string
-      -
-        in: path
-        name: product
-        description: 'The ID of the product.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   /api/roles:
     get:
-      summary: 'Show a list of roles.'
-      operationId: showAListOfRoles
+      summary: 'List all roles'
+      operationId: listAllRoles
       description: ''
       parameters:
         -
@@ -1214,8 +1163,8 @@ paths:
                       name: Administrator
                       color: '#FF0000'
                       power: 100
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
                   meta:
                     total: 1
                 properties:
@@ -1227,8 +1176,8 @@ paths:
                         name: Administrator
                         color: '#FF0000'
                         power: 100
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
                     items:
                       type: object
                       properties:
@@ -1246,10 +1195,10 @@ paths:
                           example: 100
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                   meta:
                     type: object
                     properties:
@@ -1259,8 +1208,8 @@ paths:
       tags:
         - 'Role Management'
     post:
-      summary: 'Store a new role in the system.'
-      operationId: storeANewRoleInTheSystem
+      summary: 'Create role'
+      operationId: createRole
       description: ''
       parameters: []
       responses:
@@ -1272,34 +1221,68 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: Administrator
-                    color: '#FF0000'
-                    power: 100
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    id: 2
+                    name: Moderator
+                    color: '#00FF00'
+                    power: 50
+                    permissions:
+                      -
+                        id: 1
+                        name: admin.roles.read
+                        guard_name: web
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
                         type: integer
-                        example: 1
+                        example: 2
                       name:
                         type: string
-                        example: Administrator
+                        example: Moderator
                       color:
                         type: string
-                        example: '#FF0000'
+                        example: '#00FF00'
                       power:
                         type: integer
-                        example: 100
+                        example: 50
+                      permissions:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: admin.roles.read
+                            guard_name: web
+                            created_at: '2026-04-26 12:00:00'
+                            updated_at: '2026-04-26 12:00:00'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: admin.roles.read
+                            guard_name:
+                              type: string
+                              example: web
+                            created_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
+                            updated_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Role Management'
       requestBody:
@@ -1311,21 +1294,21 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: b
+                  description: 'The name of the role.'
+                  example: Moderator
                 color:
                   type: string
-                  description: 'Must match the regex /^#([a-f0-9]{6}|[a-f0-9]{3})$/i.'
-                  example: '#e239b1$/i'
+                  description: 'The hex color of the role.'
+                  example: '#00FF00'
                 power:
                   type: integer
-                  description: ''
-                  example: 16
+                  description: 'The power level of the role.'
+                  example: 50
                 permissions:
                   type: array
-                  description: 'The <code>name</code> of an existing record in the permissions table.'
+                  description: 'The permissions assigned to the role.'
                   example:
-                    - architecto
+                    - admin.roles.read
                   items:
                     type: string
               required:
@@ -1334,8 +1317,8 @@ paths:
                 - power
   '/api/roles/{id}':
     get:
-      summary: 'Show the specified role.'
-      operationId: showTheSpecifiedRole
+      summary: 'Get role details'
+      operationId: getRoleDetails
       description: ''
       parameters:
         -
@@ -1367,39 +1350,73 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: Administrator
-                    color: '#FF0000'
-                    power: 100
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    id: 2
+                    name: Moderator
+                    color: '#00FF00'
+                    power: 50
+                    permissions:
+                      -
+                        id: 1
+                        name: admin.roles.read
+                        guard_name: web
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
                         type: integer
-                        example: 1
+                        example: 2
                       name:
                         type: string
-                        example: Administrator
+                        example: Moderator
                       color:
                         type: string
-                        example: '#FF0000'
+                        example: '#00FF00'
                       power:
                         type: integer
-                        example: 100
+                        example: 50
+                      permissions:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: admin.roles.read
+                            guard_name: web
+                            created_at: '2026-04-26 12:00:00'
+                            updated_at: '2026-04-26 12:00:00'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: admin.roles.read
+                            guard_name:
+                              type: string
+                              example: web
+                            created_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
+                            updated_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Role Management'
     put:
-      summary: 'Update the specified role in the system.'
-      operationId: updateTheSpecifiedRoleInTheSystem
+      summary: 'Update role'
+      operationId: updateRole
       description: ''
       parameters: []
       responses:
@@ -1411,34 +1428,68 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
-                    name: Administrator
-                    color: '#FF0000'
-                    power: 100
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    id: 2
+                    name: Moderator
+                    color: '#00FF00'
+                    power: 50
+                    permissions:
+                      -
+                        id: 1
+                        name: admin.roles.read
+                        guard_name: web
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
                     properties:
                       id:
                         type: integer
-                        example: 1
+                        example: 2
                       name:
                         type: string
-                        example: Administrator
+                        example: Moderator
                       color:
                         type: string
-                        example: '#FF0000'
+                        example: '#00FF00'
                       power:
                         type: integer
-                        example: 100
+                        example: 50
+                      permissions:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: admin.roles.read
+                            guard_name: web
+                            created_at: '2026-04-26 12:00:00'
+                            updated_at: '2026-04-26 12:00:00'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: admin.roles.read
+                            guard_name:
+                              type: string
+                              example: web
+                            created_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
+                            updated_at:
+                              type: string
+                              example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Role Management'
       requestBody:
@@ -1450,26 +1501,26 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: b
+                  description: 'The name of the role.'
+                  example: Moderator
                 color:
                   type: string
-                  description: 'Must match the regex /^#([a-f0-9]{6}|[a-f0-9]{3})$/i.'
-                  example: '#e239b1$/i'
+                  description: 'The hex color of the role.'
+                  example: '#00FF00'
                 power:
                   type: integer
-                  description: ''
-                  example: 16
+                  description: 'The power level of the role.'
+                  example: 50
                 permissions:
                   type: array
-                  description: 'The <code>name</code> of an existing record in the permissions table.'
+                  description: 'The permissions assigned to the role.'
                   example:
-                    - architecto
+                    - admin.roles.read
                   items:
                     type: string
     delete:
-      summary: 'Remove the specified role from the system.'
-      operationId: removeTheSpecifiedRoleFromTheSystem
+      summary: 'Delete role'
+      operationId: deleteRole
       description: ''
       parameters: []
       responses:
@@ -1488,22 +1539,14 @@ paths:
         in: path
         name: id
         description: 'The ID of the role.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: role
-        description: 'The ID of the role.'
-        example: 1
+        example: 2
         required: true
         schema:
           type: integer
   /api/servers:
     get:
-      summary: 'Show a list of servers.'
-      operationId: showAListOfServers
+      summary: 'List all servers'
+      operationId: listAllServers
       description: ''
       parameters:
         -
@@ -1586,7 +1629,7 @@ paths:
                 example:
                   data:
                     -
-                      id: 1
+                      id: X8BK1rMUV4qF3lo-ROWIl
                       name: 'My Server'
                       description: 'My server description'
                       suspended: false
@@ -1596,9 +1639,9 @@ paths:
                       user_id: 1
                       product_id: 1
                       canceled: null
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
-                      last_billed: '2023-01-01 00:00:00'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
+                      last_billed: '2026-04-26 12:00:00'
                       status: running
                   meta:
                     total: 1
@@ -1607,7 +1650,7 @@ paths:
                     type: array
                     example:
                       -
-                        id: 1
+                        id: X8BK1rMUV4qF3lo-ROWIl
                         name: 'My Server'
                         description: 'My server description'
                         suspended: false
@@ -1617,16 +1660,16 @@ paths:
                         user_id: 1
                         product_id: 1
                         canceled: null
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
-                        last_billed: '2023-01-01 00:00:00'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
+                        last_billed: '2026-04-26 12:00:00'
                         status: running
                     items:
                       type: object
                       properties:
                         id:
-                          type: integer
-                          example: 1
+                          type: string
+                          example: X8BK1rMUV4qF3lo-ROWIl
                         name:
                           type: string
                           example: 'My Server'
@@ -1657,13 +1700,13 @@ paths:
                           nullable: true
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         last_billed:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         status:
                           type: string
                           example: running
@@ -1676,8 +1719,8 @@ paths:
       tags:
         - 'Server Management'
     post:
-      summary: 'Store a new server in the system.'
-      operationId: storeANewServerInTheSystem
+      summary: 'Create server'
+      operationId: createServer
       description: ''
       parameters: []
       responses:
@@ -1689,7 +1732,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: false
@@ -1699,17 +1742,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -1740,13 +1783,13 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
@@ -1761,43 +1804,43 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: b
+                  description: 'The name of the server.'
+                  example: 'My Awesome Server'
                 description:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Et animi quos velit et fugiat.'
+                  description: 'The description of the server.'
+                  example: 'High performance gaming server'
                   nullable: true
                 user_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the users table.'
-                  example: 16
+                  description: 'The ID of the user who owns the server.'
+                  example: 1
                 product_id:
                   type: string
-                  description: 'The <code>id</code> of an existing record in the products table.'
-                  example: architecto
+                  description: 'The ID of the product.'
+                  example: '1'
                 egg_id:
                   type: integer
-                  description: 'The egg must belong to the specified product. Each egg has its own variable rules. The <code>id</code> of an existing record in the eggs table.'
-                  example: 16
+                  description: 'The ID of the egg.'
+                  example: 1
                 location_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the locations table.'
-                  example: 16
+                  description: 'The ID of the location.'
+                  example: 1
                 egg_variables:
                   type: object
-                  description: ''
-                  example: null
-                  properties: {  }
+                  description: 'The egg variables for the server.'
+                  example: []
+                  properties:
+                    STARTUP:
+                      type: string
+                      description: ''
+                      example: ./myserver
                   nullable: true
                 billing_priority:
                   type: integer
-                  description: ''
-                  example: 3
-                  enum:
-                    - 1
-                    - 2
-                    - 3
+                  description: 'The billing priority.'
+                  example: 0
                   nullable: true
               required:
                 - name
@@ -1807,8 +1850,8 @@ paths:
                 - location_id
   '/api/servers/{id}':
     get:
-      summary: 'Show the specified server.'
-      operationId: showTheSpecifiedServer
+      summary: 'Get server details'
+      operationId: getServerDetails
       description: ''
       parameters:
         -
@@ -1890,7 +1933,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: false
@@ -1900,17 +1943,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -1941,21 +1984,21 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
       tags:
         - 'Server Management'
     put:
-      summary: 'Update the specified server in the system.'
-      operationId: updateTheSpecifiedServerInTheSystem
+      summary: 'Update server'
+      operationId: updateServer
       description: ''
       parameters: []
       responses:
@@ -1967,7 +2010,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: false
@@ -1977,17 +2020,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -2018,20 +2061,20 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
       tags:
         - 'Server Management'
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -2039,31 +2082,46 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: b
+                  description: 'The name of the server.'
+                  example: 'My Awesome Server'
                 description:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Et animi quos velit et fugiat.'
+                  description: 'The description of the server.'
+                  example: 'High performance gaming server'
                   nullable: true
                 user_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the users table.'
-                  example: 16
+                  description: 'The ID of the user who owns the server.'
+                  example: 1
                 billing_priority:
                   type: integer
-                  description: ''
-                  example: 3
-                  enum:
-                    - 1
-                    - 2
-                    - 3
+                  description: 'The billing priority.'
+                  example: 0
                   nullable: true
-              required:
-                - user_id
+                product_id:
+                  type: string
+                  description: 'The ID of the product.'
+                  example: '1'
+                egg_id:
+                  type: integer
+                  description: 'The ID of the egg.'
+                  example: 1
+                location_id:
+                  type: integer
+                  description: 'The ID of the location.'
+                  example: 1
+                egg_variables:
+                  type: object
+                  description: 'The egg variables for the server.'
+                  example: []
+                  properties:
+                    STARTUP:
+                      type: string
+                      description: ''
+                      example: ./myserver
     delete:
-      summary: 'Remove the specified server from the system.'
-      operationId: removeTheSpecifiedServerFromTheSystem
+      summary: 'Delete server'
+      operationId: deleteServer
       description: ''
       parameters: []
       responses:
@@ -2086,29 +2144,21 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'User requested deletion.'
+                  example: 'User requested deletion'
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the server.'
-        example: architecto
+        example: X8BK1rMUV4qF3lo-ROWIl
         required: true
         schema:
           type: string
-      -
-        in: path
-        name: server
-        description: 'The ID of the server.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/servers/{server_id}/build':
     patch:
-      summary: 'Update the server build.'
-      operationId: updateTheServerBuild
+      summary: 'Update server resources'
+      operationId: updateServerResources
       description: ''
       parameters: []
       responses:
@@ -2120,7 +2170,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: false
@@ -2130,17 +2180,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -2171,13 +2221,13 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
@@ -2210,17 +2260,9 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: server
-        description: 'The ID of the server.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/servers/{server_id}/suspend':
     patch:
-      summary: 'Suspend server.'
+      summary: 'Suspend server'
       operationId: suspendServer
       description: ''
       parameters: []
@@ -2233,7 +2275,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: true
@@ -2243,17 +2285,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -2284,13 +2326,13 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
@@ -2305,8 +2347,8 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'Violation of terms of use.'
+                  example: 'Violation of terms of use'
     parameters:
       -
         in: path
@@ -2316,17 +2358,9 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: server
-        description: 'The ID of the server.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/servers/{server_id}/unsuspend':
     patch:
-      summary: 'Unsuspend server.'
+      summary: 'Unsuspend server'
       operationId: unsuspendServer
       description: ''
       parameters: []
@@ -2339,7 +2373,7 @@ paths:
                 type: object
                 example:
                   data:
-                    id: 1
+                    id: X8BK1rMUV4qF3lo-ROWIl
                     name: 'My Server'
                     description: 'My server description'
                     suspended: false
@@ -2349,17 +2383,17 @@ paths:
                     user_id: 1
                     product_id: 1
                     canceled: null
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
-                    last_billed: '2023-01-01 00:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
+                    last_billed: '2026-04-26 12:00:00'
                     status: running
                 properties:
                   data:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        example: 1
+                        type: string
+                        example: X8BK1rMUV4qF3lo-ROWIl
                       name:
                         type: string
                         example: 'My Server'
@@ -2390,13 +2424,13 @@ paths:
                         nullable: true
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_billed:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       status:
                         type: string
                         example: running
@@ -2411,8 +2445,8 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'Re-activation after review.'
+                  example: 'Re-activation after review'
     parameters:
       -
         in: path
@@ -2422,18 +2456,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: server
-        description: 'The ID of the server.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   /api/users:
     get:
-      summary: 'Show a list of users.'
-      operationId: showAListOfUsers
+      summary: 'List all users'
+      operationId: listAllUsers
       description: ''
       parameters:
         -
@@ -2517,11 +2543,11 @@ paths:
                       suspended: false
                       referral_code: ABCDEF12
                       email_verified_reward: false
-                      discord_verified_at: '2023-01-01 00:00:00'
-                      last_seen: '2023-01-01 00:00:00'
-                      email_verified_at: '2023-01-01 00:00:00'
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
+                      discord_verified_at: '2026-04-26 12:00:00'
+                      last_seen: '2026-04-26 12:00:00'
+                      email_verified_at: '2026-04-26 12:00:00'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
                   meta:
                     total: 1
                 properties:
@@ -2540,11 +2566,11 @@ paths:
                         suspended: false
                         referral_code: ABCDEF12
                         email_verified_reward: false
-                        discord_verified_at: '2023-01-01 00:00:00'
-                        last_seen: '2023-01-01 00:00:00'
-                        email_verified_at: '2023-01-01 00:00:00'
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
+                        discord_verified_at: '2026-04-26 12:00:00'
+                        last_seen: '2026-04-26 12:00:00'
+                        email_verified_at: '2026-04-26 12:00:00'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
                     items:
                       type: object
                       properties:
@@ -2583,19 +2609,19 @@ paths:
                           example: false
                         discord_verified_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         last_seen:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         email_verified_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                   meta:
                     type: object
                     properties:
@@ -2605,8 +2631,8 @@ paths:
       tags:
         - 'User Management'
     post:
-      summary: 'Create a new user in the system.'
-      operationId: createANewUserInTheSystem
+      summary: 'Create user'
+      operationId: createUser
       description: ''
       parameters: []
       responses:
@@ -2629,11 +2655,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -2673,19 +2699,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -2697,32 +2723,32 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'The name.'
+                  description: 'Min 4, max 30 chars.'
                   example: john_doe
                 email:
                   type: string
-                  description: 'The email.'
+                  description: 'Valid email address.'
                   example: john@example.com
                 password:
                   type: string
-                  description: 'The password.'
+                  description: 'Min 8 chars.'
                   example: secret123
                 credits:
                   type: number
-                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
-                  example: 22
+                  description: 'Initial credits. Max: 9223372036854775.'
+                  example: 100.0
                 server_limit:
-                  type: number
-                  description: 'Must be at least 0. Must not be greater than 1000000.'
-                  example: 24
+                  type: integer
+                  description: 'Initial server limit. Use 0 for unlimited.'
+                  example: 5
                 role_id:
                   type: integer
-                  description: 'The role ID.'
+                  description: 'Valid role ID.'
                   example: 1
                 referral_code:
                   type: string
-                  description: 'The <code>referral_code</code> of an existing record in the users table.'
-                  example: architecto
+                  description: 'The referral code used by the user.'
+                  example: ABCDEF12
                   nullable: true
               required:
                 - name
@@ -2731,8 +2757,8 @@ paths:
                 - role_id
   '/api/users/{id}':
     get:
-      summary: 'Show the specified user.'
-      operationId: showTheSpecifiedUser
+      summary: 'Get user details'
+      operationId: getUserDetails
       description: ''
       parameters:
         -
@@ -2815,11 +2841,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -2859,24 +2885,24 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
     put:
-      summary: 'Update the specified user in the system.'
-      operationId: updateTheSpecifiedUserInTheSystem
+      summary: 'Update user'
+      operationId: updateUser
       description: ''
       parameters: []
       responses:
@@ -2899,11 +2925,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -2943,19 +2969,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -2967,34 +2993,42 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Must be at least 4 characters. Must not be greater than 30 characters.'
-                  example: b
+                  description: 'The name.'
+                  example: john_doe
                 email:
                   type: string
-                  description: 'Must be a valid email address.'
-                  example: zbailey@example.net
+                  description: 'The email.'
+                  example: john@example.com
                 password:
                   type: string
-                  description: 'Must be at least 8 characters. Must not be greater than 191 characters.'
-                  example: '-0pBNvYgxw'
+                  description: 'The password.'
+                  example: secret123
                 credits:
                   type: number
-                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
-                  example: 22
+                  description: 'The credits for the user.'
+                  example: 100.0
                 server_limit:
-                  type: number
-                  description: 'Must be at least 0. Must not be greater than 1000000.'
-                  example: 24
+                  type: integer
+                  description: 'The server limit for the user.'
+                  example: 5
                 role_id:
                   type: integer
-                  description: 'The <code>id</code> of an existing record in the roles table.'
-                  example: 16
+                  description: 'The role ID.'
+                  example: 1
+                referral_code:
+                  type: string
+                  description: 'Must be at least 2 characters. Must not be greater than 32 characters.'
+                  example: 'n'
+                pterodactyl_id:
+                  type: number
+                  description: ''
+                  example: 4326.41688
               required:
                 - name
                 - email
     delete:
-      summary: 'Remove the specified user from the system.'
-      operationId: removeTheSpecifiedUserFromTheSystem
+      summary: 'Delete user'
+      operationId: deleteUser
       description: ''
       parameters: []
       responses:
@@ -3017,20 +3051,12 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'User requested deletion.'
+                  example: 'User requested deletion'
     parameters:
       -
         in: path
         name: id
-        description: 'The ID of the user.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: user
         description: 'The ID of the user.'
         example: 1
         required: true
@@ -3038,8 +3064,8 @@ paths:
           type: integer
   '/api/users/{user_id}/increment':
     patch:
-      summary: 'Increments the credits/server_limit of the user.'
-      operationId: incrementsTheCreditsserverLimitOfTheUser
+      summary: 'Increment user balance or server limit'
+      operationId: incrementUserBalanceOrServerLimit
       description: ''
       parameters: []
       responses:
@@ -3062,11 +3088,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3106,19 +3132,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -3145,18 +3171,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/users/{user_id}/decrement':
     patch:
-      summary: 'Decrements the credits/server_limit of the user.'
-      operationId: decrementsTheCreditsserverLimitOfTheUser
+      summary: 'Decrement user balance or server limit'
+      operationId: decrementUserBalanceOrServerLimit
       description: ''
       parameters: []
       responses:
@@ -3179,11 +3197,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3223,19 +3241,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -3262,18 +3280,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/users/{user_id}/suspend':
     patch:
-      summary: 'Suspend the user and their servers.'
-      operationId: suspendTheUserAndTheirServers
+      summary: 'Suspend user'
+      operationId: suspendUser
       description: ''
       parameters: []
       responses:
@@ -3296,11 +3306,11 @@ paths:
                     suspended: true
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3340,19 +3350,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -3364,8 +3374,8 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'Violation of terms of service.'
+                  example: 'Violation of terms of service'
     parameters:
       -
         in: path
@@ -3375,18 +3385,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/users/{user_id}/unsuspend':
     patch:
-      summary: 'Unsuspend the user and their servers if they has suficient credits.'
-      operationId: unsuspendTheUserAndTheirServersIfTheyHasSuficientCredits
+      summary: 'Unsuspend user'
+      operationId: unsuspendUser
       description: ''
       parameters: []
       responses:
@@ -3409,11 +3411,11 @@ paths:
                     suspended: false
                     referral_code: ABCDEF12
                     email_verified_reward: false
-                    discord_verified_at: '2023-01-01 00:00:00'
-                    last_seen: '2023-01-01 00:00:00'
-                    email_verified_at: '2023-01-01 00:00:00'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    discord_verified_at: '2026-04-26 12:00:00'
+                    last_seen: '2026-04-26 12:00:00'
+                    email_verified_at: '2026-04-26 12:00:00'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3453,19 +3455,19 @@ paths:
                         example: false
                       discord_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       last_seen:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       email_verified_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'User Management'
       requestBody:
@@ -3477,8 +3479,8 @@ paths:
               properties:
                 reason:
                   type: string
-                  description: 'Must not be greater than 320 characters.'
-                  example: b
+                  description: 'Re-activation after review.'
+                  example: 'Re-activation after review'
     parameters:
       -
         in: path
@@ -3488,18 +3490,10 @@ paths:
         required: true
         schema:
           type: integer
-      -
-        in: path
-        name: user
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   /api/vouchers:
     get:
-      summary: 'Show a list of vouchers.'
-      operationId: showAListOfVouchers
+      summary: 'List all vouchers'
+      operationId: listAllVouchers
       description: ''
       parameters:
         -
@@ -3563,13 +3557,13 @@ paths:
                   data:
                     -
                       id: 1
-                      code: SUMMER2023
+                      code: SUMMER2026
                       memo: 'Summer promotion'
                       credits: '50.00'
                       uses: 100
-                      expires_at: '2023-12-31 23:59:59'
-                      created_at: '2023-01-01 00:00:00'
-                      updated_at: '2023-01-01 00:00:00'
+                      expires_at: '2026-12-31 23:59:59'
+                      created_at: '2026-04-26 12:00:00'
+                      updated_at: '2026-04-26 12:00:00'
                   meta:
                     total: 1
                 properties:
@@ -3578,13 +3572,13 @@ paths:
                     example:
                       -
                         id: 1
-                        code: SUMMER2023
+                        code: SUMMER2026
                         memo: 'Summer promotion'
                         credits: '50.00'
                         uses: 100
-                        expires_at: '2023-12-31 23:59:59'
-                        created_at: '2023-01-01 00:00:00'
-                        updated_at: '2023-01-01 00:00:00'
+                        expires_at: '2026-12-31 23:59:59'
+                        created_at: '2026-04-26 12:00:00'
+                        updated_at: '2026-04-26 12:00:00'
                     items:
                       type: object
                       properties:
@@ -3593,7 +3587,7 @@ paths:
                           example: 1
                         code:
                           type: string
-                          example: SUMMER2023
+                          example: SUMMER2026
                         memo:
                           type: string
                           example: 'Summer promotion'
@@ -3605,13 +3599,13 @@ paths:
                           example: 100
                         expires_at:
                           type: string
-                          example: '2023-12-31 23:59:59'
+                          example: '2026-12-31 23:59:59'
                         created_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                         updated_at:
                           type: string
-                          example: '2023-01-01 00:00:00'
+                          example: '2026-04-26 12:00:00'
                   meta:
                     type: object
                     properties:
@@ -3621,8 +3615,8 @@ paths:
       tags:
         - 'Voucher Management'
     post:
-      summary: 'Store a new voucher in the system.'
-      operationId: storeANewVoucherInTheSystem
+      summary: 'Create voucher'
+      operationId: createVoucher
       description: ''
       parameters: []
       responses:
@@ -3635,13 +3629,13 @@ paths:
                 example:
                   data:
                     id: 1
-                    code: SUMMER2023
+                    code: SUMMER2026
                     memo: 'Summer promotion'
                     credits: '50.00'
                     uses: 100
-                    expires_at: '2023-12-31 23:59:59'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    expires_at: '2026-12-31 23:59:59'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3651,7 +3645,7 @@ paths:
                         example: 1
                       code:
                         type: string
-                        example: SUMMER2023
+                        example: SUMMER2026
                       memo:
                         type: string
                         example: 'Summer promotion'
@@ -3663,13 +3657,13 @@ paths:
                         example: 100
                       expires_at:
                         type: string
-                        example: '2023-12-31 23:59:59'
+                        example: '2026-12-31 23:59:59'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Voucher Management'
       requestBody:
@@ -3681,25 +3675,25 @@ paths:
               properties:
                 memo:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: b
+                  description: 'Description for the voucher.'
+                  example: 'Summer 2026 Promotion'
                   nullable: true
                 code:
                   type: string
-                  description: 'Must contain only letters, numbers, dashes and underscores. Must not be greater than 36 characters. Must be at least 4 characters.'
-                  example: ngzm
+                  description: '4-36 chars, alpha-dash format.'
+                  example: SUMMER2026
                 uses:
-                  type: number
-                  description: 'Must not be greater than 2147483647. Must be at least 1.'
-                  example: 35
+                  type: integer
+                  description: 'Max uses.'
+                  example: 100
                 credits:
                   type: number
-                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
-                  example: 8
+                  description: 'Credits amount. Min: 0.01, Max: 9223372036854775.'
+                  example: 50.0
                 expires_at:
                   type: string
-                  description: 'Must be a date after <code>now</code>. Must be a date before <code>10 years</code>.'
-                  example: '2022-05-20'
+                  description: 'Expiration date (d-m-Y H:i:s or d-m-Y).'
+                  example: '31-12-2026 23:59:59'
                   nullable: true
               required:
                 - code
@@ -3707,8 +3701,8 @@ paths:
                 - credits
   '/api/vouchers/{id}':
     get:
-      summary: 'Show the specified voucher.'
-      operationId: showTheSpecifiedVoucher
+      summary: 'Get voucher details'
+      operationId: getVoucherDetails
       description: ''
       parameters:
         -
@@ -3771,13 +3765,13 @@ paths:
                 example:
                   data:
                     id: 1
-                    code: SUMMER2023
+                    code: SUMMER2026
                     memo: 'Summer promotion'
                     credits: '50.00'
                     uses: 100
-                    expires_at: '2023-12-31 23:59:59'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    expires_at: '2026-12-31 23:59:59'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3787,7 +3781,7 @@ paths:
                         example: 1
                       code:
                         type: string
-                        example: SUMMER2023
+                        example: SUMMER2026
                       memo:
                         type: string
                         example: 'Summer promotion'
@@ -3799,18 +3793,18 @@ paths:
                         example: 100
                       expires_at:
                         type: string
-                        example: '2023-12-31 23:59:59'
+                        example: '2026-12-31 23:59:59'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Voucher Management'
     put:
-      summary: 'Update the specified voucher in the system.'
-      operationId: updateTheSpecifiedVoucherInTheSystem
+      summary: 'Update voucher'
+      operationId: updateVoucher
       description: ''
       parameters: []
       responses:
@@ -3823,13 +3817,13 @@ paths:
                 example:
                   data:
                     id: 1
-                    code: SUMMER2023
-                    memo: 'Summer promotion'
+                    code: SUMMER2026
+                    memo: 'Summer 2026 promotion'
                     credits: '50.00'
                     uses: 100
-                    expires_at: '2023-12-31 23:59:59'
-                    created_at: '2023-01-01 00:00:00'
-                    updated_at: '2023-01-01 00:00:00'
+                    expires_at: '2026-12-31 23:59:59'
+                    created_at: '2026-04-26 12:00:00'
+                    updated_at: '2026-04-26 12:00:00'
                 properties:
                   data:
                     type: object
@@ -3839,10 +3833,10 @@ paths:
                         example: 1
                       code:
                         type: string
-                        example: SUMMER2023
+                        example: SUMMER2026
                       memo:
                         type: string
-                        example: 'Summer promotion'
+                        example: 'Summer 2026 promotion'
                       credits:
                         type: string
                         example: '50.00'
@@ -3851,13 +3845,13 @@ paths:
                         example: 100
                       expires_at:
                         type: string
-                        example: '2023-12-31 23:59:59'
+                        example: '2026-12-31 23:59:59'
                       created_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
                       updated_at:
                         type: string
-                        example: '2023-01-01 00:00:00'
+                        example: '2026-04-26 12:00:00'
       tags:
         - 'Voucher Management'
       requestBody:
@@ -3869,33 +3863,32 @@ paths:
               properties:
                 memo:
                   type: string
-                  description: 'Must not be greater than 191 characters.'
-                  example: b
+                  description: 'A description for the voucher.'
+                  example: 'Summer 2026 Promotion'
                   nullable: true
                 uses:
-                  type: number
-                  description: 'Must not be greater than 2147483647. Must be at least 1.'
-                  example: 22
+                  type: integer
+                  description: 'The number of times the voucher can be used.'
+                  example: 100
                 code:
                   type: string
-                  description: 'Must contain only letters, numbers, dashes and underscores. Must be at least 4 characters. Must not be greater than 36 characters.'
-                  example: g
+                  description: 'The unique code for the voucher.'
+                  example: SUMMER2026
                 credits:
                   type: number
-                  description: 'Must be at least 0. Must not be greater than 9223372036854775.'
-                  example: 16
+                  description: 'The amount of credits the voucher gives.'
+                  example: 50.0
                 expires_at:
                   type: string
-                  description: 'Must be a date after <code>now</code>. Must be a date before <code>10 years</code>.'
-                  example: '2022-05-20'
+                  description: 'The expiration date of the voucher (d-m-Y H:i:s or d-m-Y).'
+                  example: '31-12-2026 23:59:59'
                   nullable: true
               required:
                 - uses
-                - code
                 - credits
     delete:
-      summary: 'Remove the specified voucher from the system.'
-      operationId: removeTheSpecifiedVoucherFromTheSystem
+      summary: 'Delete voucher'
+      operationId: deleteVoucher
       description: ''
       parameters: []
       responses:
@@ -3913,14 +3906,6 @@ paths:
       -
         in: path
         name: id
-        description: 'The ID of the voucher.'
-        example: architecto
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: voucher
         description: 'The ID of the voucher.'
         example: 1
         required: true
