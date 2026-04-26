@@ -2,7 +2,13 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 
-const FeatureList = [
+type FeatureItem = {
+  title: string;
+  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  description: JSX.Element;
+};
+
+const FeatureList: FeatureItem[] = [
   {
     title: 'Easy to Use',
     Svg: require('../../static/img/1.svg').default,
@@ -32,7 +38,7 @@ Perfect for your clients. Your clients can buy a server within 2 minutes. That's
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -46,7 +52,7 @@ function Feature({Svg, title, description}) {
   );
 }
 
-export default function HomepageFeatures() {
+export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
