@@ -127,7 +127,7 @@ To setup Stripe, go to the Developer page and click on API Keys. You only need t
 Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).  
 To do so, click on Webhooks and add an endpoint.  
 The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.  
-Choose the `payment_intent.succeded`, `payment_intent.processing` and `payment_intent.payment_failed` events to be sent to your WebhookRoute.  
+Choose the `payment_intent.succeeded`, `payment_intent.processing` and `payment_intent.payment_failed` events to be sent to your WebhookRoute.  
 After the webhook creation, you need to get the endpoint secret and copy paste it to your Ctrlpanel payment settings. The endpoint secret can be found in the Webhook Overview page.
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
