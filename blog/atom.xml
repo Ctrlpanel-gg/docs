@@ -149,14 +149,13 @@
 <li class="">User creation command (<code>php artisan make:user</code>) now returns an error if the email or Pterodactyl ID is already in use</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fixed-vulnerabilities">Fixed Vulnerabilities<a href="https://ctrlpanel.gg/blog/1.2.0-release#fixed-vulnerabilities" class="hash-link" aria-label="Direct link to Fixed Vulnerabilities" title="Direct link to Fixed Vulnerabilities" translate="no">​</a></h3>
-<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p><strong>Vulnerability details will be disclosed two weeks after the release date</strong></p></div></div>
 <ul>
-<li class="">CVE-2026-34234</li>
-<li class="">CVE-2026-34358</li>
-<li class="">CVE-2026-34246</li>
-<li class="">CVE-2026-34216</li>
-<li class="">CVE-2026-34241</li>
-<li class="">CVE-2026-34233</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-jmhr-q9q5-fqwh" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34234</a> (CVSS Score 10.0/10) - Unauthenticated RCE via Installer Accessible After Installation and Unsanitized Shell Arguments</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-pxmw-gj52-9p68" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34358</a> (CVSS Score 8.1/10) - Missing Authorization on Admin Write Endpoints Allows RBAC Bypass</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-wpqj-xwhq-2mmh" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34246</a> (CVSS Score 4.8/10) - Stored XSS in Admin Role Management via Unescaped DataTable HTML Output</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-vcg3-fjrx-rg5q" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34216</a> (CVSS Score 6.6/10) - Unsafe Dynamic Class Instantiation in Admin Settings Allows Potential Remote Code Execution</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-cmrr-q3hw-3vqh" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34241</a> (CVSS Score 8.7/10) - Stored XSS in Ticket Reply Notifications Allows Session Hijacking</li>
+<li class=""><a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/GHSA-mj5g-j7fq-7hc4" target="_blank" rel="noopener noreferrer" class="">CVE-2026-34233</a> (CVSS Score 6.5/10) - Missing Authorization on Admin Datatable Endpoints Allows Unauthorized Access to Sensitive Data</li>
 </ul>
 <hr>
 <p>This release also includes a number of internal bug fixes, performance improvements, and code refactors not listed above.<br>
