@@ -80,40 +80,18 @@ To accept live payments through PayPal, you need a business account. Personal ac
 #### Live payments
 
 1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
-2. Select **Live** in the top left corner.
+2. Select **Live** in the top right corner.
 3. Click **Create App** button.
 4. Copy your `Client ID` and `Secret key`.
-5. Scroll down to "Webhooks" section.
-6. Click **Add Webhook** button.
-7. Set webhook URL to `https://your.ctrlpanel.url/payment/PayPalWebhook` and event types to **All Events**, or if you want fine-grained permissions:
-    - Checkout -> Checkout order approved
-    - Payments & Payouts -> Payment capture completed
-    - Payments & Payouts -> Payment capture pending
-    - Payments & Payouts -> Payment capture denied
-    - Payments & Payouts -> Payment capture declined
-    - Payments & Payouts -> Payment capture refunded
-    - Payments & Payouts -> Payment capture reversed
-8. Copy your `Webhook ID`
-9. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
 
 #### Sandbox payments
 
 1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
-2. Select **Sandboox** in the top left corner.
+2. Select **Sandbox** in the top right corner.
 3. Click **Create App** button.
 4. Copy your `Client ID` and `Secret key`.
-5. Scroll down to "Webhooks" section.
-6. Click **Add Webhook** button.
-7. Set webhook URL to `https://your.ctrlpanel.url/payment/PayPalWebhook` and event types to **All Events**, or if you want fine-grained permissions:
-    - Checkout -> Checkout order approved
-    - Payments & Payouts -> Payment capture completed
-    - Payments & Payouts -> Payment capture pending
-    - Payments & Payouts -> Payment capture denied
-    - Payments & Payouts -> Payment capture declined
-    - Payments & Payouts -> Payment capture refunded
-    - Payments & Payouts -> Payment capture reversed
-8. Copy your `Webhook ID`
-9. Paste the copied data into the corresponding fields in the CtrlPanel settings.
+5. Paste the copied data into the corresponding fields in the CtrlPanel settings.
 
 Now, go to your CtrlPanel root directory (`/var/www/ctrlpanel/`) and open your `.env` file. Find `APP_ENV` variable, and change it from `production` to `local`.  
 You can now make test payments using PayPal Sandbox account.
@@ -124,18 +102,97 @@ To use Stripe as your payment gateway, you first have to setup a "company" on St
 
 To setup Stripe, go to the Developer page and click on API Keys. You only need the Secret key in order to use Stripe as your payment gateway. Once you have the secret key go to your Ctrlpanel setup and paste the secret into the `Secret Key` section.
 
-Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).  
-To do so, click on Webhooks and add an endpoint.  
-The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.  
-Choose the `payment_intent.succeeded`, `payment_intent.processing` and `payment_intent.payment_failed` events to be sent to your WebhookRoute.  
+Now, you will need to setup a Stripe Webhook in order to accept payments that are not 100% instantly confirmed by stripe (Klarna, Bank-Transfer etc.).
+To do so, click on Webhooks and add an endpoint.
+The endpoint route would look something like this: `https://your.ctrlpanel.url/payment/StripeWebhooks`. Change the `your.ctrlpanel.url` to your Ctrlpanel setup link.
+Choose the `payment_intent.succeded` event to be sent to your WebhookRoute.
 After the webhook creation, you need to get the endpoint secret and copy paste it to your Ctrlpanel payment settings. The endpoint secret can be found in the Webhook Overview page.
 
 Just like Paypal, you can change it from Live to Sandbox and vice-versa in case you want to test to make sure that your payments are working correctly.
 
+### MercadoPago
+
+This section explains how to obtain the **Access Token** and **Webhook Secret** required to integrate Mercado Pago as your payment gateway.
+
+#### Prerequisites
+
+- An active Mercado Pago account
+- Access to the email associated with your account
+
+#### Step 1 – Access the Developers Portal
+
+1. Go to [https://developers.mercadolibre.com/](https://developers.mercadolibre.com/)
+2. Select your **country** from the dropdown.
+3. Log in with your Mercado Pago credentials.
+
+:::warning
+Make sure you choose the correct country – credentials are **country‑specific**.
+:::
+
+#### Step 2 – Create a New Application
+
+1. Navigate to [https://www.mercadopago.com/developers/panel/app](https://www.mercadopago.com/developers/panel/app)
+2. Click **“Create application”**.
+3. Give it a **name** (e.g., your store name).
+4. For **Integration type**, choose **“Online Payments”**.
+5. For **Business model**, select **“Own development”**.
+
+#### Step 3 – Configure Your Application
+
+1. In **“Your store URL”**, enter the link to your dashboard or website (recommended, but optional).
+2. Choose **“Checkout API”** as the payment method.
+3. Then select **“Payments API”**.
+
+:::info
+Even though the store URL is optional, it helps with tracking and validation.
+:::
+
+#### Step 4 – Finalise Creation
+
+1. Accept the terms and conditions.
+2. Solve the CAPTCHA.
+3. Click **“Continue”**.
+
+#### Step 5 – Activate Production Credentials
+
+1. Inside your new app, go to the **“Production Credentials”** section.
+2. Pick your **business sector** – we recommend **“IT Services”** if it fits.
+3. Authorise and solve the CAPTCHA again.
+4. Click **“Activate credentials”**.
+
+:::success
+Once activated, your **Access Token** and **Public Key** will be displayed here.
+:::
+
+#### Step 6 – Get Your Webhook Secret
+
+1. In the same app panel, go to **“Webhooks”**.
+2. Click **“Configure notifications”**.
+3. Enable **“Production mode”** and enter the **URL of your dashboard** (the endpoint that will receive notifications).
+4. Tick the following events:
+   - ✅ **Order (Mercado Pago)**
+   - ✅ **Payments (legacy)**
+   - ✅ **Plans and Subscriptions**
+5. Click **“Save configuration”**.
+
+:::tip
+After saving, you will see your **Webhook Secret** – keep it secure and never expose it publicly.
+:::
+
+#### Credentials Summary
+
+| Credential         | Purpose                                           | Where to find it                |
+|--------------------|---------------------------------------------------|---------------------------------|
+| **Access Token**   | Authenticate API requests                         | Production Credentials          |
+| **Public Key**     | Frontend encryption (only)                        | Production Credentials          |
+| **Webhook Secret** | Validate incoming webhook notifications           | Webhook configuration           |
+
+#### Next Steps
+
+- Store all credentials as **environment variables**.
+- Set up your server to handle incoming webhooks.
+- Read the [official Mercado Pago docs](https://www.mercadopago.com/developers/en/docs) for detailed integration.
+
 ### Mollie
-
-_Unfortunately, we don't have information on how to configure this payment gateway. Know how and want to help? Let us know!_
-
-### MarcadoPago
 
 _Unfortunately, we don't have information on how to configure this payment gateway. Know how and want to help? Let us know!_
