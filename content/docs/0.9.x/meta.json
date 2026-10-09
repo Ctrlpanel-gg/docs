@@ -1,0 +1,11 @@
+{
+  "title": "Version 0.9.x",
+  "root": true,
+  "pages": [
+    "index",
+    "Installation",
+    "Contributing",
+    "Guides",
+    "..."
+  ]
+}

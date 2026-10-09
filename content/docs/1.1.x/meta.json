@@ -1,0 +1,13 @@
+{
+  "title": "Version 1.1.x",
+  "root": true,
+  "pages": [
+    "index",
+    "getting-started",
+    "guides",
+    "development",
+    "contributing",
+    "updating",
+    "..."
+  ]
+}

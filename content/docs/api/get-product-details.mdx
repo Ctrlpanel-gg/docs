@@ -1,0 +1,191 @@
+---
+title: "Get product details"
+description: "GET /api/products/{id}"
+---
+
+<div className="api-endpoint"><strong>GET</strong><code>/api/products/&#123;id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X GET 'https://panel.example.com/api/products/{id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `id` | path | Yes | The ID of the product. |
+| `include` | query | No | Comma-separated list of related resources to include. <br />Available: <code>servers.user</code>, <code>eggs.nest</code>, <code>nodes.location</code> |
+| `filter[name]` | query | No | Filter results by name |
+| `filter[description]` | query | No | Filter results by description |
+| `filter[price]` | query | No | Filter results by price |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": "vY8xK9pZ",
+    "name": "Medium Minecraft",
+    "description": "Perfect for your SMP with friends",
+    "price": "10.00",
+    "memory": 4096,
+    "cpu": 200,
+    "swap": 0,
+    "disk": 20480,
+    "io": 500,
+    "databases": 3,
+    "backups": 2,
+    "serverlimit": 1,
+    "allocations": 1,
+    "oom_killer": true,
+    "default_billing_priority": 0,
+    "disabled": false,
+    "minimum_credits": "10.00",
+    "billing_period": "monthly",
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": "vY8xK9pZ",
+      "name": "Medium Minecraft",
+      "description": "Perfect for your SMP with friends",
+      "price": "10.00",
+      "memory": 4096,
+      "cpu": 200,
+      "swap": 0,
+      "disk": 20480,
+      "io": 500,
+      "databases": 3,
+      "backups": 2,
+      "serverlimit": 1,
+      "allocations": 1,
+      "oom_killer": true,
+      "default_billing_priority": 0,
+      "disabled": false,
+      "minimum_credits": "10.00",
+      "billing_period": "monthly",
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "vY8xK9pZ"
+        },
+        "name": {
+          "type": "string",
+          "example": "Medium Minecraft"
+        },
+        "description": {
+          "type": "string",
+          "example": "Perfect for your SMP with friends"
+        },
+        "price": {
+          "type": "string",
+          "example": "10.00"
+        },
+        "memory": {
+          "type": "integer",
+          "example": 4096
+        },
+        "cpu": {
+          "type": "integer",
+          "example": 200
+        },
+        "swap": {
+          "type": "integer",
+          "example": 0
+        },
+        "disk": {
+          "type": "integer",
+          "example": 20480
+        },
+        "io": {
+          "type": "integer",
+          "example": 500
+        },
+        "databases": {
+          "type": "integer",
+          "example": 3
+        },
+        "backups": {
+          "type": "integer",
+          "example": 2
+        },
+        "serverlimit": {
+          "type": "integer",
+          "example": 1
+        },
+        "allocations": {
+          "type": "integer",
+          "example": 1
+        },
+        "oom_killer": {
+          "type": "boolean",
+          "example": true
+        },
+        "default_billing_priority": {
+          "type": "integer",
+          "example": 0
+        },
+        "disabled": {
+          "type": "boolean",
+          "example": false
+        },
+        "minimum_credits": {
+          "type": "string",
+          "example": "10.00"
+        },
+        "billing_period": {
+          "type": "string",
+          "example": "monthly"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

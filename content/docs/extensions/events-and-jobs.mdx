@@ -1,0 +1,58 @@
+---
+title: "Events & background jobs"
+description: "Integrate with real panel events and register listeners explicitly."
+---
+
+## The extension loader is not an event registrar
+
+The inspected event provider disables automatic event discovery. The extension provider loads routes and does not call a custom extension boot method. Register listeners in a real service provider rather than hiding registration inside a routes file that may be skipped when routes are cached.
+
+## Example: observe server creation
+
+Create **app/Providers/HostingTelemetryServiceProvider.php**:
+
+~~~php
+<?php
+
+namespace App\Providers;
+
+use App\Events\ServerCreatedEvent;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+
+class HostingTelemetryServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Event::listen(ServerCreatedEvent::class, function (ServerCreatedEvent $event): void {
+            Log::info('Hosting telemetry: server created', [
+                'server_id' => $event->server->id,
+            ]);
+        });
+    }
+}
+~~~
+
+Add **App\Providers\HostingTelemetryServiceProvider::class** to the application's existing providers array in **config/app.php**. This release retains that provider list; do not assume registration in a different Laravel skeleton file.
+
+The source event exposes a user and a server. The example logs only the server identifier and does not change the server or user balance.
+
+## Other integration points
+
+| Event | Public data in the event class |
+| --- | --- |
+| ServerCreatedEvent | user, server |
+| ServerDeletedEvent | Inspect the release's event class before depending on its payload |
+| PaymentEvent | user, payment, shopProduct |
+| UserUpdateCreditsEvent | Inspect its constructor and the dispatching code before depending on its payload |
+
+These are internal application contracts, not a promised version-independent plugin API. Pin your supported releases and test the complete dispatch path.
+
+## Background work
+
+For expensive integrations, dispatch a queued job rather than blocking an HTTP request or performing network calls from Blade. Laravel's worker must be running, and jobs need retry/idempotency behavior appropriate to the integration. Use [background jobs](/docs/guides/background-jobs) to verify the worker and scheduler separately.
+
+A payment callback or server-created event can be delivered or processed more than once in real systems. Build your own integration so repeated work does not duplicate a provisioning operation or notification.
+
+<SourceNote files={["config/app.php","app/Providers/EventServiceProvider.php","app/Providers/ExtensionServiceProvider.php","app/Events/ServerCreatedEvent.php","app/Events/PaymentEvent.php"]} />

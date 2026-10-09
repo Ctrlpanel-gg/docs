@@ -1,0 +1,39 @@
+---
+title: "Recovery & rollback planning"
+description: "Restore a matched application state rather than just switching Git revisions."
+---
+
+## The recovery set
+
+A useful recovery point contains the database snapshot, matching panel code revision, original environment/application key, uploads, custom theme/extension code, compiled assets, and the relevant service configuration. Document where the backup lives and who can access it.
+
+## Decide before the upgrade
+
+Specify when you will stop the deployment and recover. Rehearse recovery to a separate database before production. After reopening, new writes may exist; restoring an older database can lose them, so the recovery procedure must account for that operational decision.
+
+## Recovery sequence
+
+<Steps>
+<Step>
+### Stop conflicting writers
+Keep the application in maintenance and coordinate its workers/scheduler. Avoid letting an old worker write against a partially restored or mismatched schema.
+</Step>
+<Step>
+### Restore matching data and code
+Restore the tested database snapshot and the code/custom assets that match it. Preserve the original application key for encrypted settings. Use your tested backup/restore procedure; do not assume reversing individual migrations restores all data.
+</Step>
+<Step>
+### Refresh the runtime and verify
+Reinstall the matching locked dependencies if needed, refresh the appropriate caches, restart workers, and verify login, uploads, settings, integrations, and scheduled behavior in the recovered state.
+</Step>
+<Step>
+### Reopen deliberately
+Resume background processes and traffic only after your recovery acceptance checks pass. Record what failed and retain the logs/backups needed to investigate the upgrade.
+</Step>
+</Steps>
+
+<Callout type="error" title="Code checkout alone is not rollback">
+If a migration changed schema or values, switching Git to an older tag can leave the old application running against incompatible data. A matched, tested restore is the recovery baseline.
+</Callout>
+
+<SourceNote files={["config/settings.php","app/Console/Commands/update.php","app/Console/Kernel.php"]} />

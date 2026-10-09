@@ -1,53 +1,37 @@
 {
-  "name": "ctrlpanel",
-  "version": "0.0.0",
+  "name": "ctrlpanel-docs",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "dev": "bun --bun next dev",
+    "start": "bun run dev",
+    "build": "bun --bun next build --webpack && bun scripts/export-aliases.ts",
+    "serve": "bun scripts/serve.ts",
+    "typecheck": "bunx --bun tsc --noEmit",
+    "migrate": "bun scripts/migrate.ts",
+    "postinstall": "fumadocs-mdx",
+    "gg:run": "MESSAGE=updated bun scripts/gg/repackage.ts"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.10.0",
-    "@docusaurus/plugin-client-redirects": "^3.10.0",
-    "@docusaurus/preset-classic": "^3.10.0",
-    "@mdx-js/react": "^3.0.0",
-    "@svgr/webpack": "^5.5.0",
-    "clsx": "^1.1.1",
-    "docusaurus-plugin-openapi-docs": "^5.0.1",
-    "docusaurus-plugin-sass": "^0.2.6",
-    "docusaurus-theme-openapi-docs": "^5.0.1",
-    "file-loader": "^6.2.0",
-    "prism-react-renderer": "^2.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.99.0",
-    "url-loader": "^4.1.1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "fumadocs-core": "16.16.2",
+    "fumadocs-ui": "16.16.2",
+    "fumadocs-mdx": "15.4.6",
+    "lucide-react": "1.52.0",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.3",
+    "yaml": "2.9.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.10.0",
-    "@tsconfig/docusaurus": "^2.0.9",
-    "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "typescript": "^6.0.3"
+    "@types/bun": "1.4.2",
+    "@types/mdx": "2.0.14",
+    "@types/node": "24.19.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "bun": "1.4.2",
+    "typescript": "5.9.3"
   }
 }

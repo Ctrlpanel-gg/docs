@@ -1,0 +1,137 @@
+---
+title: "List all roles"
+description: "GET /api/roles"
+---
+
+<div className="api-endpoint"><strong>GET</strong><code>/api/roles</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X GET 'https://panel.example.com/api/roles' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `include` | query | No | Comma-separated list of related resources to include. <br />Available: <code>permissions</code>, <code>users</code> |
+| `filter[name]` | query | No | Filter results by name |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | array | No |  |
+| `meta` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Administrator",
+      "color": "#FF0000",
+      "power": 100,
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Administrator",
+        "color": "#FF0000",
+        "power": 100,
+        "created_at": "2026-04-26 12:00:00",
+        "updated_at": "2026-04-26 12:00:00"
+      }
+    ],
+    "meta": {
+      "total": 1
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "array",
+      "example": [
+        {
+          "id": 1,
+          "name": "Administrator",
+          "color": "#FF0000",
+          "power": 100,
+          "created_at": "2026-04-26 12:00:00",
+          "updated_at": "2026-04-26 12:00:00"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Administrator"
+          },
+          "color": {
+            "type": "string",
+            "example": "#FF0000"
+          },
+          "power": {
+            "type": "integer",
+            "example": 100
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

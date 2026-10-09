@@ -1,0 +1,41 @@
+---
+title: "Roles & permissions"
+description: "Give staff the permissions they need and verify the resulting access."
+---
+
+## Role names are not permission checks
+
+CtrlPanel uses permission-based access controls. A role contains a name, display color, power value, and assigned permissions. Choose the permissions needed for the job rather than assuming that a role name grants access.
+
+The built-in role IDs are Admin (1), Support Team (2), Client (3), and User (4). Preserve their identities when customizing labels. The permission seeder gives Admin the wildcard permission; do not use Admin for a staff role that should have limited access.
+
+## Create a staff role
+
+1. Open Roles in the administration area using an account allowed to manage roles.
+2. Set a descriptive name, color, and appropriate power value.
+3. Select the smallest set of permissions needed for that role.
+4. Assign the role through the panel's user administration.
+5. Sign in as a separate test staff account and check both allowed actions and actions it must be denied.
+
+| Roles administration action | Permission |
+| --- | --- |
+| Read the role list | admin.roles.read |
+| Create a role | admin.roles.create |
+| Edit a role | admin.roles.edit |
+| Delete a role | admin.roles.delete |
+| Read invoice settings | settings.invoice.read |
+| Change invoice settings | settings.invoice.write |
+
+The role controller compares the current user's first role power with the target role when editing. Treat power and permissions as separate controls and test your staff accounts after changes.
+
+<Callout type="warn" title="Deleting a role changes user assignments">
+The checked controller protects role IDs 1, 3, and 4 from deletion. When another role is deleted, its users are synchronized to User (ID 4). Review those accounts before deleting a role; this is more than removing a label.
+</Callout>
+
+## Keep permissions stable during upgrades
+
+The general permission seeder removes permission names not declared in <code>config/permissions_web.php</code>. Inventory custom permissions and role assignments before running upgrade seeders. Extension settings also need their own read/write permissions; follow [extension settings](/docs/extensions/settings-and-migrations).
+
+Keep the role-management permissions restricted. After upgrading, test access with a limited staff account as well as an administrator; an Admin-only check does not validate the permissions of your other roles.
+
+<SourceNote files={["app/Constants/Roles.php","app/Http/Controllers/Admin/RoleController.php","config/permissions_web.php","config/permission.php","database/seeders/GeneralPermissionsSeeder.php"]} />

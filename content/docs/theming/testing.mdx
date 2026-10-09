@@ -1,0 +1,37 @@
+---
+title: "Test & publish a theme"
+description: "Ship a theme that survives real accounts, workflows, and panel upgrades."
+---
+
+## Test matrix
+
+| Area | Check |
+| --- | --- |
+| Accounts | Administrator and ordinary user; guest login/register/reset screens |
+| Navigation | Small screens, sidebar, dropdowns, and active routes |
+| Servers | Product selection, egg variables, server create/settings, validation errors |
+| Store | Product selection, coupons, checkout, pending/cancel/success states |
+| Support | Tickets, notifications, and long user-generated text |
+| Language | Missing translation keys, long strings, and non-Latin account names |
+| Branding | Default and uploaded logos/favicons; storage link behavior |
+| Assets | Clean browser cache, no development server, no missing manifest entries |
+
+## Package the two halves
+
+A theme release normally includes view overrides under **themes/harbor/** and any static assets under **public/themes/harbor/** or compiled bundle under **public/build/harbor/**. State the panel release(s) you tested, the installation steps, and how to return to default.
+
+Do not include your environment file, a database dump, uploaded customer files, payment keys, dependency directories, or development hot files.
+
+## Upgrade maintenance
+
+Compare every overridden view with its upstream default counterpart after an upgrade. A copied layout freezes that file's markup until you merge the upstream changes yourself. Prefer a small number of targeted overrides to an unreviewed copy of the entire default theme.
+
+## Release checklist
+
+- Build and install the archive in a clean staging checkout.
+- Confirm the archive preserves exact directory names and casing.
+- Include license/attribution requirements for assets you distribute.
+- Document the default-theme recovery command and all files you added.
+- Publish a compatibility range based on tested releases, not on a guess that every 1.x release shares the same markup.
+
+<SourceNote files={["themes/default/views/layouts/main.blade.php","themes/default/views/store/checkout.blade.php","themes/default/views/servers/create.blade.php"]} />

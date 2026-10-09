@@ -1,0 +1,26 @@
+---
+title: "Branding & images"
+description: "Use the panel settings for uploaded identity assets before building a custom theme."
+---
+
+The default layouts read the configured site identity and uploaded images. Use the admin settings UI for simple branding; use [theming](/docs/theming) when you need to change the structure of a screen.
+
+## Image roles
+- **Favicon:** must be in 64x64 ico format  
+  Displayed in the browser's address bar as a small icon representing your site
+- **Icon:** 1:1 aspect ratio recommended  
+  Displayed in your site's SEO and embed previews, as well as in the top-right corner next to the name
+- **Login-page Logo**  
+  Displayed above the login form of your panel
+
+
+<Callout type="info" title="Info">
+
+Updating the images may take some time. To speed up this, clear your browser cache and Cloudflare cache if you're using it.
+</Callout>
+
+## Branding versus a custom theme
+
+Uploaded images live in the application's storage flow. Keep those uploads in your backups. A theme changes Blade views and CSS; selecting a theme does not replace your uploaded logo or automatically rebuild frontend assets.
+
+<SourceNote files={["app/Http/Controllers/Admin/SettingsController.php","themes/default/views/layouts/main.blade.php"]} />

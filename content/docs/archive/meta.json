@@ -1,0 +1,12 @@
+{
+  "title": "Version archive",
+  "root": true,
+  "pages": [
+    "index",
+    "Installation",
+    "Packages",
+    "Contributing",
+    "Guides",
+    "..."
+  ]
+}

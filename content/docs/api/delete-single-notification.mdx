@@ -1,0 +1,55 @@
+---
+title: "Delete single notification"
+description: "DELETE /api/notifications/{user_id}/{notification_id}"
+---
+
+<div className="api-endpoint"><strong>DELETE</strong><code>/api/notifications/&#123;user_id&#125;/&#123;notification_id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X DELETE 'https://panel.example.com/api/notifications/{user_id}/{notification_id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `user_id` | path | Yes | The ID of the user. |
+| `notification_id` | path | Yes | The ID of the notification. |
+
+## Responses
+
+### 204
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+
+### Example
+
+```json
+{}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {},
+  "properties": {}
+}
+```
+
+</details>
+

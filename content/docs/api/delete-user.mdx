@@ -1,0 +1,81 @@
+---
+title: "Delete user"
+description: "DELETE /api/users/{id}"
+---
+
+<div className="api-endpoint"><strong>DELETE</strong><code>/api/users/&#123;id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X DELETE 'https://panel.example.com/api/users/{id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '@request.json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `id` | path | Yes | The ID of the user. |
+
+### Request body (application/json)
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `reason` | string | No | User requested deletion. |
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "description": "User requested deletion.",
+      "example": "User requested deletion"
+    }
+  }
+}
+```
+
+</details>
+
+## Responses
+
+### 204
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+
+### Example
+
+```json
+{}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {},
+  "properties": {}
+}
+```
+
+</details>
+

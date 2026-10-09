@@ -1,0 +1,190 @@
+---
+title: "Unsuspend user"
+description: "PATCH /api/users/{user_id}/unsuspend"
+---
+
+<div className="api-endpoint"><strong>PATCH</strong><code>/api/users/&#123;user_id&#125;/unsuspend</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X PATCH 'https://panel.example.com/api/users/{user_id}/unsuspend' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '@request.json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `user_id` | path | Yes | The ID of the user. |
+
+### Request body (application/json)
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `reason` | string | No | Re-activation after review. |
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "description": "Re-activation after review.",
+      "example": "Re-activation after review"
+    }
+  }
+}
+```
+
+</details>
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "credits": "100.00",
+    "server_limit": 5,
+    "pterodactyl_id": 1,
+    "avatar": "https://www.gravatar.com/avatar/...",
+    "ip": "127.0.0.1",
+    "suspended": false,
+    "referral_code": "ABCDEF12",
+    "email_verified_reward": false,
+    "discord_verified_at": "2026-04-26 12:00:00",
+    "last_seen": "2026-04-26 12:00:00",
+    "email_verified_at": "2026-04-26 12:00:00",
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "credits": "100.00",
+      "server_limit": 5,
+      "pterodactyl_id": 1,
+      "avatar": "https://www.gravatar.com/avatar/...",
+      "ip": "127.0.0.1",
+      "suspended": false,
+      "referral_code": "ABCDEF12",
+      "email_verified_reward": false,
+      "discord_verified_at": "2026-04-26 12:00:00",
+      "last_seen": "2026-04-26 12:00:00",
+      "email_verified_at": "2026-04-26 12:00:00",
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "john@example.com"
+        },
+        "credits": {
+          "type": "string",
+          "example": "100.00"
+        },
+        "server_limit": {
+          "type": "integer",
+          "example": 5
+        },
+        "pterodactyl_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "avatar": {
+          "type": "string",
+          "example": "https://www.gravatar.com/avatar/..."
+        },
+        "ip": {
+          "type": "string",
+          "example": "127.0.0.1"
+        },
+        "suspended": {
+          "type": "boolean",
+          "example": false
+        },
+        "referral_code": {
+          "type": "string",
+          "example": "ABCDEF12"
+        },
+        "email_verified_reward": {
+          "type": "boolean",
+          "example": false
+        },
+        "discord_verified_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "last_seen": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "email_verified_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

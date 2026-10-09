@@ -1,0 +1,99 @@
+---
+title: "Your first extension"
+description: "A complete minimal example using the panel’s real directory and route conventions."
+---
+
+## Create a development checkout
+
+Use a separate panel installation with a test database. This example is deliberately small: it exposes an authenticated JSON response and does not create servers, charge users, or alter payment records.
+
+[Download the minimal HelloWorld example](/examples/hello-world.zip). The archive contains the three PHP files below and a README, ready to copy into a staging panel.
+
+<Steps>
+<Step>
+## Declare the extension
+
+Create **app/Extensions/Tools/HelloWorld/HelloWorldExtension.php**:
+
+~~~php
+<?php
+
+namespace App\Extensions\Tools\HelloWorld;
+
+use App\Classes\AbstractExtension;
+
+class HelloWorldExtension extends AbstractExtension
+{
+    public static function getConfig(): array
+    {
+        return ['name' => 'Hello World'];
+    }
+}
+~~~
+
+The directory name, class name, and namespace agree. There is no JSON addon manifest to invent.
+</Step>
+<Step>
+## Add a controller
+
+Create **HelloWorldController.php** in the same directory:
+
+~~~php
+<?php
+
+namespace App\Extensions\Tools\HelloWorld;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+
+class HelloWorldController extends Controller
+{
+    public function index(): JsonResponse
+    {
+        return response()->json([
+            'message' => 'Hello from the CtrlPanel extension',
+        ]);
+    }
+}
+~~~
+</Step>
+<Step>
+## Register a protected route
+
+Create **routes.php** in that directory:
+
+~~~php
+<?php
+
+use App\Extensions\Tools\HelloWorld\HelloWorldController;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware(['web', 'auth', 'checkSuspended'])
+    ->prefix('extensions/hello-world')
+    ->name('extensions.hello-world.')
+    ->group(function (): void {
+        Route::get('/', [HelloWorldController::class, 'index'])
+            ->name('index');
+    });
+~~~
+
+The extension provider does not automatically wrap these routes in the web or authentication middleware. This example declares both, plus the same suspended-account protection used for normal panel routes.
+</Step>
+<Step>
+## Refresh and verify
+
+~~~bash
+composer dump-autoload
+php artisan route:clear
+php artisan route:list --path=extensions/hello-world
+~~~
+
+Visit **/extensions/hello-world** while signed in. Verify that a guest is redirected to login and that suspended-account behavior matches your policy. If you cache routes in production, rebuild that cache after deploying route changes and confirm the route is present.
+</Step>
+</Steps>
+
+## What this does not do automatically
+
+It does not add a sidebar item, load Blade views from an extension-specific folder, create permissions, run arbitrary database schema migrations, or provide enable/disable buttons. Those capabilities need explicit application code. Continue with [settings and migrations](/docs/extensions/settings-and-migrations) when you need an administrator-controlled option.
+
+<SourceNote files={["app/Classes/AbstractExtension.php","app/Providers/ExtensionServiceProvider.php","app/Helpers/ExtensionHelper.php","app/Http/Kernel.php"]} />

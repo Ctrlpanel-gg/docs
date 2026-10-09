@@ -1,0 +1,28 @@
+---
+title: Return from development to a release
+description: Match your code and database instead of treating a branch switch as rollback.
+---
+
+## Decide whether you need a clean installation or a restore
+
+For disposable development data, a new isolated release installation is usually easier to reason about. For data you need to retain, identify a tested backup and matching release code before making changes.
+
+<Callout type="error" title="A Git branch switch does not reverse data migrations">
+Development code may have changed the schema or stored values. Checking out main or a release tag does not restore a database compatible with that code.
+</Callout>
+
+## Safe path
+
+1. Stop conflicting writers and preserve the development checkout/database if you need it for investigation.
+2. Choose a published release and check its requirements.
+3. Restore the database, original application key, uploads, and custom work matching that release, or create a clean isolated installation with disposable data.
+4. Install locked dependencies, restore the matching assets, refresh caches, and restart supervised workers.
+5. Verify the recovered application before pointing real traffic or production integrations at it.
+
+Use [recovery planning](/docs/updating/recovery) and [backup/restore](/docs/guides/backup) for the matched-state procedure. Do not copy a database from newer development code into an older release and assume it is compatible.
+
+## When development is behind a published release
+
+Compare the commit history and migration state first. Apply a forward upgrade only when the source and target states support it; do not use the chronological age of a branch as the sole compatibility check.
+
+<SourceNote files={[".github/CONTRIBUTING.md","app/Console/Commands/update.php","config/settings.php"]} />

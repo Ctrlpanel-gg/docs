@@ -1,0 +1,70 @@
+---
+title: "Your first child theme"
+description: "Override one screen while inheriting the working default theme."
+---
+
+## Work on a development installation
+
+Use a separate checkout and database. Choose a stable, lowercase folder name such as **harbor**. Directory names are used as theme identifiers, so keep the name consistent between your folder and the settings selection.
+
+<Steps>
+<Step>
+## Create one view override
+
+From the panel root:
+
+~~~bash
+mkdir -p themes/harbor/views
+cp themes/default/views/home.blade.php themes/harbor/views/home.blade.php
+~~~
+
+Copying the existing home view preserves the variables, widgets, and account-specific behavior that its controller expects. Begin with a small, visible change such as the dashboard heading. Keep the existing sections and layout declaration.
+</Step>
+<Step>
+## Add an optional announcement
+
+A small example to place inside the existing content section:
+
+~~~blade
+<div class="alert alert-info" role="status">
+    {{ __('Welcome to Harbor Hosting') }}
+</div>
+~~~
+
+The Bootstrap classes come from the inherited default assets. Double braces escape output, and the translation helper allows you to provide localized text later. Add translations or use existing translation keys; the helper does not translate new phrases automatically.
+</Step>
+<Step>
+## Select the child theme
+
+Choose **harbor** in the General settings theme field and save. The provider calls the theme layer with default as the parent. The CLI setting command can also set this value:
+
+~~~bash
+php artisan settings:set GeneralSettings theme harbor
+php artisan view:clear
+~~~
+
+Use the administrator UI for normal operations. The command is useful when testing or recovering a theme selection.
+</Step>
+<Step>
+## Verify and recover
+
+Visit the dashboard with administrator and ordinary-user accounts. Check that screens you did not override still render. To return to the default theme:
+
+~~~bash
+php artisan settings:set GeneralSettings theme default
+php artisan view:clear
+~~~
+</Step>
+</Steps>
+
+## Add overrides deliberately
+
+For a store override, start from **themes/default/views/store/index.blade.php** and copy it to the same relative path beneath your child theme. Do not create a guessed view path: match the path and controller data used by the release you support.
+
+## If you need the generator
+
+The locked themer package supports **php artisan make:theme harbor**. Run it only in a disposable development checkout, read its prompts, and inspect the resulting changes to the frontend package files. Compare generated layouts with CtrlPanel's real layouts before activating them.
+
+[Inspect the locked generator implementation](https://github.com/qirolab/laravel-themer/blob/7a4345c2508a616ad309812840758f3fc01ababd/src/Commands/MakeThemeCommand.php).
+
+<SourceNote files={["themes/default/views/home.blade.php","app/Settings/GeneralSettings.php","app/Console/Commands/SetSettingCommand.php","app/Providers/SettingsServiceProvider.php"]} />

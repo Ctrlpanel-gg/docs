@@ -1,0 +1,207 @@
+---
+title: "Create role"
+description: "POST /api/roles"
+---
+
+<div className="api-endpoint"><strong>POST</strong><code>/api/roles</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X POST 'https://panel.example.com/api/roles' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '@request.json'
+```
+
+### Request body (application/json)
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | string | Yes | The name of the role. |
+| `color` | string | Yes | The hex color of the role. |
+| `power` | integer | Yes | The power level of the role. |
+| `permissions` | array | No | The permissions assigned to the role. |
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the role.",
+      "example": "Moderator"
+    },
+    "color": {
+      "type": "string",
+      "description": "The hex color of the role.",
+      "example": "#00FF00"
+    },
+    "power": {
+      "type": "integer",
+      "description": "The power level of the role.",
+      "example": 50
+    },
+    "permissions": {
+      "type": "array",
+      "description": "The permissions assigned to the role.",
+      "example": [
+        "admin.roles.read"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "color",
+    "power"
+  ]
+}
+```
+
+</details>
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": 2,
+    "name": "Moderator",
+    "color": "#00FF00",
+    "power": 50,
+    "permissions": [
+      {
+        "id": 1,
+        "name": "admin.roles.read",
+        "guard_name": "web",
+        "created_at": "2026-04-26 12:00:00",
+        "updated_at": "2026-04-26 12:00:00"
+      }
+    ],
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": 2,
+      "name": "Moderator",
+      "color": "#00FF00",
+      "power": 50,
+      "permissions": [
+        {
+          "id": 1,
+          "name": "admin.roles.read",
+          "guard_name": "web",
+          "created_at": "2026-04-26 12:00:00",
+          "updated_at": "2026-04-26 12:00:00"
+        }
+      ],
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 2
+        },
+        "name": {
+          "type": "string",
+          "example": "Moderator"
+        },
+        "color": {
+          "type": "string",
+          "example": "#00FF00"
+        },
+        "power": {
+          "type": "integer",
+          "example": 50
+        },
+        "permissions": {
+          "type": "array",
+          "example": [
+            {
+              "id": 1,
+              "name": "admin.roles.read",
+              "guard_name": "web",
+              "created_at": "2026-04-26 12:00:00",
+              "updated_at": "2026-04-26 12:00:00"
+            }
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "name": {
+                "type": "string",
+                "example": "admin.roles.read"
+              },
+              "guard_name": {
+                "type": "string",
+                "example": "web"
+              },
+              "created_at": {
+                "type": "string",
+                "example": "2026-04-26 12:00:00"
+              },
+              "updated_at": {
+                "type": "string",
+                "example": "2026-04-26 12:00:00"
+              }
+            }
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

@@ -1,0 +1,29 @@
+---
+title: "Theme troubleshooting"
+description: "Diagnose view resolution, stale templates, and missing assets."
+---
+
+<Accordions type="single" collapsible>
+<Accordion title="My theme does not appear in the selector">
+Check that the directory exists directly beneath themes and that the server can read it. The General settings class enumerates those folders. Folder casing matters on Linux. A zip archive nested one directory too deep will not have the expected view paths.
+</Accordion>
+<Accordion title="The default screen still appears">
+Check that your override has the same relative view path as the default. Missing child views intentionally fall back to default. Confirm the General theme setting, clear compiled Blade views, and reload without an old browser/CDN cache.
+</Accordion>
+<Accordion title="My CSS is missing or the Vite manifest is missing">
+The active theme does not rewrite hard-coded Vite entries. Check the CSS file's public URL or the compiled manifest, and ensure the Blade entry and build directory match. Run the correct theme build script, then test without the development server.
+</Accordion>
+<Accordion title="An overridden page reports an undefined variable">
+Compare the view with the controller and the default screen at the release you support. A theme does not invent controller data. Restore required variables or use a view that only relies on the data actually supplied.
+</Accordion>
+<Accordion title="How do I recover from a broken layout?">
+Run the following from the panel root, then reload the panel.
+
+~~~bash
+php artisan settings:set GeneralSettings theme default
+php artisan view:clear
+~~~
+</Accordion>
+</Accordions>
+
+<SourceNote files={["app/Settings/GeneralSettings.php","app/Providers/SettingsServiceProvider.php","app/Console/Commands/SetSettingCommand.php","themes/default/vite.config.js"]} />

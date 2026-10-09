@@ -1,0 +1,10 @@
+{
+  "title": "Install & get started",
+  "pages": [
+    "index",
+    "requirements",
+    "install",
+    "first-run",
+    "docker"
+  ]
+}

@@ -1,0 +1,24 @@
+---
+title: "Updates within 1.2.x"
+description: "Use a published target release and keep custom work under review."
+---
+
+The latest stable release checked for these guides is **1.2.0**. If you already run it, this page does not imply there is a newer stable patch waiting to install. Check the upstream release list first.
+
+## When a later patch is published
+
+1. Identify your current code revision and the exact target tag.
+2. Read the release notes and compare migrations, dependencies, gateway behavior, and the files your theme/extension overrides.
+3. Complete [preflight](/docs/updating/preflight) and rehearse the target in staging.
+4. Follow the [controlled runbook](/docs/updating/runbook), substituting the reviewed published tag rather than copying its 1.2.0 example unchanged.
+5. Verify worker/scheduler behavior and the customer workflows affected by the release.
+
+## Themes and extensions need their own review
+
+A patch release can still change a Blade template, validation rule, event payload, or provider contract that custom code depends on. Keep an inventory of overrides and application edits, and merge only the custom changes still needed after updating.
+
+## If you started on 1.1.x
+
+Use [the family-upgrade guide](/docs/updating/from-1.1.x). This page assumes an existing 1.2.x installation and does not replace the provider/settings review needed when crossing families.
+
+<SourceNote files={["composer.json","app/Console/Commands/update.php"]} />

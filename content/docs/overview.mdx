@@ -1,0 +1,53 @@
+---
+title: "About CtrlPanel"
+description: "Understand what the panel does and how it relates to Pterodactyl."
+---
+
+## Two applications, different responsibilities
+
+| Application | Responsibility |
+| --- | --- |
+| Pterodactyl | Nodes, allocations, eggs, and the actual game-server runtime |
+| CtrlPanel | Client accounts, credit billing, server plans, ordering, invoices, tickets, and integrations |
+
+Install and configure Pterodactyl first. CtrlPanel connects to it using the settings in your panel; it does not replace the Pterodactyl server-management layer.
+
+## Features
+
+- Server creation using **pre-configured** plans
+- Billing options ranging from **hourly** to **annual**
+- **Automatic suspension** of servers when clients don't have enough credits to renew
+- Per-user server limit (server slots)
+- **Email verification** and **Discord linking** with **auto-join** to your Discord server
+- One account per IP limit
+- **Referral** and **partner** systems
+- **Vouchers** for credit rewards and **coupons** for product discounts\*
+- **Built-in** ticket system
+- Role-based access with [granular permissions](/docs/configuration/roles)
+- [Invoice generation and email delivery](/docs/configuration/invoices)
+- [HTTP API](/docs/api) for external integrations
+- Integrated support for popular payment gateways (**PayPal**, **Stripe**, **Mollie**, and **MercadoPago**)
+- [Experimental Docker image and Compose setup](/docs/getting-started/docker)
+- **Multi-language** support
+- **Open-source**
+- And much more
+
+_\* Coupons apply to store products such as server slots and credit purchases. They do **not** apply to server plans._
+
+
+
+## Supported integration
+
+The upstream 1.2.0 README targets **Pterodactyl** and explicitly excludes **Pelican**. Other hosting panels are not supported by upstream; an older documentation table is not a compatibility guarantee.
+
+The standard installation guides use Debian-based systems and PHP 8.3. The package declares PHP 8.2 or later within the PHP 8 series, but a package constraint alone does not prove that every newer runtime or operating system has been tested.
+
+## Try the panel
+
+Use the [demo](https://demo.ctrlpanel.gg) to explore the interface. Treat it as temporary: the upstream README says its data is periodically wiped.
+
+## Project resources
+
+Find themes and extensions in the [marketplace](https://market.ctrlpanel.gg/), planned work on the [roadmap](https://github.com/orgs/Ctrlpanel-gg/projects/1), and community support on [Discord](https://discord.gg/ctrlpanel-gg-787829714483019826). To help the project, start with [contributing](/docs/contributing).
+
+<SourceNote files={["README.md","composer.json"]} />

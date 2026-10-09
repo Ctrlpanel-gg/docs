@@ -22,3 +22,12 @@ yarn-error.log*
 tmp
 
 process.yml
+# Fumadocs / Next.js static export
+.next/
+.source/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Disposable legacy import staging
+migration/generated/

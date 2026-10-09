@@ -1,0 +1,36 @@
+---
+title: "Development installation"
+description: "Work in a separate application and database before touching customer data."
+---
+
+## Choose the code you need
+
+Use the stable release to build an extension/theme for current users. Use the upstream development branch only when you deliberately want unreleased application work. The upstream contribution process targets development; that does not make it appropriate for a production deployment.
+
+## Build an isolated environment
+
+1. Use a separate domain/local host, checkout, database, and environment file.
+2. Follow the supported [installation recipe](/docs/getting-started/install) for runtime services and Pterodactyl connectivity.
+3. Install development dependencies in that checkout with Composer; use Bun for its frontend package scripts.
+4. Use test Pterodactyl resources and gateway sandbox credentials.
+5. Ensure restored scheduled jobs/notifications cannot act on production customers.
+
+~~~bash
+composer install
+bun install
+bun run build:default
+~~~
+
+The last command builds the actual default-theme configuration from the panel's package scripts. The panel uses Vite for its frontend assets; this documentation website has its own separate static Fumadocs build.
+
+## Debug and tests
+
+Enable debug only on an isolated environment that is not serving production traffic. The repository contains PHPUnit feature/unit tests and its own phpunit.xml configuration. Review that test configuration and use a separate test database before running tests:
+
+~~~bash
+php artisan test
+~~~
+
+Tests are evidence for the behavior they cover, not proof that an untested gateway, theme, or deployment works. Add tests for the workflows your change affects, and compare your overrides with the actual controller/view contract.
+
+<SourceNote files={["composer.json","package.json","phpunit.xml",".github/CONTRIBUTING.md"]} />

@@ -1,0 +1,118 @@
+---
+title: "Settings & migrations"
+description: "Add a typed setting, initialize it, and make your feature respect it."
+---
+
+## Settings class convention
+
+The helper looks for **HelloWorldSettings** in the HelloWorld extension namespace. It must extend **Spatie\LaravelSettings\Settings**. The admin settings controller includes discovered extension settings classes in its settings categories.
+
+~~~php
+<?php
+
+namespace App\Extensions\Tools\HelloWorld;
+
+use Spatie\LaravelSettings\Settings;
+
+class HelloWorldSettings extends Settings
+{
+    public bool $enabled;
+    public string $message;
+
+    public static function group(): string
+    {
+        return 'hello_world';
+    }
+
+    public static function getOptionInputData(): array
+    {
+        return [
+            'category_icon' => 'fas fa-puzzle-piece',
+            'enabled' => [
+                'type' => 'boolean',
+                'label' => 'Enabled',
+                'description' => 'Allow the Hello World endpoint.',
+            ],
+            'message' => [
+                'type' => 'string',
+                'label' => 'Message',
+                'description' => 'Text returned by the extension.',
+            ],
+        ];
+    }
+}
+~~~
+
+Declare metadata for every property: the existing admin controller reads option types while building the UI. Choose a settings group that does not collide with another addon.
+
+## Initialize the stored values
+
+Create **migrations/2026_10_08_000001_create_hello_world_settings.php** under the extension:
+
+~~~php
+<?php
+
+use Spatie\LaravelSettings\Migrations\SettingsMigration;
+
+class CreateHelloWorldSettings extends SettingsMigration
+{
+    public function up(): void
+    {
+        $this->migrator->add('hello_world.enabled', false);
+        $this->migrator->add('hello_world.message', 'Hello from CtrlPanel');
+    }
+
+    public function down(): void
+    {
+        $this->migrator->delete('hello_world.enabled');
+        $this->migrator->delete('hello_world.message');
+    }
+}
+~~~
+
+The panel's settings configuration adds discovered extension migration directories to Spatie's settings migration paths. This does **not** mean a generic Laravel table-creation migration is automatically registered there.
+
+After deploying the settings class and migration, clear stale discovery/configuration state and run migrations in staging before accessing the settings screen:
+
+~~~bash
+composer dump-autoload
+php artisan config:clear
+php artisan migrate
+php artisan settings:clear-cache
+~~~
+
+Use the migration procedure appropriate to production when deploying there. Never reset or rerun old migration files to change an existing value; add a new migration for an upgrade.
+
+## Respect the enabled setting
+
+A complete replacement controller for the settings-enabled example:
+
+~~~php
+<?php
+
+namespace App\Extensions\Tools\HelloWorld;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+
+class HelloWorldController extends Controller
+{
+    public function index(): JsonResponse
+    {
+        $settings = new HelloWorldSettings();
+        abort_unless($settings->enabled, 404);
+
+        return response()->json(['message' => $settings->message]);
+    }
+}
+~~~
+
+The administrator can now set the message and enable the feature. The admin settings template and controller check **settings.helloworld.read** / **settings.helloworld.write** permissions. An account with the existing wildcard permission can manage it; for restricted roles, register and assign these explicit permissions as part of your installation procedure. Keep their declarations in config/permissions_web.php if you use the standard permission seeder, because that seeder removes names absent from the configuration. Without this check, an enabled property would have no effect on the route.
+
+[Download the settings-enabled HelloWorld example](/examples/hello-world-settings.zip).
+
+## Secrets and schema changes
+
+Use encrypted settings migrations for secrets, following the built-in gateways. Preserve the environment file and application key in backups, since encrypted stored values depend on that key. For ordinary tables, register Laravel migrations explicitly through an application/package service provider and test that registration; the inspected extension provider only loads routes.
+
+<SourceNote files={["app/Helpers/ExtensionHelper.php","config/settings.php","app/Http/Controllers/Admin/SettingsController.php","config/permissions_web.php","config/permission.php","database/seeders/GeneralPermissionsSeeder.php","themes/default/views/admin/settings/index.blade.php","app/Extensions/PaymentGateways/Mollie/MollieSettings.php","app/Extensions/PaymentGateways/Mollie/migrations/2023_03_26_215801_create_mollie_settings.php"]} />

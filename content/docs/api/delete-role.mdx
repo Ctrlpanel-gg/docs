@@ -1,0 +1,54 @@
+---
+title: "Delete role"
+description: "DELETE /api/roles/{id}"
+---
+
+<div className="api-endpoint"><strong>DELETE</strong><code>/api/roles/&#123;id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X DELETE 'https://panel.example.com/api/roles/{id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `id` | path | Yes | The ID of the role. |
+
+## Responses
+
+### 204
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+
+### Example
+
+```json
+{}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {},
+  "properties": {}
+}
+```
+
+</details>
+

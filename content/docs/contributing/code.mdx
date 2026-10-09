@@ -1,0 +1,38 @@
+---
+title: "Contributing code"
+description: "Prepare a panel contribution that maintainers can review and merge."
+---
+
+## Choose a change and its destination
+
+The panel's stable branch is <code>main</code>; active development and pull requests target <code>development</code>. External contributors work in a fork. Do not use the stable branch as your contribution target.
+
+For a bug fix, a pull request can be opened directly, with a related issue linked when available. For a new feature or significant change, the upstream guide asks you to open an issue and wait for maintainer feedback before implementation.
+
+## Prepare the implementation
+
+Follow the [development setup](/docs/development/install) in an isolated installation. Read the [architecture map](/docs/development/architecture), keep PHP changes consistent with PSR-12, and avoid unnecessary dependencies. Localize new visible strings rather than hardcoding them; see [translation](/docs/contributing/translating).
+
+Use Conventional Commit messages, for example:
+
+```text
+fix(auth): resolve session expiry on password reset
+feat(billing): add invoice PDF export
+docs(theming): explain parent view fallback
+```
+
+## Prepare the pull request
+
+- Target <code>development</code> and fill out the repository's pull request template.
+- Explain the concrete problem and resulting behavior, with reproduction steps when useful.
+- Describe the affected functionality you verified, including related flows and edge cases.
+- Sign the required Contributor License Agreement when the automated workflow asks.
+- Disclose any code written or significantly influenced by an AI tool, as required by the upstream policy. Review, understand, and validate that output before submission.
+
+The checked contribution guide says a test suite is planned and does not require new tests at this release. That does not remove the need to verify the affected functionality. Use any checks available in your target checkout, and state clearly what you have and have not exercised.
+
+<Callout type="error" title="Security reports follow a private process">
+Do not open a public issue or pull request describing an undisclosed vulnerability. Follow [responsible reporting](/docs/contributing/reporting#security-vulnerabilities) instead.
+</Callout>
+
+<SourceNote files={[".github/CONTRIBUTING.md",".github/PULL_REQUEST_TEMPLATE.md","CONTRIBUTOR_LICENSE_AGREEMENT","lang/README.md"]} />

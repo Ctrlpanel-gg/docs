@@ -1,0 +1,160 @@
+---
+title: "Get role details"
+description: "GET /api/roles/{id}"
+---
+
+<div className="api-endpoint"><strong>GET</strong><code>/api/roles/&#123;id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X GET 'https://panel.example.com/api/roles/{id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `id` | path | Yes | The ID of the role. |
+| `include` | query | No | Comma-separated list of related resources to include. <br />Available: <code>permissions</code>, <code>users</code> |
+| `filter[name]` | query | No | Filter results by name |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": 2,
+    "name": "Moderator",
+    "color": "#00FF00",
+    "power": 50,
+    "permissions": [
+      {
+        "id": 1,
+        "name": "admin.roles.read",
+        "guard_name": "web",
+        "created_at": "2026-04-26 12:00:00",
+        "updated_at": "2026-04-26 12:00:00"
+      }
+    ],
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": 2,
+      "name": "Moderator",
+      "color": "#00FF00",
+      "power": 50,
+      "permissions": [
+        {
+          "id": 1,
+          "name": "admin.roles.read",
+          "guard_name": "web",
+          "created_at": "2026-04-26 12:00:00",
+          "updated_at": "2026-04-26 12:00:00"
+        }
+      ],
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 2
+        },
+        "name": {
+          "type": "string",
+          "example": "Moderator"
+        },
+        "color": {
+          "type": "string",
+          "example": "#00FF00"
+        },
+        "power": {
+          "type": "integer",
+          "example": 50
+        },
+        "permissions": {
+          "type": "array",
+          "example": [
+            {
+              "id": 1,
+              "name": "admin.roles.read",
+              "guard_name": "web",
+              "created_at": "2026-04-26 12:00:00",
+              "updated_at": "2026-04-26 12:00:00"
+            }
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "name": {
+                "type": "string",
+                "example": "admin.roles.read"
+              },
+              "guard_name": {
+                "type": "string",
+                "example": "web"
+              },
+              "created_at": {
+                "type": "string",
+                "example": "2026-04-26 12:00:00"
+              },
+              "updated_at": {
+                "type": "string",
+                "example": "2026-04-26 12:00:00"
+              }
+            }
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

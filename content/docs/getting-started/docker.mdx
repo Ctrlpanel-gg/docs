@@ -1,0 +1,51 @@
+---
+title: "Docker: experimental option"
+description: "Understand what the upstream image provides and what you still need to configure."
+---
+
+<Callout type="warn" title="Experimental beta">
+The 1.2.0 README explicitly calls Docker support experimental and does not guarantee its functionality. The Linux installation guide is the documented installation path. This page explains the checked-in Docker files; it is not a tested production deployment recipe.
+</Callout>
+
+## Choose the right starting point
+
+| Option | What it provides | What it does not provide |
+| --- | --- | --- |
+| Standalone image | PHP 8.3, Nginx, application files, and a queue-worker startup command | A database, Redis, Pterodactyl, or Wings |
+| Standalone Compose file | The panel image plus MySQL, Redis, and phpMyAdmin | A configured Pterodactyl installation or a complete production deployment |
+| Development Compose setup | An experimental development environment based on the standalone setup | A production support guarantee; its own README says the instructions are unfinished |
+
+The files are under <code>docker/</code>. The top-level README's link to <code>.github/docker/README.md</code> does not exist in the checked release. Use the source links below instead.
+
+## Inspect before starting
+
+<Steps>
+<Step>
+### Read the Compose configuration
+Inspect <code>docker/standalone/compose.yaml</code>. Replace the sample database passwords. It publishes MySQL, Redis, and phpMyAdmin ports as well as the panel ports; remove unnecessary public port mappings and decide how these services will be reached.
+</Step>
+<Step>
+### Prepare persistent data and environment
+The sample mounts <code>env_file</code> as the application environment, <code>website_files</code> as the application directory, and separate log, Nginx, and database directories. Preserve <code>APP_KEY</code>, the database, private invoice files, and uploads. Read [backups](/docs/guides/backup) before replacing containers or mounts.
+</Step>
+<Step>
+### Connect the services
+Configure the database and Redis using your Compose service names and credentials. Connect an existing Pterodactyl panel separately. Do not assume a localhost database inside the application container refers to the database container.
+</Step>
+<Step>
+### Verify background work and HTTPS
+The startup script launches a queue worker and runs database migrations with seeders. It does not start a scheduler. Configure and verify the [scheduler](/docs/guides/background-jobs), and arrange TLS separately. Publishing port 443 by itself does not configure a certificate.
+</Step>
+</Steps>
+
+<Callout type="error" title="Starting a container can change your database">
+The checked startup script runs <code>php artisan migrate --seed --force</code> automatically. Read the [upgrade preflight](/docs/updating/preflight), including permission-seeder effects, before pointing a new image at an existing database. A mutable <code>:latest</code> image tag is not a pinned release or a rollback plan.
+</Callout>
+
+## Where to go next
+
+Use the [first-run checklist](/docs/getting-started/first-run) after initial setup. For theme or extension work, mount the intended source checkout; an empty project directory is populated with the image's default files by the startup script. Do not expect it to contain your local changes.
+
+Container migration and custom-image instructions are placeholders in the upstream Docker README at this release. Follow the checked source and test in an isolated environment instead of treating those missing sections as completed procedures.
+
+<SourceNote files={["README.md","docker/README.md","docker/standalone/README.md","docker/standalone/compose.yaml","docker/standalone/Dockerfile","docker/standalone/scripts/startup.sh","docker/development/README.md"]} />
