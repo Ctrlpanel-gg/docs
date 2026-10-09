@@ -1,0 +1,36 @@
+---
+title: "Test & distribute an extension"
+description: "Keep installation, upgrades, and removal explicit."
+---
+
+## Test the discovery boundary
+
+- Category/name folders and namespaces use the same case.
+- The main class extends AbstractExtension and matches the expected NameExtension convention.
+- Duplicate extension names in separate categories are rejected in your packaging process.
+- Routes declare their own middleware and do not accidentally expose administrator actions to ordinary users.
+- An enabled option is actually checked by the feature.
+
+## Exercise both cache states
+
+Deploy in staging with route caching off, then test the same feature with the route cache rebuilt. Config/settings caches can preserve old discovery state after deployment. Restart long-running workers after changing code they execute.
+
+For a feature that adds settings, test a clean installation and an upgrade from its previous version. For events or jobs, test repeat delivery and worker restart behavior. For a gateway, use the separate [gateway test checklist](/docs/extensions/payment-gateways).
+
+## Package a complete release
+
+Include source files, migrations, registration instructions for any providers, supported panel versions, setup steps, a changelog, and recovery/removal instructions. Do not distribute credentials, local environment files, database dumps, customer uploads, vendor dependencies, or arbitrary modifications to another addon.
+
+## Removal is a deployment procedure
+
+There is no general uninstall callback in the inspected extension loader. Disable the feature in its own configuration if it supports that, stop dependent jobs, remove registered providers/routes only after reviewing dependencies, refresh relevant caches, and decide explicitly how stored settings/tables should be retained or removed.
+
+<Callout type="warn" title="Do not erase customer data on uninstall by default">
+Removing code and deleting stored data are separate actions. Preserve a backup and document any destructive migration/removal step so the operator can make an informed choice.
+</Callout>
+
+## Keep core modifications reviewable
+
+If the extension needs a sidebar link, provider registration, or a core controller hook, list that modification in the installation notes. A dependency on undocumented core edits is still a maintenance dependency; it does not become a stable plugin API because it works in your checkout.
+
+<SourceNote files={["app/Providers/ExtensionServiceProvider.php","app/Helpers/ExtensionHelper.php","config/settings.php","config/app.php"]} />

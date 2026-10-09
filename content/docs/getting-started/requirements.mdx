@@ -1,0 +1,41 @@
+---
+title: "Before you install"
+description: "Check the platform and prepare your installation."
+---
+
+## Runtime and services
+
+| Requirement | Why it matters |
+| --- | --- |
+| PHP | 1.2.0 declares PHP ^8.2; the installation recipes use PHP 8.3 |
+| Composer | Installs the exact PHP dependency versions from the release lockfile |
+| Required PHP extensions | The project explicitly requires curl, intl, and mysqli; follow the complete OS installation recipe for Laravel's other requirements |
+| Database | Stores users, servers, settings, products, and payment records |
+| Redis | Used by the documented worker/setup and the settings cache |
+| Web server and TLS | Serves the public directory and protects logins and credentials |
+| Queue worker and scheduler | Processes background jobs and invokes recurring billing/cleanup tasks |
+| Working Pterodactyl | CtrlPanel connects to an existing server-management panel |
+
+<Callout type="warn" title="The framework version is not the installation checklist">
+The repository uses Laravel 11 but retains an application structure with providers in <code>config/app.php</code>. Follow the panel's release-specific files and commands rather than substituting instructions for a freshly generated Laravel application.
+</Callout>
+
+## Operating systems and Docker
+
+The upstream README lists Debian, Ubuntu, CentOS, Fedora, Arch, and other Linux distributions. These docs provide command recipes for Debian and Ubuntu; that broader upstream claim does not make their package commands interchangeable with another distribution.
+
+Docker is an experimental beta option. Read [what the Docker setup includes](/docs/getting-started/docker) before choosing it.
+
+## Prepare your host
+
+1. Choose a domain and point its DNS records at the panel server.
+2. Configure Pterodactyl and make its API reachable from the CtrlPanel host.
+3. Confirm that you can create the database and run the web server, PHP worker, Redis, and scheduled jobs.
+4. Record your deployment directory and the actual web-server account. The guides use <code>/var/www/ctrlpanel</code> and commonly <code>www-data</code>; these are conventions, not universal values.
+5. Use a separate development installation for themes and extensions.
+
+## Install a release, not an accidental branch
+
+Use the release intended for your documentation family. A checkout of <code>development</code> is a development build, not the latest stable release. For a new 1.2.x installation, review the [1.2.0 release](https://github.com/Ctrlpanel-gg/panel/releases/tag/1.2.0) and then follow the [installation guide](/docs/getting-started/install).
+
+<SourceNote files={["README.md","composer.json","config/app.php","config/settings.php","app/Console/Kernel.php"]} />

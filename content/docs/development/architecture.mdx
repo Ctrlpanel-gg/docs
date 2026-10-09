@@ -1,0 +1,46 @@
+---
+title: "Application architecture"
+description: "A source map for developers working on the 1.2.0 panel."
+---
+
+## Request-to-view flow
+
+~~~text
+HTTP request
+  → route + middleware
+  → controller + validation/authorization
+  → application service / model / integration
+  → Blade view or JSON response
+  → optional queued work and application events
+~~~
+
+## Repository map
+
+| Location | Purpose |
+| --- | --- |
+| routes/web.php | Browser-facing routes and middleware groups |
+| routes/api.php | API entry points; compare with the API controller layer |
+| app/Http/Controllers | HTTP orchestration, validation, authorization, and responses |
+| app/Services | Workflows such as creation, upgrades, and credit operations |
+| app/Models | Panel records and Pterodactyl-related models |
+| app/Settings | Typed Spatie settings for panel configuration |
+| app/Extensions | Installed PHP extensions and built-in gateways |
+| app/Events and app/Listeners | Explicit application integration points |
+| app/Jobs and app/Console | Background jobs and recurring console work |
+| themes/default | Blade screens plus the default frontend assets |
+| database/migrations and database/settings | Schema and settings initialization/evolution |
+| config/app.php | This application's registered service providers |
+
+## Follow an actual workflow
+
+For server creation, begin with the web/API controller, then **ServerCreationService**, the egg-validation rules, and the post-creation/reconciliation jobs. For checkout, trace **Admin/PaymentController**, the gateway class, callback routes, and **HandlesGatewayPayments**. For a visual change, trace the controller's view name into the active theme and its default fallback.
+
+## Avoid putting logic in the wrong layer
+
+A Blade template should present data and forms; it should not directly provision a server or credit a payment. A hidden UI control does not enforce authorization. A route file is not a reliable replacement for service-provider lifecycle code when route caching is enabled.
+
+## Source and version discipline
+
+Pin the release you are developing against. Internal event payloads, controllers, and Blade contracts can change. The examples in the new theme/extension sections are checked against 1.2.0, while older families retain their historical guides.
+
+<SourceNote files={["routes/web.php","routes/api.php","app/Services/ServerCreationService.php","app/Services/CreditService.php","app/Providers/ExtensionServiceProvider.php","config/app.php"]} />

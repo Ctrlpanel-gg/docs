@@ -1,0 +1,43 @@
+---
+title: Updating a development checkout
+description: Keep unreleased work isolated and review schema changes before updating.
+---
+
+<Callout type="warn" title="Development builds are for an isolated environment">
+This is not the production upgrade path. Use a separate database, test Pterodactyl resources, and sandbox integrations. Unreleased code can change between commits.
+</Callout>
+
+## Review before fetching changes
+
+Record the starting commit, local edits, and current database state. Commit or otherwise preserve your work, and make a matching backup. Compare the new development commits and migrations before applying them.
+
+~~~bash
+git status --short
+git log -1 --oneline
+git fetch origin development
+~~~
+
+Choose whether your working branch should merge or rebase those changes according to your own contribution workflow. A fork with local commits is not safely updated by blindly switching branches and pulling.
+
+## Refresh the development environment
+
+After integrating the reviewed code, install its locked dependencies, rebuild the relevant frontend bundle, and apply the reviewed migrations to the isolated database.
+
+~~~bash
+composer install
+bun install
+bun run build:default
+php artisan migrate
+php artisan view:clear
+php artisan config:clear
+php artisan settings:clear-cache
+php artisan queue:restart
+~~~
+
+Inspect failures before continuing. Use the source commit's own requirements and build scripts; do not assume every development commit has the same requirements as 1.2.0.
+
+## Before submitting or testing a release
+
+Run the tests relevant to your changes, exercise the affected user workflows, and inspect the deployment with development hot servers stopped. Follow the upstream contribution process for the intended branch.
+
+<SourceNote files={[".github/CONTRIBUTING.md","composer.json","package.json","app/Console/Kernel.php"]} />

@@ -1,0 +1,179 @@
+---
+title: "Unsuspend server"
+description: "PATCH /api/servers/{server_id}/unsuspend"
+---
+
+<div className="api-endpoint"><strong>PATCH</strong><code>/api/servers/&#123;server_id&#125;/unsuspend</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X PATCH 'https://panel.example.com/api/servers/{server_id}/unsuspend' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '@request.json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `server_id` | path | Yes | The ID of the server. |
+
+### Request body (application/json)
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `reason` | string | No | Re-activation after review. |
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "description": "Re-activation after review.",
+      "example": "Re-activation after review"
+    }
+  }
+}
+```
+
+</details>
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": "X8BK1rMUV4qF3lo-ROWIl",
+    "name": "My Server",
+    "description": "My server description",
+    "suspended": false,
+    "identifier": "a1b2c3d4",
+    "billing_priority": 0,
+    "pterodactyl_id": 10,
+    "user_id": 1,
+    "product_id": 1,
+    "canceled": null,
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00",
+    "last_billed": "2026-04-26 12:00:00",
+    "status": "running"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": "X8BK1rMUV4qF3lo-ROWIl",
+      "name": "My Server",
+      "description": "My server description",
+      "suspended": false,
+      "identifier": "a1b2c3d4",
+      "billing_priority": 0,
+      "pterodactyl_id": 10,
+      "user_id": 1,
+      "product_id": 1,
+      "canceled": null,
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00",
+      "last_billed": "2026-04-26 12:00:00",
+      "status": "running"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "X8BK1rMUV4qF3lo-ROWIl"
+        },
+        "name": {
+          "type": "string",
+          "example": "My Server"
+        },
+        "description": {
+          "type": "string",
+          "example": "My server description"
+        },
+        "suspended": {
+          "type": "boolean",
+          "example": false
+        },
+        "identifier": {
+          "type": "string",
+          "example": "a1b2c3d4"
+        },
+        "billing_priority": {
+          "type": "integer",
+          "example": 0
+        },
+        "pterodactyl_id": {
+          "type": "integer",
+          "example": 10
+        },
+        "user_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "product_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "canceled": {
+          "type": "string",
+          "example": null,
+          "nullable": true
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "last_billed": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "status": {
+          "type": "string",
+          "example": "running"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

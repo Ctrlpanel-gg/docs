@@ -1,0 +1,28 @@
+---
+title: "CAPTCHA & account protection"
+description: "Pick a CAPTCHA provider and test its login/registration behavior."
+---
+
+CtrlPanel lets you choose between three CAPTCHA options: reCAPTCHA v2, reCAPTCHA v3, and Cloudflare Turnstile. Be careful when selecting the version and entering the keys, otherwise, you may have to disable CAPTCHA manually to regain access.
+
+### reCAPTCHA v2 ("I'm not a robot" Checkbox)
+
+The classic CAPTCHA that asks users to check a box and solve image challenges.  
+To get reCAPTCHA v2 keys, go to the reCAPTCHA [admin creation page](https://www.google.com/recaptcha/admin/create), fill in the required details, and select `Challenge (v2)` with the `"I(')m not a robot" Checkbox` option.
+Once done, you'll see your `site key` and `secret key`. Copy both and enter them in your CtrlPanel settings.
+
+### reCAPTCHA v3
+
+An invisible CAPTCHA that evaluates users using a score based on their behavior on the page.  
+The process for obtaining the keys is the same as for reCAPTCHA v2, but you need to select the `Score based (v3)` option instead.
+
+### Cloudflare Turnstile
+
+Cloudflare's alternative to reCAPTCHA.  
+Follow the official instructions on the [Cloudflare website](https://developers.cloudflare.com/turnstile/get-started/#new-sites) to obtain your `site key` and `secret key`.
+
+## Test changes before leaving the settings page
+
+Use a second browser session to test registration and login. Keep the first administrator session available while verifying the integration. Review the configured site keys, domain restrictions, and provider mode if the widget fails.
+
+<SourceNote files={["app/Providers/SettingsServiceProvider.php","themes/default/views/layouts/app.blade.php","app/Console/Commands/DisableRecaptcha.php"]} />

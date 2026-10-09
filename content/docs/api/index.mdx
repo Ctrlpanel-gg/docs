@@ -1,0 +1,70 @@
+---
+title: API Reference
+description: Integrate your applications with CtrlPanel.
+---
+
+## Getting started
+
+The CtrlPanel REST API gives you access to users, servers, products, roles, vouchers, and notifications. All 38 endpoints are documented here.
+
+## Authentication
+
+Use a bearer token created in your panel. Include `Authorization: Bearer YOUR_TOKEN` and `Accept: application/json` in your requests. The base URL is your own panel installation.
+
+[Download the complete OpenAPI specification](/openapi/openapi.yaml).
+
+## Notifications
+
+- [list user notifications](/docs/api/list-user-notifications)
+- [clear all user notifications](/docs/api/clear-all-user-notifications)
+- [get notification details](/docs/api/get-notification-details)
+- [delete single notification](/docs/api/delete-single-notification)
+- [send notification to users](/docs/api/send-notification-to-users)
+- [send notification to everyone](/docs/api/send-notification-to-everyone)
+
+## Product Management
+
+- [list all products](/docs/api/list-all-products)
+- [create product](/docs/api/create-product)
+- [get product details](/docs/api/get-product-details)
+- [update product](/docs/api/update-product)
+- [delete product](/docs/api/delete-product)
+
+## Role Management
+
+- [list all roles](/docs/api/list-all-roles)
+- [create role](/docs/api/create-role)
+- [get role details](/docs/api/get-role-details)
+- [update role](/docs/api/update-role)
+- [delete role](/docs/api/delete-role)
+
+## Server Management
+
+- [list all servers](/docs/api/list-all-servers)
+- [create server](/docs/api/create-server)
+- [get server details](/docs/api/get-server-details)
+- [update server](/docs/api/update-server)
+- [delete server](/docs/api/delete-server)
+- [update server resources](/docs/api/update-server-resources)
+- [suspend server](/docs/api/suspend-server)
+- [unsuspend server](/docs/api/unsuspend-server)
+
+## User Management
+
+- [list all users](/docs/api/list-all-users)
+- [create user](/docs/api/create-user)
+- [get user details](/docs/api/get-user-details)
+- [update user](/docs/api/update-user)
+- [delete user](/docs/api/delete-user)
+- [increment user balance or server limit](/docs/api/increment-user-balance-or-server-limit)
+- [decrement user balance or server limit](/docs/api/decrement-user-balance-or-server-limit)
+- [suspend user](/docs/api/suspend-user)
+- [unsuspend user](/docs/api/unsuspend-user)
+
+## Voucher Management
+
+- [list all vouchers](/docs/api/list-all-vouchers)
+- [create voucher](/docs/api/create-voucher)
+- [get voucher details](/docs/api/get-voucher-details)
+- [update voucher](/docs/api/update-voucher)
+- [delete voucher](/docs/api/delete-voucher)

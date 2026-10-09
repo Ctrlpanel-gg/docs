@@ -1,0 +1,80 @@
+---
+title: "Clear all user notifications"
+description: "DELETE /api/notifications/{user_id}"
+---
+
+<div className="api-endpoint"><strong>DELETE</strong><code>/api/notifications/&#123;user_id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X DELETE 'https://panel.example.com/api/notifications/{user_id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `user_id` | path | Yes | The ID of the user. |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `message` | string | No |  |
+| `meta` | object | No |  |
+
+### Example
+
+```json
+{
+  "message": "All notifications deleted successfully",
+  "meta": {
+    "deleted_count": 10
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "message": "All notifications deleted successfully",
+    "meta": {
+      "deleted_count": 10
+    }
+  },
+  "properties": {
+    "message": {
+      "type": "string",
+      "example": "All notifications deleted successfully"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "deleted_count": {
+          "type": "integer",
+          "example": 10
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

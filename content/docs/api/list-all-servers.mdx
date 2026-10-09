@@ -1,0 +1,199 @@
+---
+title: "List all servers"
+description: "GET /api/servers"
+---
+
+<div className="api-endpoint"><strong>GET</strong><code>/api/servers</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X GET 'https://panel.example.com/api/servers' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `include` | query | No | Comma-separated list of related resources to include. <br />Available: <code>product</code>, <code>user</code> |
+| `filter[name]` | query | No | Filter results by name |
+| `filter[suspended]` | query | No | Filter results by suspended |
+| `filter[identifier]` | query | No | Filter results by identifier |
+| `filter[pterodactyl_id]` | query | No | Filter results by pterodactyl_id |
+| `filter[user_id]` | query | No | Filter results by user_id |
+| `filter[product_id]` | query | No | Filter results by product_id |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | array | No |  |
+| `meta` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": [
+    {
+      "id": "X8BK1rMUV4qF3lo-ROWIl",
+      "name": "My Server",
+      "description": "My server description",
+      "suspended": false,
+      "identifier": "a1b2c3d4",
+      "billing_priority": 0,
+      "pterodactyl_id": 10,
+      "user_id": 1,
+      "product_id": 1,
+      "canceled": null,
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00",
+      "last_billed": "2026-04-26 12:00:00",
+      "status": "running"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": [
+      {
+        "id": "X8BK1rMUV4qF3lo-ROWIl",
+        "name": "My Server",
+        "description": "My server description",
+        "suspended": false,
+        "identifier": "a1b2c3d4",
+        "billing_priority": 0,
+        "pterodactyl_id": 10,
+        "user_id": 1,
+        "product_id": 1,
+        "canceled": null,
+        "created_at": "2026-04-26 12:00:00",
+        "updated_at": "2026-04-26 12:00:00",
+        "last_billed": "2026-04-26 12:00:00",
+        "status": "running"
+      }
+    ],
+    "meta": {
+      "total": 1
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "array",
+      "example": [
+        {
+          "id": "X8BK1rMUV4qF3lo-ROWIl",
+          "name": "My Server",
+          "description": "My server description",
+          "suspended": false,
+          "identifier": "a1b2c3d4",
+          "billing_priority": 0,
+          "pterodactyl_id": 10,
+          "user_id": 1,
+          "product_id": 1,
+          "canceled": null,
+          "created_at": "2026-04-26 12:00:00",
+          "updated_at": "2026-04-26 12:00:00",
+          "last_billed": "2026-04-26 12:00:00",
+          "status": "running"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "X8BK1rMUV4qF3lo-ROWIl"
+          },
+          "name": {
+            "type": "string",
+            "example": "My Server"
+          },
+          "description": {
+            "type": "string",
+            "example": "My server description"
+          },
+          "suspended": {
+            "type": "boolean",
+            "example": false
+          },
+          "identifier": {
+            "type": "string",
+            "example": "a1b2c3d4"
+          },
+          "billing_priority": {
+            "type": "integer",
+            "example": 0
+          },
+          "pterodactyl_id": {
+            "type": "integer",
+            "example": 10
+          },
+          "user_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "product_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "canceled": {
+            "type": "string",
+            "example": null,
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          },
+          "last_billed": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          },
+          "status": {
+            "type": "string",
+            "example": "running"
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

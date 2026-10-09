@@ -1,0 +1,105 @@
+---
+title: "CSS & asset builds"
+description: "Add custom styling without losing the default framework bundle."
+---
+
+## Inheritance does not switch asset entries
+
+Both default layouts load the default Sass entry through Laravel's Vite helper. Selecting harbor does **not** rewrite those entry paths. Keep the default bundle when you rely on Bootstrap, AdminLTE, or the panel's plugins.
+
+<Tabs items={["Static CSS overlay","Separate Vite bundle"]}>
+<Tab value="Static CSS overlay">
+
+## Start with a static CSS overlay
+
+Create **public/themes/harbor/overrides.css**:
+
+~~~css
+:root {
+    --harbor-accent: #27a9e1;
+}
+
+.content-header h1 {
+    letter-spacing: -0.02em;
+}
+
+.btn-primary {
+    background-color: var(--harbor-accent);
+    border-color: var(--harbor-accent);
+}
+~~~
+
+Copy the layout you actually need to override into **themes/harbor/views/layouts/**. Add this link **after** the existing default Vite stylesheet call, leaving the other script and stylesheet statements intact:
+
+~~~blade
+<link rel="stylesheet" href="{{ asset('themes/harbor/overrides.css') }}">
+~~~
+
+If both guest and signed-in screens need the styling, adapt both app and main layouts. Changes to an overridden layout no longer inherit updates to that particular default file automatically, so review it on each panel upgrade.
+</Tab>
+<Tab value="Separate Vite bundle">
+
+## Use an independent build directory
+
+Use the panel's existing frontend toolchain. Create **themes/harbor/vite.config.js**:
+
+~~~javascript
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+  plugins: [
+    laravel({
+      input: ['themes/harbor/css/overrides.css'],
+      buildDirectory: 'build/harbor',
+      hotFile: 'storage/harbor.hot',
+    }),
+  ],
+});
+~~~
+
+Add these entries to the existing scripts object in the panel's package file:
+
+~~~json
+{
+  "dev:harbor": "vite --config themes/harbor/vite.config.js",
+  "build:harbor": "vite build --config themes/harbor/vite.config.js"
+}
+~~~
+
+Create your CSS entry at **themes/harbor/css/overrides.css**, then build it using Bun:
+
+~~~bash
+bun install
+bun run build:harbor
+~~~
+
+Load the compiled child bundle after the default entry in your copied layout:
+
+~~~blade
+@vite('themes/harbor/css/overrides.css', 'build/harbor')
+~~~
+
+The child manifest lives in **public/build/harbor**, separate from the default manifest. For development, use the child's hot file only while evaluating its own entry. The following replacement for the child directive also works when the hot file is absent, falling back to the child production manifest:
+
+~~~blade
+@php
+    $vite = app(\Illuminate\Foundation\Vite::class);
+    $previousHotFile = $vite->hotFile();
+    $vite->useHotFile(storage_path('harbor.hot'));
+@endphp
+@vite('themes/harbor/css/overrides.css', 'build/harbor')
+@php($vite->useHotFile($previousHotFile))
+~~~
+
+Run **bun run dev:harbor** in the panel checkout when using this setup. Keep the inherited default asset call before the child call, and restore the facade's previous hot file so other entries are unaffected. This behavior was checked against the [locked Laravel Vite facade](https://github.com/laravel/framework/blob/5b23ab29087dbcb13077e5c049c431ec4b82f236/src/Illuminate/Foundation/Vite.php) and [laravel-vite-plugin 0.7.3](https://github.com/laravel/vite-plugin/blob/v0.7.3/src/index.ts).
+</Tab>
+</Tabs>
+
+## Shipping assets
+
+Include the compiled public assets along with the Blade overrides. The end user's server should not need your development hot file. Confirm that the manifest and the Blade entry name agree, and test the packaged release with the development server stopped.
+
+The upstream release includes prebuilt default assets. If you change the **default** theme's source, its actual build script is **bun run build:default**; the generic production script is not a substitute for selecting the correct theme configuration.
+
+<SourceNote files={["themes/default/vite.config.js","themes/default/views/layouts/main.blade.php","themes/default/views/layouts/app.blade.php","package.json","public/build/manifest.json"]} />

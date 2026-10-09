@@ -1,0 +1,55 @@
+---
+title: "What would you like to do?"
+description: "Start with a goal. Find the right guide, choose your panel version, and build from there."
+---
+
+<Callout type="info" title="Choose the version you actually run">
+The selector at the top of the sidebar chooses the documentation family. This section covers **CtrlPanel 1.2.x**, with new technical guides checked against release **1.2.0**. Older versions are kept separately; do not mix installation or upgrade commands between versions.
+</Callout>
+
+<Cards>
+<DocsCard icon="terminal" title="Install CtrlPanel" description="Check your server, pick Debian or Ubuntu, and complete your first installation." href="/docs/getting-started" tone="blue" />
+<DocsCard icon="settings" title="Configure your hosting" description="Connect Pterodactyl, set up email and Discord, and configure payment gateways." href="/docs/configuration" tone="amber" />
+<DocsCard icon="database" title="Operate your panel" description="Back up your data, run billing and queues, move servers, and troubleshoot." href="/docs/guides" tone="green" />
+<DocsCard icon="update" title="Update safely" description="Choose an upgrade path, preserve custom work, verify migrations, and plan recovery." href="/docs/updating" tone="rose" />
+<DocsCard icon="palette" title="Build a theme" description="Understand Blade and theme inheritance, customize views, and ship assets." href="/docs/theming" tone="violet" />
+<DocsCard icon="blocks" title="Write an extension" description="Follow the real discovery rules and build routes, settings, and integrations." href="/docs/extensions" tone="blue" />
+</Cards>
+
+## New to CtrlPanel?
+
+CtrlPanel is a billing and client management application that connects to Pterodactyl. Pterodactyl manages the game servers; CtrlPanel adds accounts, ordering, credits, products, and your hosting experience. Start with the [project overview](/docs/overview), then follow installation and configuration in order.
+
+## Choose a learning path
+
+<Steps>
+<Step>
+### Hosting operator
+Install the panel → connect Pterodactyl → configure email and payments → verify queues and scheduled billing → make a recoverable backup.
+</Step>
+<Step>
+### Theme developer
+Create a development installation → learn view inheritance → override one screen → add your assets → test both authentication and the signed-in dashboard.
+</Step>
+<Step>
+### Extension developer
+Read the architecture → create a discovered extension → declare protected routes → add settings and migrations → package and test upgrades.
+</Step>
+</Steps>
+
+## Where is everything?
+
+<Accordions type="single" collapsible>
+<Accordion title="Which version should I choose?">
+Use the version family matching your installed release. Check <code>git describe --tags --always</code> in your panel checkout and compare the panel's displayed version. The latest selector entry is not an instruction to upgrade. To move between releases, use the update guide for your starting version.
+</Accordion>
+<Accordion title="I want an API integration, not an installed extension">
+Use the [REST API reference](/docs/api). An external integration calls your panel over HTTP with a token. An installed extension executes inside the Laravel application and needs a different deployment and trust model.
+</Accordion>
+<Accordion title="I need help with an existing installation">
+Start with [troubleshooting](/docs/guides/troubleshooting). Record the panel version, PHP version, failing action, and a redacted log excerpt. Never post your environment file, API token, or payment credentials.
+</Accordion>
+<Accordion title="Does the code example match my older version?">
+The new theme and extension tutorials target 1.2.0. Select your older version for its existing guides, and compare the source at that release before adapting a new example.
+</Accordion>
+</Accordions>

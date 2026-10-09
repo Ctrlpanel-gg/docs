@@ -1,0 +1,154 @@
+---
+title: "List all vouchers"
+description: "GET /api/vouchers"
+---
+
+<div className="api-endpoint"><strong>GET</strong><code>/api/vouchers</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X GET 'https://panel.example.com/api/vouchers' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `include` | query | No | Comma-separated list of related resources to include. <br />Available: <code>users</code> |
+| `filter[code]` | query | No | Filter results by code |
+| `filter[memo]` | query | No | Filter results by memo |
+| `filter[credits]` | query | No | Filter results by credits |
+| `filter[uses]` | query | No | Filter results by uses |
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | array | No |  |
+| `meta` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "code": "SUMMER2026",
+      "memo": "Summer promotion",
+      "credits": "50.00",
+      "uses": 100,
+      "expires_at": "2026-12-31 23:59:59",
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": [
+      {
+        "id": 1,
+        "code": "SUMMER2026",
+        "memo": "Summer promotion",
+        "credits": "50.00",
+        "uses": 100,
+        "expires_at": "2026-12-31 23:59:59",
+        "created_at": "2026-04-26 12:00:00",
+        "updated_at": "2026-04-26 12:00:00"
+      }
+    ],
+    "meta": {
+      "total": 1
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "array",
+      "example": [
+        {
+          "id": 1,
+          "code": "SUMMER2026",
+          "memo": "Summer promotion",
+          "credits": "50.00",
+          "uses": 100,
+          "expires_at": "2026-12-31 23:59:59",
+          "created_at": "2026-04-26 12:00:00",
+          "updated_at": "2026-04-26 12:00:00"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "code": {
+            "type": "string",
+            "example": "SUMMER2026"
+          },
+          "memo": {
+            "type": "string",
+            "example": "Summer promotion"
+          },
+          "credits": {
+            "type": "string",
+            "example": "50.00"
+          },
+          "uses": {
+            "type": "integer",
+            "example": 100
+          },
+          "expires_at": {
+            "type": "string",
+            "example": "2026-12-31 23:59:59"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2026-04-26 12:00:00"
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

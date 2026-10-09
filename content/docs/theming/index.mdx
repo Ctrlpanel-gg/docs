@@ -1,0 +1,31 @@
+---
+title: "Build a theme"
+description: "A practical guide to CtrlPanel’s Blade views, inheritance, and frontend assets."
+---
+
+CtrlPanel 1.2.0 renders its UI with **Laravel Blade**. The default theme is based on **AdminLTE and Bootstrap 4**, with JavaScript/plugins used by individual screens. The theme lookup layer is **qirolab/laravel-themer**; the release lockfile resolves it to version 2.4.0.
+
+## How theme selection works
+
+The General settings category stores the selected theme name. The settings provider selects that theme with **default** as its parent. A missing view in your child theme falls back to the default theme, so you can start by overriding one screen.
+
+~~~text
+themes/
+├── default/views/home.blade.php
+└── harbor/views/home.blade.php
+~~~
+
+A request for the home view uses the harbor override when harbor is selected. Views that harbor does not provide continue to resolve from default.
+
+<Cards>
+<DocsCard icon="palette" title="Your first theme" description="Create a small child theme and override the dashboard without replacing the entire UI." href="/docs/theming/first-theme" tone="violet" />
+<DocsCard icon="code" title="Blade & layouts" description="Learn the authenticated shell, guest shell, sections, escaped output, and view contracts." href="/docs/theming/blade-layouts" tone="blue" />
+<DocsCard icon="settings" title="CSS & asset builds" description="Choose static CSS or a separate Vite bundle and keep the default manifest intact." href="/docs/theming/assets" tone="amber" />
+<DocsCard icon="shield" title="Test & ship" description="Check user roles, checkout, translations, uploads, and release compatibility." href="/docs/theming/testing" tone="green" />
+</Cards>
+
+<Callout type="warn" title="The generator is not a CtrlPanel theme exporter">
+The package's <code>make:theme</code> command creates generic Laravel frontend scaffolding. It can change frontend dependencies and auth scaffolding; it does not copy CtrlPanel's complete dashboard, plugin markup, or permission rules. Use the minimal child-theme walkthrough first.
+</Callout>
+
+<SourceNote files={["composer.json","composer.lock","config/theme.php","app/Providers/SettingsServiceProvider.php","themes/default/sass/app.scss"]} />

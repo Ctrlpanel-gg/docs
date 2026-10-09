@@ -1,0 +1,25 @@
+---
+title: "Email & SMTP"
+description: "Make account verification and password-reset delivery reliable."
+---
+
+In order for your panel to send email verification messages to users, you'll need to configure an SMTP server.  
+To do that, start by choosing an SMTP provider - you can find plenty with a quick Google search. Once you set up your domain and/or mailbox, you'll need to fill in the following details:
+
+- **Mail Host:** Depends on your provider. Check their documentation.
+- **Mail Port:** Most commonly `465` for SSL, `587` for (START)TLS. Refer to your provider's docs.
+- **Mail Username:** Usually your email address, but some providers use a generated name.
+- **Mail Password:** The account password. Some providers require an application-specific key instead.
+- **Mail Encryption:** As mentioned above, this depends on your provider's mail server settings. Refer to their documentation.
+- **Mail From Address:** Almost always the email that will be used to send messages.
+- **Mail From Name:** The name that will appear to your clients in their email client.
+
+## Verify delivery
+
+Trigger a password-reset or verification message for a test account. Check both the provider's delivery log and the panel's logs. A successful SMTP connection does not prove a message reached the inbox. Keep your sender domain and sender address consistent with the mail provider's verified identity.
+
+## When mail fails
+
+Check credentials, port/encryption pairing, network egress, sender restrictions, and queued work. Do not paste the SMTP password or your environment file into a support request.
+
+<SourceNote files={["app/Settings/MailSettings.php","app/Providers/SettingsServiceProvider.php","app/Notifications/Auth/QueuedVerifyEmail.php"]} />

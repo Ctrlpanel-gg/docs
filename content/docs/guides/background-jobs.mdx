@@ -1,0 +1,50 @@
+---
+title: "Queues & scheduled billing"
+description: "Check the two background mechanisms that a healthy homepage cannot prove."
+---
+
+## Queue workers and scheduling are separate
+
+A queue worker processes background jobs. The scheduler invokes recurring console tasks. Running one does not substitute for the other.
+
+| Mechanism | Typical verification |
+| --- | --- |
+| Queue worker | The configured service is running; queued work completes; logs do not show repeated job failures |
+| Laravel scheduler | The host invokes schedule:run every minute; scheduled tasks and the cron activity log progress |
+
+## Scheduled work in 1.2.0
+
+| Command | Schedule in the source |
+| --- | --- |
+| servers:charge | Every minute |
+| servers:notify-suspension | Daily |
+| cp:versioncheck:get | Daily |
+| payments:open:clear | Daily |
+| coupons:delete | Hourly |
+| vouchers:delete | Hourly |
+
+The kernel also writes a cron activity marker through the logs filesystem disk. That disk points at storage/logs, so review **storage/logs/cron.log** along with the application logs.
+
+## Verify your deployment
+
+Use the worker service and scheduler entry from the installation recipe for your OS. Confirm the commands run from the correct panel directory and under the intended account. A command executed in a different checkout can use the wrong environment file or database.
+
+~~~bash
+cd /var/www/ctrlpanel
+php artisan schedule:list
+php artisan queue:failed
+~~~
+
+These diagnostic commands list scheduling and failed jobs; they do not prove your operating system is actually invoking the scheduler or supervising the worker. Check that service/cron configuration separately.
+
+## After code changes
+
+Restart long-running workers after upgrading the panel or changing code they execute:
+
+~~~bash
+php artisan queue:restart
+~~~
+
+Confirm the process supervisor starts replacement workers. For staging restores, disable production-facing scheduled billing/notifications until you deliberately test them against isolated resources.
+
+<SourceNote files={["app/Console/Kernel.php","config/filesystems.php","app/Jobs/PostServerCreationJob.php","app/Jobs/ReconcileServerCreationJob.php"]} />

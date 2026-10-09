@@ -1,0 +1,14 @@
+{
+  "title": "Configure your hosting",
+  "pages": [
+    "index",
+    "branding",
+    "pterodactyl",
+    "security",
+    "email",
+    "discord",
+    "payments",
+    "roles",
+    "invoices"
+  ]
+}

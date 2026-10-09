@@ -1,0 +1,668 @@
+{
+  "versions": [
+    "1.2.x",
+    "beta",
+    "archive",
+    "1.1.x",
+    "1.0.x",
+    "1.0.0",
+    "0.9.x",
+    "0.9.0",
+    "0.8.x"
+  ],
+  "apiCount": 38,
+  "pages": [
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/development/back-to-release.mdx",
+      "url": "/docs/development/back-to-release"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/development/install.mdx",
+      "url": "/docs/development/install"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/development/upgrade.mdx",
+      "url": "/docs/development/upgrade"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/contributing/partners.mdx",
+      "url": "/docs/contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/contributing/donating.mdx",
+      "url": "/docs/contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/contributing/reporting.mdx",
+      "url": "/docs/contributing/reporting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/contributing/translating.mdx",
+      "url": "/docs/contributing/translating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/intro.md",
+      "url": "/docs"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/updating/from-1.1.x.mdx",
+      "url": "/docs/updating/from-1.1.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/updating/from-1.2.x.mdx",
+      "url": "/docs/updating/from-1.2.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/getting-started/install.mdx",
+      "url": "/docs/getting-started/install"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/getting-started/basic-configuration.mdx",
+      "url": "/docs/getting-started/basic-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/guides/backup.mdx",
+      "url": "/docs/guides/backup"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/guides/themes.mdx",
+      "url": "/docs/guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/guides/migration.mdx",
+      "url": "/docs/guides/migration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.2.x/guides/uninstall.mdx",
+      "url": "/docs/guides/uninstall"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-beta/install/index.mdx",
+      "url": "/docs/beta/install"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-beta/changelog.md",
+      "url": "/docs/beta/changelog"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-beta/intro.md",
+      "url": "/docs/beta"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-beta/updating.md",
+      "url": "/docs/beta/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Contributing/donating.md",
+      "url": "/docs/archive/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Contributing/contributing.md",
+      "url": "/docs/archive/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Contributing/translate.md",
+      "url": "/docs/archive/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Contributing/partners.md",
+      "url": "/docs/archive/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/intro.md",
+      "url": "/docs/archive"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Installation/troubleshooting.md",
+      "url": "/docs/archive/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Installation/updating.md",
+      "url": "/docs/archive/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Installation/getting-started.md",
+      "url": "/docs/archive/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Installation/upgrading-from-0.8.md",
+      "url": "/docs/archive/Installation/upgrading-from-0.8"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Guides/backups.md",
+      "url": "/docs/archive/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Guides/uninstallation.md",
+      "url": "/docs/archive/Guides/uninstallation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Packages/creating-a-package.md",
+      "url": "/docs/archive/Packages/creating-a-package"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-archive/Packages/general-info.md",
+      "url": "/docs/archive/Packages/general-info"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/development/back-to-release.mdx",
+      "url": "/docs/1.1.x/development/back-to-release"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/development/install.mdx",
+      "url": "/docs/1.1.x/development/install"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/development/upgrade.mdx",
+      "url": "/docs/1.1.x/development/upgrade"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/contributing/partners.mdx",
+      "url": "/docs/1.1.x/contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/contributing/donating.mdx",
+      "url": "/docs/1.1.x/contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/contributing/reporting.mdx",
+      "url": "/docs/1.1.x/contributing/reporting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/contributing/translating.mdx",
+      "url": "/docs/1.1.x/contributing/translating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/intro.md",
+      "url": "/docs/1.1.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/updating/from-1.1.x.mdx",
+      "url": "/docs/1.1.x/updating/from-1.1.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/updating/from-1.0.x.mdx",
+      "url": "/docs/1.1.x/updating/from-1.0.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/updating/from-0.9.x.mdx",
+      "url": "/docs/1.1.x/updating/from-0.9.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/getting-started/install.mdx",
+      "url": "/docs/1.1.x/getting-started/install"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/getting-started/basic-configuration.mdx",
+      "url": "/docs/1.1.x/getting-started/basic-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/guides/backup.mdx",
+      "url": "/docs/1.1.x/guides/backup"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/guides/themes.mdx",
+      "url": "/docs/1.1.x/guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/guides/migration.mdx",
+      "url": "/docs/1.1.x/guides/migration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.1.x/guides/uninstall.mdx",
+      "url": "/docs/1.1.x/guides/uninstall"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/CTRLPanel Test.md",
+      "url": "/docs/1.0.x/Contributing/CTRLPanel%20Test"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/donating.md",
+      "url": "/docs/1.0.x/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/contributing.md",
+      "url": "/docs/1.0.x/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/translate.md",
+      "url": "/docs/1.0.x/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/partners.md",
+      "url": "/docs/1.0.x/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/intro.md",
+      "url": "/docs/1.0.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Installation/troubleshooting.md",
+      "url": "/docs/1.0.x/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Installation/updating.md",
+      "url": "/docs/1.0.x/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Installation/additional-configuration.md",
+      "url": "/docs/1.0.x/Installation/additional-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Installation/getting-started.md",
+      "url": "/docs/1.0.x/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Guides/translation.md",
+      "url": "/docs/1.0.x/Guides/translation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Guides/backups.md",
+      "url": "/docs/1.0.x/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Guides/themes.md",
+      "url": "/docs/1.0.x/Guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Guides/products.md",
+      "url": "/docs/1.0.x/Guides/products"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.x/Guides/uninstallation.md",
+      "url": "/docs/1.0.x/Guides/uninstallation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/CTRLPanel Test.md",
+      "url": "/docs/1.0.0/Contributing/CTRLPanel%20Test"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/donating.md",
+      "url": "/docs/1.0.0/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/contributing.md",
+      "url": "/docs/1.0.0/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/translate.md",
+      "url": "/docs/1.0.0/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/partners.md",
+      "url": "/docs/1.0.0/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/intro.md",
+      "url": "/docs/1.0.0"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Installation/troubleshooting.md",
+      "url": "/docs/1.0.0/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Installation/updating.md",
+      "url": "/docs/1.0.0/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Installation/additional-configuration.md",
+      "url": "/docs/1.0.0/Installation/additional-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Installation/getting-started.md",
+      "url": "/docs/1.0.0/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Guides/translation.md",
+      "url": "/docs/1.0.0/Guides/translation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Guides/backups.md",
+      "url": "/docs/1.0.0/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Guides/themes.md",
+      "url": "/docs/1.0.0/Guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Guides/products.md",
+      "url": "/docs/1.0.0/Guides/products"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-1.0.0/Guides/uninstallation.md",
+      "url": "/docs/1.0.0/Guides/uninstallation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/CTRLPanel Test.md",
+      "url": "/docs/0.9.x/Contributing/CTRLPanel%20Test"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/donating.md",
+      "url": "/docs/0.9.x/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/contributing.md",
+      "url": "/docs/0.9.x/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/translate.md",
+      "url": "/docs/0.9.x/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/partners.md",
+      "url": "/docs/0.9.x/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/intro.md",
+      "url": "/docs/0.9.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Installation/troubleshooting.md",
+      "url": "/docs/0.9.x/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Installation/updating.md",
+      "url": "/docs/0.9.x/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Installation/additional-configuration.md",
+      "url": "/docs/0.9.x/Installation/additional-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Installation/getting-started.md",
+      "url": "/docs/0.9.x/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/translation.md",
+      "url": "/docs/0.9.x/Guides/translation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/backups.md",
+      "url": "/docs/0.9.x/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/uninstalling.md",
+      "url": "/docs/0.9.x/Guides/uninstalling"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/themes.md",
+      "url": "/docs/0.9.x/Guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/products.md",
+      "url": "/docs/0.9.x/Guides/products"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.x/Guides/uninstallation.md",
+      "url": "/docs/0.9.x/Guides/uninstallation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Contributing/donating.md",
+      "url": "/docs/0.9.0/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Contributing/contributing.md",
+      "url": "/docs/0.9.0/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Contributing/translate.md",
+      "url": "/docs/0.9.0/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Contributing/partners.md",
+      "url": "/docs/0.9.0/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/intro.md",
+      "url": "/docs/0.9.0"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Installation/troubleshooting.md",
+      "url": "/docs/0.9.0/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Installation/updating.md",
+      "url": "/docs/0.9.0/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Installation/additional-configuration.md",
+      "url": "/docs/0.9.0/Installation/additional-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Installation/getting-started.md",
+      "url": "/docs/0.9.0/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Guides/translation.md",
+      "url": "/docs/0.9.0/Guides/translation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Guides/backups.md",
+      "url": "/docs/0.9.0/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Guides/themes.md",
+      "url": "/docs/0.9.0/Guides/themes"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Guides/products.md",
+      "url": "/docs/0.9.0/Guides/products"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.9.0/Guides/uninstallation.md",
+      "url": "/docs/0.9.0/Guides/uninstallation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Contributing/donating.md",
+      "url": "/docs/0.8.x/Contributing/donating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Contributing/contributing.md",
+      "url": "/docs/0.8.x/Contributing/contributing"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Contributing/translate.md",
+      "url": "/docs/0.8.x/Contributing/translate"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Contributing/partners.md",
+      "url": "/docs/0.8.x/Contributing/partners"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/intro.md",
+      "url": "/docs/0.8.x"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Installation/troubleshooting.md",
+      "url": "/docs/0.8.x/Installation/troubleshooting"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Installation/updating.md",
+      "url": "/docs/0.8.x/Installation/updating"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Installation/additional-configuration.md",
+      "url": "/docs/0.8.x/Installation/additional-configuration"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Installation/getting-started.md",
+      "url": "/docs/0.8.x/Installation/getting-started"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Guides/translation.md",
+      "url": "/docs/0.8.x/Guides/translation"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Guides/backups.md",
+      "url": "/docs/0.8.x/Guides/backups"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Guides/products.md",
+      "url": "/docs/0.8.x/Guides/products"
+    },
+    {
+      "source": "migration/docusaurus/versioned_docs/version-0.8.x/Guides/uninstallation.md",
+      "url": "/docs/0.8.x/Guides/uninstallation"
+    },
+    {
+      "source": "openapi:listUserNotifications",
+      "url": "/docs/api/list-user-notifications"
+    },
+    {
+      "source": "openapi:clearAllUserNotifications",
+      "url": "/docs/api/clear-all-user-notifications"
+    },
+    {
+      "source": "openapi:getNotificationDetails",
+      "url": "/docs/api/get-notification-details"
+    },
+    {
+      "source": "openapi:deleteSingleNotification",
+      "url": "/docs/api/delete-single-notification"
+    },
+    {
+      "source": "openapi:sendNotificationToUsers",
+      "url": "/docs/api/send-notification-to-users"
+    },
+    {
+      "source": "openapi:sendNotificationToEveryone",
+      "url": "/docs/api/send-notification-to-everyone"
+    },
+    {
+      "source": "openapi:listAllProducts",
+      "url": "/docs/api/list-all-products"
+    },
+    {
+      "source": "openapi:createProduct",
+      "url": "/docs/api/create-product"
+    },
+    {
+      "source": "openapi:getProductDetails",
+      "url": "/docs/api/get-product-details"
+    },
+    {
+      "source": "openapi:updateProduct",
+      "url": "/docs/api/update-product"
+    },
+    {
+      "source": "openapi:deleteProduct",
+      "url": "/docs/api/delete-product"
+    },
+    {
+      "source": "openapi:listAllRoles",
+      "url": "/docs/api/list-all-roles"
+    },
+    {
+      "source": "openapi:createRole",
+      "url": "/docs/api/create-role"
+    },
+    {
+      "source": "openapi:getRoleDetails",
+      "url": "/docs/api/get-role-details"
+    },
+    {
+      "source": "openapi:updateRole",
+      "url": "/docs/api/update-role"
+    },
+    {
+      "source": "openapi:deleteRole",
+      "url": "/docs/api/delete-role"
+    },
+    {
+      "source": "openapi:listAllServers",
+      "url": "/docs/api/list-all-servers"
+    },
+    {
+      "source": "openapi:createServer",
+      "url": "/docs/api/create-server"
+    },
+    {
+      "source": "openapi:getServerDetails",
+      "url": "/docs/api/get-server-details"
+    },
+    {
+      "source": "openapi:updateServer",
+      "url": "/docs/api/update-server"
+    },
+    {
+      "source": "openapi:deleteServer",
+      "url": "/docs/api/delete-server"
+    },
+    {
+      "source": "openapi:updateServerResources",
+      "url": "/docs/api/update-server-resources"
+    },
+    {
+      "source": "openapi:suspendServer",
+      "url": "/docs/api/suspend-server"
+    },
+    {
+      "source": "openapi:unsuspendServer",
+      "url": "/docs/api/unsuspend-server"
+    },
+    {
+      "source": "openapi:listAllUsers",
+      "url": "/docs/api/list-all-users"
+    },
+    {
+      "source": "openapi:createUser",
+      "url": "/docs/api/create-user"
+    },
+    {
+      "source": "openapi:getUserDetails",
+      "url": "/docs/api/get-user-details"
+    },
+    {
+      "source": "openapi:updateUser",
+      "url": "/docs/api/update-user"
+    },
+    {
+      "source": "openapi:deleteUser",
+      "url": "/docs/api/delete-user"
+    },
+    {
+      "source": "openapi:incrementUserBalanceOrServerLimit",
+      "url": "/docs/api/increment-user-balance-or-server-limit"
+    },
+    {
+      "source": "openapi:decrementUserBalanceOrServerLimit",
+      "url": "/docs/api/decrement-user-balance-or-server-limit"
+    },
+    {
+      "source": "openapi:suspendUser",
+      "url": "/docs/api/suspend-user"
+    },
+    {
+      "source": "openapi:unsuspendUser",
+      "url": "/docs/api/unsuspend-user"
+    },
+    {
+      "source": "openapi:listAllVouchers",
+      "url": "/docs/api/list-all-vouchers"
+    },
+    {
+      "source": "openapi:createVoucher",
+      "url": "/docs/api/create-voucher"
+    },
+    {
+      "source": "openapi:getVoucherDetails",
+      "url": "/docs/api/get-voucher-details"
+    },
+    {
+      "source": "openapi:updateVoucher",
+      "url": "/docs/api/update-voucher"
+    },
+    {
+      "source": "openapi:deleteVoucher",
+      "url": "/docs/api/delete-voucher"
+    },
+    {
+      "source": "migration/docusaurus/blog/2026/04-24-1.2.0-release.md",
+      "url": "/blog/1.2.0-release"
+    },
+    {
+      "source": "migration/docusaurus/blog/2026/04-25-understanding-mpl-2.0.md",
+      "url": "/blog/understanding-mpl-2.0"
+    }
+  ]
+}

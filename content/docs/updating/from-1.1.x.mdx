@@ -1,0 +1,44 @@
+---
+title: "Upgrade 1.1.x to 1.2.0"
+description: "Review the changes that need operator attention before following the runbook."
+---
+
+<Callout type="error" title="Rehearse and back up before changing versions">
+This path changes code, settings, and database state. Preserve a matching database/files/key backup and test restoration. A code-only rollback is not a complete recovery after migrations.
+</Callout>
+
+## Before deployment
+
+Complete [preflight](/docs/updating/preflight), review the [1.2.0 release notes](https://github.com/Ctrlpanel-gg/panel/releases/tag/1.2.0), and verify the target's PHP/Composer requirements. Compare custom extensions, permission configuration, and copied theme layouts against the 1.2.0 source.
+
+## Gateway configuration changed
+
+The new release includes provider-specific webhook configuration:
+
+| Gateway | Review |
+| --- | --- |
+| PayPal | Production and sandbox webhook IDs |
+| Stripe | Signing secret configuration and expected webhook events |
+| Mollie | Webhook secret/token configuration |
+| MercadoPago | Webhook secret configuration |
+
+Recheck the [payment configuration](/docs/configuration/payments) and exercise each configured gateway in staging. Do not assume credentials from the older flow automatically cover the new callback verification.
+
+## Check credits and prices
+
+CurrencyHelper stores application values in integer thousandths and formats them for display. Verify initial credits, verification/referral/partner rewards, product minimum credits/prices, voucher amounts, and coupon values after the upgrade. Check both the UI and API behavior where your integrations depend on it; do not apply a blanket multiplier to the database based on a display symptom.
+
+## Run the deployment procedure
+
+Use the [controlled update runbook](/docs/updating/runbook) with the reviewed 1.2.0 tag. The original upgrade guidance also asks operators to open the User settings category and save after clearing settings caches; preserve that acceptance step, verify the displayed values, and then retest normal credit calculations.
+
+## Acceptance checks
+
+- Administrator and ordinary-user accounts can sign in.
+- Custom themes and copied layouts still render and expose required forms.
+- Extension routes and settings are present under the intended permissions.
+- Server ordering, renewal/suspension, and scheduled billing work in the rehearsed test environment.
+- Gateway sandbox success/pending/cancellation and repeated callbacks behave correctly.
+- Numeric values match the expected display and internal representation.
+
+<SourceNote files={["app/Helpers/CurrencyHelper.php","app/Extensions/PaymentGateways/PayPal/PayPalSettings.php","app/Extensions/PaymentGateways/Stripe/StripeSettings.php","app/Extensions/PaymentGateways/Mollie/MollieSettings.php","app/Extensions/PaymentGateways/MercadoPago/MercadoPagoSettings.php"]} />

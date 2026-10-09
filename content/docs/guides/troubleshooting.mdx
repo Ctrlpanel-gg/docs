@@ -1,0 +1,46 @@
+---
+title: "Troubleshooting"
+description: "Find the failing layer before changing code or rerunning installation commands."
+---
+
+## Start with a reproducible report
+
+Record the installed panel release, PHP version, operating system, failing URL/action, expected result, and a redacted log excerpt. Check whether the failure affects a guest, ordinary user, administrator, or all accounts. State whether you use a custom theme or extension.
+
+~~~bash
+cd /var/www/ctrlpanel
+php -v
+git describe --tags --always
+php artisan about
+php artisan route:list
+php artisan migrate:status
+php artisan queue:failed
+~~~
+
+<Callout type="warn" title="Redact diagnostic output">
+Do not share the environment file, database credentials, API tokens, webhook secrets, SMTP passwords, or customer records. Debug output should remain disabled on a publicly reachable production panel.
+</Callout>
+
+<Accordions type="single" collapsible>
+<Accordion title="The page is blank or returns a server error">
+Read the application and web-server/PHP logs. Check the runtime required by the selected release, Composer dependencies, environment values, database connectivity, and writable storage/cache directories. Identify the first meaningful exception rather than repeatedly clearing every cache.
+</Accordion>
+<Accordion title="The panel works, but billing or notifications do not">
+Check the scheduler and queue worker independently. Confirm they run in the right checkout and use its environment. A working browser request does not prove background jobs are executing.
+</Accordion>
+<Accordion title="A page or route is missing after an extension install">
+Check category/name/class casing, the main class inheritance, explicit route middleware, and stale route/config/settings caches. Verify the route with route:list. The extension loader does not automatically add navigation or register a lifecycle callback.
+</Accordion>
+<Accordion title="A custom screen is broken">
+Temporarily return to the default theme in staging. Compare the overridden view to the controller and the default view for the same release. Check the asset entry/manifest and required plugin markup.
+</Accordion>
+<Accordion title="Checkout returns successfully but credits do not appear">
+Verify the provider webhook reached the correct route, its signature/secret passed verification, and the stored payment data matches. Review the gateway logs and the shared completion flow. Do not manually add credits until you understand the payment's actual state.
+</Accordion>
+</Accordions>
+
+## Ask for help with context
+
+Include the failing layer and reproduction steps in a [bug report](https://github.com/Ctrlpanel-gg/panel/issues). Use the repository's private security reporting process for security-sensitive issues. Keep your original backup and record any changes already attempted.
+
+<SourceNote files={["app/Console/Kernel.php","app/Providers/ExtensionServiceProvider.php","app/Traits/HandlesGatewayPayments.php",".github/SECURITY.md"]} />

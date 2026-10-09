@@ -1,0 +1,45 @@
+---
+title: "Pre-update checklist"
+description: "Prepare a reversible deployment before changing application code or schema."
+---
+
+<Steps>
+<Step>
+## Inventory the installation
+Record the current release/commit, PHP and database versions, worker account/service name, theme, installed extensions, custom providers, and any edited core files. Review git status and your custom changes; an uncommitted theme file is still part of your installation.
+
+~~~bash
+cd /var/www/ctrlpanel
+git status --short
+git describe --tags --always
+php -v
+php artisan migrate:status
+~~~
+</Step>
+<Step>
+## Back up a matched set
+Preserve the database, original environment file/application key, uploads, and custom code/assets. Record the exact code revision that matches the backup. Keep the backup outside the public directory and test a restore in isolation.
+</Step>
+<Step>
+## Choose and inspect the target
+Read the release notes and the migrations in the target release. Check PHP/Composer constraints, gateway settings, permissions, custom view contracts, and extension compatibility. Fetch tags and verify the intended tag instead of relying on whichever branch git pull happens to update.
+</Step>
+<Step>
+## Rehearse with a separate database
+Run the complete update in staging. Exercise administrator and ordinary-user workflows, queue processing, scheduled work, Pterodactyl operations, and provider sandbox callbacks. Do not let the staging restore also perform production billing or provisioning.
+</Step>
+<Step>
+## Schedule the production change
+Decide how to stop new writes, pause relevant background consumers, deploy the verified target, and confirm recovery if a step fails. Tell users what interruption to expect through your normal hosting operations process.
+</Step>
+</Steps>
+
+## Preserve custom permission configuration
+
+The permission seeder removes permissions that are absent from config/permissions_web.php. If an addon registers custom permissions there, merge and review that configuration before seeding an upgraded application. Keep provider registrations and overridden layouts in your custom-code inventory too.
+
+<Callout type="warn" title="A stash is not the backup">
+Git stash can help move tracked local changes aside, but it does not replace a database/files backup or a reviewed commit. Do not blindly reapply an old stash over a new release. Review and merge the intended custom changes.
+</Callout>
+
+<SourceNote files={["composer.json","database/seeders/GeneralPermissionsSeeder.php","config/permissions_web.php","config/app.php","app/Console/Commands/update.php"]} />

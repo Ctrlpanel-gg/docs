@@ -1,0 +1,110 @@
+{
+  "posts": [
+    {
+      "title": "Understanding MPL 2.0 in the Context of CtrlPanel",
+      "slug": "understanding-mpl-2.0",
+      "date": "2026-04-25",
+      "authors": [
+        {
+          "name": "1Day2Die",
+          "title": "Project Manager",
+          "image_url": "https://github.com/1Day2Die.png",
+          "page": {
+            "permalink": "/1day2die"
+          },
+          "socials": {
+            "github": "1Day2Die"
+          }
+        },
+        {
+          "name": "MrWeez",
+          "title": "Contribution Director & Maintainer",
+          "image_url": "https://github.com/MrWeez.png",
+          "page": true,
+          "socials": {
+            "github": "MrWeez",
+            "email": "hello@mrweez.dev",
+            "website": "https://mrweez.dev"
+          }
+        }
+      ],
+      "tags": [
+        "guides"
+      ]
+    },
+    {
+      "title": "CtrlPanel 1.2.0 is here!",
+      "slug": "1.2.0-release",
+      "date": "2026-04-24",
+      "authors": [
+        {
+          "name": "1Day2Die",
+          "title": "Project Manager",
+          "image_url": "https://github.com/1Day2Die.png",
+          "page": {
+            "permalink": "/1day2die"
+          },
+          "socials": {
+            "github": "1Day2Die"
+          }
+        },
+        {
+          "name": "MrWeez",
+          "title": "Contribution Director & Maintainer",
+          "image_url": "https://github.com/MrWeez.png",
+          "page": true,
+          "socials": {
+            "github": "MrWeez",
+            "email": "hello@mrweez.dev",
+            "website": "https://mrweez.dev"
+          }
+        },
+        {
+          "name": "Simba",
+          "title": "Maintainer",
+          "image_url": "https://github.com/simbabimba-dev.png",
+          "page": true,
+          "socials": {
+            "github": "simbabimba-dev"
+          }
+        }
+      ],
+      "tags": [
+        "releases"
+      ]
+    }
+  ],
+  "authors": {
+    "1day2die": {
+      "name": "1Day2Die",
+      "title": "Project Manager",
+      "image_url": "https://github.com/1Day2Die.png",
+      "page": {
+        "permalink": "/1day2die"
+      },
+      "socials": {
+        "github": "1Day2Die"
+      }
+    },
+    "mrweez": {
+      "name": "MrWeez",
+      "title": "Contribution Director & Maintainer",
+      "image_url": "https://github.com/MrWeez.png",
+      "page": true,
+      "socials": {
+        "github": "MrWeez",
+        "email": "hello@mrweez.dev",
+        "website": "https://mrweez.dev"
+      }
+    },
+    "simba": {
+      "name": "Simba",
+      "title": "Maintainer",
+      "image_url": "https://github.com/simbabimba-dev.png",
+      "page": true,
+      "socials": {
+        "github": "simbabimba-dev"
+      }
+    }
+  }
+}

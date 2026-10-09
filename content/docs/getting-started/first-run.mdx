@@ -1,0 +1,37 @@
+---
+title: "First-run checklist"
+description: "Verify the whole installation before accepting customers."
+---
+
+<Steps>
+<Step>
+## Verify the web installation
+Open your domain over HTTPS, complete the installer, and check that your administrator account can sign in. Confirm the installer is locked and that the web server serves the panel's **public** directory, not the repository root.
+</Step>
+<Step>
+## Connect Pterodactyl
+Configure the URL and API credentials under [Pterodactyl settings](/docs/configuration/pterodactyl). Test against a non-production product/server first and confirm the resource configuration maps to the intended Pterodactyl nodes and eggs.
+</Step>
+<Step>
+## Configure account communication
+Set up [email](/docs/configuration/email) and test a real verification/reset message. Configure [Discord](/docs/configuration/discord) only if you want its verification and role flows.
+</Step>
+<Step>
+## Check background work
+Verify both the queue worker and the one-minute Laravel scheduler. A healthy homepage does not prove that billing or queued tasks run. Use the [background jobs guide](/docs/guides/background-jobs).
+</Step>
+<Step>
+## Test checkout and recovery
+Use each gateway's sandbox/test mode, verify the webhook flow, and confirm credits or purchases are applied once. Then create a backup containing the database, environment file, and uploads. Rehearse restoration before opening registration.
+</Step>
+</Steps>
+
+## Minimum acceptance checks
+
+- Administrator and ordinary-user access behave differently where expected.
+- A user can order and see a test server through the Pterodactyl integration.
+- The configured worker and scheduler survive a service restart.
+- Payment success, cancellation, pending status, and repeated webhook delivery have been exercised in a test environment.
+- Your environment file and backups are not publicly downloadable.
+
+<SourceNote files={["themes/default/views/home.blade.php","app/Console/Kernel.php","app/Traits/HandlesGatewayPayments.php"]} />

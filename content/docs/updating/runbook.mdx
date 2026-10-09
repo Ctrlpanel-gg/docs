@@ -1,0 +1,84 @@
+---
+title: "Controlled update runbook"
+description: "Apply a verified release, migrate deliberately, and validate before reopening."
+---
+
+This procedure assumes a standard checkout and a rehearsed staging update. Paths, service supervision, ownership, and the target release must match your deployment. The concrete tag example below is **1.2.0**; do not run it on an already newer installation.
+
+<Steps>
+<Step>
+## Enter the maintenance window
+
+~~~bash
+cd /var/www/ctrlpanel
+php artisan down
+~~~
+
+Maintenance mode is not a substitute for coordinating scheduled jobs and long-running workers. Stop or pause consumers that could write during your database/code transition using your deployment's process supervisor. Capture the final matched backup after quiescing the writes you need to protect.
+</Step>
+<Step>
+## Deploy the intended release
+
+Start from a reviewed working tree. For the documented 1.1.x → 1.2.0 transition:
+
+~~~bash
+git fetch origin --tags
+git checkout 1.2.0
+~~~
+
+A tag checkout is detached, intentionally pinning the release. Do not use the generic self-update command or an unqualified git pull on that detached checkout. For later releases, explicitly substitute the reviewed target tag and repeat staging validation.
+</Step>
+<Step>
+## Install locked dependencies
+
+~~~bash
+composer install --no-dev --optimize-autoloader
+~~~
+
+Use the account appropriate to your deployment. Avoid changing dependency versions with composer update during the production upgrade. The tagged release includes default built assets; build custom themes using their documented asset workflow if needed.
+</Step>
+<Step>
+## Apply migrations and refresh caches
+
+After confirming the backup and reviewing the target migration/seed behavior:
+
+~~~bash
+php artisan migrate --seed --force
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan config:clear
+php artisan settings:clear-cache
+~~~
+
+If any step fails, stop and inspect the error. Do not run the remaining commands as if the update succeeded. If your deployment deliberately uses cached configuration/routes, rebuild those caches only after verifying the new configuration and extension registrations.
+</Step>
+<Step>
+## Confirm permissions and restart workers
+
+Check the actual web-server account can read the application and write the required storage/cache directories. Use your existing deployment ownership policy rather than applying a guessed account name across the whole host.
+
+~~~bash
+php artisan queue:restart
+~~~
+
+Resume/restart supervised workers and the scheduler as planned. Verify replacement processes use the updated directory, runtime, and environment.
+</Step>
+<Step>
+## Validate and reopen
+
+Check migrate:status, route:list, application logs, the admin and ordinary-user UI, theme assets, Pterodactyl actions, and gateway sandbox behavior. For a 1.1.x upgrade, complete the specific settings/credit checks in that guide.
+
+~~~bash
+php artisan up
+~~~
+
+Watch application, worker, scheduler, and provider logs after reopening. Keep the pre-update backup until the new deployment is accepted.
+</Step>
+</Steps>
+
+## Why the built-in update command is not this runbook
+
+In the inspected release, the command pulls from the current branch before entering maintenance, performs a migration without this guide's full acceptance process, and does not restart workers. Its runtime check also differs from the release's Composer requirements. Treat it as implementation to inspect, not as a substitute for a reviewed deployment plan.
+
+<SourceNote files={["app/Console/Commands/update.php","composer.json","database/seeders/DatabaseSeeder.php","database/seeders/GeneralPermissionsSeeder.php","package.json"]} />

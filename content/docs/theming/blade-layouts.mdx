@@ -1,0 +1,68 @@
+---
+title: "Blade views & layout contracts"
+description: "Customize presentation without dropping the behavior provided by the panel shell."
+---
+
+## The three layout roles
+
+| View | Role |
+| --- | --- |
+| layouts.main | Signed-in dashboard shell, navigation, account controls, content region, and modal includes |
+| layouts.app | Authentication/guest-facing shell, CAPTCHA setup, common assets, and content region |
+| layouts.errors | Error-page presentation |
+
+These are logical Blade view names. Their default implementations live under **themes/default/views/layouts/**.
+
+## A complete small Blade page
+
+This is an authored example for a custom route or a replacement screen whose controller does not require additional data. It demonstrates sections; it is not a replacement for every widget on the stock home page.
+
+~~~blade
+@extends('layouts.main')
+
+@section('content')
+<section class="content-header">
+    <div class="container-fluid">
+        <h1>{{ __('Hosting resources') }}</h1>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <p>{{ __('Your hosting account is ready.') }}</p>
+                <a class="btn btn-primary" href="{{ route('home') }}">
+                    {{ __('Back to dashboard') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+~~~
+
+The main layout yields the content section. Using it preserves the signed-in shell. The same idea applies to existing screen overrides: retain the view's required variables, forms, route names, and validation output.
+
+## Escaping and forms
+
+Use escaped Blade output for data you do not fully control. A state-changing web form needs a CSRF token. The real preferences route uses POST; this example preserves the current locale. Other routes may require a different HTTP method, so inspect their route declaration before adding a method field.
+
+~~~blade
+<form method="POST" action="{{ route('preferences.update') }}">
+    @csrf
+    <input type="hidden" name="locale" value="{{ app()->getLocale() }}">
+    <button type="submit" class="btn btn-primary">
+        {{ __('Save preferences') }}
+    </button>
+</form>
+~~~
+
+Treat that form as a markup example: the real preferences screen supplies fields and validation rules. Preserve its existing form contract when overriding it.
+
+## Preserve permissions and dependencies
+
+The default signed-in shell contains role/permission checks, plugin asset links, account behavior, and modal includes. Removing a navigation item does not revoke access to its route. Keep authorization in the server-side route/controller, and keep the relevant markup in your theme.
+
+Do not assume that a custom Blade section or stack exists in the default layout. Inspect its **yield**, **include**, and asset statements before trying to inject content into a nonexistent hook.
+
+<SourceNote files={["themes/default/views/layouts/main.blade.php","themes/default/views/layouts/app.blade.php","themes/default/views/layouts/errors.blade.php","routes/web.php"]} />

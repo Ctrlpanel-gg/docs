@@ -1,0 +1,11 @@
+{
+  "title": "Build an extension",
+  "pages": [
+    "index",
+    "first-extension",
+    "settings-and-migrations",
+    "events-and-jobs",
+    "payment-gateways",
+    "testing"
+  ]
+}

@@ -1,0 +1,37 @@
+---
+title: "Report bugs, features & vulnerabilities"
+description: "Give maintainers useful reproduction details and keep security reports private."
+---
+
+## Bugs
+
+Check existing [GitHub issues](https://github.com/Ctrlpanel-gg/panel/issues) first. Use the bug report template and include your panel release, PHP version, environment, steps to reproduce, expected result, and actual result. Include a redacted log excerpt where helpful. Do not share environment files, API keys, session cookies, or payment credentials.
+
+## Feature requests
+
+Use the feature request template in the same issue tracker. Describe the problem, who encounters it, and your proposed behavior. For significant changes, discuss the idea with maintainers before starting implementation. The [roadmap](https://github.com/orgs/Ctrlpanel-gg/projects/1) can help identify related planned work.
+
+## Security vulnerabilities
+
+<Callout type="error" title="Keep the report private">
+The upstream security policy says not to disclose vulnerabilities in public issues, discussions, pull requests, or chats before the official disclosure window.
+</Callout>
+
+<Steps>
+<Step>
+### Open a private advisory
+Submit the finding through [GitHub Security Advisories](https://github.com/ctrlpanel-gg/panel/security/advisories/new). Give maintainers the affected version, impact, and a reproducible description.
+</Step>
+<Step>
+### Notify the project owner
+Send <code>1day2die</code> a direct message on Discord with a link to the advisory. The checked policy makes this notification required because an advisory alone may be missed.
+</Step>
+<Step>
+### Coordinate disclosure
+The policy says details are published no earlier than two weeks after the release containing the fix. Keep the finding private until that window and the official writeup; there is no guaranteed response or fix time.
+</Step>
+</Steps>
+
+Security fixes apply to the latest release only; the policy does not promise backports to older versions. Authentication or authorization bypass, remote code execution, SQL injection, XSS, sensitive-data exposure, and privilege escalation are listed in scope. Dependency vulnerabilities should be reported upstream. Consult the [current security policy](https://github.com/Ctrlpanel-gg/panel/blob/development/.github/SECURITY.md) before submitting a report.
+
+<SourceNote files={[".github/CONTRIBUTING.md",".github/SECURITY.md"]} />

@@ -1,0 +1,28 @@
+---
+title: "Update safely"
+description: "Choose the guide for your starting release and rehearse it before production."
+---
+
+<Cards>
+<DocsCard icon="shield" title="Pre-update checklist" description="Inventory changes, make a recoverable backup, and rehearse the target release." href="/docs/updating/preflight" tone="amber" />
+<DocsCard icon="update" title="1.1.x → 1.2.0" description="Review gateway, settings, and credit-value changes before the major family upgrade." href="/docs/updating/from-1.1.x" tone="rose" />
+<DocsCard icon="update" title="Updates within 1.2.x" description="Select an actually published patch release and apply the controlled runbook." href="/docs/updating/from-1.2.x" tone="blue" />
+<DocsCard icon="database" title="Recovery planning" description="Restore the matching code, database, key, uploads, and custom work together." href="/docs/updating/recovery" tone="green" />
+</Cards>
+
+## Which path applies?
+
+| Starting point | Next step |
+| --- | --- |
+| 1.1.x | Review the 1.1.x → 1.2.0 changes, then follow the runbook |
+| Already on 1.2.0 | Confirm a newer stable patch is published before planning an update |
+| 1.0.x or older | Select your historical documentation and complete the intermediate upgrade path before applying a 1.2 guide |
+| Development checkout or modified fork | Compare your own commits, schema, and custom code against the target; do not assume a stock upgrade |
+
+The latest release checked while preparing these guides is **1.2.0**. A guide for future patch upgrades is a procedure, not a claim that a newer release already exists.
+
+## Do not confuse the selector with an updater
+
+Changing the documentation selector only changes the guide you read. It does not update your installation. Verify the starting version from the actual panel checkout, and choose a target release from the upstream release list.
+
+<SourceNote files={["app/Console/Commands/update.php","composer.json"]} />

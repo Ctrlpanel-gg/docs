@@ -1,0 +1,40 @@
+---
+title: "Build an extension"
+description: "Understand the actual extension contracts before writing an addon."
+---
+
+## What the panel discovers
+
+CtrlPanel scans **app/Extensions/Category/Name/**. It expects **NameExtension.php** containing the matching namespaced class, extending **App\Classes\AbstractExtension**. Its only abstract contract is the static **getConfig()** method.
+
+~~~text
+app/Extensions/
+└── Tools/
+    └── HelloWorld/
+        ├── HelloWorldExtension.php
+        ├── HelloWorldController.php
+        └── routes.php
+~~~
+
+The route provider loads routes files separately. Settings discovery and payment discovery use the extension helper's validated class list. These are related mechanisms, not a general plugin lifecycle.
+
+<Cards>
+<DocsCard icon="blocks" title="Your first extension" description="Create a discovered class, a protected route, and a small controller." href="/docs/extensions/first-extension" tone="blue" />
+<DocsCard icon="settings" title="Settings & migrations" description="Expose typed admin settings and initialize them with Spatie migrations." href="/docs/extensions/settings-and-migrations" tone="amber" />
+<DocsCard icon="branch" title="Events & background jobs" description="Register listeners explicitly and keep queue work out of view templates." href="/docs/extensions/events-and-jobs" tone="violet" />
+<DocsCard icon="shield" title="Payment extensions" description="Read the gateway contract, money units, webhook validation, and shared completion flow." href="/docs/extensions/payment-gateways" tone="rose" />
+</Cards>
+
+<Callout type="warn" title="No automatic install or enable lifecycle">
+The provider does not call addon methods named boot, install, enable, or uninstall. There is no general addon manager in the inspected release. A setting named enabled only affects a feature if your code actually checks it.
+</Callout>
+
+## Naming rules
+
+Both directory segments must start with an ASCII letter and contain only letters, digits, or underscores. The class and filesystem casing must match. Keep extension names unique across categories: name-based lookup reports ambiguity when multiple extensions share a name.
+
+## Choose the right integration
+
+An HTTP client integration belongs in the [API reference](/docs/api). A visual override belongs in [theming](/docs/theming). An installed extension runs trusted PHP inside the panel, so its code has access to the application and needs review before deployment.
+
+<SourceNote files={["app/Classes/AbstractExtension.php","app/Helpers/ExtensionHelper.php","app/Providers/ExtensionServiceProvider.php"]} />

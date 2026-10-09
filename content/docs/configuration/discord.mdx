@@ -1,0 +1,17 @@
+---
+title: "Discord account linking"
+description: "Connect OAuth, bot access, and the panel’s account/role flows."
+---
+
+Allows you to configure Discord verification. After completing it, the user can be automatically added to your Discord server. The bot is also used to assign a verified role and a client role.
+
+1. Go to https://discord.com/developers/applications and create a new application. You need to obtain the `bot token`, `application ID`, and `application secret`.
+2. Then go to the **OAuth2** tab and add redirect URL like `https://your.ctrlpanel.url/auth/callback`.
+3. Don’t forget to invite the bot to your server in advance so it can assign roles and add users.  
+   To do that, open the following link in your browser: `https://discord.com/api/oauth2/authorize?client_id=<CLIENT_ID_HERE>&permissions=8&scope=bot`. Make sure to replace `<CLIENT_ID_HERE>` with your bot's ID you got earlier.
+
+## OAuth and bot access are separate
+
+The redirect URL belongs to the OAuth login/linking flow. The bot also needs membership and appropriate role permissions in your Discord server. Do not assume that a successful OAuth redirect means the bot can assign a role. Test linking, unlinking, and any configured verified/client role behavior with a non-admin account.
+
+<SourceNote files={["app/Http/Controllers/Auth/SocialiteController.php","app/Listeners/AssociateDiscordRoles.php","app/Listeners/DisassociateDiscordRoles.php"]} />

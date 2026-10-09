@@ -1,0 +1,26 @@
+---
+title: "Connect Pterodactyl"
+description: "Map CtrlPanel’s accounts and plans to your server-management panel."
+---
+
+## What this connection does
+
+CtrlPanel requests server operations through its Pterodactyl integration. The application keeps its own users, products, billing state, and server records; Pterodactyl manages the server runtime.
+
+## Setup sequence
+
+1. Configure the panel URL and relevant Pterodactyl API credentials in the Pterodactyl settings category.
+2. Confirm the CtrlPanel host can reach the Pterodactyl API over HTTPS.
+3. Create a test product that uses the intended nodes, eggs, allocations, and resource limits.
+4. Use a test account to create a server and verify that the corresponding server exists in Pterodactyl.
+5. Exercise suspension, renewal, and deletion in the test environment before using that product for customers.
+
+<Callout type="warn" title="Credentials and product access">
+Use the credentials and access appropriate to your installed panel version. A theme or client-side validation cannot enforce which product or egg a user may use; those checks belong to the server-side application.
+</Callout>
+
+## Follow the code paths
+
+The creation flow uses <code>ServerCreationService</code> and validation rules such as <code>EggBelongsToProduct</code> and <code>ValidateEggVariables</code>. For changes to provisioning, read those services and rules instead of modifying only the order form.
+
+<SourceNote files={["app/Settings/PterodactylSettings.php","app/Services/ServerCreationService.php","app/Rules/EggBelongsToProduct.php","app/Rules/ValidateEggVariables.php"]} />

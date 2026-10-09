@@ -1,0 +1,28 @@
+---
+title: "Translate the interface"
+description: "Use the source localization workflow when adding or changing user-visible strings."
+---
+
+## Localize new text
+
+The 1.2.0 repository's localization guide asks contributors to wrap visible strings with Laravel's translation helper. For a Blade view:
+
+```blade
+<p>{{ __('Welcome to your hosting dashboard') }}</p>
+```
+
+Use the same helper for labels and messages introduced by a theme or extension. Escape displayed values with Blade's normal double braces; a translated label does not make untrusted HTML safe.
+
+## Export source strings
+
+From your development checkout, after adding localized strings, use the project's documented command:
+
+```bash
+php artisan translatable:export en
+```
+
+Review the generated language-file changes, translate the relevant entries, and verify the interface using the intended locale. Preserve placeholders and avoid editing keys just to change wording in another language.
+
+Submit language changes through the [contribution workflow](/docs/contributing/code). Compare the current <code>lang/README.md</code> when working on development or a different release; the command shown here is the workflow checked for 1.2.0.
+
+<SourceNote files={["lang/README.md","composer.json"]} />

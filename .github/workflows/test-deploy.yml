@@ -1,27 +1,18 @@
-name: Test deployment
-
+name: Validate static Fumadocs site
 on:
   pull_request:
     branches: [main, development]
-    paths: 
-      - 'versioned_docs/**'
-      - 'src/**'
-      - 'api-docs/**'
-      - 'static/**'
-      - 'blog/**'
   workflow_dispatch:
-
 jobs:
   test-deploy:
-    name: Test deployment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 24
-          cache: yarn
-      - name: Test build
-        run: |
-          yarn install
-          yarn build
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run build
+      - run: bun scripts/audit-headings.ts
+      - run: bun scripts/verify-export.ts

@@ -1,0 +1,69 @@
+---
+title: "Payment extension architecture"
+description: "Follow the existing gateways’ contract and verification flow."
+---
+
+## Start from the actual contract
+
+Payment gateways live under **app/Extensions/PaymentGateways/Name/** and extend **PaymentExtension**, which extends AbstractExtension. In addition to getConfig(), they must return a redirect URL from this method:
+
+~~~php
+public static function getRedirectUrl(
+    Payment $payment,
+    ShopProduct $shopProduct,
+    int $totalPrice
+): string;
+~~~
+
+This is the abstract method signature, not a runnable gateway implementation. Read a complete built-in gateway, its routes, its settings class, and its settings migrations before implementing a provider-specific protocol.
+
+## Trace a built-in flow
+
+<Steps>
+<Step>
+### Checkout request
+The payment controller discovers enabled gateways and invokes the selected class. The gateway creates a provider checkout using the saved payment/product and returns its redirect URL.
+</Step>
+<Step>
+### Browser return
+A success/return route must validate ownership where it deals with an authenticated user's payment. A redirect to a success page is not, by itself, proof that a provider settled a payment.
+</Step>
+<Step>
+### Verified webhook
+The gateway verifies the provider callback, maps it to the stored payment, and validates the amount/currency and provider identifiers as required by that integration. The Stripe implementation verifies signatures and validates payment data before completion.
+</Step>
+<Step>
+### Shared state transition
+The HandlesGatewayPayments trait locks payment rows and guards already-paid or canceled payments. Its completion flow dispatches application events. Reuse the appropriate shared flow after verification rather than directly adding credits in a public webhook handler.
+</Step>
+</Steps>
+
+## Money units are not interchangeable
+
+CurrencyHelper stores application values in **integer thousandths**. Provider minor units may be hundredths, whole units, or thousandths depending on the currency. For display/form formatting, use the project's helper instead of treating a stored integer as a provider amount:
+
+~~~php
+$formatted = app(\App\Helpers\CurrencyHelper::class)
+    ->formatForForm($payment->total_price, 2);
+~~~
+
+That formatting example is appropriate only when the destination expects that decimal representation. The Stripe implementation contains additional provider-specific conversion for zero- and three-decimal currencies.
+
+## CSRF exclusions do not authenticate a webhook
+
+The extension config can declare RoutesIgnoreCsrf patterns. The helper permits only patterns beneath payment/ or extensions/ and sanitizes them. Exclude only the exact external callback routes you need; validate the provider signature or secret in the callback itself. Keep browser actions protected by the web middleware and CSRF checks.
+
+## Built-in references
+
+| Gateway | Read together |
+| --- | --- |
+| PayPal | PayPalExtension, routes, PayPalSettings, webhook-ID migration |
+| Stripe | StripeExtension, routes, StripeSettings, signing-secret migration |
+| Mollie | MollieExtension, routes, MollieSettings, webhook-secret migration |
+| MercadoPago | MercadoPagoExtension, routes, MercadoPagoSettings, webhook-secret migration |
+
+## Required integration tests
+
+Test valid/invalid signatures, missing identifiers, amount or currency mismatch, ownership mismatch, pending/canceled/succeeded states, repeated delivery, and provider/network failures. Use sandbox credentials and a staging panel. Do not publish a gateway that only works for the happy-path redirect.
+
+<SourceNote files={["app/Classes/PaymentExtension.php","app/Http/Controllers/Admin/PaymentController.php","app/Traits/HandlesGatewayPayments.php","app/Helpers/CurrencyHelper.php","app/Http/Middleware/VerifyCsrfToken.php","app/Extensions/PaymentGateways/Stripe/StripeExtension.php"]} />

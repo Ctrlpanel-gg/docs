@@ -1,0 +1,336 @@
+---
+title: "Update product"
+description: "PUT /api/products/{id}"
+---
+
+<div className="api-endpoint"><strong>PUT</strong><code>/api/products/&#123;id&#125;</code></div>
+
+
+
+## Authentication
+
+Send your API token in the `Authorization: Bearer YOUR_TOKEN` header.
+
+## Request
+
+```bash
+curl -X PUT 'https://panel.example.com/api/products/{id}' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '@request.json'
+```
+
+### Parameters
+
+| Name | Location | Required | Description |
+| --- | --- | --- | --- |
+| `id` | path | Yes | The ID of the product. |
+
+### Request body (application/json)
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | string | No | The name of the product. |
+| `description` | string | No | The description of the product. |
+| `price` | number | No | The price of the product. |
+| `minimum_credits` | number | No | The minimum credits required to purchase. |
+| `memory` | integer | No | The memory in MB. |
+| `cpu` | integer | No | The CPU limit in %. |
+| `swap` | integer | No | The swap limit in MB. |
+| `disk` | integer | No | The disk limit in MB. |
+| `io` | integer | No | The IO limit. |
+| `serverlimit` | integer | No | The server limit. |
+| `databases` | integer | No | The database limit. |
+| `backups` | integer | No | The backup limit. |
+| `allocations` | integer | No | The allocation limit. |
+| `nodes` | array | No | List of node IDs associated with the product. |
+| `eggs` | array | No | List of egg IDs associated with the product. |
+| `disabled` | boolean | No | Whether the product is disabled. |
+| `oom_killer` | boolean | No | Whether the OOM killer is enabled. |
+| `default_billing_priority` | integer | No | The default billing priority. |
+| `billing_period` | string | No | The billing period. |
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the product.",
+      "example": "Medium Minecraft"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the product.",
+      "example": "Perfect for your SMP with friends",
+      "nullable": true
+    },
+    "price": {
+      "type": "number",
+      "description": "The price of the product.",
+      "example": 10
+    },
+    "minimum_credits": {
+      "type": "number",
+      "description": "The minimum credits required to purchase.",
+      "example": 10,
+      "nullable": true
+    },
+    "memory": {
+      "type": "integer",
+      "description": "The memory in MB.",
+      "example": 4096
+    },
+    "cpu": {
+      "type": "integer",
+      "description": "The CPU limit in %.",
+      "example": 200
+    },
+    "swap": {
+      "type": "integer",
+      "description": "The swap limit in MB.",
+      "example": 0
+    },
+    "disk": {
+      "type": "integer",
+      "description": "The disk limit in MB.",
+      "example": 20480
+    },
+    "io": {
+      "type": "integer",
+      "description": "The IO limit.",
+      "example": 500
+    },
+    "serverlimit": {
+      "type": "integer",
+      "description": "The server limit.",
+      "example": 1
+    },
+    "databases": {
+      "type": "integer",
+      "description": "The database limit.",
+      "example": 3
+    },
+    "backups": {
+      "type": "integer",
+      "description": "The backup limit.",
+      "example": 2
+    },
+    "allocations": {
+      "type": "integer",
+      "description": "The allocation limit.",
+      "example": 1
+    },
+    "nodes": {
+      "type": "array",
+      "description": "List of node IDs associated with the product.",
+      "example": [
+        1,
+        2
+      ],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "eggs": {
+      "type": "array",
+      "description": "List of egg IDs associated with the product.",
+      "example": [
+        1,
+        3
+      ],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Whether the product is disabled.",
+      "example": false
+    },
+    "oom_killer": {
+      "type": "boolean",
+      "description": "Whether the OOM killer is enabled.",
+      "example": true
+    },
+    "default_billing_priority": {
+      "type": "integer",
+      "description": "The default billing priority.",
+      "example": 0
+    },
+    "billing_period": {
+      "type": "string",
+      "description": "The billing period.",
+      "example": "monthly"
+    }
+  }
+}
+```
+
+</details>
+
+## Responses
+
+### 200
+
+| Property | Type | Required | Description |
+| --- | --- | --- | --- |
+| `data` | object | No |  |
+
+### Example
+
+```json
+{
+  "data": {
+    "id": "vY8xK9pZ",
+    "name": "Medium Minecraft",
+    "description": "Perfect for your SMP with friends",
+    "price": "10.00",
+    "memory": 4096,
+    "cpu": 200,
+    "swap": 0,
+    "disk": 20480,
+    "io": 500,
+    "databases": 3,
+    "backups": 2,
+    "serverlimit": 1,
+    "allocations": 1,
+    "oom_killer": true,
+    "default_billing_priority": 0,
+    "disabled": false,
+    "minimum_credits": "10.00",
+    "billing_period": "monthly",
+    "created_at": "2026-04-26 12:00:00",
+    "updated_at": "2026-04-26 12:00:00"
+  }
+}
+```
+
+
+<details>
+<summary>Complete schema</summary>
+
+```json
+{
+  "type": "object",
+  "example": {
+    "data": {
+      "id": "vY8xK9pZ",
+      "name": "Medium Minecraft",
+      "description": "Perfect for your SMP with friends",
+      "price": "10.00",
+      "memory": 4096,
+      "cpu": 200,
+      "swap": 0,
+      "disk": 20480,
+      "io": 500,
+      "databases": 3,
+      "backups": 2,
+      "serverlimit": 1,
+      "allocations": 1,
+      "oom_killer": true,
+      "default_billing_priority": 0,
+      "disabled": false,
+      "minimum_credits": "10.00",
+      "billing_period": "monthly",
+      "created_at": "2026-04-26 12:00:00",
+      "updated_at": "2026-04-26 12:00:00"
+    }
+  },
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "vY8xK9pZ"
+        },
+        "name": {
+          "type": "string",
+          "example": "Medium Minecraft"
+        },
+        "description": {
+          "type": "string",
+          "example": "Perfect for your SMP with friends"
+        },
+        "price": {
+          "type": "string",
+          "example": "10.00"
+        },
+        "memory": {
+          "type": "integer",
+          "example": 4096
+        },
+        "cpu": {
+          "type": "integer",
+          "example": 200
+        },
+        "swap": {
+          "type": "integer",
+          "example": 0
+        },
+        "disk": {
+          "type": "integer",
+          "example": 20480
+        },
+        "io": {
+          "type": "integer",
+          "example": 500
+        },
+        "databases": {
+          "type": "integer",
+          "example": 3
+        },
+        "backups": {
+          "type": "integer",
+          "example": 2
+        },
+        "serverlimit": {
+          "type": "integer",
+          "example": 1
+        },
+        "allocations": {
+          "type": "integer",
+          "example": 1
+        },
+        "oom_killer": {
+          "type": "boolean",
+          "example": true
+        },
+        "default_billing_priority": {
+          "type": "integer",
+          "example": 0
+        },
+        "disabled": {
+          "type": "boolean",
+          "example": false
+        },
+        "minimum_credits": {
+          "type": "string",
+          "example": "10.00"
+        },
+        "billing_period": {
+          "type": "string",
+          "example": "monthly"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        },
+        "updated_at": {
+          "type": "string",
+          "example": "2026-04-26 12:00:00"
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+

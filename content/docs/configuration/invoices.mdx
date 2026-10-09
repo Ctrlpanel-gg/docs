@@ -1,0 +1,42 @@
+---
+title: "Invoices & email delivery"
+description: "Enable invoice generation and verify the payment-to-PDF-to-email workflow."
+---
+
+## Configure the seller
+
+Open the Invoice settings category in the administration settings. In 1.2.0 the feature is disabled by default.
+
+| Setting | Purpose |
+| --- | --- |
+| Enabled | Allows invoices to be generated for completed payment events |
+| Company name, address, phone, email, website, VAT ID | Seller details printed on the invoice |
+| Prefix | Customizes the invoice number prefix; the default is INV- |
+| Custom additional notes | Adds your own notes to the invoice |
+
+The invoice builder optionally uses <code>storage/app/public/logo.png</code>. Check [branding](/docs/configuration/branding) and use accurate seller details before enabling the feature.
+
+## Understand the delivery path
+
+<Steps>
+<Step>
+### A payment completes
+The invoice listener handles <code>PaymentEvent</code> and returns unless its payment status is <code>PAID</code>. Merely opening a checkout does not generate an invoice.
+</Step>
+<Step>
+### A queued listener generates the PDF
+With invoice settings enabled, <code>CreateInvoice</code> uses the invoice builder and stores the PDF under <code>storage/app/invoice/USER_ID/YEAR/</code>. The listener implements <code>ShouldQueue</code>, so a working [queue worker](/docs/guides/background-jobs) is part of the workflow.
+</Step>
+<Step>
+### A queued notification sends email
+<code>InvoiceNotification</code> sends a mail message with the PDF attached. Configure and verify [email](/docs/configuration/email), including delivery from a background job.
+</Step>
+</Steps>
+
+## Verify before relying on it
+
+In an isolated test installation, complete a gateway test payment with invoices enabled. Check that the payment becomes paid, an invoice record and PDF are created, and the customer receives the attachment. Test the actual gateway you use; this guide does not claim that every custom extension emits the right event.
+
+If a payment is paid but its invoice is absent, inspect queue failures and Laravel logs for <code>Invoice creation failed after payment completion.</code> If the PDF exists but mail is absent, inspect queued notifications and mail delivery. Keep invoice storage private and include it in your [backup](/docs/guides/backup).
+
+<SourceNote files={["app/Settings/InvoiceSettings.php","app/Listeners/CreateInvoice.php","app/Traits/Invoiceable.php","app/Notifications/InvoiceNotification.php"]} />

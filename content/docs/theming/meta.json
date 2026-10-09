@@ -1,0 +1,11 @@
+{
+  "title": "Build a theme",
+  "pages": [
+    "index",
+    "first-theme",
+    "blade-layouts",
+    "assets",
+    "testing",
+    "troubleshooting"
+  ]
+}
