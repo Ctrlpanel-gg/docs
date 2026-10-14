@@ -99,10 +99,6 @@ a,button,select { -webkit-tap-highlight-color: transparent; }
   --color-fd-muted-foreground: #a1a1aa;
 }
 .docs-content > :first-child { margin-top: 0; }
-/* Push docs sidebar + TOC rails to the viewport edges and widen them. */
-#nd-docs-layout { --fd-layout-width: 100%; }
-@media(min-width:768px){#nd-docs-layout #nd-sidebar{--fd-sidebar-width:300px}}
-@media(min-width:1280px){#nd-docs-layout #nd-toc{--fd-toc-width:280px}}
 .docs-content > :where(h2) { margin-top: 2rem; margin-bottom: 1rem; }
 .docs-content > :where(h3) { margin-top: 1.5rem; margin-bottom: .75rem; }
 
