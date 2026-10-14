@@ -30,7 +30,7 @@ CtrlPanel lets you choose between three CAPTCHA options: reCAPTCHA v2, reCAPTCHA
 ### reCAPTCHA v2 ("I'm not a robot" Checkbox)
 
 The classic CAPTCHA that asks users to check a box and solve image challenges.  
-To get reCAPTCHA v2 keys, go to the reCAPTCHA [admin creation page](https://www.google.com/recaptcha/admin/create), fill in the required details, and select `Challenge (v2)` with the `"I(')m not a robot" Checkbox` option.
+To get reCAPTCHA v2 keys, go to the reCAPTCHA [admin creation page](https://www.google.com/recaptcha/admin/create), fill in the required details, and select `Challenge (v2)` with the `"I'm not a robot" Checkbox` option.
 Once done, you'll see your `site key` and `secret key`. Copy both and enter them in your CtrlPanel settings.
 
 ### reCAPTCHA v3
@@ -105,7 +105,7 @@ To accept live payments through PayPal, you need a business account. Personal ac
 #### Sandbox payments
 
 1. Go to [Paypal Developer Portal](https://developer.paypal.com/dashboard/applications/).
-2. Select **Sandboox** in the top left corner.
+2. Select **Sandbox** in the top left corner.
 3. Click **Create App** button.
 4. Copy your `Client ID` and `Secret key`.
 5. Scroll down to "Webhooks" section.
@@ -238,6 +238,6 @@ After saving, you will get your **Webhook Secret** – keep it secure and never 
 
 ### Mollie
 
-_Unfortunately, we don't have information on how to configure this payment gateway. Know how and want to help? Let us know!_
+Configure the API key and webhook secret as described in the [payment gateways guide](/docs/configuration/payments#mollie), then verify the `/payment/MollieWebhook` callback is reachable over HTTPS before enabling the gateway for customers.
 
 

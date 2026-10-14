@@ -82,7 +82,7 @@ sudo php artisan migrate --seed --force
   <Tab value="To fresh database (after migration)">
     
 Restore your backup:
-> **Double-check that you placed the backup file in the `/var/www/ctrlpanel/` directory, and make sure you're using the correct file name**
+> **Double-check that you placed the backup file in the `/srv/ctrlpanel-backups/` directory, and make sure you're using the correct file name**
 
 ```bash
 # If you use MySQL
@@ -108,7 +108,7 @@ First, create a read only user for the database.
 
 ```bash
 # Create backup directory
-mkdir -p /var/www/ctrlpanel/backups
+mkdir -p /srv/ctrlpanel-backups
 
 # If you use MySQL server
 mysql -u root -p
@@ -128,13 +128,13 @@ Run `crontab -e` and add the following line:
 
 ```bash
 # If you use MySQL server
-0 0 * * * mysqldump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /var/www/ctrlpanel/backups-$(date +\%F).sql
+0 0 * * * mysqldump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /srv/ctrlpanel-backups/backup-$(date +\%F).sql
 
 # if you use MariaDB server
-0 0 * * * mariadb-dump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /var/www/ctrlpanel/backups-$(date +\%F).sql
+0 0 * * * mariadb-dump -u ctrlpanelbackupuser --password=<USE_YOUR_OWN_PASSWORD> --single-transaction --quick --lock-tables=false ctrlpanel > /srv/ctrlpanel-backups/backup-$(date +\%F).sql
 ```
 
-This will create a backup at `/var/www/ctrlpanel/backups-<date>.sql` every day at midnight.
+This will create a backup at `/srv/ctrlpanel-backups/backup-<date>.sql` every day at midnight.
 Every file will have the date when it was made in the filename, so you can also resolve issues that happened a few days ago.
 
 ## Application key
