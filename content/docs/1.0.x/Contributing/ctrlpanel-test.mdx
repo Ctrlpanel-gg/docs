@@ -1,0 +1,53 @@
+---
+title: CtrlPanel Test
+description: ""
+---
+
+
+
+<Callout type="info" title="Info">
+
+
+Please only use CtrlPanel installations that are not modified by plugins/modules/scripts or themes.
+
+</Callout>
+
+
+This repository uses the Playwright framework to provide E2E tests to help developers of the project speed up development and provide a more stable and secure product.    
+If you want to help by adding tests, Playwright has awesome documentation [here](https://playwright.dev/docs/intro). Below are some basics we already took care of so you can start right away.  
+  
+## Setup  
+### Requirements  
+- A set-up version of CtrlPanel with the version you want to test  
+- An admin account & a user account on this panel  
+- Basic knowledge of JS (or TS)
+- NodeJS 18+  
+
+### Instructions
+1: Clone [this](https://github.com/Ctrlpanel-gg/ctrlpanel-tests) repo  
+2: Run `npm install` to install modules  
+3: Run `npx playwright install` to install Playwright browsers  
+4: Rename `.env.example` to `.env`  
+5: Populate `.env` with your data  
+6: You are ready to go  
+  
+## Testing  
+### CLI  
+`npx playwright test`  
+### UI  
+`npx playwright test --ui`  
+
+## Write your own tests
+### Simple rules
+Because you need to be logged in for almost everything, we already took care of this.  
+Playwright tests are loaded by regex matches.    
+To create a test that runs on a user account, name it like so:  
+```shell
+[What is the test testing].[Permissions].[What is this file].js  
+```
+So for example: **server.user.test.js** (Testing servers with a user account, and it's a test)  
+We set up an _admin_ and _user_ test env this way.   
+
+### Make the test
+Playwright comes with a codegen function `npx playwright codegen`.  
+With this it's easy to get the selection of elements you want quickly and then write the test.  

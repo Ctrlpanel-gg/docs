@@ -42,5 +42,11 @@
   "/blog/2026/04/25/understanding-mpl-2.0": "/blog/understanding-mpl-2.0",
   "/docs/Installation/updating": "/docs/updating",
   "/docs/Contributing/donating": "/docs/contributing/donating",
-  "/docs/Installation/getting-started": "/docs/getting-started/install"
+  "/docs/Installation/getting-started": "/docs/getting-started/install",
+  "/docs/0.9.x/Contributing/CTRLPanel%20Test": "/docs/0.9.x/Contributing/ctrlpanel-test",
+  "/docs/0.9.x/Contributing/CTRLPanel Test": "/docs/0.9.x/Contributing/ctrlpanel-test",
+  "/docs/1.0.0/Contributing/CTRLPanel%20Test": "/docs/1.0.0/Contributing/ctrlpanel-test",
+  "/docs/1.0.0/Contributing/CTRLPanel Test": "/docs/1.0.0/Contributing/ctrlpanel-test",
+  "/docs/1.0.x/Contributing/CTRLPanel%20Test": "/docs/1.0.x/Contributing/ctrlpanel-test",
+  "/docs/1.0.x/Contributing/CTRLPanel Test": "/docs/1.0.x/Contributing/ctrlpanel-test"
 }

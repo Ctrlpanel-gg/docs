@@ -214,7 +214,7 @@
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/CTRLPanel Test.md",
-      "url": "/docs/1.0.x/Contributing/CTRLPanel%20Test"
+      "url": "/docs/1.0.x/Contributing/ctrlpanel-test"
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-1.0.x/Contributing/donating.md",
@@ -274,7 +274,7 @@
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/CTRLPanel Test.md",
-      "url": "/docs/1.0.0/Contributing/CTRLPanel%20Test"
+      "url": "/docs/1.0.0/Contributing/ctrlpanel-test"
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-1.0.0/Contributing/donating.md",
@@ -334,7 +334,7 @@
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/CTRLPanel Test.md",
-      "url": "/docs/0.9.x/Contributing/CTRLPanel%20Test"
+      "url": "/docs/0.9.x/Contributing/ctrlpanel-test"
     },
     {
       "source": "migration/docusaurus/versioned_docs/version-0.9.x/Contributing/donating.md",
