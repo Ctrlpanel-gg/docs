@@ -1,8 +1,8 @@
 {
   "title": "Version archive",
   "root": true,
+  "pagesIndex": "index",
   "pages": [
-    "index",
     "Installation",
     "Packages",
     "Contributing",

@@ -1,8 +1,8 @@
 {
   "title": "API Reference",
   "root": true,
+  "pagesIndex": "index",
   "pages": [
-    "index",
     "notifications",
     "product-management",
     "role-management",

@@ -5,7 +5,6 @@ import { DocsTabs as Tabs } from "@/components/docs-tabs";
 import { Cards, Card } from "fumadocs-ui/components/card";
 import { Steps, Step } from "fumadocs-ui/components/steps";
 import { Accordions, Accordion } from "fumadocs-ui/components/accordion";
-import { DocsCard } from "@/components/docs-card";
 import { SourceNote } from "@/components/source-note";
 import { OpenAPIPage } from "@/components/api-page";
 import type { MDXComponents } from "mdx/types";
@@ -17,7 +16,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Callout,
     Cards,
     Card,
-    DocsCard,
     Steps,
     Step,
     Accordions,

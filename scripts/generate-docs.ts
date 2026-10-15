@@ -1,5 +1,5 @@
 import { generateFiles } from "fumadocs-openapi";
-import { readFile, rm, writeFile } from "node:fs/promises";
+import { readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { openapi } from "../lib/openapi";
 
 const output = "./content/docs/api";
@@ -87,5 +87,28 @@ for (const [tag, slugs] of groupSlugs) {
     aliases[`/docs/api/${slug}`] = `/docs/api/${tag}/${slug}`;
 }
 await writeFile(aliasesPath, `${JSON.stringify(aliases, null, 2)}\n`);
+
+// Map every endpoint URL to its HTTP method (plus webhook flag) for the
+// sidebar method badges. Read back from frontmatter so slugs always match.
+const methods: Record<string, { method: string; webhook: boolean }> = {};
+for (const group of await readdir(output)) {
+  if (group === "index.mdx" || group === "meta.json" || group.endsWith(".mdx"))
+    continue;
+  for (const file of await readdir(`${output}/${group}`)) {
+    if (!file.endsWith(".mdx")) continue;
+    const front = await readFile(`${output}/${group}/${file}`, "utf8");
+    const method = front.match(/^ {2}method: ([A-Z]+)$/m)?.[1];
+    const webhook = front.match(/^ {2}webhook: (true|false)$/m)?.[1] === "true";
+    if (method)
+      methods[`/docs/api/${group}/${file.replace(/\.mdx$/, "")}`] = {
+        method,
+        webhook,
+      };
+  }
+}
+await writeFile(
+  "lib/api-methods.json",
+  `${JSON.stringify(methods, null, 2)}\n`,
+);
 
 console.log("Generated API reference from public/openapi/openapi.yaml.");

@@ -5,7 +5,11 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { Root, Folder } from 'fumadocs-core/page-tree';
 import { baseOptions } from '@/lib/layout.shared';
 import { VersionSelect } from '@/components/version-select';
+import { DocsShellContainer } from '@/components/docs-shell';
+import { ApiSidebarItem } from '@/components/api-sidebar-item';
 import manifest from '@/lib/migration-manifest.json';
+
+const sidebarComponents = { Item: ApiSidebarItem };
 
 function containsSection(folder: Folder, base: string): boolean {
   const matches = (url: string) => url.replace(/\/$/, '') === base || url.startsWith(base + '/');
@@ -24,5 +28,5 @@ export function ScopedDocsLayout({ tree, children }: { tree: Root; children: Rea
   }, [tree, pathname]);
   const options = baseOptions();
   const links = options.links?.map(link => 'text' in link && link.text === 'Documentation' && pathname.startsWith('/docs/api') ? { ...link, active: 'url' as const } : link);
-  return <DocsLayout {...options} links={links} tree={activeTree} tabs={false} sidebar={{ banner: <VersionSelect /> }}>{children}</DocsLayout>;
+  return <DocsLayout {...options} links={links} tree={activeTree} tabs={false} slots={{ container: DocsShellContainer }} sidebar={{ banner: <VersionSelect />, components: sidebarComponents }}>{children}</DocsLayout>;
 }

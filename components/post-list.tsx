@@ -2,13 +2,16 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import data from '@/lib/blog-data.json';
 
+const date = (iso: string) =>
+  new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(`${iso}T00:00:00Z`));
+
 export function PostList({ posts = data.posts }: { posts?: typeof data.posts }) {
   return (
     <div className="mt-8">
       {posts.map(post => (
         <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block border-t border-fd-border py-[30px] pr-[45px] pb-[35px] [&>svg]:absolute [&>svg]:top-14 [&>svg]:right-0">
           <div className="flex gap-6 font-mono text-[10px] text-fd-primary">
-            <time>{post.date}</time>
+            <time dateTime={post.date}>{date(post.date)}</time>
             <span>{post.tags.join(' / ')}</span>
           </div>
           <div className="flex items-center gap-2.5">

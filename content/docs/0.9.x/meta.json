@@ -1,8 +1,8 @@
 {
   "title": "Version 0.9.x",
   "root": true,
+  "pagesIndex": "index",
   "pages": [
-    "index",
     "Installation",
     "Contributing",
     "Guides",

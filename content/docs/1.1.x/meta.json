@@ -1,8 +1,8 @@
 {
   "title": "Version 1.1.x",
   "root": true,
+  "pagesIndex": "index",
   "pages": [
-    "index",
     "getting-started",
     "guides",
     "development",

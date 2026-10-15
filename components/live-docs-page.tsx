@@ -2,9 +2,10 @@
 import { DocsPage, type DocsPageProps } from 'fumadocs-ui/layouts/docs/page';
 import type { TOCItemType } from 'fumadocs-core/toc';
 import { useLayoutEffect, useRef, useState } from 'react';
+import { DocsPagePanel, GithubUrlProvider } from '@/components/docs-shell';
 
 /** Keep Fumadocs' native scroll observer attached to the currently rendered tab panels. */
-export function LiveDocsPage({ toc = [], children, ...props }: DocsPageProps) {
+export function LiveDocsPage({ toc = [], githubUrl, children, ...props }: DocsPageProps & { githubUrl?: string }) {
   const article = useRef<HTMLElement>(null);
   const [visibleToc, setVisibleToc] = useState<TOCItemType[]>(toc);
 
@@ -38,5 +39,18 @@ export function LiveDocsPage({ toc = [], children, ...props }: DocsPageProps) {
     };
   }, [toc]);
 
-  return <DocsPage {...props} ref={article} toc={visibleToc}>{children}</DocsPage>;
+  return (
+    <GithubUrlProvider value={githubUrl}>
+      <DocsPage
+        {...props}
+        ref={article}
+        toc={visibleToc}
+        tableOfContent={{ enabled: false }}
+        breadcrumb={{ enabled: false }}
+        slots={{ container: DocsPagePanel }}
+      >
+        {children}
+      </DocsPage>
+    </GithubUrlProvider>
+  );
 }

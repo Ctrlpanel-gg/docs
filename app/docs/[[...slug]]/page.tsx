@@ -1,13 +1,21 @@
-import { LiveDocsPage } from '@/components/live-docs-page';
-import { source } from '@/lib/source';
-import { openapi } from '@/lib/openapi';
-import { OpenAPIPage } from '@/components/api-page';
-import { DocsBody, DocsTitle, DocsDescription } from 'fumadocs-ui/layouts/docs/page';
-import { getMDXComponents } from '@/mdx-components';
-import type { OpenAPIPageProps_Preloaded } from 'fumadocs-openapi/server';
-import { notFound } from 'next/navigation';
+import { LiveDocsPage } from "@/components/live-docs-page";
+import { source } from "@/lib/source";
+import { openapi } from "@/lib/openapi";
+import { OpenAPIPage } from "@/components/api-page";
+import {
+  DocsBody,
+  DocsTitle,
+  DocsDescription,
+} from "fumadocs-ui/layouts/docs/page";
+import { getMDXComponents } from "@/mdx-components";
+import type { OpenAPIPageProps_Preloaded } from "fumadocs-openapi/server";
+import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ slug?: string[] }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug?: string[] }>;
+}) {
   const { slug } = await params;
   const page = source.getPage(slug);
   if (!page) notFound();
@@ -18,17 +26,36 @@ export default async function Page({ params }: { params: Promise<{ slug?: string
     ),
   });
   return (
-    <LiveDocsPage key={page.url} toc={page.data.toc} full={page.data.full} className="gap-6 pt-6 md:pt-8 xl:pt-8">
+    <LiveDocsPage
+      key={page.url}
+      toc={page.data.toc}
+      full={page.data.full}
+      githubUrl={`https://github.com/simbabimba-dev/cpggdocs/blob/main/content/docs/${page.path}`}
+    >
       <header className="flex flex-col gap-3">
-        <DocsTitle className="leading-tight tracking-tight">{page.data.title}</DocsTitle>
-        {page.data.description?.trim() && <DocsDescription className="mb-0 text-base leading-relaxed">{page.data.description}</DocsDescription>}
+        <DocsTitle className="leading-tight tracking-tight">
+          {page.data.title}
+        </DocsTitle>
+        {page.data.description?.trim() && (
+          <DocsDescription className="mb-0 text-base leading-relaxed">
+            {page.data.description}
+          </DocsDescription>
+        )}
       </header>
-      <DocsBody className="docs-content"><Content components={components} /></DocsBody>
+      <DocsBody className="docs-content">
+        <Content components={components} />
+      </DocsBody>
     </LiveDocsPage>
   );
 }
-export function generateStaticParams() { return source.generateParams(); }
-export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }) {
+export function generateStaticParams() {
+  return source.generateParams();
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug?: string[] }>;
+}) {
   const page = source.getPage((await params).slug);
   return { title: page?.data.title, description: page?.data.description };
 }

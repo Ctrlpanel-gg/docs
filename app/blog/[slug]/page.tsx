@@ -18,7 +18,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   return (
     <article className="mx-auto my-[60px] w-full max-w-[790px] px-[30px]">
       <Link className="text-xs text-fd-primary" href="/blog">← All posts</Link>
-      <h1 className="mt-[30px] text-[42px] font-[650] leading-[1.2] tracking-[-1.5px] max-[640px]:text-[34px]">{page.data.title}</h1>
+      <h1 className="text-balance mt-[30px] text-[42px] font-[650] leading-[1.2] tracking-[-1.5px] max-[640px]:text-[34px]">{page.data.title}</h1>
       <p className="mt-5 mb-[45px] text-xs text-fd-muted-foreground">{page.data.description}</p>
       {post?.authors?.length ? (
         <div className="my-3 mb-6 flex flex-wrap gap-2.5">

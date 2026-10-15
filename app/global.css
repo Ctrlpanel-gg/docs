@@ -57,7 +57,30 @@
   --font-mono: "SFMono-Regular", Consolas, monospace;
 }
 
+/* shadcn/ui semantic tokens (used by efferd registry blocks) mapped to brand palette */
+@theme inline {
+  --color-background: var(--color-fd-background);
+  --color-foreground: var(--color-fd-foreground);
+  --color-card: var(--color-fd-card);
+  --color-card-foreground: var(--color-fd-card-foreground);
+  --color-popover: var(--color-fd-popover);
+  --color-popover-foreground: var(--color-fd-popover-foreground);
+  --color-primary: var(--color-fd-primary);
+  --color-primary-foreground: var(--color-fd-primary-foreground);
+  --color-secondary: var(--color-fd-secondary);
+  --color-secondary-foreground: var(--color-fd-secondary-foreground);
+  --color-muted: var(--color-fd-muted);
+  --color-muted-foreground: var(--color-fd-muted-foreground);
+  --color-accent: var(--color-fd-accent);
+  --color-accent-foreground: var(--color-fd-accent-foreground);
+  --color-destructive: var(--color-fd-error);
+  --color-border: var(--color-fd-border);
+  --color-input: var(--color-fd-border);
+  --color-ring: var(--color-fd-ring);
+}
+
 :root {
+  color-scheme: light dark;
   --color-fd-primary: #27a9e1;
   --color-fd-primary-foreground: #323a41;
   --color-fd-background: #fafafa;
@@ -89,45 +112,102 @@
 
 .dark {
   --color-fd-primary: #27a9e1;
-  --color-fd-primary-foreground: #323a41;
-  --color-fd-background: #18181b;
-  --color-fd-card: #232326;
-  --color-fd-muted: #232326;
-  --color-fd-border: #35353a;
+  --color-fd-primary-foreground: #07131a;
+  --color-fd-background: #0d0e11;
+  --color-fd-card: #16171b;
+  --color-fd-muted: #1c1d22;
+  --color-fd-border: #26282e;
 
-  --color-fd-foreground: #f4f5f6;
-  --color-fd-muted-foreground: #a1a1aa;
-  --color-fd-secondary: #27272a;
-  --color-fd-secondary-foreground: #f4f5f6;
-  --color-fd-card-foreground: #f4f5f6;
-  --color-fd-popover: #232326;
-  --color-fd-popover-foreground: #f4f5f6;
-  --color-fd-accent: #303034;
-  --color-fd-accent-foreground: #f4f5f6;
+  --color-fd-foreground: #f2f4f6;
+  --color-fd-muted-foreground: #9aa1ac;
+  --color-fd-secondary: #202227;
+  --color-fd-secondary-foreground: #f2f4f6;
+  --color-fd-card-foreground: #f2f4f6;
+  --color-fd-popover: #16171b;
+  --color-fd-popover-foreground: #f2f4f6;
+  --color-fd-accent: #23252b;
+  --color-fd-accent-foreground: #f2f4f6;
   --color-fd-warning: #fbbf24;
   --color-fd-error: #f87171;
 }
 
 .dark #nd-sidebar {
-  --color-fd-card: #1c1c1f;
-  --color-fd-muted: #232326;
-  --color-fd-secondary: #27272a;
-  --color-fd-muted-foreground: #a1a1aa;
+  --color-fd-card: #16171b;
+  --color-fd-muted: #1c1d22;
+  --color-fd-secondary: #202227;
+  --color-fd-muted-foreground: #9aa1ac;
 }
 
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a,
 button,
 select {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-fd-primary) 30%, transparent);
+  color: var(--color-fd-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-fd-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.dark {
+  color-scheme: dark;
+  scrollbar-color: var(--color-fd-border) transparent;
 }
 
 #nd-nav {
   backdrop-filter: blur(16px);
+}
+
+/* Docs shell: transparent sidebar on the card shell (fumadocs spacious look) */
+#nd-docs-layout {
+  background: var(--color-fd-card);
+}
+#nd-sidebar:not([data-hovered='true']) {
+  background-color: transparent;
+  border-inline-end-width: 0;
+}
+/* collapsed-sidebar floating pill replaced by header controls */
+#nd-docs-layout [data-sidebar-panel] {
+  display: none;
+}
+
+/* Panel TOC + header dropdown visibility driven by panel width */
+#nd-panel-toc {
+  display: none;
+}
+#nd-toc-dropdown {
+  display: none;
+}
+@media (min-width: 768px) {
+  @container (min-width: 64rem) {
+    #nd-panel-toc {
+      display: flex;
+    }
+  }
+  @container (max-width: 63.99rem) {
+    #nd-toc-dropdown {
+      display: block;
+    }
+  }
+}
+@media print {
+  #nd-panel-toc,
+  #nd-toc-dropdown {
+    display: none !important;
+  }
 }
 
 /* Docs content spacing */
@@ -189,6 +269,29 @@ select {
 }
 .api-endpoint code {
   overflow-wrap: anywhere;
+}
+
+/* Landing hero entrance: one authored sequence */
+@media (prefers-reduced-motion: no-preference) {
+  .landing-enter {
+    animation: landing-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .landing-enter:nth-of-type(2) {
+    animation-delay: 0.12s;
+  }
+}
+
+@keyframes landing-rise {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,7 +7,7 @@ export default async function Tag({ params }: { params: Promise<{ tag: string }>
   const { tag } = await params;
   return (
     <main className="mx-auto my-10 mb-[60px] w-full max-w-[1050px] px-[30px]">
-      <h1 className="mb-3 text-[58px] font-semibold leading-[1.1] tracking-[-2px] max-[640px]:text-[42px]">{tag}</h1>
+      <h1 className="text-balance mb-3 text-[58px] font-semibold leading-[1.1] tracking-[-2px] max-[640px]:text-[42px]">{tag}</h1>
       <PostList posts={data.posts.filter(p => p.tags.includes(tag))} />
     </main>
   );

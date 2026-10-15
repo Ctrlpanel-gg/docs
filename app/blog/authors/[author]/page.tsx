@@ -17,7 +17,7 @@ export default async function Author({ params }: { params: Promise<{ author: str
       <div className="my-3 mb-[30px] flex items-center gap-5">
         <img src={author.image_url} alt={author.name} className="size-20 rounded-full border-2 border-fd-border object-cover" />
         <div>
-          <h1 className="text-[58px] font-semibold leading-[1.1] tracking-[-2px] max-[640px]:text-[42px]">{author.name}</h1>
+          <h1 className="text-balance text-[58px] font-semibold leading-[1.1] tracking-[-2px] max-[640px]:text-[42px]">{author.name}</h1>
           <div className="mt-1 text-xs leading-[1.3] text-fd-muted-foreground">{author.title}</div>
           <div className="mt-2 flex gap-3.5 text-[13px]">
             {socials.github ? <a href={`https://github.com/${socials.github}`} target="_blank" rel="noreferrer noopener" className="text-fd-primary no-underline hover:underline">GitHub</a> : null}
