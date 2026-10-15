@@ -2,4 +2,26 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import data from '@/lib/blog-data.json';
 
-export function PostList({posts=data.posts}:{posts?:typeof data.posts}){return <div className="posts">{posts.map(post=><Link className="post-row" key={post.slug} href={`/blog/${post.slug}`}><div><time>{post.date}</time><span>{post.tags.join(' / ')}</span></div><div className="post-row-head"><div className="blog-author-stack">{post.authors.map(a=><img key={a.name} src={a.image_url} alt={a.name} className="blog-avatar-sm" loading="lazy"/>)}</div><h2>{post.title}</h2></div><p className="post-excerpt">{post.excerpt?post.excerpt:post.authors.map(a=>a.name).join(', ')}</p><ArrowUpRight size={24}/></Link>)}</div>}
+export function PostList({ posts = data.posts }: { posts?: typeof data.posts }) {
+  return (
+    <div className="mt-8">
+      {posts.map(post => (
+        <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block border-t border-fd-border py-[30px] pr-[45px] pb-[35px] [&>svg]:absolute [&>svg]:top-14 [&>svg]:right-0">
+          <div className="flex gap-6 font-mono text-[10px] text-fd-primary">
+            <time>{post.date}</time>
+            <span>{post.tags.join(' / ')}</span>
+          </div>
+          <div className="flex items-center gap-2.5">
+            <div className="mr-3.5 inline-flex align-middle">
+              {post.authors.map(a => (
+                <img key={a.name} src={a.image_url} alt={a.name} loading="lazy" className="size-[26px] rounded-full border-2 border-fd-background object-cover [&:not(:first-child)]:-ml-2" />
+              ))}
+            </div>
+            <h2 className="my-3 text-[28px] font-[650] tracking-[-0.8px] group-hover:text-fd-primary">{post.title}</h2>
+          </div>
+          <p className="mt-2 text-base leading-relaxed text-fd-muted-foreground line-clamp-3 max-w-[60ch]">{post.excerpt ? post.excerpt : post.authors.map(a => a.name).join(', ')}</p>
+        </Link>
+      ))}
+    </div>
+  );
+}

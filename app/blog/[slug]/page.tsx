@@ -4,10 +4,42 @@ import { notFound } from 'next/navigation';
 import { DocsBody } from 'fumadocs-ui/layouts/docs/page';
 import data from '@/lib/blog-data.json';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
 
-type Author = (typeof data.authors)[keyof typeof data.authors];
+type AuthorKey = keyof typeof data.authors;
+const authorKeyFor = (name: string) => (Object.keys(data.authors) as AuthorKey[]).find(k => data.authors[k].name === name);
 
-export default async function Post({params}:{params:Promise<{slug:string}>}){const _params=await params;const page=blogSource.getPage([_params.slug]);if(!page)notFound();const Content=page.data.body;const post=data.posts.find(p=>p.slug===_params.slug);return <article className="blog-article"><Link className="back-link" href="/blog">← All posts</Link><h1>{page.data.title}</h1><p className="article-meta">{page.data.description}</p>{post?.authors?.length?<div className="blog-authors">{post.authors.map(a=><Link key={a.name} href={`/blog/authors/${Object.keys(data.authors).find(k=>data.authors[k as keyof typeof data.authors].name===a.name)??'#'}`} className="blog-author"><img src={a.image_url} alt={a.name} className="blog-avatar" loading="lazy"/><span className="blog-author-text"><span className="blog-author-name">{a.name}</span><small className="blog-author-role">{data.authors[((Object.keys(data.authors).find(k=>data.authors[k as keyof typeof data.authors].name===a.name)??'')) as keyof typeof data.authors]?.title}</small></span></Link>)}</div>:null}<DocsBody><Content components={getMDXComponents()}/></DocsBody></article>}
-export function generateStaticParams(){return blogSource.getPages().map(p=>({slug:p.slugs[0]}));}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){return {title:blogSource.getPage([(await params).slug])?.data.title};}
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = blogSource.getPage([slug]);
+  if (!page) notFound();
+  const Content = page.data.body;
+  const post = data.posts.find(p => p.slug === slug);
+
+  return (
+    <article className="mx-auto my-[60px] w-full max-w-[790px] px-[30px]">
+      <Link className="text-xs text-fd-primary" href="/blog">← All posts</Link>
+      <h1 className="mt-[30px] text-[42px] font-[650] leading-[1.2] tracking-[-1.5px] max-[640px]:text-[34px]">{page.data.title}</h1>
+      <p className="mt-5 mb-[45px] text-xs text-fd-muted-foreground">{page.data.description}</p>
+      {post?.authors?.length ? (
+        <div className="my-3 mb-6 flex flex-wrap gap-2.5">
+          {post.authors.map(a => {
+            const key = authorKeyFor(a.name);
+            return (
+              <Link key={a.name} href={`/blog/authors/${key ?? '#'}`} className="inline-flex items-center gap-2 text-[13px] text-fd-muted-foreground no-underline transition-colors hover:text-fd-primary">
+                <img src={a.image_url} alt={a.name} loading="lazy" className="size-8 rounded-full border border-fd-border object-cover" />
+                <span className="flex flex-col leading-[1.2]">
+                  <span className="text-[15px] font-bold text-fd-foreground">{a.name}</span>
+                  <small className="mt-0.5 text-xs font-normal text-fd-muted-foreground">{key ? data.authors[key as AuthorKey].title : undefined}</small>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      ) : null}
+      <DocsBody><Content components={getMDXComponents()} /></DocsBody>
+    </article>
+  );
+}
+
+export function generateStaticParams() { return blogSource.getPages().map(p => ({ slug: p.slugs[0] })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { return { title: blogSource.getPage([(await params).slug])?.data.title }; }
