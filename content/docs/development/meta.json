@@ -1,10 +1,10 @@
 {
-  "title": "Develop on CtrlPanel",
+  "title": "Development",
   "pages": [
     "index",
-    "architecture",
     "install",
     "upgrade",
-    "back-to-release"
+    "back-to-release",
+    "..."
   ]
 }

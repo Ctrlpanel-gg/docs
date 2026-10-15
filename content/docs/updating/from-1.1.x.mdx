@@ -1,44 +1,108 @@
 ---
-title: "Upgrade 1.1.x to 1.2.0"
-description: "Review the changes that need operator attention before following the runbook."
+title: Updating from 1.1.x
+description: ""
 ---
 
-<Callout type="error" title="Rehearse and back up before changing versions">
-This path changes code, settings, and database state. Preserve a matching database/files/key backup and test restoration. A code-only rollback is not a complete recovery after migrations.
+
+
+
+<Callout type="info" title="Info">
+
+This guide is for updates 1.1.x -> 1.2.x
+
+If you want to upgrade from version 1.2.x to 1.2.x, please follow [1.2.x](/docs/updating/from-1.2.x) update guide.
 </Callout>
 
-## Before deployment
 
-Complete [preflight](/docs/updating/preflight), review the [1.2.0 release notes](https://github.com/Ctrlpanel-gg/panel/releases/tag/1.2.0), and verify the target's PHP/Composer requirements. Compare custom extensions, permission configuration, and copied theme layouts against the 1.2.0 source.
 
-## Gateway configuration changed
+<Callout type="error" title="Danger">
 
-The new release includes provider-specific webhook configuration:
+Always backup your database and any code changes before updating! It's better to not need them, than to lose everything when you do. We've explained how to do that [here](/docs/guides/backup).
 
-| Gateway | Review |
-| --- | --- |
-| PayPal | Production and sandbox webhook IDs |
-| Stripe | Signing secret configuration and expected webhook events |
-| Mollie | Webhook secret/token configuration |
-| MercadoPago | Webhook secret configuration |
+Without a backup, you won't be able to roll back without losing all your data.
+</Callout>
 
-Recheck the [payment configuration](/docs/configuration/payments) and exercise each configured gateway in staging. Do not assume credentials from the older flow automatically cover the new callback verification.
 
-## Check credits and prices
+## Enable Maintenance Mode
 
-CurrencyHelper stores application values in integer thousandths and formats them for display. Verify initial credits, verification/referral/partner rewards, product minimum credits/prices, voucher amounts, and coupon values after the upgrade. Check both the UI and API behavior where your integrations depend on it; do not apply a blanket multiplier to the database based on a display symptom.
+```bash
+cd /var/www/ctrlpanel
+php artisan down
+```
 
-## Run the deployment procedure
+## Pulling the New Files
 
-Use the [controlled update runbook](/docs/updating/runbook) with the reviewed 1.2.0 tag. The original upgrade guidance also asks operators to open the User settings category and save after clearing settings caches; preserve that acceptance step, verify the displayed values, and then retest normal credit calculations.
 
-## Acceptance checks
+<Callout type="warn" title="Warning">
 
-- Administrator and ordinary-user accounts can sign in.
-- Custom themes and copied layouts still render and expose required forms.
-- Extension routes and settings are present under the intended permissions.
-- Server ordering, renewal/suspension, and scheduled billing work in the rehearsed test environment.
-- Gateway sandbox success/pending/cancellation and repeated callbacks behave correctly.
-- Numeric values match the expected display and internal representation.
 
-<SourceNote files={["app/Helpers/CurrencyHelper.php","app/Extensions/PaymentGateways/PayPal/PayPalSettings.php","app/Extensions/PaymentGateways/Stripe/StripeSettings.php","app/Extensions/PaymentGateways/Mollie/MollieSettings.php","app/Extensions/PaymentGateways/MercadoPago/MercadoPagoSettings.php"]} />
+This release includes a refactor of payment gateways. Now you need to add a Webhook ID for PayPal and add new events to Stripe Webhook for correct payment processing. You can find gateway configuration guides [here](/docs/getting-started/payment-gateways)
+
+Also, please double-check referral and partner rewards, email/discord confirmation rewards, initial credits, product prices, voucher and coupon values.
+
+</Callout>
+
+
+```bash
+git stash
+git pull
+chmod -R 755 /var/www/ctrlpanel
+```
+
+## Update Dependencies
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+## Updating the Database
+
+```bash
+php artisan migrate --seed --force
+```
+
+## Clear Compiled Template Cache
+
+```bash
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan config:clear
+php artisan settings:clear-cache
+```
+
+## Rebuild Settings Cache via UI
+
+After clearing caches, open your application Settings, navigate to the User tab, and click Save. This refreshes the settings cache for normal credit calculation runtime behavior.
+
+## Set Permissions
+
+```bash
+# If using NGINX or Apache (not on CentOS):
+chown -R www-data:www-data /var/www/ctrlpanel/
+
+# If using NGINX on CentOS:
+chown -R nginx:nginx /var/www/ctrlpanel/
+
+# If using Apache on CentOS
+chown -R apache:apache /var/www/ctrlpanel/
+```
+
+## Restarting Queue Workers
+
+After every update, you should restart the queue worker to ensure that the new code is loaded in and used.
+
+```bash
+php artisan queue:restart
+```
+
+## Disable Maintenance Mode
+
+```bash
+php artisan up
+```
+
+## Disclaimer
+
+If you notice any bugs 🐛 or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/CtrlPanel-gg/panel/issues/new/choose).<br /> **For any major security risk, create** [GitHub vulnerability report](https://github.com/Ctrlpanel-gg/panel/security/advisories/new). Avoid discussing vulnerabilities in public chats, and also do not create reports on public trackers!
+

@@ -1,0 +1,11 @@
+{
+  "title": "Role Management",
+  "description": "",
+  "pages": [
+    "list-all-roles",
+    "create-role",
+    "get-role-details",
+    "delete-role",
+    "update-role"
+  ]
+}

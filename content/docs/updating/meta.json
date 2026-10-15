@@ -1,11 +1,9 @@
 {
-  "title": "Update safely",
+  "title": "Updating",
   "pages": [
     "index",
-    "preflight",
-    "runbook",
-    "from-1.1.x",
     "from-1.2.x",
-    "recovery"
+    "from-1.1.x",
+    "..."
   ]
 }

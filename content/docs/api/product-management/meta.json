@@ -1,0 +1,11 @@
+{
+  "title": "Product Management",
+  "description": "",
+  "pages": [
+    "list-all-products",
+    "create-product",
+    "get-product-details",
+    "delete-product",
+    "update-product"
+  ]
+}

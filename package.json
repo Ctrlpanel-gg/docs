@@ -10,19 +10,22 @@
     "serve": "bun scripts/serve.ts",
     "typecheck": "bunx --bun tsc --noEmit",
     "migrate": "bun scripts/migrate.ts",
+    "generate:docs": "bun scripts/generate-docs.ts",
     "postinstall": "fumadocs-mdx",
     "gg:run": "MESSAGE=updated bun scripts/gg/repackage.ts"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "fumadocs-core": "16.16.2",
+    "fumadocs-mdx": "15.4.6",
+    "fumadocs-openapi": "12.4.2",
+    "fumadocs-ui": "16.16.2",
+    "json-schema-typed": "^8.0.2",
+    "lucide-react": "1.52.0",
     "next": "16.4.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "fumadocs-core": "16.16.2",
-    "fumadocs-ui": "16.16.2",
-    "fumadocs-mdx": "15.4.6",
-    "lucide-react": "1.52.0",
     "tailwindcss": "4.3.3",
-    "@tailwindcss/postcss": "4.3.3",
     "yaml": "2.9.1"
   },
   "devDependencies": {

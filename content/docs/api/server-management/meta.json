@@ -1,0 +1,14 @@
+{
+  "title": "Server Management",
+  "description": "",
+  "pages": [
+    "list-all-servers",
+    "create-server",
+    "get-server-details",
+    "delete-server",
+    "update-server",
+    "update-server-resources",
+    "suspend-server",
+    "unsuspend-server"
+  ]
+}

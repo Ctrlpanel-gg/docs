@@ -1,12 +1,11 @@
 {
-  "title": "Operate your panel",
+  "title": "Guides",
   "pages": [
     "index",
-    "backup",
-    "background-jobs",
     "migration",
+    "backup",
     "themes",
-    "troubleshooting",
-    "uninstall"
+    "uninstall",
+    "..."
   ]
 }

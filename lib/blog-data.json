@@ -30,7 +30,8 @@
       ],
       "tags": [
         "guides"
-      ]
+      ],
+      "excerpt": "With the release of 1.2.0, CtrlPanel moves from AGPL 3.0 to the Mozilla Public License 2.0. This post covers what that means for everyone - users, addon and theme developers, and contributors."
     },
     {
       "title": "CtrlPanel 1.2.0 is here!",
@@ -71,7 +72,8 @@
       ],
       "tags": [
         "releases"
-      ]
+      ],
+      "excerpt": "After nearly 10 months of development, we are ready to present version 1.2.0 as a stable release."
     }
   ],
   "authors": {

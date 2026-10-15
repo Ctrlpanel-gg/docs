@@ -1,7 +1,10 @@
 import { LiveDocsPage } from '@/components/live-docs-page';
 import { source } from '@/lib/source';
+import { openapi } from '@/lib/openapi';
+import { OpenAPIPage } from '@/components/api-page';
 import { DocsBody, DocsTitle, DocsDescription } from 'fumadocs-ui/layouts/docs/page';
 import { getMDXComponents } from '@/mdx-components';
+import type { OpenAPIPageProps_Preloaded } from 'fumadocs-openapi/server';
 import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: { params: Promise<{ slug?: string[] }> }) {
@@ -9,13 +12,18 @@ export default async function Page({ params }: { params: Promise<{ slug?: string
   const page = source.getPage(slug);
   if (!page) notFound();
   const Content = page.data.body;
+  const components = getMDXComponents({
+    OpenAPIPage: async (props: OpenAPIPageProps_Preloaded) => (
+      <OpenAPIPage {...await openapi.preloadOpenAPIPage(page)} {...props} />
+    ),
+  });
   return (
     <LiveDocsPage key={page.url} toc={page.data.toc} full={page.data.full} className="gap-6 pt-6 md:pt-8 xl:pt-8">
       <header className="flex flex-col gap-3">
         <DocsTitle className="leading-tight tracking-tight">{page.data.title}</DocsTitle>
         {page.data.description?.trim() && <DocsDescription className="mb-0 text-base leading-relaxed">{page.data.description}</DocsDescription>}
       </header>
-      <DocsBody className="docs-content"><Content components={getMDXComponents()} /></DocsBody>
+      <DocsBody className="docs-content"><Content components={components} /></DocsBody>
     </LiveDocsPage>
   );
 }

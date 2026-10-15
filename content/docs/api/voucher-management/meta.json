@@ -1,0 +1,11 @@
+{
+  "title": "Voucher Management",
+  "description": "",
+  "pages": [
+    "list-all-vouchers",
+    "create-voucher",
+    "get-voucher-details",
+    "delete-voucher",
+    "update-voucher"
+  ]
+}

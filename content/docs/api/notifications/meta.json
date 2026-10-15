@@ -1,0 +1,12 @@
+{
+  "title": "Notifications",
+  "description": "",
+  "pages": [
+    "list-user-notifications",
+    "clear-all-user-notifications",
+    "get-notification-details",
+    "delete-single-notification",
+    "send-notification-to-users",
+    "send-notification-to-everyone"
+  ]
+}

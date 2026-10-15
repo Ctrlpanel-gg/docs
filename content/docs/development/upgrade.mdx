@@ -1,43 +1,87 @@
 ---
-title: Updating a development checkout
-description: Keep unreleased work isolated and review schema changes before updating.
+title: Update to development version
+description: ""
 ---
 
-<Callout type="warn" title="Development builds are for an isolated environment">
-This is not the production upgrade path. Use a separate database, test Pterodactyl resources, and sandbox integrations. Unreleased code can change between commits.
+
+
+
+<Callout type="error" title="Danger">
+
+Always backup your database and any code changes before updating! It's better to not need them, than to lose everything when you do. We've explained how to do that [here](/docs/guides/backup).
+
+Without a backup, you won't be able to roll back without losing all your data.
 </Callout>
 
-## Review before fetching changes
 
-Record the starting commit, local edits, and current database state. Commit or otherwise preserve your work, and make a matching backup. Compare the new development commits and migrations before applying them.
+## Enable Maintenance Mode
 
-~~~bash
-git status --short
-git log -1 --oneline
-git fetch origin development
-~~~
+```bash
+cd /var/www/ctrlpanel
+php artisan down
+```
 
-Choose whether your working branch should merge or rebase those changes according to your own contribution workflow. A fork with local commits is not safely updated by blindly switching branches and pulling.
+## Switching to development branch
 
-## Refresh the development environment
+```bash
+git checkout development
+```
 
-After integrating the reviewed code, install its locked dependencies, rebuild the relevant frontend bundle, and apply the reviewed migrations to the isolated database.
+## Pulling the New Files
 
-~~~bash
-composer install
-bun install
-bun run build:default
-php artisan migrate
+```bash
+git stash
+git pull
+chmod -R 755 /var/www/ctrlpanel
+```
+
+## Update Dependencies
+
+```bash
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+## Updating the Database
+
+```bash
+php artisan migrate --seed --force
+```
+
+## Clear Compiled Template Cache
+
+```bash
 php artisan view:clear
 php artisan config:clear
-php artisan settings:clear-cache
+```
+
+## Set Permissions
+
+```bash
+# If using NGINX or Apache (not on CentOS):
+chown -R www-data:www-data /var/www/ctrlpanel/
+
+# If using NGINX on CentOS:
+chown -R nginx:nginx /var/www/ctrlpanel/
+
+# If using Apache on CentOS
+chown -R apache:apache /var/www/ctrlpanel/
+```
+
+## Restarting Queue Workers
+
+After every update, you should restart the queue worker to ensure that the new code is loaded in and used.
+
+```bash
 php artisan queue:restart
-~~~
+```
 
-Inspect failures before continuing. Use the source commit's own requirements and build scripts; do not assume every development commit has the same requirements as 1.2.0.
+## Disable Maintenance Mode
 
-## Before submitting or testing a release
+```bash
+php artisan up
+```
 
-Run the tests relevant to your changes, exercise the affected user workflows, and inspect the deployment with development hot servers stopped. Follow the upstream contribution process for the intended branch.
+## Disclaimer
 
-<SourceNote files={[".github/CONTRIBUTING.md","composer.json","package.json","app/Console/Kernel.php"]} />
+If you notice any bugs 🐛 or would like something to be improved or added, let us know by making a [GitHub Issue](https://github.com/CtrlPanel-gg/panel/issues/new/choose).<br /> **For any major security risk, create** [GitHub vulnerability report](https://github.com/Ctrlpanel-gg/panel/security/advisories/new). Avoid discussing vulnerabilities in public chats, and also do not create reports on public trackers!
+

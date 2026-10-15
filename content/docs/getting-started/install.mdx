@@ -214,7 +214,7 @@ apt install certbot -y
 apt install python3-certbot-nginx -y
 ```
 
-Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
+Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command below. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
 
 ```bash
 certbot certonly --nginx -d YOUR.DOMAIN.HERE
@@ -222,7 +222,7 @@ certbot certonly --nginx -d YOUR.DOMAIN.HERE
 
 It will save all certificates to `/etc/letsencrypt/live/YOUR.DOMAIN.HERE/`.
 
-Now that SSL is ready to be used, let's set up NGINX. To do so, run the following command to get rid of NGINX's default configuration and to avoid any other errors.
+Now that SSL is ready to be used, let's setup NGINX. To do so, run the following command below to get rid of NGINX's default configuration and to avoid any other errors.
 
 ```bash
 rm /etc/nginx/sites-enabled/default
@@ -236,7 +236,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/nginx/sites-available/ctrlpanel.conf"
 server {
@@ -325,7 +325,7 @@ systemctl restart nginx
   </Tab>
   <Tab value="Nginx Without SSL">
     
-Before we set up the configuration, we must delete NGINX's example configuration. To do so, run the following command.
+Before we setup the configuration, we must delete NGINX's example configuration. To do so, run the following command below.
 
 ```bash
 rm /etc/nginx/sites-enabled/default
@@ -337,7 +337,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/nginx/sites-available/ctrlpanel.conf"
 server {
@@ -405,7 +405,7 @@ systemctl restart nginx
   </Tab>
   <Tab value="Apache With SSL">
     
-Before we set up the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
 
 ```bash
 a2dissite 000-default.conf
@@ -417,7 +417,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/apache2/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/apache2/sites-available/ctrlpanel.conf"
 <VirtualHost *:80>
@@ -465,7 +465,7 @@ systemctl restart apache2
   </Tab>
   <Tab value="Apache Without SSL">
     
-Before we set up the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
 
 ```bash
 a2dissite 000-default.conf
@@ -477,7 +477,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/apache2/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/apache2/sites-available/ctrlpanel.conf"
 <VirtualHost *:80>
@@ -773,7 +773,7 @@ apt install certbot -y
 apt install python3-certbot-nginx -y
 ```
 
-Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
+Once the installation is complete, you now need to generate the SSL certificates. To do so, run the following command below. Replace any `YOUR.DOMAIN.HERE` placeholders with the domain you're using for your Ctrlpanel setup.
 
 ```bash
 certbot certonly --nginx -d YOUR.DOMAIN.HERE
@@ -781,7 +781,7 @@ certbot certonly --nginx -d YOUR.DOMAIN.HERE
 
 It will save all certificates to `/etc/letsencrypt/live/YOUR.DOMAIN.HERE/`.
 
-Now that SSL is ready to be used, let's set up NGINX. To do so, run the following command to get rid of NGINX's default configuration and to avoid any other errors.
+Now that SSL is ready to be used, let's setup NGINX. To do so, run the following command below to get rid of NGINX's default configuration and to avoid any other errors.
 
 ```bash
 rm /etc/nginx/sites-enabled/default
@@ -795,7 +795,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/nginx/sites-available/ctrlpanel.conf"
 server {
@@ -884,7 +884,7 @@ systemctl restart nginx
   </Tab>
   <Tab value="Nginx Without SSL">
     
-Before we set up the configuration, we must delete NGINX's example configuration. To do so, run the following command.
+Before we setup the configuration, we must delete NGINX's example configuration. To do so, run the following command below.
 
 ```bash
 rm /etc/nginx/sites-enabled/default
@@ -896,7 +896,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/nginx/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/nginx/sites-available/ctrlpanel.conf"
 server {
@@ -964,7 +964,7 @@ systemctl restart nginx
   </Tab>
   <Tab value="Apache With SSL">
     
-Before we set up the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
 
 ```bash
 a2dissite 000-default.conf
@@ -976,7 +976,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/apache2/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/apache2/sites-available/ctrlpanel.conf"
 <VirtualHost *:80>
@@ -1024,7 +1024,7 @@ systemctl restart apache2
   </Tab>
   <Tab value="Apache Without SSL">
     
-Before we set up the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
+Before we setup the configuration, we have to delete Apache's default configuration. Run the command below to delete it.
 
 ```bash
 a2dissite 000-default.conf
@@ -1036,7 +1036,7 @@ Once done, we now have to open the NGINX configuration file. This depends on you
 nano /etc/apache2/sites-available/ctrlpanel.conf
 ```
 
-Paste the configuration below into that file. Replace `YOUR.DOMAIN.HERE` with your CtrlPanel domain.
+There, you want to paste in the configuration which is stated below. Be sure to change any `YOUR.DOMAIN.HERE` placeholders with your Ctrlpanel setup.
 
 ```ini title="/etc/apache2/sites-available/ctrlpanel.conf"
 <VirtualHost *:80>

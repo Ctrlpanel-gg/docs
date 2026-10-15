@@ -1,0 +1,15 @@
+{
+  "title": "User Management",
+  "description": "",
+  "pages": [
+    "list-all-users",
+    "create-user",
+    "get-user-details",
+    "delete-user",
+    "update-user",
+    "increment-user-balance-or-server-limit",
+    "decrement-user-balance-or-server-limit",
+    "suspend-user",
+    "unsuspend-user"
+  ]
+}

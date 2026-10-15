@@ -2,15 +2,11 @@
   "title": "Documentation",
   "pages": [
     "index",
-    "overview",
     "getting-started",
-    "configuration",
     "guides",
-    "updating",
-    "theming",
-    "extensions",
     "development",
     "contributing",
+    "updating",
     "..."
   ]
 }

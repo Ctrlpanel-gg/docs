@@ -1,11 +1,10 @@
 {
-  "title": "Install & get started",
+  "title": "Getting started",
   "pages": [
     "index",
-    "requirements",
     "install",
     "basic-configuration",
-    "first-run",
-    "docker"
+    "payment-gateways",
+    "..."
   ]
 }
