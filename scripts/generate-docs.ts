@@ -11,6 +11,22 @@ const kebab = (value: string) =>
     .replace(/[\s_]+/g, "-")
     .toLowerCase();
 
+// Intro copy for each tag's index page. Verified against the spec's request
+// bodies (roles: name/color/power/permissions, vouchers: code/credits/uses/…).
+const groupIntros: Record<string, string> = {
+  notifications:
+    "Send notifications to individual users or to everyone, and manage existing notifications.",
+  "product-management":
+    "Manage store products: pricing, resource allocation, and billing periods.",
+  "role-management": "Manage roles: name, color, power, and permissions.",
+  "server-management":
+    "Create, update, and delete servers, adjust their resources, and suspend or unsuspend them.",
+  "user-management":
+    "Create, update, and delete users, adjust their balances and server limits, and suspend or unsuspend accounts.",
+  "voucher-management":
+    "Manage vouchers: codes, credit amounts, usage limits, and expiry.",
+};
+
 await rm(output, { recursive: true, force: true });
 
 await generateFiles({
@@ -27,22 +43,70 @@ await generateFiles({
   },
 });
 
-// Mark the section as its own docs tree so the sidebar scopes to /docs/api.
+// Mark the section as its own docs tree so the sidebar scopes to /docs/api,
+// and point each folder at its index page instead of a bare list.
 const meta = JSON.parse(await readFile(`${output}/meta.json`, "utf8"));
 await writeFile(
   `${output}/meta.json`,
-  `${JSON.stringify({ title: "API Reference", root: true, pages: ["index", ...meta.pages] }, null, 2)}\n`,
+  `${JSON.stringify(
+    { title: "API Reference", root: true, pagesIndex: "index", pages: meta.pages },
+    null,
+    2,
+  )}\n`,
 );
 
-// Collect the generated tags and their slugs for the legacy redirects below.
+// Collect tags, link folders to their index page, and gather per-endpoint
+// data (title + method + path) for the index cards and sidebar badges.
 const groupSlugs = new Map<string, string[]>();
+const endpoints = new Map<
+  string,
+  { slug: string; title: string; method: string; path: string }[]
+>();
+const methods: Record<string, { method: string; webhook: boolean }> = {};
 for (const tag of meta.pages as string[]) {
-  const folder = JSON.parse(
-    await readFile(`${output}/${tag}/meta.json`, "utf8"),
+  const dir = `${output}/${tag}`;
+  const folder = JSON.parse(await readFile(`${dir}/meta.json`, "utf8"));
+  await writeFile(
+    `${dir}/meta.json`,
+    `${JSON.stringify({ title: folder.title, pagesIndex: "index", ...folder }, null, 2)}\n`,
   );
-  groupSlugs.set(
-    tag,
-    (folder.pages as string[]).map((page) => kebab(page)),
+  const pages = folder.pages as string[];
+  groupSlugs.set(tag, pages.map((page) => kebab(page)));
+
+  const list: { slug: string; title: string; method: string; path: string }[] = [];
+  for (const slug of pages) {
+    const front = await readFile(`${dir}/${slug}.mdx`, "utf8");
+    const method = front.match(/^ {2}method: ([A-Z]+)$/m)?.[1];
+    const webhook = front.match(/^ {2}webhook: (true|false)$/m)?.[1] === "true";
+    const title = front.match(/^title: (.+)$/m)?.[1].trim() ?? slug;
+    const path = front.match(/operations=\{\[\{"path":"([^"]+)"/)?.[1];
+    if (method) {
+      list.push({ slug, title, method, path: path ?? "" });
+      methods[`/docs/api/${tag}/${slug}`] = { method, webhook };
+    }
+  }
+  endpoints.set(tag, list);
+
+  const cards = list
+    .map(
+      (e) =>
+        `  <Card href="/docs/api/${tag}/${e.slug}" title="${e.title}">\n` +
+        `    \`${e.method} ${e.path}\`\n` +
+        `  </Card>`,
+    )
+    .join("\n");
+  const intro = groupIntros[tag] ?? "";
+  await writeFile(
+    `${dir}/index.mdx`,
+    `---
+title: ${JSON.stringify(folder.title)}
+description: ${JSON.stringify(intro)}
+---
+
+<Cards>
+${cards}
+</Cards>
+`,
   );
 }
 
@@ -53,7 +117,30 @@ title: API Reference
 description: Integrate your applications with CtrlPanel.
 ---
 
+import { Bell, Package, ShieldCheck, Server, Users, Ticket } from 'lucide-react';
+
 The CtrlPanel REST API covers users, servers, products, roles, vouchers and notifications. Every endpoint is documented here from the OpenAPI specification.
+
+<Cards>
+  <Card href="/docs/api/user-management" title="User Management" icon={<Users />}>
+    Create, update, suspend, and delete users, plus balances and server limits.
+  </Card>
+  <Card href="/docs/api/server-management" title="Server Management" icon={<Server />}>
+    Create, update, suspend, and delete servers, including resources.
+  </Card>
+  <Card href="/docs/api/product-management" title="Product Management" icon={<Package />}>
+    Create, update, and delete store products.
+  </Card>
+  <Card href="/docs/api/role-management" title="Role Management" icon={<ShieldCheck />}>
+    Create, update, and delete roles.
+  </Card>
+  <Card href="/docs/api/voucher-management" title="Voucher Management" icon={<Ticket />}>
+    Create, update, and delete vouchers.
+  </Card>
+  <Card href="/docs/api/notifications" title="Notifications" icon={<Bell />}>
+    Send, list, read, and delete user notifications.
+  </Card>
+</Cards>
 
 ## Authentication
 
@@ -66,7 +153,7 @@ Accept: application/json
 
 The base URL is your own panel installation.
 
-[Download the complete OpenAPI specification](/openapi/openapi.yaml).
+<a href="/openapi/openapi.yaml" download>Download the complete OpenAPI specification</a>.
 `,
 );
 
@@ -88,24 +175,8 @@ for (const [tag, slugs] of groupSlugs) {
 }
 await writeFile(aliasesPath, `${JSON.stringify(aliases, null, 2)}\n`);
 
-// Map every endpoint URL to its HTTP method (plus webhook flag) for the
-// sidebar method badges. Read back from frontmatter so slugs always match.
-const methods: Record<string, { method: string; webhook: boolean }> = {};
-for (const group of await readdir(output)) {
-  if (group === "index.mdx" || group === "meta.json" || group.endsWith(".mdx"))
-    continue;
-  for (const file of await readdir(`${output}/${group}`)) {
-    if (!file.endsWith(".mdx")) continue;
-    const front = await readFile(`${output}/${group}/${file}`, "utf8");
-    const method = front.match(/^ {2}method: ([A-Z]+)$/m)?.[1];
-    const webhook = front.match(/^ {2}webhook: (true|false)$/m)?.[1] === "true";
-    if (method)
-      methods[`/docs/api/${group}/${file.replace(/\.mdx$/, "")}`] = {
-        method,
-        webhook,
-      };
-  }
-}
+// Sidebar method badges, keyed by endpoint URL (index pages have no method
+// frontmatter, so they never land here).
 await writeFile(
   "lib/api-methods.json",
   `${JSON.stringify(methods, null, 2)}\n`,

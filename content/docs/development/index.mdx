@@ -3,6 +3,16 @@ title: "Development"
 description: "Do you want to try out new features that haven't been released yet or help us find bugs? Or maybe even help fix some bug?"
 ---
 
-- [install](/docs/development/install)
-- [upgrade](/docs/development/upgrade)
-- [back to release](/docs/development/back-to-release)
+import { GitBranch, GitPullRequest, Undo2 } from 'lucide-react';
+
+<Cards>
+  <Card href="/docs/development/install" title="Installing development version" icon={<GitBranch />}>
+    Follow the regular installation guide, cloning the `development` branch instead of `main`.
+  </Card>
+  <Card href="/docs/development/upgrade" title="Update to development version" icon={<GitPullRequest />}>
+    Switch an existing installation to the development branch. Back up your database first.
+  </Card>
+  <Card href="/docs/development/back-to-release" title="Rolling back to the release version" icon={<Undo2 />}>
+    Return a development installation to the stable release.
+  </Card>
+</Cards>

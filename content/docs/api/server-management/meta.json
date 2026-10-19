@@ -1,5 +1,6 @@
 {
   "title": "Server Management",
+  "pagesIndex": "index",
   "description": "",
   "pages": [
     "list-all-servers",

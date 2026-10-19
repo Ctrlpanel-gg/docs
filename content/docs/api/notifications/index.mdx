@@ -1,0 +1,25 @@
+---
+title: "Notifications"
+description: "Send notifications to individual users or to everyone, and manage existing notifications."
+---
+
+<Cards>
+  <Card href="/docs/api/notifications/list-user-notifications" title="List user notifications">
+    `GET /api/notifications/{user_id}`
+  </Card>
+  <Card href="/docs/api/notifications/clear-all-user-notifications" title="Clear all user notifications">
+    `DELETE /api/notifications/{user_id}`
+  </Card>
+  <Card href="/docs/api/notifications/get-notification-details" title="Get notification details">
+    `GET /api/notifications/{user_id}/{notification_id}`
+  </Card>
+  <Card href="/docs/api/notifications/delete-single-notification" title="Delete single notification">
+    `DELETE /api/notifications/{user_id}/{notification_id}`
+  </Card>
+  <Card href="/docs/api/notifications/send-notification-to-users" title="Send notification to users">
+    `POST /api/notifications/send-to-users`
+  </Card>
+  <Card href="/docs/api/notifications/send-notification-to-everyone" title="Send notification to everyone">
+    `POST /api/notifications/send-to-all`
+  </Card>
+</Cards>

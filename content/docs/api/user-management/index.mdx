@@ -1,0 +1,34 @@
+---
+title: "User Management"
+description: "Create, update, and delete users, adjust their balances and server limits, and suspend or unsuspend accounts."
+---
+
+<Cards>
+  <Card href="/docs/api/user-management/list-all-users" title="List all users">
+    `GET /api/users`
+  </Card>
+  <Card href="/docs/api/user-management/create-user" title="Create user">
+    `POST /api/users`
+  </Card>
+  <Card href="/docs/api/user-management/get-user-details" title="Get user details">
+    `GET /api/users/{id}`
+  </Card>
+  <Card href="/docs/api/user-management/delete-user" title="Delete user">
+    `DELETE /api/users/{id}`
+  </Card>
+  <Card href="/docs/api/user-management/update-user" title="Update user">
+    `PUT /api/users/{id}`
+  </Card>
+  <Card href="/docs/api/user-management/increment-user-balance-or-server-limit" title="Increment user balance or server limit">
+    `PATCH /api/users/{user_id}/increment`
+  </Card>
+  <Card href="/docs/api/user-management/decrement-user-balance-or-server-limit" title="Decrement user balance or server limit">
+    `PATCH /api/users/{user_id}/decrement`
+  </Card>
+  <Card href="/docs/api/user-management/suspend-user" title="Suspend user">
+    `PATCH /api/users/{user_id}/suspend`
+  </Card>
+  <Card href="/docs/api/user-management/unsuspend-user" title="Unsuspend user">
+    `PATCH /api/users/{user_id}/unsuspend`
+  </Card>
+</Cards>

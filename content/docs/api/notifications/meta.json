@@ -1,5 +1,6 @@
 {
   "title": "Notifications",
+  "pagesIndex": "index",
   "description": "",
   "pages": [
     "list-user-notifications",

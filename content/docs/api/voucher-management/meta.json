@@ -1,5 +1,6 @@
 {
   "title": "Voucher Management",
+  "pagesIndex": "index",
   "description": "",
   "pages": [
     "list-all-vouchers",

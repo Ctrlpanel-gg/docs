@@ -23,4 +23,4 @@ Bun.serve({
     });
   },
 });
-console.log("Static site: http://localhost:3000");
+console.log("Static site: http://localhost:4000");

@@ -1,7 +1,7 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 export function baseOptions(): BaseLayoutProps {
  return {
-  nav: { title: <span className="flex items-center gap-2 text-[19px] font-[750] tracking-[-0.7px]"><img src="/img/controlpanel.png" width="28" height="28" alt="" />CtrlPanel<span className="-ml-[7px] text-fd-primary">.gg</span></span> },
+  nav: { title: <span className="flex items-center gap-2 text-[19px] font-[750] tracking-[-0.035em]"><img src="/img/controlpanel.webp" width="28" height="28" alt="" />CtrlPanel<span className="-ml-[7px] text-fd-primary">.gg</span></span> },
   githubUrl: 'https://github.com/Ctrlpanel-gg/panel',
   links: [
    { text: 'Documentation', url: '/docs', active: 'nested-url' },

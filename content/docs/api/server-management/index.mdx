@@ -1,0 +1,31 @@
+---
+title: "Server Management"
+description: "Create, update, and delete servers, adjust their resources, and suspend or unsuspend them."
+---
+
+<Cards>
+  <Card href="/docs/api/server-management/list-all-servers" title="List all servers">
+    `GET /api/servers`
+  </Card>
+  <Card href="/docs/api/server-management/create-server" title="Create server">
+    `POST /api/servers`
+  </Card>
+  <Card href="/docs/api/server-management/get-server-details" title="Get server details">
+    `GET /api/servers/{id}`
+  </Card>
+  <Card href="/docs/api/server-management/delete-server" title="Delete server">
+    `DELETE /api/servers/{id}`
+  </Card>
+  <Card href="/docs/api/server-management/update-server" title="Update server">
+    `PUT /api/servers/{id}`
+  </Card>
+  <Card href="/docs/api/server-management/update-server-resources" title="Update server resources">
+    `PATCH /api/servers/{server_id}/build`
+  </Card>
+  <Card href="/docs/api/server-management/suspend-server" title="Suspend server">
+    `PATCH /api/servers/{server_id}/suspend`
+  </Card>
+  <Card href="/docs/api/server-management/unsuspend-server" title="Unsuspend server">
+    `PATCH /api/servers/{server_id}/unsuspend`
+  </Card>
+</Cards>

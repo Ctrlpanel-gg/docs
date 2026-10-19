@@ -3,7 +3,19 @@ title: "Guides"
 description: "We'll walk you through useful guides. How to migrate your panel, backup your database, and much more"
 ---
 
-- [migration](/docs/guides/migration)
-- [backup](/docs/guides/backup)
-- [themes](/docs/guides/themes)
-- [uninstall](/docs/guides/uninstall)
+import { ArrowLeftRight, HardDriveDownload, Palette, Trash2 } from 'lucide-react';
+
+<Cards>
+  <Card href="/docs/guides/migration" title="Migration" icon={<ArrowLeftRight />}>
+    Move your panel between servers or hosting providers, including database and .env files.
+  </Card>
+  <Card href="/docs/guides/backup" title="Backup & Restore" icon={<HardDriveDownload />}>
+    Create database backups and restore your panel if something goes wrong.
+  </Card>
+  <Card href="/docs/guides/themes" title="Themes" icon={<Palette />}>
+    Create and share a custom theme for your panel. Currently unmaintained.
+  </Card>
+  <Card href="/docs/guides/uninstall" title="Uninstall" icon={<Trash2 />}>
+    Stop all services and remove CtrlPanel and its data permanently.
+  </Card>
+</Cards>

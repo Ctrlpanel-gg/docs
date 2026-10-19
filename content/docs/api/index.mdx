@@ -3,7 +3,30 @@ title: API Reference
 description: Integrate your applications with CtrlPanel.
 ---
 
+import { Bell, Package, ShieldCheck, Server, Users, Ticket } from 'lucide-react';
+
 The CtrlPanel REST API covers users, servers, products, roles, vouchers and notifications. Every endpoint is documented here from the OpenAPI specification.
+
+<Cards>
+  <Card href="/docs/api/user-management" title="User Management" icon={<Users />}>
+    Create, update, suspend, and delete users, plus balances and server limits.
+  </Card>
+  <Card href="/docs/api/server-management" title="Server Management" icon={<Server />}>
+    Create, update, suspend, and delete servers, including resources.
+  </Card>
+  <Card href="/docs/api/product-management" title="Product Management" icon={<Package />}>
+    Create, update, and delete store products.
+  </Card>
+  <Card href="/docs/api/role-management" title="Role Management" icon={<ShieldCheck />}>
+    Create, update, and delete roles.
+  </Card>
+  <Card href="/docs/api/voucher-management" title="Voucher Management" icon={<Ticket />}>
+    Create, update, and delete vouchers.
+  </Card>
+  <Card href="/docs/api/notifications" title="Notifications" icon={<Bell />}>
+    Send, list, read, and delete user notifications.
+  </Card>
+</Cards>
 
 ## Authentication
 

@@ -3,9 +3,46 @@ title: Introduction
 description: ""
 ---
 
-
-
 Welcome to the CtrlPanel.gg documentation. Here you'll find guides for installation, updating, migration and other useful articles and pages.
+
+import {
+  Rocket,
+  BookOpen,
+  Code,
+  HeartHandshake,
+  RefreshCw,
+  Webhook,
+} from "lucide-react";
+
+<Cards>
+  <Card
+    href="/docs/getting-started/install"
+    title="Getting started"
+    icon={<Rocket />}
+  >
+    Install CtrlPanel and configure it, from dependencies to payment gateways.
+  </Card>
+  <Card href="/docs/guides" title="Guides" icon={<BookOpen />}>
+    Migration, backup and restore, themes, and uninstalling.
+  </Card>
+  <Card href="/docs/development" title="Development" icon={<Code />}>
+    Try the development version and roll back to the release.
+  </Card>
+  <Card
+    href="/docs/contributing"
+    title="Contributing"
+    icon={<HeartHandshake />}
+  >
+    Donating, reporting issues, translating, and our partners.
+  </Card>
+  <Card href="/docs/updating" title="Updating" icon={<RefreshCw />}>
+    Upgrade an older panel version to the latest release.
+  </Card>
+  <Card href="/docs/api" title="API Reference" icon={<Webhook />}>
+    REST endpoints for users, servers, products, roles, vouchers, and
+    notifications.
+  </Card>
+</Cards>
 
 ## What is CtrlPanel?
 
@@ -36,33 +73,30 @@ You can visit our demo panel [here](https://demo.ctrlpanel.gg)
 
 ## Compatibility
 
-
-
-| OS                      |  Version   |     Supported      | Notes             |
-| :---------------------- | :--------: | :----------------: | :---------------- |
-| **Debian**              |     11     |        ○         | EOL (End-of-life) |
-|                         |     12     | ✓ |                   |
-|                         |     13     | ✓ |                   |
-| **Ubuntu**              |   20.04    |        ○         | EOL (End-of-life) |
-|                         |   22.04    | ✓ |                   |
-|                         |   24.04    | ✓ |                   |
-| **RHEL-based systems¹** | ? |     ?     | Not tested        |
-| **Windows**             | ? |     ?     | Not tested        |
+| OS                      | Version | Supported | Notes             |
+| :---------------------- | :-----: | :-------: | :---------------- |
+| **Debian**              |   11    |     ○     | EOL (End-of-life) |
+|                         |   12    |     ✓     |                   |
+|                         |   13    |     ✓     |                   |
+| **Ubuntu**              |  20.04  |     ○     | EOL (End-of-life) |
+|                         |  22.04  |     ✓     |                   |
+|                         |  24.04  |     ✓     |                   |
+| **RHEL-based systems¹** |    ?    |     ?     | Not tested        |
+| **Windows**             |    ?    |     ?     | Not tested        |
 
 _¹ RHEL, Rocky Linux, AlmaLinux, CentOS_
 
----
+## Supported Panels
 
-|                 |     Supported      | Notes                                                                                                                                          |
-| :-------------- | :----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Pterodactyl** | ✓ |                                                                                                                                                |
-| **Jexactyl**    | ✓ |                                                                                                                                                |
-| **Pyrodactyl**  | ✓ |                                                                                                                                                |
-| **Pelican**     |        ○         | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
+|                 | Supported | Notes                                                                                                                                          |
+| :-------------- | :-------: | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Pterodactyl** |     ✓     |                                                                                                                                                |
+| **Jexactyl**    |     ✓     |                                                                                                                                                |
+| **Pyrodactyl**  |     ✓     |                                                                                                                                                |
+| **Pelican**     |     ○     | **FULLY INCOMPATIBLE - SUPPORT IS NOT EXPECTED UNTIL OFFICIAL STABLE RELEASE. WE DO NOT RECOMMEND USING PELICAN FOR ANY PRODUCTION INSTANCES** |
 
 ## Looking for a Server?
 
 [![ZAP-Hosting Gameserver and Webhosting](/img/zap-hosting-affiliate.jpg)](https://zap-hosting.com/a/29b1c37a4f87bde5463afe8a0f49d129b16ccf9e)
 
 Looking for a good server? Purchase one from our partner with promo code **[CtrlPanel](https://zap-hosting.com/CtrlPanel)** to receive a **20% discount**!
-

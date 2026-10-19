@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
 import data from '@/lib/blog-data.json';
 
 const date = (iso: string) =>
@@ -9,8 +8,8 @@ export function PostList({ posts = data.posts }: { posts?: typeof data.posts }) 
   return (
     <div className="mt-8">
       {posts.map(post => (
-        <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block border-t border-fd-border py-[30px] pr-[45px] pb-[35px] [&>svg]:absolute [&>svg]:top-14 [&>svg]:right-0">
-          <div className="flex gap-6 font-mono text-[10px] text-fd-primary">
+        <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block border-t border-fd-border py-7 pr-11 pb-8">
+          <div className="flex gap-6 font-mono text-[10px] text-fd-primary-text">
             <time dateTime={post.date}>{date(post.date)}</time>
             <span>{post.tags.join(' / ')}</span>
           </div>
@@ -20,7 +19,7 @@ export function PostList({ posts = data.posts }: { posts?: typeof data.posts }) 
                 <img key={a.name} src={a.image_url} alt={a.name} loading="lazy" className="size-[26px] rounded-full border-2 border-fd-background object-cover [&:not(:first-child)]:-ml-2" />
               ))}
             </div>
-            <h2 className="my-3 text-[28px] font-[650] tracking-[-0.8px] group-hover:text-fd-primary">{post.title}</h2>
+            <h2 className="my-3 text-[28px] font-semibold tracking-[-0.03em] group-hover:text-fd-primary-text">{post.title}</h2>
           </div>
           <p className="mt-2 text-base leading-relaxed text-fd-muted-foreground line-clamp-3 max-w-[60ch]">{post.excerpt ? post.excerpt : post.authors.map(a => a.name).join(', ')}</p>
         </Link>

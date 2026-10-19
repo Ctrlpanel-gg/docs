@@ -3,7 +3,19 @@ title: "Contributing"
 description: "Want to support the project but not sure how? We'll tell you all about it here"
 ---
 
-- [donating](/docs/contributing/donating)
-- [reporting](/docs/contributing/reporting)
-- [translating](/docs/contributing/translating)
-- [partners](/docs/contributing/partners)
+import { Heart, Bug, Languages, Handshake } from 'lucide-react';
+
+<Cards>
+  <Card href="/docs/contributing/donating" title="Donating" icon={<Heart />}>
+    Support the project via Patreon, Ko-fi, or GitHub Sponsors — with donator perks.
+  </Card>
+  <Card href="/docs/contributing/reporting" title="Reporting" icon={<Bug />}>
+    Report bugs, propose features, or disclose security vulnerabilities.
+  </Card>
+  <Card href="/docs/contributing/translating" title="Translating" icon={<Languages />}>
+    Help translate CtrlPanel. Currently paused while the translation system is reworked.
+  </Card>
+  <Card href="/docs/contributing/partners" title="Partners" icon={<Handshake />}>
+    The organizations and individuals whose support makes the project possible.
+  </Card>
+</Cards>

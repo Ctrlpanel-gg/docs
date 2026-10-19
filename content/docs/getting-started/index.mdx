@@ -3,6 +3,16 @@ title: "Getting started"
 description: "Alright, let's get started with the installation and configuration!"
 ---
 
-- [install](/docs/getting-started/install)
-- [basic configuration](/docs/getting-started/basic-configuration)
-- [payment gateways](/docs/getting-started/payment-gateways)
+import { Terminal, Settings2, CreditCard } from 'lucide-react';
+
+<Cards>
+  <Card href="/docs/getting-started/install" title="Installation" icon={<Terminal />}>
+    Install CtrlPanel on a Debian or Ubuntu server: dependencies, database, web server, queue workers, and the installer.
+  </Card>
+  <Card href="/docs/getting-started/basic-configuration" title="Basic Configuration" icon={<Settings2 />}>
+    Set up images and icons, reCAPTCHA or Turnstile, SMTP email, and Discord.
+  </Card>
+  <Card href="/docs/getting-started/payment-gateways" title="Payment Gateways" icon={<CreditCard />}>
+    Configure PayPal, Stripe, Mercado Pago, or Mollie to accept payments.
+  </Card>
+</Cards>

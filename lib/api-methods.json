@@ -1,65 +1,25 @@
 {
-  "/docs/api/notifications/get-notification-details": {
+  "/docs/api/notifications/list-user-notifications": {
     "method": "GET",
-    "webhook": false
-  },
-  "/docs/api/notifications/send-notification-to-everyone": {
-    "method": "POST",
     "webhook": false
   },
   "/docs/api/notifications/clear-all-user-notifications": {
     "method": "DELETE",
     "webhook": false
   },
-  "/docs/api/notifications/list-user-notifications": {
+  "/docs/api/notifications/get-notification-details": {
     "method": "GET",
-    "webhook": false
-  },
-  "/docs/api/notifications/send-notification-to-users": {
-    "method": "POST",
     "webhook": false
   },
   "/docs/api/notifications/delete-single-notification": {
     "method": "DELETE",
     "webhook": false
   },
-  "/docs/api/server-management/get-server-details": {
-    "method": "GET",
-    "webhook": false
-  },
-  "/docs/api/server-management/list-all-servers": {
-    "method": "GET",
-    "webhook": false
-  },
-  "/docs/api/server-management/update-server-resources": {
-    "method": "PATCH",
-    "webhook": false
-  },
-  "/docs/api/server-management/update-server": {
-    "method": "PUT",
-    "webhook": false
-  },
-  "/docs/api/server-management/unsuspend-server": {
-    "method": "PATCH",
-    "webhook": false
-  },
-  "/docs/api/server-management/delete-server": {
-    "method": "DELETE",
-    "webhook": false
-  },
-  "/docs/api/server-management/suspend-server": {
-    "method": "PATCH",
-    "webhook": false
-  },
-  "/docs/api/server-management/create-server": {
+  "/docs/api/notifications/send-notification-to-users": {
     "method": "POST",
     "webhook": false
   },
-  "/docs/api/product-management/delete-product": {
-    "method": "DELETE",
-    "webhook": false
-  },
-  "/docs/api/product-management/create-product": {
+  "/docs/api/notifications/send-notification-to-everyone": {
     "method": "POST",
     "webhook": false
   },
@@ -67,20 +27,24 @@
     "method": "GET",
     "webhook": false
   },
-  "/docs/api/product-management/update-product": {
-    "method": "PUT",
+  "/docs/api/product-management/create-product": {
+    "method": "POST",
     "webhook": false
   },
   "/docs/api/product-management/get-product-details": {
     "method": "GET",
     "webhook": false
   },
-  "/docs/api/role-management/list-all-roles": {
-    "method": "GET",
+  "/docs/api/product-management/delete-product": {
+    "method": "DELETE",
     "webhook": false
   },
-  "/docs/api/role-management/delete-role": {
-    "method": "DELETE",
+  "/docs/api/product-management/update-product": {
+    "method": "PUT",
+    "webhook": false
+  },
+  "/docs/api/role-management/list-all-roles": {
+    "method": "GET",
     "webhook": false
   },
   "/docs/api/role-management/create-role": {
@@ -91,36 +55,52 @@
     "method": "GET",
     "webhook": false
   },
+  "/docs/api/role-management/delete-role": {
+    "method": "DELETE",
+    "webhook": false
+  },
   "/docs/api/role-management/update-role": {
     "method": "PUT",
+    "webhook": false
+  },
+  "/docs/api/server-management/list-all-servers": {
+    "method": "GET",
+    "webhook": false
+  },
+  "/docs/api/server-management/create-server": {
+    "method": "POST",
+    "webhook": false
+  },
+  "/docs/api/server-management/get-server-details": {
+    "method": "GET",
+    "webhook": false
+  },
+  "/docs/api/server-management/delete-server": {
+    "method": "DELETE",
+    "webhook": false
+  },
+  "/docs/api/server-management/update-server": {
+    "method": "PUT",
+    "webhook": false
+  },
+  "/docs/api/server-management/update-server-resources": {
+    "method": "PATCH",
+    "webhook": false
+  },
+  "/docs/api/server-management/suspend-server": {
+    "method": "PATCH",
+    "webhook": false
+  },
+  "/docs/api/server-management/unsuspend-server": {
+    "method": "PATCH",
     "webhook": false
   },
   "/docs/api/user-management/list-all-users": {
     "method": "GET",
     "webhook": false
   },
-  "/docs/api/user-management/increment-user-balance-or-server-limit": {
-    "method": "PATCH",
-    "webhook": false
-  },
-  "/docs/api/user-management/update-user": {
-    "method": "PUT",
-    "webhook": false
-  },
-  "/docs/api/user-management/decrement-user-balance-or-server-limit": {
-    "method": "PATCH",
-    "webhook": false
-  },
   "/docs/api/user-management/create-user": {
     "method": "POST",
-    "webhook": false
-  },
-  "/docs/api/user-management/suspend-user": {
-    "method": "PATCH",
-    "webhook": false
-  },
-  "/docs/api/user-management/unsuspend-user": {
-    "method": "PATCH",
     "webhook": false
   },
   "/docs/api/user-management/get-user-details": {
@@ -131,16 +111,24 @@
     "method": "DELETE",
     "webhook": false
   },
-  "/docs/api/voucher-management/get-voucher-details": {
-    "method": "GET",
-    "webhook": false
-  },
-  "/docs/api/voucher-management/update-voucher": {
+  "/docs/api/user-management/update-user": {
     "method": "PUT",
     "webhook": false
   },
-  "/docs/api/voucher-management/delete-voucher": {
-    "method": "DELETE",
+  "/docs/api/user-management/increment-user-balance-or-server-limit": {
+    "method": "PATCH",
+    "webhook": false
+  },
+  "/docs/api/user-management/decrement-user-balance-or-server-limit": {
+    "method": "PATCH",
+    "webhook": false
+  },
+  "/docs/api/user-management/suspend-user": {
+    "method": "PATCH",
+    "webhook": false
+  },
+  "/docs/api/user-management/unsuspend-user": {
+    "method": "PATCH",
     "webhook": false
   },
   "/docs/api/voucher-management/list-all-vouchers": {
@@ -149,6 +137,18 @@
   },
   "/docs/api/voucher-management/create-voucher": {
     "method": "POST",
+    "webhook": false
+  },
+  "/docs/api/voucher-management/get-voucher-details": {
+    "method": "GET",
+    "webhook": false
+  },
+  "/docs/api/voucher-management/delete-voucher": {
+    "method": "DELETE",
+    "webhook": false
+  },
+  "/docs/api/voucher-management/update-voucher": {
+    "method": "PUT",
     "webhook": false
   }
 }

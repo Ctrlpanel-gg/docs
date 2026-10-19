@@ -1,5 +1,6 @@
 {
   "title": "Product Management",
+  "pagesIndex": "index",
   "description": "",
   "pages": [
     "list-all-products",

@@ -55,10 +55,13 @@
 @theme {
   --font-sans: "Red Hat Display", "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, monospace;
+  --shadow-surface: 0 28px 70px -34px rgb(0 0 0 / 0.72);
 }
 
 /* shadcn/ui semantic tokens (used by efferd registry blocks) mapped to brand palette */
 @theme inline {
+  --color-fd-primary-text: var(--fd-primary-text);
+  --color-online: var(--fd-online);
   --color-background: var(--color-fd-background);
   --color-foreground: var(--color-fd-foreground);
   --color-card: var(--color-fd-card);
@@ -82,7 +85,10 @@
 :root {
   color-scheme: light dark;
   --color-fd-primary: #27a9e1;
-  --color-fd-primary-foreground: #323a41;
+  --color-fd-primary-foreground: #07131a;
+  /* Text-safe accent: #27a9e1 is only 2.56:1 on the light background. */
+  --fd-primary-text: #0e7490;
+  --fd-online: #059669;
   --color-fd-background: #fafafa;
   --color-fd-card: #fff;
   --color-fd-muted: #f0f1f2;
@@ -113,6 +119,8 @@
 .dark {
   --color-fd-primary: #27a9e1;
   --color-fd-primary-foreground: #07131a;
+  --fd-primary-text: #27a9e1;
+  --fd-online: #34d399;
   --color-fd-background: #0d0e11;
   --color-fd-card: #16171b;
   --color-fd-muted: #1c1d22;
@@ -157,7 +165,7 @@ select {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-fd-primary);
+  outline: 2px solid var(--fd-primary-text);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -169,6 +177,11 @@ select {
 
 #nd-nav {
   backdrop-filter: blur(16px);
+}
+
+/* Active links use the text-safe accent so light mode keeps 4.5:1. */
+a[data-active='true'] {
+  color: var(--fd-primary-text);
 }
 
 /* Docs shell: transparent sidebar on the card shell (fumadocs spacious look) */
@@ -276,9 +289,6 @@ select {
   .landing-enter {
     animation: landing-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-  .landing-enter:nth-of-type(2) {
-    animation-delay: 0.12s;
-  }
 }
 
 @keyframes landing-rise {
@@ -295,8 +305,14 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition: none !important;
+    /* Keep colour/opacity feedback; drop movement. */
+    transition-property: color, background-color, border-color, text-decoration-color,
+      fill, stroke, opacity, outline-color !important;
   }
 }
