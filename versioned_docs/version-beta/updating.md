@@ -6,7 +6,7 @@ title: Updating
 # Updating to beta from latest stable
 
 :::caution
-Updating to the beta version is only available from the latest stable release! Select "1.1.x (Latest)" from the dropdown in the top-right corner and follow the update instructions first.
+Updating to the beta version is only available from the latest stable release! Select "1.2.x (Latest)" from the dropdown in the top-right corner and follow the update instructions first.
 :::
 
 :::danger
@@ -44,6 +44,7 @@ COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 
 ```bash
 php artisan migrate --seed --force
+php artisan permissions:sync
 ```
 
 ## Clear Compiled Template Cache
@@ -55,10 +56,6 @@ php artisan view:clear
 php artisan config:clear
 php artisan settings:clear-cache
 ```
-
-## Rebuild Settings Cache via UI
-
-After clearing caches, open your application Settings, navigate to the User tab, and click Save. This refreshes the settings cache for normal credit calculation runtime behavior.
 
 ## Set Permissions
 
