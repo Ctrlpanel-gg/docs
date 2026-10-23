@@ -1,10 +1,11 @@
 ---
 sidebar_position: 4
+title: Beta testing checklist
 ---
 
-# Changelog
+# Beta testing checklist
 
-Here you'll find a full list of bugs fixed and new features added in the new version of CtrlPanel. This list will help you understand which features are worth testing extra carefully.
+This is the guide for beta testers. It lists the features and fixes in 1.3.0 that are worth testing extra carefully before the release goes stable.
 
 ## Authentication and accounts
 
