@@ -2,11 +2,119 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ctrlpanel.gg/blog</id>
     <title>CtrlPanel.gg Blog</title>
-    <updated>2026-04-25T00:00:00.000Z</updated>
+    <updated>2026-10-23T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ctrlpanel.gg/blog"/>
     <subtitle>CtrlPanel.gg Blog</subtitle>
     <icon>https://ctrlpanel.gg/img/controlpanel.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[CtrlPanel 1.3.0 is now in open beta]]></title>
+        <id>https://ctrlpanel.gg/blog/1.3.0-open-beta</id>
+        <link href="https://ctrlpanel.gg/blog/1.3.0-open-beta"/>
+        <updated>2026-10-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[CtrlPanel 1.3.0 is ready for public beta testing, and it is one of our biggest updates yet.]]></summary>
+        <content type="html"><![CDATA[<p>CtrlPanel 1.3.0 is ready for public beta testing, and it is one of our biggest updates yet.</p>
+<p>We want to be upfront: 1.2.0 took us nearly ten months to reach a stable release, and that hurt. We over-promised, under-delivered, and then spent months stabilizing what we should have gotten right the first time. 1.3.0 went the other way. Development started right after 1.2.0 shipped in April, and the beta is here roughly six months later - and it is still a larger update in every measurable sense.</p>
+<p>More than 300 commits. Over 50 pull requests. Two-factor authentication, a rebuilt payments flow, reversible server cancellations, a redesigned settings page, database snapshots, and a long list of fixes for bugs you told us about. This is also the first release standing on the new modular extension system we promised when we moved to MPL 2.0 - the groundwork for the addon ecosystem we keep talking about.</p>
+<p>But this is a beta, so let's be clear about what that means.</p>
+<div class="theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>danger</div><div class="admonitionContent_BuS1"><p>Do not run this on a production instance. This build may contain bugs we have not found yet, and <strong>rolling back after an update is not possible</strong>. If you want to test it, clone your database and set up a second instance on a separate domain. Always back up first.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getting-the-beta">Getting the Beta<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#getting-the-beta" class="hash-link" aria-label="Direct link to Getting the Beta" title="Direct link to Getting the Beta" translate="no">​</a></h2>
+<p>The beta documentation is live and versioned. Before you use it, make sure the version selector in the top-right of the docs is set to <strong>1.3.0 (Public Beta)</strong>.</p>
+<ul>
+<li class=""><strong>Updating from 1.2.x?</strong> Follow the <a href="https://ctrlpanel.gg/docs/beta/updating" target="_blank" rel="noopener noreferrer" class="">beta update guide</a>. It covers the maintenance window, pulling the <code>development</code> branch, updating dependencies, running migrations, and the new <code>permissions:sync</code> step. Updating to the beta is only supported from the latest stable release, so make sure you are on 1.2.x first.</li>
+<li class=""><strong>Installing fresh?</strong> Follow the <a href="https://ctrlpanel.gg/docs/beta/install" target="_blank" rel="noopener noreferrer" class="">installation guide</a> for Debian and Ubuntu.</li>
+<li class=""><strong>Not sure what to test?</strong> The <a href="https://ctrlpanel.gg/docs/beta/beta-testing" target="_blank" rel="noopener noreferrer" class="">beta testing checklist</a> lists the features and fixes most worth your attention.</li>
+<li class=""><strong>Want the full details?</strong> Read the <a href="https://ctrlpanel.gg/docs/beta/changelog" target="_blank" rel="noopener noreferrer" class="">changelog</a>.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whats-changed">What's Changed<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#whats-changed" class="hash-link" aria-label="Direct link to What's Changed" title="Direct link to What's Changed" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="new-features--improvements">New Features &amp; Improvements<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#new-features--improvements" class="hash-link" aria-label="Direct link to New Features &amp; Improvements" title="Direct link to New Features &amp; Improvements" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Two-factor authentication.</strong> TOTP with QR setup and recovery codes, built as a module so additional methods can be added without touching core files.</li>
+<li class=""><strong>Reversible server cancellations.</strong> Canceled servers now show a <strong>Resume</strong> button instead of Cancel.</li>
+<li class=""><strong>Reworked payments.</strong> Admins get manual controls on every payment - confirm, recheck, cancel, reopen, and a one-way refund. Credits are granted only on the transition to paid, so a payment can never be granted twice.</li>
+<li class=""><strong>Per-gateway handling fees.</strong> None, percentage, or fixed, with an optional minimum and maximum - shown at checkout, in the order total, in the admin payments table, and on invoices.</li>
+<li class=""><strong>Smarter checkout.</strong> Gateways that do not support your currency or fall below their minimum are disabled with the reason. Totals recalculate live, and coupons now apply before tax.</li>
+<li class=""><strong>More currencies</strong>, matching what the payment gateways actually accept.</li>
+<li class=""><strong>Redesigned settings page.</strong> Grouped and described sections, conditional fields, unit labels, a fixed mobile layout, and masked secrets.</li>
+<li class=""><strong>Clearer server status badges</strong> and a sort control on the server creation page.</li>
+<li class=""><strong>Ticket priority and category</strong> can now be changed by staff, and the admin ticket list sorts by priority.</li>
+<li class=""><strong>Better admin UX.</strong> Delete confirmations on every delete button, single-target mass notifications, and a settings page that enforces its own permission.</li>
+<li class=""><strong>Optional protection.</strong> A minimum Discord account age for linking, and a verified email before referral rewards - both off by default.</li>
+<li class=""><strong>Privacy Policy / Terms checkbox</strong> on registration, shown when configured.</li>
+<li class=""><strong>Database snapshots</strong> with one command - create and restore without <code>mysqldump</code> or any external tool.</li>
+<li class=""><strong>Log rotation.</strong> Daily compression with retention, so single log files no longer grow out of control.</li>
+<li class=""><strong>Redis</strong> is now the default store for cache, sessions, queues, and settings (still configurable).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="bug-fixes">Bug Fixes<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#bug-fixes" class="hash-link" aria-label="Direct link to Bug Fixes" title="Direct link to Bug Fixes" translate="no">​</a></h3>
+<ul>
+<li class="">Fixed installations failing on MySQL/MariaDB due to incompatible migrations.</li>
+<li class="">Fixed customised default roles being overwritten by updates and reseeds.</li>
+<li class="">Fixed a successful Stripe payment being marked as failed when tax was enabled.</li>
+<li class="">Fixed invoices not being generated - they now generate reliably and are emailed to the customer as a PDF.</li>
+<li class="">Fixed incorrect checkout totals when coupons and partner discounts were involved.</li>
+<li class="">Fixed payment emails and payment lists showing a hard-coded "Credits" instead of your configured name.</li>
+<li class="">Fixed upgrades and downgrades ignoring per-product server limits, charging before success, and double-charging on retries.</li>
+<li class="">Fixed the allocation limit being treated as per-location instead of per-node, which blocked server creation on healthy nodes.</li>
+<li class="">Fixed servers with no Pterodactyl ID breaking the server list and settings page - they can now be managed and deleted cleanly.</li>
+<li class="">Fixed server sync deleting servers on any error instead of only on a confirmed removal.</li>
+<li class="">Fixed server creation failing when a required egg variable defaulted to <code>0</code>.</li>
+<li class="">Fixed the credit run-out estimate on the home page getting stuck at a fixed ceiling.</li>
+<li class="">Fixed the Pterodactyl installer dropping a custom port from the panel URL.</li>
+<li class="">Fixed a broken extension or seeder being able to take down the whole panel on startup.</li>
+<li class="">Added friendly error pages across server, payment, and registration flows, and stopped leaking Pterodactyl details to users and API clients.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="security">Security<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h3>
+<ul>
+<li class="">Sanitised rich content submitted through TinyMCE forms - legal pages, MOTD, notifications, and more - against script injection. This one is non-critical, since only privileged users could submit such content.</li>
+<li class="">Sanitised Pterodactyl and provider errors so internal addresses, credentials, and response bodies never reach users or API clients.</li>
+<li class="">The settings page and admin endpoints now enforce their permissions, and secrets are masked in the UI.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="for-developers">For Developers<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#for-developers" class="hash-link" aria-label="Direct link to For Developers" title="Direct link to For Developers" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Reworked extension system.</strong> Extensions can now ship their own database seeders, sidebar pages, middleware, routes, migrations, and Artisan or scheduled commands, all following standard Laravel conventions.</li>
+<li class="">New <code>permissions:sync</code> and <code>permissions:cleanup</code> commands keep permissions and roles in step across updates.</li>
+<li class="">OpenAPI specification generation with Scribe - <code>php artisan scribe:generate</code>.</li>
+<li class="">Laravel 12 under the hood.</li>
+<li class="">The user API can now filter by linked Discord account.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-note-on-ai">A Note on AI<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#a-note-on-ai" class="hash-link" aria-label="Direct link to A Note on AI" title="Direct link to A Note on AI" translate="no">​</a></h2>
+<p>We want to be upfront about something, the same way we were about the license change and about 1.1.</p>
+<p>AI tools are part of our development process now, and you deserve to know how we use them - and how we do not.</p>
+<p>To be clear: <strong>AI is a tool, not a replacement for developers.</strong> Every line that lands in CtrlPanel is reviewed, tested, and owned by a human maintainer. We do not merge code simply because a model produced it, and we never will.</p>
+<p>What AI does is take the busywork off our plate. A task that takes a model two minutes - a repetitive test, a boilerplate migration, a scaffolded file - can eat twenty minutes of a maintainer's time. Delegating that routine work is what lets us spend the hours where they actually matter: architecture, security, reviewing contributions, and supporting users.</p>
+<p>Our quality standards have not moved, and we are not lowering them to ship faster. If anything, they are going up, and the extra time AI frees up goes straight back into review and testing. The extended beta you are reading about is exactly that standard in practice.</p>
+<p>We know "AI" is a divisive topic. We are not here to sell it to you, and we are not hiding it either. We will keep telling you when and how it is used, and everything we ship will keep being held to the same bar it always has been.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="help-us-test">Help Us Test<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#help-us-test" class="hash-link" aria-label="Direct link to Help Us Test" title="Direct link to Help Us Test" translate="no">​</a></h2>
+<p>This is an open beta, and it only works if you help. The features most worth your attention are the ones with the most moving parts - payments, server upgrades, and two-factor authentication - but everything is fair game.</p>
+<p>If you find something broken, report it in the <a href="https://discord.com/channels/787829714483019826/1489042641998971061" target="_blank" rel="noopener noreferrer" class=""><code>#🧪┃beta-feedback</code></a> channel on our <a href="https://discord.gg/ctrlpanel-gg-787829714483019826" target="_blank" rel="noopener noreferrer" class="">Discord server</a>, or open a <a href="https://github.com/Ctrlpanel-gg/panel/issues/new/choose" target="_blank" rel="noopener noreferrer" class="">GitHub issue</a>.</p>
+<p><strong>For any major security risk</strong>, please create a <a href="https://github.com/Ctrlpanel-gg/panel/security/advisories/new" target="_blank" rel="noopener noreferrer" class="">GitHub vulnerability report</a> and DM <code>1day2die</code> on Discord. Do not discuss vulnerabilities in public chats, and do not post them on public trackers.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="acknowledgements">Acknowledgements<a href="https://ctrlpanel.gg/blog/1.3.0-open-beta#acknowledgements" class="hash-link" aria-label="Direct link to Acknowledgements" title="Direct link to Acknowledgements" translate="no">​</a></h2>
+<p>A beta like this is built by more than the core team, and we owe a real thank you to the people who helped get it here.</p>
+<ul>
+<li class=""><strong>Simba</strong> and <strong>KroZen</strong> for their contributions to the codebase and the server and billing work in this release.</li>
+<li class=""><strong>Lezetho</strong> for the Discord account age requirement.</li>
+<li class="">Every beta tester who installs this build, breaks it, and tells us how - that is the work that turns a beta into a stable release. <!-- -->❤️</li>
+<li class="">And everyone who filed issues, joined discussions, or just kept running CtrlPanel while we worked.</li>
+</ul>
+<p>Thank you. You are what keeps this project alive.</p>
+<hr>
+<p>This beta also includes a number of internal refactors, performance improvements, and smaller fixes not listed above.</p>
+<p><strong>Full changelog</strong>: <a href="https://ctrlpanel.gg/docs/beta/changelog" target="_blank" rel="noopener noreferrer" class="">https://ctrlpanel.gg/docs/beta/changelog</a><br>
+<strong>Compare on GitHub</strong>: <a href="https://github.com/Ctrlpanel-gg/panel/compare/1.2.0...development" target="_blank" rel="noopener noreferrer" class="">https://github.com/Ctrlpanel-gg/panel/compare/1.2.0...development</a><br>
+<strong>Beta testing checklist</strong>: <a href="https://ctrlpanel.gg/docs/beta/beta-testing" target="_blank" rel="noopener noreferrer" class="">https://ctrlpanel.gg/docs/beta/beta-testing</a></p>]]></content>
+        <author>
+            <name>1Day2Die</name>
+        </author>
+        <author>
+            <name>MrWeez</name>
+        </author>
+        <category label="Announcements" term="Announcements"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Understanding MPL 2.0 in the Context of CtrlPanel]]></title>
         <id>https://ctrlpanel.gg/blog/understanding-mpl-2.0</id>
