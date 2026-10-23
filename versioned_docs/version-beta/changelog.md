@@ -6,43 +6,50 @@ sidebar_position: 4
 
 Here you'll find a full list of bugs fixed and new features added in the new version of CtrlPanel. This list will help you understand which features are worth testing extra carefully.
 
-## Fixed Bugs
+## Authentication and accounts
 
-- Fixed a bug where the installer redirected incorrectly when using a non-default port
-- Fixed credits display bug where in some parts of the UI credits were shown as the actual value multiplied by 1000
-- Fixed credits formatting in API responses - the API no longer returns user credits multiplied by 1000
-- Fixed a bug where the OOM Killer checkbox didn't save its value
-- Fixed admin overview page returning HTTP 500 when the `.git` directory is not found in the CtrlPanel directory
-- Fixed 500 error when using the "Login as user" feature
-- Fixed potential referral system abuse via account deletion - admins can now see deleted referrals
-- Fixed `php artisan route:cache` throwing an error due to duplicate route names
-- Fixed a bug where mass user notifications could fail if sending an email was unsuccessful (e.g. when the mail server returned that the email doesn't exist)
-- Fixed server creation flow - this could cause issues such as credits being deducted while server creation failed due to an error
-- Fixed a bug where the allocation limit worked globally instead of per-node, which prevented all new server creation when only one node reached its limit while others were still available
-- Fixed a bug where the Upgrade/Downgrade modal did not include the billing cycle of the product
-- Fixed an issue where database seeding during installation could fail due to a database column type mismatch
-- Fixed a bug where admins were unable to use "Log back in" after using "Login As User"
-- Fixed a bug where creating multiple coupons using a range function caused their value to be saved as 1000x less
-- Fixed a bug where manual email confirmation did not trigger events, which prevented users from receiving email confirmation and referral rewards
+- [ ] **2FA (TOTP)** - enable it from Profile -> Security (scan the QR), log out and log back in with a code, use one recovery code once, then disable 2FA with your password.
+- [ ] **2FA edge cases** - wrong code, expired code, throttling after repeated failures, and "remember me" sessions all behave correctly.
+- [ ] **Captcha** - the configured captcha works on login, registration, password reset and ticket creation. If you use Turnstile, check both visible and invisible modes. Confirm the preview in admin settings matches the configured type.
+- [ ] **Registration** - the Privacy Policy / Terms checkbox is required only when the corresponding page is enabled.
+- [ ] **Referral email verification** - with the option on, the reward is withheld until the referred account verifies its email, then granted once (no duplicate on concurrent verification).
+- [ ] **Discord linking** - an account below the minimum age is rejected; a failed server join notifies the user and admins.
 
-## New Features
+## Servers
 
-- User creation command now returns an error if you try to use an already existing email or Pterodactyl ID
-- Products now accept `0` for unlimited resource values in product configuration
-- Added support for coupons with unlimited uses
-- Added ability to change thousand and decimal separators - either forced globally for all users or individually based on each user's selected locale
-- Added ticket deletion confirmation prompt
-- Added a notification 3 days before server suspension when a user doesn't have enough credits to renew
-- Added rate limit for server creation to prevent abuse when a user could create multiple servers by spamming the create button
-- Products in the upgrade/downgrade list are now sorted by price instead of creation date
-- Added Ukrainian localization
-- Extended Russian localization
-- Admins can now select all eggs in a nest by clicking on the nest name in the product creation list
-- Added optional reason for server/user moderation actions via API
-- Removed global minimum-credits setting - each product must now have its own minimum-credits value to prevent negative user balance on server creation
-- Improved CtrlPanel version display on the overview page - it now shows the latest commit hash
-- You can now reset the installer step without opening DevTools and clearing site data - just add the `?reset` parameter to the URL
-- Reordered settings items for better readability
-- Fully reworked payment gateways. Now admins should configure webhook tokens for each payment gateway.
+- [ ] **Cancel and Resume** - cancel a server, then resume it. Buttons and wording update, and failures show a friendly message.
+- [ ] **Product limit on upgrade/downgrade** - a product that reached the user's per-account limit is marked as not fitting and cannot be selected.
+- [ ] **Upgrade billing** - upgrade charges only after success, downgrade refunds the difference, retries do not double-charge, and the price is whole credits.
+- [ ] **Node placement** - new servers land only on nodes with free allocations and below their allocation limit; a node at its limit is skipped.
+- [ ] **Egg variable `0`** - creating from an egg with a required variable defaulting to `0` works.
+- [ ] **Broken servers** - a server with no Pterodactyl ID: list and settings load, actions are disabled with an explanation, and deletion still works.
+- [ ] **Status badges** - Setting up / Failed / Suspended / Canceled / Active render correctly on user and admin lists.
+- [ ] **Product sorting** - the sort control on server creation reorders products as expected.
 
-> This should be the full changelog. It was put together manually, so we really hope we haven't missed anything.
+## Payments and billing
+
+- [ ] **Admin payment actions** - confirm, recheck, cancel, reopen and refund follow the allowed transitions. Refund is one-way, paid can only move to refunded, and credits are granted only once.
+- [ ] **Recheck** - the button appears only for gateways that support it, and a recheck that resolves a pending payment marks it paid.
+- [ ] **Gateway availability** - at checkout, a gateway unsupported for the currency or below its minimum is disabled with the reason, and submitting it server-side is rejected.
+- [ ] **Handling fees** - configure none / percentage / fixed (with min and max) per gateway. The fee is correct at checkout, in the order total, in the admin payments table, on invoices, and in the PayPal and Stripe breakdowns.
+- [ ] **Totals** - coupons apply before tax, totals recalculate live, and partner discounts apply.
+- [ ] **Invoices** - after a payment, the customer receives the invoice PDF by email; admins can download invoices from the payments page; a failure shows a friendly error.
+- [ ] **Stripe with tax** - with tax enabled, a successful Stripe payment is not marked failed. Test a taxed order, and a currency that exposes rounding (for example a zero-decimal or three-decimal currency).
+- [ ] **Credits name** - the payment confirmation email and the payment lists show the configured credits name.
+
+## Admin, settings and tickets
+
+- [ ] **Settings page** - sections and descriptions render, conditional fields show and hide with the selected mode, unit suffixes are correct, the mobile layout is usable, and the active tab plus collapsed-sidebar behaviour are correct.
+- [ ] **Masked secrets** - secrets and passwords are masked; saving the form without editing a secret does not overwrite it; editing it does.
+- [ ] **Settings permission** - a user without settings permission cannot open the settings page.
+- [ ] **Delete confirmations** - every admin delete button asks for confirmation.
+- [ ] **Mass notification** - can send to all users, or selected users, or roles alone.
+- [ ] **Tickets** - staff with ticket write access can change priority and category, and the admin ticket list sorts by priority.
+- [ ] **Login logo** - the logo is not overwritten after an update.
+- [ ] **Themes** - the BlueInfinity layout matches the default theme.
+
+## Operations
+
+- [ ] **Snapshots** - `snapshot:create` produces a compressed file and `snapshot:load` restores the database.
+- [ ] **Log rotation** - `logs:prune` (try `--dry-run` first) compresses older daily logs and deletes logs past retention.
+- [ ] **Redis default** - cache, session, queue and settings work with Redis as the default store, and can still be switched via environment variables.
