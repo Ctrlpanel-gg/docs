@@ -227,11 +227,11 @@ const config: Config = {
           includeCurrentVersion: false,
           lastVersion: "1.2.x",
           versions: {
-            // 'beta': {
-            //   label: '1.2.x (Public Beta)',
-            //   path: 'beta',
-            //   banner: 'none',
-            // },
+            'beta': {
+              label: '1.3.0 (Public Beta)',
+              path: 'beta',
+              banner: 'none',
+            },
             '1.2.x': {
               label: '1.2.x (Latest)',
             },
