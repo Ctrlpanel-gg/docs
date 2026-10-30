@@ -1,0 +1,66 @@
+/* Administration: the same ASCII grid becomes a horizontal section break. */
+.landing-dollar-divider {
+  width: 100%;
+  margin-top: clamp(44px, 5vw, 72px);
+  overflow: hidden;
+  color: var(--landing-foreground);
+  opacity: .22;
+  font: 500 var(--landing-ascii-size)/1.16 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  letter-spacing: 0;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+}
+.landing-administration {
+  width: calc(100% - clamp(32px, 7.6vw, 120px));
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-block: clamp(36px, 5vw, 72px) 48px;
+}
+.landing-admin-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 64px; }
+.landing-section-label { margin: 0 0 16px; color: #168bbc; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+.dark .landing-section-label { color: #27a9e1; }
+.landing-admin-intro h2 { margin: 0; font-size: clamp(34px, 4vw, 56px); font-weight: 500; line-height: 1.08; letter-spacing: -.045em; }
+.landing-admin-summary > p { margin: 0; max-width: 520px; color: var(--landing-muted); font-size: 16px; line-height: 1.65; }
+.landing-admin-summary > a { display: inline-flex; align-items: center; gap: 9px; margin-top: 16px; padding-block: 4px; font-size: 13px; font-weight: 600; text-decoration: none; }
+.landing-admin-summary > a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.landing-admin-summary > a:focus-visible { outline: 2px solid #27a9e1; outline-offset: 5px; }
+.landing-admin-summary > a svg { width: 15px; height: 15px; }
+.landing-admin-graphic { margin: 24px 0 0; }
+.landing-admin-illustration, .landing-admin-image { display: block; width: 100%; height: auto; }
+.landing-admin-illustration { --admin-paper: #fbfcfd; --admin-ink: #30373e; --admin-stroke: #a3a9ae; --admin-belt: #e9edf0; --admin-edge: #d8dee3; font-family: 'Red Hat Display', sans-serif; }
+.dark .landing-admin-illustration { --admin-paper: #26292e; --admin-ink: #e4e7eb; --admin-stroke: #626872; --admin-belt: #22262b; --admin-edge: #1b1e22; }
+.admin-ground { fill: var(--landing-foreground); opacity: .035; }
+.admin-belt-edge { fill: var(--admin-edge); stroke: var(--admin-stroke); stroke-width: 1; }
+.admin-belt { fill: var(--admin-belt); stroke: var(--admin-stroke); stroke-width: 1; }
+.admin-belt-seam, .admin-direction { fill: none; stroke: var(--admin-stroke); stroke-width: 1.2; }
+.admin-roller { fill: var(--admin-stroke); }
+.admin-card-shadow { fill: var(--admin-edge); stroke: var(--admin-stroke); stroke-width: 1; }
+.admin-card { fill: var(--admin-paper); stroke: var(--admin-stroke); stroke-width: 1.3; }
+.admin-card-inset { fill: none; stroke: var(--admin-stroke); stroke-width: .5; opacity: .35; }
+.admin-card-icon { color: var(--admin-ink); }
+.admin-card-dot { fill: #27a9e1; }
+.admin-card-title { fill: var(--admin-ink); font-size: 21px; font-weight: 600; }
+.admin-card-detail { fill: var(--admin-ink); font-size: 13px; opacity: .65; }
+.admin-card-rule { stroke: var(--admin-stroke); stroke-width: 3; opacity: .4; }
+.admin-registration { fill: var(--admin-stroke); stroke: var(--admin-stroke); stroke-width: 1; opacity: .3; }
+.landing-admin-capabilities { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
+.landing-admin-capabilities li { display: flex; align-items: flex-start; gap: 13px; }
+.landing-admin-capabilities li > svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; color: var(--landing-muted); stroke-width: 1.6; }
+.landing-admin-capabilities h3 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+.landing-admin-capabilities p { margin: 0; color: var(--landing-muted); font-size: 13px; line-height: 1.65; }
+@media (max-width: 800px) {
+  .landing-admin-intro { gap: 28px; }
+  .landing-admin-summary > p { font-size: 14px; }
+  .landing-admin-capabilities { gap: 20px; }
+}
+@media (max-width: 600px) {
+  .landing-administration { width: calc(100% - 32px); padding-bottom: 32px; }
+  .landing-admin-intro { grid-template-columns: 1fr; gap: 20px; }
+  .landing-section-label { margin-bottom: 12px; }
+  .landing-admin-intro h2 { font-size: 36px; }
+  .landing-admin-graphic { margin: 24px -8px 20px; }
+  .landing-admin-capabilities { grid-template-columns: 1fr; gap: 22px; }
+  .landing-admin-capabilities p { max-width: 38ch; }
+}
+.landing-dollar-divider { scroll-margin-top: calc(var(--fd-nav-height, 56px) + 16px); }

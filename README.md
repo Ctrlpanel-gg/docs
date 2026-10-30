@@ -12,6 +12,7 @@ A static Fumadocs site using the Next.js App Router, React, Tailwind CSS, and Bu
 | `content/blog/` | Published blog articles |
 | `lib/` | Content loaders, navigation, migrated-route manifest, and aliases |
 | `public/` | Static images, font files, OpenAPI specification, and example downloads |
+| `archive/landing-v1/` | Previous homepage and billing illustration, retained for reference |
 | `examples/` | Complete authored extension examples; never loaded by the website runtime |
 | `scripts/` | Import, static preview/export, and validation tools |
 | `migration/docusaurus/` | Original Docusaurus content/assets/components preserved for reference |
@@ -23,9 +24,13 @@ bun install
 bun run dev
 ```
 
+Development uses Webpack explicitly, matching the production build. This avoids the Turbopack MDX loader subprocess crash with the pinned Bun runtime.
+
 Open http://localhost:3000. Edit published guides in `content/docs/`. Each folder's `meta.json` controls the navigation order. The latest section is organized by operator/developer goals; older version families retain their historical content.
 
 The documentation home offers native Fumadocs cards, steps, and FAQ accordions. Configuration, theming, extensions, operations, updating, and development have their own entry pages. Old migrated routes remain available for bookmarks.
+
+The homepage uses a text-rendered ASCII wordmark, hero actions, and a scaled React dashboard preview. The ASCII artwork is generated in `components/landing/ascii-wordmark.tsx`; supporting text uses Red Hat Display. Its styles are in `app/landing.css`, and the preview adapter is in `components/landing/dashboard-preview.tsx`. The previous homepage is preserved in `archive/landing-v1/`; the shared blog footer remains active.
 
 ## Static build and checks
 

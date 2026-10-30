@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun --bun next dev",
+    "dev": "bun --bun next dev --webpack",
     "start": "bun run dev",
     "build": "bun --bun next build --webpack && bun scripts/export-aliases.ts",
     "serve": "bun scripts/serve.ts",
@@ -15,6 +15,7 @@
     "gg:run": "MESSAGE=updated bun scripts/gg/repackage.ts"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/postcss": "4.3.3",
     "cn": "^0.4.0",
     "fumadocs-core": "16.16.2",

@@ -1,0 +1,57 @@
+.overview {
+  --admin-blue: #159dd7;
+  --admin-border: color-mix(in srgb, var(--landing-foreground) 15%, transparent);
+  display: grid;
+  grid-template-columns: var(--admin-columns);
+  align-items: start;
+  gap: var(--admin-gap);
+  margin-top: 24px;
+}
+.visual { grid-column: 2; grid-row: 1; min-width: 0; position: relative; padding: 18px 0 82px; }
+.screen { position: relative; width: calc(100% - 36px); padding: 7px; border: 1px dashed var(--admin-border); }
+.silhouette { display: block; width: 100%; height: auto; }
+.frameCorner { position: absolute; color: var(--landing-muted); background: var(--landing-background); font: 14px/1 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+.cornerTopLeft { left: -4px; top: -8px; }
+.cornerTopRight { right: -4px; top: -8px; }
+.cornerBottomLeft { left: -4px; bottom: -6px; }
+.cornerBottomRight { right: -4px; bottom: -6px; }
+.example { position: absolute; right: 0; bottom: 0; box-shadow: 0 0 0 7px var(--landing-background); animation: example-enter 180ms ease-out; }
+.terminal { display: block; width: max-content; margin: 0; padding: 0; border: 0; border-radius: 0; background: var(--landing-background); color: var(--landing-muted); font: 400 clamp(10px, .95vw, 12px)/1.5 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; letter-spacing: 0; white-space: pre; overflow: visible; }
+.asciiBorder { color: color-mix(in srgb, var(--landing-foreground) 45%, transparent); }
+.terminalTitle { color: var(--landing-foreground); }
+.granted { color: var(--admin-blue); }
+.denied { display: inline-block; color: #e05261; animation: permission-denied 5s steps(2, end) 1s infinite; }
+.features { grid-column: 1; grid-row: 1; display: grid; min-width: 0; width: 100%; max-width: 460px; justify-self: start; gap: 10px; padding-top: 18px; }
+.feature { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr); align-items: start; gap: 10px; width: 100%; padding: 11px 12px; border: 1px dashed var(--admin-border); border-radius: 0; background: transparent; color: var(--landing-foreground); text-align: left; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease; }
+.feature:hover { background: color-mix(in srgb, var(--landing-foreground) 3%, transparent); }
+.feature[aria-pressed='true'] { border-color: var(--admin-blue); }
+.feature:focus-visible { outline: 2px solid #27a9e1; outline-offset: 4px; }
+.featureIcon { width: 20px; height: 20px; margin-top: 1px; color: var(--landing-muted); }
+.featureTitle { display: block; margin-bottom: 3px; font-size: 14px; font-weight: 650; line-height: 1.35; }
+.featureDescription { display: block; max-width: 42ch; color: var(--landing-muted); font-size: 12.5px; line-height: 1.5; }
+.feature[aria-pressed='true'] .featureIcon, .feature[aria-pressed='true'] .frameCorner { color: var(--admin-blue); }
+@keyframes example-enter { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes permission-denied { 0%, 14%, 100% { transform: translateX(0); } 3% { transform: translateX(-3px); } 6% { transform: translateX(2px); } 9% { transform: translateX(-1px); } }
+@media (max-width: 980px) {
+  .overview { gap: var(--admin-gap); }
+  .feature { grid-template-columns: 20px minmax(0, 1fr); padding: 12px 8px 12px 10px; gap: 9px; }
+  .featureIcon { width: 19px; height: 19px; }
+  .featureTitle { font-size: 14px; }
+  .featureDescription { font-size: 12px; }
+}
+@media (max-width: 700px) {
+  .overview { grid-template-columns: 1fr; gap: 24px; margin-top: 24px; }
+  .visual, .features { grid-column: auto; grid-row: auto; }
+  .visual { width: 100%; max-width: 540px; margin-inline: auto; padding-top: 8px; padding-bottom: 72px; }
+  .screen { width: calc(100% - 24px); }
+  .terminal { font-size: clamp(10px, 2.5vw, 12px); }
+  .features { grid-template-columns: 1fr 1fr; max-width: none; gap: 14px; padding-top: 0; }
+  .feature { height: 100%; padding: 12px 9px; }
+}
+@media (max-width: 380px) {
+  .feature { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .example, .denied { animation: none; }
+  .feature { transition: none; }
+}
