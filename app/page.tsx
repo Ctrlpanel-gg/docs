@@ -10,6 +10,7 @@ import { AsciiRails } from '@/components/landing/ascii-rails';
 import { AsciiWordmark } from '@/components/landing/ascii-wordmark';
 import { DashboardPreview } from '@/components/landing/dashboard-preview';
 import { PillButtonContent } from '@/components/react-bits/PillButtonContent';
+import { LandingFooter } from '@/components/landing/landing-footer';
 import { landingButtonClass, landingLayoutClass } from '@/components/landing/landing-styles';
 
 const frameClass = [
@@ -41,13 +42,6 @@ const productClass = [
 	'max-[480px]:w-[calc(100%_-_24px)]',
 ].join(' ');
 
-const footerClass = [
-	'mx-auto flex w-[calc(100%_-_clamp(32px,7.6vw,120px))] max-w-[1280px] items-center justify-between gap-6 py-9',
-	'max-[800px]:flex-col max-[800px]:items-start max-[800px]:py-7 max-[480px]:w-[calc(100%_-_24px)]',
-].join(' ');
-
-const footerLinkClass = 'underline-offset-4 hover:underline focus-visible:outline-[3px] focus-visible:outline-offset-[5px] focus-visible:outline-[#27a9e1]';
-
 export default function Home() {
 	return (
 		<HomeLayout {...baseOptions()} className={landingLayoutClass}>
@@ -77,14 +71,7 @@ export default function Home() {
 				<AdministrationSection />
 				<PaymentsSection />
 				<ThemesSection />
-				<footer className={footerClass}>
-					<Link href="/docs" className={`flex flex-wrap gap-2 text-sm font-medium no-underline [&_svg]:size-3.5 ${footerLinkClass}`}>Make it yours. <span className="inline-flex items-center gap-1.5 text-[var(--landing-muted)]">Read the docs <ArrowRight aria-hidden="true" /></span></Link>
-					<nav aria-label="Footer navigation" className="flex flex-wrap gap-[22px] text-xs text-[var(--landing-muted)]">
-						<a href="https://github.com/Ctrlpanel-gg/panel" className={footerLinkClass}>GitHub</a>
-						<a href="https://discord.gg/ctrlpanel-gg-787829714483019826" className={footerLinkClass}>Discord</a>
-						<Link href="/docs/api" className={footerLinkClass}>API reference</Link>
-					</nav>
-				</footer>
+				<LandingFooter />
 			</div>
 		</HomeLayout>
 	);
