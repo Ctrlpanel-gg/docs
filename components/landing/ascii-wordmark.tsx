@@ -12,5 +12,5 @@ const wordmark = String.raw`  /$$$$$$   /$$               /$$ /$$$$$$$          
                                                                                  \______/  \______/`;
 
 export function AsciiWordmark() {
-  return <pre className="landing-ascii" aria-hidden="true">{wordmark.split('\n').map((line,index)=><span key={index}>{line.slice(0,77)}<span className="landing-ascii-domain">{line.slice(77)}</span>{index<10?'\n':''}</span>)}</pre>;
+	return <pre className="m-0 block border-0 bg-transparent p-0 select-text whitespace-pre text-left font-mono font-medium not-italic leading-[1.16] tracking-normal text-[var(--landing-foreground)] text-[length:var(--landing-ascii-size)] [tab-size:2]" aria-hidden="true">{wordmark.split('\n').map((line,index)=><span key={index}>{line.slice(0,77)}<span className="text-[#159dd7] dark:text-[#27a9e1]">{line.slice(77)}</span>{index<10?'\n':''}</span>)}</pre>;
 }

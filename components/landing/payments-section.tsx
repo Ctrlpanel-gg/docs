@@ -5,6 +5,7 @@ import { PaymentWheel } from './payment-wheel';
 import { PaymentWheelTuner } from './payment-wheel-tuner';
 import { defaultWheelSettings, defaultWheelAutoRotate, defaultWheelSelection, readWheelSettings, wheelSettingsStorageKey } from './payment-wheel-settings';
 import styles from './payments-section.module.css';
+import { dollarDividerClass } from './landing-styles';
 
 const paymentsWordmark = String.raw` /$$$$$$$                                                         /$$
 | $$__  $$                                                       | $$
@@ -98,7 +99,7 @@ export function PaymentsSection() {
   }, [selected, rotationPaused, settings.rotationSeconds]);
 
   return <>
-    <div id="payments" className="landing-dollar-divider" aria-hidden="true">{'$'.repeat(512)}</div>
+    <div id="payments" className={`${dollarDividerClass} mt-[clamp(32px,3vw,48px)]`} aria-hidden="true">{'$'.repeat(512)}</div>
     <section className={styles.payments} aria-labelledby="payments-title" ref={sectionRef}>
       <div className={styles.body}>
         <h2 id="payments-title" className={styles.heading}><span className="sr-only">Payments</span><pre className={styles.ascii} aria-hidden="true">{paymentsWordmark}</pre></h2>
@@ -124,6 +125,6 @@ export function PaymentsSection() {
         </div>
       </div>
     </section>
-    <div className={"landing-dollar-divider " + styles.bottomDivider} aria-hidden="true">{'$'.repeat(512)}</div>
+    <div className={`${dollarDividerClass} mt-0`} aria-hidden="true">{'$'.repeat(512)}</div>
   </>;
 }

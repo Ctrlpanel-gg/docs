@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ThemeEditor } from './theme-editor';
 import styles from './themes-section.module.css';
+import { dollarDividerClass } from './landing-styles';
 
 const themesWordmark = String.raw` /$$$$$$$$ /$$
 |__  $$__/| $$
@@ -34,6 +35,6 @@ export function ThemesSection() {
         </div>
       </div>
     </section>
-    <div className={'landing-dollar-divider ' + styles.divider} aria-hidden="true">{'$'.repeat(512)}</div>
+    <div className={`${dollarDividerClass} mt-0`} aria-hidden="true">{'$'.repeat(512)}</div>
   </>;
 }

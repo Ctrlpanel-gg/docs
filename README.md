@@ -30,7 +30,7 @@ Open http://localhost:3000. Edit published guides in `content/docs/`. Each folde
 
 The documentation home offers native Fumadocs cards, steps, and FAQ accordions. Configuration, theming, extensions, operations, updating, and development have their own entry pages. Old migrated routes remain available for bookmarks.
 
-The homepage uses a text-rendered ASCII wordmark, hero actions, and a scaled React dashboard preview. The ASCII artwork is generated in `components/landing/ascii-wordmark.tsx`; supporting text uses Red Hat Display. Its styles are in `app/landing.css`, and the preview adapter is in `components/landing/dashboard-preview.tsx`. The previous homepage is preserved in `archive/landing-v1/`; the shared blog footer remains active.
+The homepage uses a text-rendered ASCII wordmark, hero actions, and a scaled React dashboard preview. The ASCII artwork is generated in `components/landing/ascii-wordmark.tsx`; supporting text uses Red Hat Display. Its styles are Tailwind utilities defined alongside the markup, with shared class strings in `components/landing/landing-styles.ts`, and the preview adapter is in `components/landing/dashboard-preview.tsx`. The previous homepage is preserved in `archive/landing-v1/`; the shared blog footer remains active.
 
 ## Static build and checks
 
